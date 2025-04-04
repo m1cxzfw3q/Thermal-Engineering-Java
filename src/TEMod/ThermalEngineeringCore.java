@@ -13,8 +13,8 @@ public class ThermalEngineeringCore extends Mod {
     public ThermalEngineeringCore() {
         Events.on(EventType.ClientLoadEvent.class, e->{
             Time.run(10F,()->{
-                BaseDialog dialog = new BaseDialog("TEMod test");
-                dialog.cont.add("test text");
+                BaseDialog dialog = new BaseDialog("Welcome to use ThermalEngineering");
+                dialog.cont.add("test");
                 Time.run(100F, dialog::addCloseButton);
                 dialog.show();
             });
