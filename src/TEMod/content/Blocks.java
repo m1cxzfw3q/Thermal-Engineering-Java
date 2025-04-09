@@ -16,6 +16,7 @@ import static mindustry.content.StatusEffects.unmoving;
 
 public class Blocks {
     public static Block machine_Cannon;
+
     public static void load() {
         machine_Cannon = new ItemTurret("Machine Cannon") {
             {
