@@ -3,22 +3,26 @@ package TEMod.content;
 import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
+import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.part.RegionPart;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
-import mindustry.world.draw.DrawTurret;
+import mindustry.world.blocks.production.Separator;
+import mindustry.world.draw.*;
 
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
+import static mindustry.type.ItemStack.with;
 
 public class Blocks {
     public static Block machine_Cannon;
+    public static Block high_Efficiency_Disassembler;
 
     public static void load() {
-        machine_Cannon = new ItemTurret("Machine Cannon") {
+        machine_Cannon = new ItemTurret("machine Cannon") {
             {
                 this.requirements(Category.turret, ItemStack.with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
                 this.ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {
@@ -163,5 +167,26 @@ public class Blocks {
                 this.limitRange();
             }
         };
+
+        high_Efficiency_Disassembler = new Separator("High Efficiency Disassembler"){{
+            requirements(Category.crafting, with(Items.copper, 200, Items.titanium, 100, Items.lead, 180, Items.graphite, 160, Items.thorium, 90, Items.silicon, 100, Items.plastanium, 140, Items.phaseFabric, 50));
+            results = with(
+                    Items.copper, 2,
+                    Items.lead, 2,
+                    Items.graphite, 2,
+                    Items.titanium, 2,
+                    Items.thorium, 2,
+                    Items.silicon, 2,
+                    Items.metaglass, 2
+            );
+            hasPower = true;
+            craftTime = 10f;
+            size = 4;
+
+            consumePower(3f);
+            consumeLiquid(Liquids.slag, 10f / 60f);
+
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(), new DrawRegion("-spinner", 3, true), new DrawDefault());
+        }};
     }
 }
