@@ -1,8 +1,10 @@
 displayName: "Thermal Engineering"
 name: "TEMod"
-author: "[sky]114514"
+author: "[sky[]]114514[white[]]"
 main: "TEMod.ThermalEngineeringCore"
-description: "A Mindustry Java mod template."
+description: """
+热力工程学[acid[]]JAVA重置版
+"""
 version: 0.0.1
 minGameVersion: 146
 java: true

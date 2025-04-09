@@ -4,8 +4,8 @@ import mindustry.type.Item;
 import arc.graphics.Color;
 
 public class Items {
-    public static Item uranium;
-    public static Item nuclear_Fuel_Rod;
+    public static Item uranium; //铀
+    public static Item nuclear_Fuel_Rod; //核燃料棒
 
     public static void load() {
         uranium = new Item("uranium", Color.valueOf("d99d73")){{

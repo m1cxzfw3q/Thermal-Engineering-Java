@@ -18,8 +18,8 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class Blocks {
-    public static Block machine_Cannon;
-    public static Block high_Efficiency_Disassembler;
+    public static Block machine_Cannon; //机炮
+    public static Block high_Efficiency_Disassembler; //高效解离机
 
     public static void load() {
         machine_Cannon = new ItemTurret("machine Cannon") {
