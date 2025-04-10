@@ -3,6 +3,6 @@ name: "TEMod"
 author: "[sky[]]114514[white[]]"
 main: "TEMod.ThermalEngineeringCore"
 description: "热力工程学[acid[]]JAVA重置版"
-version: 0.0.2
+version: 0.0.1
 minGameVersion: 146
 java: true
