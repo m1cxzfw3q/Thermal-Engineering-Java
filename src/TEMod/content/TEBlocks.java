@@ -22,7 +22,7 @@ public class TEBlocks {
     public static Block high_Efficiency_Disassembler; //高效解离机
 
     public static void load() {
-        machine_Cannon = new ItemTurret("machine Cannon") {
+        machine_Cannon = new ItemTurret("machineCannon") {
             {
                 this.requirements(Category.turret, ItemStack.with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
                 this.ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {
@@ -176,7 +176,7 @@ public class TEBlocks {
             }
         };
 
-        high_Efficiency_Disassembler = new Separator("High Efficiency Disassembler"){{
+        high_Efficiency_Disassembler = new Separator("HighEfficiencyDisassembler"){{
             requirements(Category.crafting, with(Items.copper, 200, Items.titanium, 100, Items.lead, 180, Items.graphite, 160, Items.thorium, 90, Items.silicon, 100, Items.plastanium, 140, Items.phaseFabric, 50));
             results = with(
                     Items.copper, 2,
