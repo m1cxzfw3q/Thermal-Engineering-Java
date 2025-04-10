@@ -27,6 +27,7 @@ public class Blocks {
                 this.requirements(Category.turret, ItemStack.with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
                 this.ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {
                     {
+                        pierce = true;
                         this.pierceCap = 1;
                         this.knockback = 0.2F;
                         this.width = 2.0F;
@@ -36,6 +37,7 @@ public class Blocks {
                     }
                 }, Items.lead, new BasicBulletType(8.0F, 27.0F) {
                     {
+                        pierce = true;
                         this.pierceCap = 2;
                         this.width = 2.0F;
                         this.height = 5.0F;
@@ -46,6 +48,7 @@ public class Blocks {
                     }
                 }, Items.graphite, new BasicBulletType(8.0F, 35.0F) {
                     {
+                        pierce = true;
                         this.pierceCap = 4;
                         this.width = 2.0F;
                         this.height = 5.0F;
@@ -59,6 +62,7 @@ public class Blocks {
                     }
                 }, Items.metaglass, new BasicBulletType(8.0F, 35.0F) {
                     {
+                        pierce = true;
                         this.pierceCap = 3;
                         this.width = 2.0F;
                         this.height = 5.0F;
@@ -77,6 +81,7 @@ public class Blocks {
                         this.knockback = 0.4F;
                         this.fragBullet = new BasicBulletType(0.2F, 6.0F) {
                             {
+                                pierce = true;
                                 this.width = 1.0F;
                                 this.height = 1.0F;
                                 this.pierceCap = 2;
@@ -85,6 +90,8 @@ public class Blocks {
                     }
                 }, Items.surgeAlloy, new BasicBulletType(8.0F, 200.0F) {
                     {
+                        pierce = true;
+                        this.pierceCap = 1;
                         this.reloadMultiplier = 0.25F;
                         this.width = 2.0F;
                         this.height = 5.0F;
@@ -105,6 +112,7 @@ public class Blocks {
                         this.fragVelocityMax = 1F;
                         this.fragBullet = new BasicBulletType(0.2F, 40.0F) {
                             {
+                                pierce = true;
                                 this.width = 1.0F;
                                 this.height = 1.0F;
                                 this.pierceCap = 1;
