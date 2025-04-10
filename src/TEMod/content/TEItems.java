@@ -14,7 +14,7 @@ public class TEItems {
             radioactivity = 1.5F;
         }};
 
-        nuclear_Fuel_Rod = new Item("nuclear Fuel Rod", Color.valueOf("d99d73")){{
+        nuclear_Fuel_Rod = new Item("nuclearFuelRod", Color.valueOf("d99d73")){{
             hardness = 0;
             radioactivity = 2F;
         }};
