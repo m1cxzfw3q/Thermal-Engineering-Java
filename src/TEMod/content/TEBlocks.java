@@ -17,7 +17,7 @@ import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
-public class Blocks {
+public class TEBlocks {
     public static Block machine_Cannon; //机炮
     public static Block high_Efficiency_Disassembler; //高效解离机
 

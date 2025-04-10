@@ -3,7 +3,7 @@ package TEMod.content;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
-public class Items {
+public class TEItems {
     public static Item uranium; //铀
     public static Item nuclear_Fuel_Rod; //核燃料棒
 

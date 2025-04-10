@@ -6,8 +6,8 @@ import mindustry.mod.Mod;
 import mindustry.game.EventType;
 import mindustry.ui.dialogs.BaseDialog;
 
-import TEMod.content.Items;
-import TEMod.content.Blocks;
+import TEMod.content.TEItems;
+import TEMod.content.TEBlocks;
 
 public class ThermalEngineeringCore extends Mod {
     public ThermalEngineeringCore() {
@@ -20,7 +20,7 @@ public class ThermalEngineeringCore extends Mod {
     }
     @Override
     public void loadContent() {
-        Items.load();
-        Blocks.load();
+        TEItems.load();
+        TEBlocks.load();
     }
 }
