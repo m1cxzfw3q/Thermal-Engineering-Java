@@ -4,10 +4,14 @@ version '1.0'
 
 sourceSets.main.java.srcDirs = ["src"]
 
-repositories{
+repositories {
     mavenCentral()
-    maven{ url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
-    maven{ url 'https://www.jitpack.io' }
+    maven {
+        url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository"
+        // 添加以下配置（可选）
+        allowInsecureProtocol = true // 仅当 SSL 有问题时临时启用
+    }
+    maven { url 'https://www.jitpack.io' }
 }
 
 java{
