@@ -174,8 +174,9 @@ public class TEBlocks {
             craftTime = 5f;
             size = 4;
             health = 2500;
-            consumePower(3f);
-            consumeLiquid(Liquids.slag, 10f / 60f);
+            itemCapacity = 40;
+            consumePower(8f);
+            consumeLiquid(Liquids.slag, 20f / 60f);
 
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),
