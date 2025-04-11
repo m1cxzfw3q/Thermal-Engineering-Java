@@ -176,7 +176,7 @@ public class TEBlocks {
             }
         };
 
-        high_Efficiency_Disassembler = new Separator("HighEfficiencyDisassembler"){{
+        high_Efficiency_Disassembler = new Separator("highEfficiencyDisassembler"){{
             requirements(Category.crafting, with(Items.copper, 200, Items.titanium, 100, Items.lead, 180, Items.graphite, 160, Items.thorium, 90, Items.silicon, 100, Items.plastanium, 140, Items.phaseFabric, 50));
             results = with(
                     Items.copper, 2,
