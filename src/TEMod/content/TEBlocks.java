@@ -168,7 +168,8 @@ public class TEBlocks {
                     Items.silicon, 3,
                     Items.metaglass, 2,
                     Items.surgeAlloy, 1,
-                    Items.phaseFabric, 1
+                    Items.phaseFabric, 1,
+                    Items.plastanium, 1
             );
             hasPower = true;
             craftTime = 5f;
