@@ -38,7 +38,7 @@ public class KepplerPlanet {
             atmosphereColor = Color.valueOf("3c1b8f");
             atmosphereRadIn = 0.02f;
             atmosphereRadOut = 0.3f;
-            startSector = 15;
+            startSector = 53;
             alwaysUnlocked = true;
             landCloudColor = Pal.spore.cpy().a(0.5f);
         }};
