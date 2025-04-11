@@ -1,5 +1,5 @@
-package TEMod.content;
-
+package TEMod.content;            //fwmod别看了你cv源码都比cv这坨好
+                                  //答辩mod贴图都是拿原版改的(除机炮)
 import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
@@ -21,147 +21,144 @@ public class TEBlocks {
     public static Block highEfficiencyDisassembler; //高效解离机
 
     public static void load() {
-        machineCannon = new ItemTurret("machineCannon") {
-            {
-                this.requirements(Category.turret, ItemStack.with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
-                this.ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {
-                    {
-                        pierce = true;
-                        this.pierceCap = 1;
-                        this.knockback = 0.2F;
-                        this.width = 2.0F;
-                        this.height = 5.0F;
-                        this.lifetime = 30.0F;
-                        this.ammoMultiplier = 10.0F;
-                    }
-                }, Items.lead, new BasicBulletType(8.0F, 27.0F) {
-                    {
-                        pierce = true;
-                        this.pierceCap = 2;
-                        this.width = 2.0F;
-                        this.height = 5.0F;
-                        this.lifetime = 30.0F;
-                        this.ammoMultiplier = 10.0F;
-                        this.shootEffect = Fx.shootSmall;
-                        this.knockback = 0.2F;
-                    }
-                }, Items.graphite, new BasicBulletType(8.0F, 35.0F) {
-                    {
-                        pierce = true;
-                        this.pierceCap = 4;
-                        this.width = 2.0F;
-                        this.height = 5.0F;
-                        this.reloadMultiplier = 0.7F;
-                        this.ammoMultiplier = 10.0F;
-                        this.lifetime = 30.0F;
-                        this.shootEffect = Fx.shootSmall;
-                        this.status = unmoving;
-                        this.statusDuration = 2F;
-                        this.knockback = 0.2F;
-                    }
-                }, Items.metaglass, new BasicBulletType(8.0F, 35.0F) {
-                    {
-                        pierce = true;
-                        this.pierceCap = 3;
-                        this.width = 2.0F;
-                        this.height = 5.0F;
-                        this.reloadMultiplier = 0.8F;
-                        this.ammoMultiplier = 7.0F;
-                        this.lifetime = 30.0F;
-                        this.shootEffect = Fx.shootSmall;
-                        this.status = unmoving;
-                        this.statusDuration = 2F;
-                        this.fragBullets = 2;
-                        this.fragLifeMin = 0.1F;
-                        this.fragRandomSpread = 30F;
-                        this.fragSpread = 45F;
-                        this.fragVelocityMin = 0.5F;
-                        this.fragVelocityMax = 1F;
-                        this.knockback = 0.4F;
-                        this.fragBullet = new BasicBulletType(0.2F, 6.0F) {
-                            {
-                                pierce = true;
-                                this.width = 1.0F;
-                                this.height = 1.0F;
-                                this.pierceCap = 2;
-                            }
-                        };
-                    }
-                }, Items.surgeAlloy, new BasicBulletType(8.0F, 200.0F) {
-                    {
-                        pierce = true;
-                        this.pierceCap = 1;
-                        this.reloadMultiplier = 0.25F;
-                        this.width = 2.0F;
-                        this.height = 5.0F;
-                        this.lifetime = 30.0F;
-                        this.ammoMultiplier = 25.0F;
-                        this.shootEffect = Fx.shootSmall;
-                        this.knockback = 0.5F;
-                        this.lightningDamage = 5F;
-                        this.lightning = 2;
-                        this.lightningLength = 4;
-                        this.lightningColor = Color.valueOf("ab99d3ff");
-                        this.status = shocked;
-                        this.fragBullets = 2;
-                        this.fragLifeMin = 0.1F;
-                        this.fragRandomSpread = 30F;
-                        this.fragSpread = 45F;
-                        this.fragVelocityMin = 0.5F;
-                        this.fragVelocityMax = 1F;
-                        this.fragBullet = new BasicBulletType(0.2F, 40.0F) {
-                            {
-                                pierce = true;
-                                this.width = 1.0F;
-                                this.height = 1.0F;
-                                this.pierceCap = 1;
-                                this.fragBullets = 1;
-                                this.fragLifeMin = 0.1F;
-                                this.fragRandomSpread = 30F;
-                                this.fragSpread = 45F;
-                                this.fragVelocityMin = 0.5F;
-                                this.fragVelocityMax = 1F;
-                                this.fragBullet = new BasicBulletType(0.2F, 20.0F) {
-                                    {
-                                        this.width = 0.6F;
-                                        this.height = 0.6F;
-                                        this.fragBullets = 1;
-                                        this.fragLifeMin = 0.1F;
-                                        this.fragRandomSpread = 30F;
-                                        this.fragSpread = 45F;
-                                        this.fragVelocityMin = 0.5F;
-                                        this.fragVelocityMax = 1F;
-                                        this.fragBullet = new BasicBulletType(0.2F, 15.0F) {
-                                            {
-                                                this.width = 0.2F;
-                                                this.height = 0.2F;
-                                            }
-                                        };
-                                    }
-                                };
-                            }
-                        };
-                    }
-                });
-                this.maxAmmo = 300;
-                this.recoil = 0.7F;
-                this.recoilTime = 2F;
-                this.shootY = 3.0F;
-                this.reload = 1.0F;
-                this.range = 240.0F;
-                this.ammoUseEffect = Fx.casing2;
-                this.health = 2560;
-                this.inaccuracy = 3.0F;
-                this.rotateSpeed = 40.0F;
-                this.coolantMultiplier = 2F;
-                this.coolant = this.consumeCoolant(0.3F);
-                this.heatColor = Color.valueOf("ff0000");
-                this.limitRange();
-            }
-        };
+        machineCannon = new ItemTurret("machineCannon") {{
+            requirements(
+                    Category.turret,
+                    ItemStack.with(
+                            Items.copper, 200,
+                            Items.lead, 160,
+                            Items.graphite, 80
+                    )
+            );
+            ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
+                pierce = true;
+                pierceCap = 1;
+                knockback = 0.2F;
+                width = 2.0F;
+                height = 5.0F;
+                lifetime = 30.0F;
+                ammoMultiplier = 10.0F;
+            }}, Items.lead, new BasicBulletType(8.0F, 27.0F) {{
+                pierce = true;
+                pierceCap = 2;
+                width = 2.0F;
+                height = 5.0F;
+                lifetime = 30.0F;
+                ammoMultiplier = 10.0F;
+                shootEffect = Fx.shootSmall;
+                knockback = 0.2F;
+            }}, Items.graphite, new BasicBulletType(8.0F, 35.0F) {{
+                pierce = true;
+                pierceCap = 4;
+                width = 2.0F;
+                height = 5.0F;
+                reloadMultiplier = 0.7F;
+                ammoMultiplier = 10.0F;
+                lifetime = 30.0F;
+                shootEffect = Fx.shootSmall;
+                status = unmoving;
+                statusDuration = 2F;
+                knockback = 0.2F;
+            }}, Items.metaglass, new BasicBulletType(8.0F, 35.0F) {{
+                pierce = true;
+                pierceCap = 3;
+                width = 2.0F;
+                height = 5.0F;
+                reloadMultiplier = 0.8F;
+                ammoMultiplier = 7.0F;
+                lifetime = 30.0F;
+                shootEffect = Fx.shootSmall;
+                status = unmoving;
+                statusDuration = 2F;
+                fragBullets = 2;
+                fragLifeMin = 0.1F;
+                fragRandomSpread = 30F;
+                fragSpread = 45F;
+                fragVelocityMin = 0.5F;
+                fragVelocityMax = 1F;
+                knockback = 0.4F;
+                fragBullet = new BasicBulletType(0.2F, 6.0F) {{
+                    pierce = true;
+                    width = 1.0F;
+                    height = 1.0F;
+                    pierceCap = 2;
+                }};
+            }}, Items.surgeAlloy, new BasicBulletType(8.0F, 200.0F) {{
+                pierce = true;
+                pierceCap = 1;
+                reloadMultiplier = 0.25F;
+                width = 2.0F;
+                height = 5.0F;
+                lifetime = 30.0F;
+                ammoMultiplier = 25.0F;
+                shootEffect = Fx.shootSmall;
+                knockback = 0.5F;
+                lightningDamage = 5F;
+                lightning = 2;
+                lightningLength = 4;
+                lightningColor = Color.valueOf("ab99d3ff");
+                status = shocked;
+                fragBullets = 2;
+                fragLifeMin = 0.1F;
+                fragRandomSpread = 30F;
+                fragSpread = 45F;
+                fragVelocityMin = 0.5F;
+                fragVelocityMax = 1F;
+                fragBullet = new BasicBulletType(0.2F, 40.0F) {{
+                    pierce = true;
+                    width = 1.0F;
+                    height = 1.0F;
+                    pierceCap = 1;
+                    fragBullets = 1;
+                    fragLifeMin = 0.1F;
+                    fragRandomSpread = 30F;
+                    fragSpread = 45F;
+                    fragVelocityMin = 0.5F;
+                    fragVelocityMax = 1F;
+                    fragBullet = new BasicBulletType(0.2F, 20.0F) {{
+                        width = 0.6F;
+                        height = 0.6F;
+                        fragBullets = 1;
+                        fragLifeMin = 0.1F;
+                        fragRandomSpread = 30F;
+                        fragSpread = 45F;
+                        fragVelocityMin = 0.5F;
+                        fragVelocityMax = 1F;
+                        fragBullet = new BasicBulletType(0.2F, 15.0F) {{
+                            width = 0.2F;
+                            height = 0.2F;
+                        }};
+                    }};
+                }};
+            }});
+            maxAmmo = 300;
+            recoil = 0.7F;
+            recoilTime = 2F;
+            shootY = 3.0F;
+            reload = 1.0F;
+            range = 240.0F;
+            ammoUseEffect = Fx.casing2;
+            health = 2560;
+            inaccuracy = 3.0F;
+            rotateSpeed = 40.0F;
+            coolantMultiplier = 2F;
+            coolant = this.consumeCoolant(0.3F);
+            heatColor = Color.valueOf("ff0000");
+            limitRange();
+        }};
 
         highEfficiencyDisassembler = new Separator("highEfficiencyDisassembler"){{
-            requirements(Category.crafting, with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200, Items.plastanium, 200, Items.phaseFabric, 80));
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 450,
+                            Items.titanium, 200,
+                            Items.lead, 300,
+                            Items.graphite, 200,
+                            Items.thorium, 150,
+                            Items.silicon, 200,
+                            Items.plastanium, 200,
+                            Items.phaseFabric, 80
+                    ));
             results = with(
                     Items.copper, 3,
                     Items.lead, 3,
@@ -180,7 +177,12 @@ public class TEBlocks {
             consumePower(3f);
             consumeLiquid(Liquids.slag, 10f / 60f);
 
-            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(), new DrawRegion("-spinner", 7, true), new DrawDefault());
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"),
+                    new DrawLiquidTile(),
+                    new DrawRegion("-spinner", 7, true),
+                    new DrawDefault()
+            );
         }};
     }
 }
