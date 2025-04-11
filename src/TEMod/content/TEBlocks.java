@@ -180,7 +180,7 @@ public class TEBlocks {
             consumePower(3f);
             consumeLiquid(Liquids.slag, 10f / 60f);
 
-            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(), new DrawRegion("-spinner", 3, true), new DrawDefault());
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(), new DrawRegion("-spinner", 7, true), new DrawDefault());
         }};
     }
 }
