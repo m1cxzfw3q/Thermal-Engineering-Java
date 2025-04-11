@@ -9,10 +9,13 @@ import mindustry.graphics.g3d.MultiMesh;
 import mindustry.maps.planet.SerpuloPlanetGenerator;
 import mindustry.type.Planet;
 
+import static mindustry.content.Planets.*;
+
 public class KepplerPlanet {
     public static Planet keppler;
+
     public static void load() {
-        keppler = new Planet("keppler", null, 3) {{
+        keppler = new Planet("keppler", sun, 3) {{
             generator = new SerpuloPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
             cloudMeshLoader = () -> new MultiMesh(

@@ -8,6 +8,8 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
+import static TEMod.content.KepplerPlanet.*;
+
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
 
