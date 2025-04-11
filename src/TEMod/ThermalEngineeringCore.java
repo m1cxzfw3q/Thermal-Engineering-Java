@@ -20,8 +20,8 @@ public class ThermalEngineeringCore extends Mod {
     public void loadContent() {
         TEItems.load();
         TEBlocks.load();
-        KepplerTechTree.load();
         KepplerPlanet.load();
         TESectorPresets.load();
+        KepplerTechTree.load();
     }
 }
