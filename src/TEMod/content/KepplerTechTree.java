@@ -28,11 +28,6 @@ public class KepplerTechTree {
         });
     }
 
-    public static void addToNext(UnlockableContent content, Runnable run) {
-        context = TechTree.all.find(kepplerTechNode -> kepplerTechNode.content == content);
-        run.run();
-    }
-
     public static TechTree.TechNode nodeRoot(String name, UnlockableContent content, Runnable children){
         return nodeRoot(name, content, false, children);
     }
