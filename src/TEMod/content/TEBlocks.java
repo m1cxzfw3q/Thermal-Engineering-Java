@@ -144,7 +144,7 @@ public class TEBlocks {
                     }
                 });
                 this.maxAmmo = 300;
-                this.recoil = 0.2F;
+                this.recoil = 0.7F;
                 this.recoilTime = 2F;
                 this.shootY = 3.0F;
                 this.reload = 1.0F;
