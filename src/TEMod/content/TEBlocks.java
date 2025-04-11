@@ -144,8 +144,8 @@ public class TEBlocks {
                     }
                 });
                 this.maxAmmo = 300;
-                this.recoil = 0.1F;
-                this.recoilTime = 0.1F;
+                this.recoil = 0.2F;
+                this.recoilTime = 2F;
                 this.shootY = 3.0F;
                 this.reload = 1.0F;
                 this.range = 240.0F;
