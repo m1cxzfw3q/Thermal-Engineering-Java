@@ -17,10 +17,11 @@ public class KepplerTechTree {
     public static void load() {
         Planets.serpulo.techTree = nodeRoot("kepplerTechTree", Blocks.coreShard, () -> {
             node(TEBlocks.machineCannon, () -> {
-                node(TEBlocks.highEfficiencyDisassembler);
+                node(TEBlocks.highEfficiencyDisassembler, () -> {
+                });
             });
             nodeProduce(TEItems.uranium, () -> {
-                nodeProduce(TEItems.nuclearFuelRod,() -> {
+                nodeProduce(TEItems.nuclearFuelRod, () -> {
                 });
             });
             node(TESectorPresets.Landing_area, () -> {
