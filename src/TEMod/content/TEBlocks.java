@@ -176,7 +176,7 @@ public class TEBlocks {
             hasPower = true;
             craftTime = 5f;
             size = 4;
-
+            health = 2500;
             consumePower(3f);
             consumeLiquid(Liquids.slag, 10f / 60f);
 
