@@ -1,5 +1,7 @@
 package TEMod;
 
+import TEMod.content.KepplerPlanet;
+import TEMod.content.KepplerTechTree;
 import arc.Events;
 import arc.util.Time;
 import mindustry.mod.Mod;
@@ -22,5 +24,7 @@ public class ThermalEngineeringCore extends Mod {
     public void loadContent() {
         TEItems.load();
         TEBlocks.load();
+        KepplerTechTree.load();
+        KepplerPlanet.load();
     }
 }
