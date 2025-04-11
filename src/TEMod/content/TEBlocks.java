@@ -5,7 +5,6 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
-import mindustry.entities.part.RegionPart;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
@@ -172,7 +171,7 @@ public class TEBlocks {
                     Items.silicon, 3,
                     Items.metaglass, 2,
                     Items.surgeAlloy, 1,
-                    Items.phaseFabric, 1,
+                    Items.phaseFabric, 1
             );
             hasPower = true;
             craftTime = 5f;
