@@ -144,24 +144,9 @@ public class TEBlocks {
                         };
                     }
                 });
-                this.drawer = new DrawTurret() {
-                    {
-                        for(int i = 0; i < 2; ++i) {
-                            int finalI = i;
-                            this.parts.add(new RegionPart("-barrel-" + (finalI == 0 ? "l" : "r")) {
-                                {
-                                    this.progress = PartProgress.recoil;
-                                    this.recoilIndex = finalI;
-                                    this.under = true;
-                                    this.moveY = -1.5F;
-                                }
-                            });
-                        }
-
-                    }
-                };
                 this.maxAmmo = 300;
-                this.recoil = 0.3F;
+                this.recoil = 0.1F;
+                this.recoilTime = 0.1F;
                 this.shootY = 3.0F;
                 this.reload = 1.0F;
                 this.range = 240.0F;
@@ -177,18 +162,20 @@ public class TEBlocks {
         };
 
         high_Efficiency_Disassembler = new Separator("highEfficiencyDisassembler"){{
-            requirements(Category.crafting, with(Items.copper, 200, Items.titanium, 100, Items.lead, 180, Items.graphite, 160, Items.thorium, 90, Items.silicon, 100, Items.plastanium, 140, Items.phaseFabric, 50));
+            requirements(Category.crafting, with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200, Items.plastanium, 200, Items.phaseFabric, 80));
             results = with(
-                    Items.copper, 2,
-                    Items.lead, 2,
-                    Items.graphite, 2,
+                    Items.copper, 3,
+                    Items.lead, 3,
+                    Items.graphite, 1,
                     Items.titanium, 2,
-                    Items.thorium, 2,
-                    Items.silicon, 2,
-                    Items.metaglass, 2
+                    Items.thorium, 1,
+                    Items.silicon, 3,
+                    Items.metaglass, 2,
+                    Items.surgeAlloy, 1,
+                    Items.phaseFabric, 1,
             );
             hasPower = true;
-            craftTime = 10f;
+            craftTime = 5f;
             size = 4;
 
             consumePower(3f);
