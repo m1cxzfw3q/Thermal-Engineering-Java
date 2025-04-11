@@ -8,8 +8,6 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
-import static TEMod.content.KepplerPlanet.*;
-
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
 
@@ -17,7 +15,7 @@ public class KepplerTechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-        Planets.keppler.techTree = nodeRoot("kepplerTechTree", Blocks.coreShard, () -> {
+        Planets.serpulo.techTree = nodeRoot("kepplerTechTree", Blocks.coreShard, () -> {
             node(TEBlocks.machineCannon, () -> {
                 node(TEBlocks.highEfficiencyDisassembler);
             });
