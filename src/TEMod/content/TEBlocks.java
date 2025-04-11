@@ -17,11 +17,11 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    public static Block machine_Cannon; //机炮
-    public static Block high_Efficiency_Disassembler; //高效解离机
+    public static Block machineCannon; //机炮
+    public static Block highEfficiencyDisassembler; //高效解离机
 
     public static void load() {
-        machine_Cannon = new ItemTurret("machineCannon") {
+        machineCannon = new ItemTurret("machineCannon") {
             {
                 this.requirements(Category.turret, ItemStack.with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
                 this.ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {
@@ -160,7 +160,7 @@ public class TEBlocks {
             }
         };
 
-        high_Efficiency_Disassembler = new Separator("highEfficiencyDisassembler"){{
+        highEfficiencyDisassembler = new Separator("highEfficiencyDisassembler"){{
             requirements(Category.crafting, with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200, Items.plastanium, 200, Items.phaseFabric, 80));
             results = with(
                     Items.copper, 3,

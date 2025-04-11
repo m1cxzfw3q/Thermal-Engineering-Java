@@ -5,7 +5,7 @@ import arc.graphics.Color;
 
 public class TEItems {
     public static Item uranium; //铀
-    public static Item nuclear_Fuel_Rod; //核燃料棒
+    public static Item nuclearFuelRod; //核燃料棒
 
     public static void load() {
         uranium = new Item("uranium", Color.valueOf("d99d73")){{
@@ -14,7 +14,7 @@ public class TEItems {
             radioactivity = 1.5F;
         }};
 
-        nuclear_Fuel_Rod = new Item("nuclearFuelRod", Color.valueOf("d99d73")){{
+        nuclearFuelRod = new Item("nuclearFuelRod", Color.valueOf("d99d73")){{
             hardness = 0;
             radioactivity = 2F;
         }};
