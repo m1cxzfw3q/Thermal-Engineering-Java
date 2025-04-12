@@ -5,14 +5,13 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
+import mindustry.maps.filters.OreFilter;
 import mindustry.type.Category;
-import mindustry.type.ItemStack;
 import mindustry.world.Block;
-import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.AirBlock;
+import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.Separator;
-import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BuildVisibility;
 
@@ -21,18 +20,17 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
+    public static OreBlock oreUranium;
     public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block surpluoIcon;
     public static Block erekirIcon;
     public static Block kepplerIcon;
-    public static Block exploreCore;
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
             requirements(
-                    Category.turret,
-                    ItemStack.with(
+                    Category.turret, with(
                             Items.copper, 200,
                             Items.lead, 160,
                             Items.graphite, 80
@@ -85,7 +83,7 @@ public class TEBlocks {
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
                 knockback = 0.4F;
-                fragBullet = new BasicBulletType(1F, 6.0F) {{
+                fragBullet = new BasicBulletType(2F, 6.0F) {{
                     pierce = true;
                     width = 1.0F;
                     height = 1.0F;
@@ -112,7 +110,7 @@ public class TEBlocks {
                 fragSpread = 45F;
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
-                fragBullet = new BasicBulletType(1F, 40.0F) {{
+                fragBullet = new BasicBulletType(2F, 40.0F) {{
                     pierce = true;
                     width = 1.0F;
                     height = 1.0F;
@@ -123,7 +121,7 @@ public class TEBlocks {
                     fragSpread = 45F;
                     fragVelocityMin = 0.5F;
                     fragVelocityMax = 1F;
-                    fragBullet = new BasicBulletType(1F, 20.0F) {{
+                    fragBullet = new BasicBulletType(2F, 20.0F) {{
                         width = 0.6F;
                         height = 0.6F;
                         fragBullets = 1;
@@ -132,7 +130,7 @@ public class TEBlocks {
                         fragSpread = 45F;
                         fragVelocityMin = 0.5F;
                         fragVelocityMax = 1F;
-                        fragBullet = new BasicBulletType(1F, 15.0F) {{
+                        fragBullet = new BasicBulletType(2F, 15.0F) {{
                             width = 0.2F;
                             height = 0.2F;
                         }};
@@ -147,8 +145,8 @@ public class TEBlocks {
                 ammoMultiplier = 10.0F;
                 shootEffect = Fx.shootSmall;
                 knockback = 0.2F;
-                homingPower = 0.3f;
-                homingRange = 37f;
+                homingPower = 0.1f;
+                homingRange = 26f;
             }});
             maxAmmo = 300;
             recoil = 0.7F;
@@ -221,6 +219,11 @@ public class TEBlocks {
             size = 2;
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
+        }};
+        oreUranium = new OreBlock("oreUranium", TEItems.uranium) {{
+            oreDefault = true;
+            oreThreshold = 0.81f;
+            oreScale = 23.47619f;
         }};
     }
 }
