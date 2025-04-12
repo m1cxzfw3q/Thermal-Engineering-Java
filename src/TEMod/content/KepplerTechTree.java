@@ -23,7 +23,7 @@ public class KepplerTechTree {
                 nodeProduce(TEItems.nuclearFuelRod, () -> {
                 });
             });
-            node(TESectorPresets.Landing_area, () -> {
+            node(KepplerSectorPresets.Landing_area, () -> {
             });
         });
     }

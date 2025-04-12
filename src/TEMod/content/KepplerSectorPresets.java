@@ -4,7 +4,7 @@ import mindustry.type.SectorPreset;
 
 import static TEMod.content.KepplerPlanet.*;
 
-public class TESectorPresets {
+public class KepplerSectorPresets {
     public static SectorPreset Landing_area;
 
     public static void load(){
