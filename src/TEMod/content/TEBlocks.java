@@ -177,7 +177,7 @@ public class TEBlocks {
             itemCapacity = 40;
             consumePower(8f);
             consumeLiquid(Liquids.slag, 20f / 60f);
-            consumeItem(Items.scrap, 2);
+            consumeItem(Items.scrap, (int) 1.5);
 
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),

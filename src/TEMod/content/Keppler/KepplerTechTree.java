@@ -9,6 +9,9 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
+import static mindustry.content.Blocks.*;
+import static mindustry.content.SectorPresets.craters;
+
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
 
@@ -17,10 +20,19 @@ public class KepplerTechTree {
 
     public static void load() {
         KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", Blocks.coreShard, () -> {
-            node(TEBlocks.machineCannon, () -> {
+            node(TEBlocks.machineCannon, Seq.with(
+                    new Objectives.SectorComplete(KepplerSectorPresets.Landing_area),
+                    new Objectives.Research(Blocks.scorch),
+                    new Objectives.Research(Blocks.hail)
+            ), () -> {
             });
 
-            node(TEBlocks.highEfficiencyDisassembler, () -> {
+            node(TEBlocks.highEfficiencyDisassembler, Seq.with(
+                    new Objectives.Research(disassembler),
+                    new Objectives.Research(surgeSmelter),
+                    new Objectives.Research(phaseWeaver),
+                    new Objectives.Research(oilExtractor)
+            ), () -> {
             });
 
             nodeProduce(TEItems.uranium, () -> {
@@ -28,7 +40,19 @@ public class KepplerTechTree {
                 });
             });
 
-            node(KepplerSectorPresets.Landing_area, () -> {
+            node(KepplerSectorPresets.Landing_area, Seq.with(
+                    new Objectives.SectorComplete(craters),
+                    new Objectives.Research(kiln),
+                    new Objectives.Research(logicProcessor),
+                    new Objectives.Research(logicDisplay),
+                    new Objectives.Research(memoryCell),
+                    new Objectives.Research(multiPress),
+                    new Objectives.Research(liquidTank),
+                    new Objectives.Research(bridgeConduit),
+                    new Objectives.Research(titaniumConveyor),
+                    new Objectives.Research(laserDrill),
+                    new Objectives.Research(steamGenerator)
+            ), () -> {
             });
         });
     }

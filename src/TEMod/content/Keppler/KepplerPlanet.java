@@ -37,7 +37,7 @@ public class KepplerPlanet {
                 r.showSpawns = true;
             };
             iconColor = Color.valueOf("87c7ff");
-            atmosphereColor = Color.valueOf("3c1b8f");
+            atmosphereColor = Color.valueOf("87c7ff");
             atmosphereRadIn = 0.01f;
             atmosphereRadOut = 0.2f;
             startSector = 53;

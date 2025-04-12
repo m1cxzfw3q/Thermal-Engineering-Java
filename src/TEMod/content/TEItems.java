@@ -12,11 +12,13 @@ public class TEItems {
             hardness = 1;
             cost = 2F;
             radioactivity = 1.5F;
+            alwaysUnlocked = false;
         }};
 
         nuclearFuelRod = new Item("nuclearFuelRod", Color.valueOf("d99d73")){{
             hardness = 0;
             radioactivity = 2F;
+            alwaysUnlocked = false;
         }};
     }
 }
