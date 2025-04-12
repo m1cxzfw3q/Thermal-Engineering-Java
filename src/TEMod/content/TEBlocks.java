@@ -1,5 +1,5 @@
-package TEMod.content;            //fwmod别看了你cv源码都比cv这坨好
-                                  //答辩mod贴图都是拿原版改的(除机炮)
+package TEMod.content;
+
 import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
@@ -130,6 +130,17 @@ public class TEBlocks {
                         }};
                     }};
                 }};
+            }},Items.silicon, new BasicBulletType(8.0F, 27.0F) {{
+                pierce = true;
+                pierceCap = 2;
+                width = 2.0F;
+                height = 5.0F;
+                lifetime = 30.0F;
+                ammoMultiplier = 10.0F;
+                shootEffect = Fx.shootSmall;
+                knockback = 0.2F;
+                homingPower = 0.3f;
+                homingRange = 37f;
             }});
             maxAmmo = 300;
             recoil = 0.7F;
