@@ -21,7 +21,7 @@ public class KepplerPlanet {
                     new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Pal.spore, 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
             );
             launchCapacityMultiplier = 0.5f;
-            sectorSeed = 3;
+            sectorSeed = 13;
             allowWaves = true;
             allowWaveSimulation = true;
             allowSectorInvasion = true;
@@ -32,7 +32,7 @@ public class KepplerPlanet {
             ruleSetter = r -> {
                 r.waveTeam = Team.blue;
                 r.placeRangeCheck = false;
-                r.showSpawns = false;
+                r.showSpawns = true;
             };
             iconColor = Color.valueOf("7d4dff");
             atmosphereColor = Color.valueOf("3c1b8f");

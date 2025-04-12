@@ -12,7 +12,7 @@ public class TESectorPresets {
             alwaysUnlocked = true;
             addStartingItems = true;
             captureWave = 60;
-            difficulty = 3;
+            difficulty = 1;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
         }};
