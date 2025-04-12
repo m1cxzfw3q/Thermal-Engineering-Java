@@ -77,7 +77,7 @@ public class TEBlocks {
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
                 knockback = 0.4F;
-                fragBullet = new BasicBulletType(0.2F, 6.0F) {{
+                fragBullet = new BasicBulletType(1F, 6.0F) {{
                     pierce = true;
                     width = 1.0F;
                     height = 1.0F;
@@ -104,7 +104,7 @@ public class TEBlocks {
                 fragSpread = 45F;
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
-                fragBullet = new BasicBulletType(0.2F, 40.0F) {{
+                fragBullet = new BasicBulletType(1F, 40.0F) {{
                     pierce = true;
                     width = 1.0F;
                     height = 1.0F;
@@ -115,7 +115,7 @@ public class TEBlocks {
                     fragSpread = 45F;
                     fragVelocityMin = 0.5F;
                     fragVelocityMax = 1F;
-                    fragBullet = new BasicBulletType(0.2F, 20.0F) {{
+                    fragBullet = new BasicBulletType(1F, 20.0F) {{
                         width = 0.6F;
                         height = 0.6F;
                         fragBullets = 1;
@@ -124,7 +124,7 @@ public class TEBlocks {
                         fragSpread = 45F;
                         fragVelocityMin = 0.5F;
                         fragVelocityMax = 1F;
-                        fragBullet = new BasicBulletType(0.2F, 15.0F) {{
+                        fragBullet = new BasicBulletType(1F, 15.0F) {{
                             width = 0.2F;
                             height = 0.2F;
                         }};
