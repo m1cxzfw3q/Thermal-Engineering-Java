@@ -8,9 +8,11 @@ import mindustry.entities.bullet.BasicBulletType;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
+import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.production.Separator;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BuildVisibility;
 
@@ -24,6 +26,7 @@ public class TEBlocks {
     public static Block surpluoIcon;
     public static Block erekirIcon;
     public static Block kepplerIcon;
+    public static Block exploreCore;
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -218,6 +221,18 @@ public class TEBlocks {
             size = 2;
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
+        }};
+        exploreCore = new CoreBlock("exploreCore") {{
+            size = 4;
+            alwaysUnlocked = true;
+            requirements(Category.distribution, with(
+                    Items.copper, 2000,
+                    Items.lead, 2000,
+                    Items.graphite, 1000,
+                    Items.beryllium, 1000,
+                    Items.tungsten, 600
+            ));
+            unitType = TEUnits.discover;
         }};
     }
 }
