@@ -205,14 +205,17 @@ public class TEBlocks {
             );
         }};
         surpluoIcon = new AirBlock("surpluoIcon") {{
+            size = 2;
             requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
         erekirIcon = new AirBlock("erekirIcon") {{
+            size = 2;
             requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
         kepplerIcon = new AirBlock("kepplerIcon") {{
+            size = 2;
             requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
