@@ -11,6 +11,7 @@ import mindustry.type.ItemStack;
 
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.craters;
+import static mindustry.content.SectorPresets.ravine;
 
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
@@ -41,6 +42,7 @@ public class KepplerTechTree {
             });
 
             node(KepplerSectorPresets.Landing_area, Seq.with(
+                    //赛普罗科技节点,就这点比起源都多
                     new Objectives.SectorComplete(craters),
                     new Objectives.Research(kiln),
                     new Objectives.Research(logicProcessor),
@@ -51,7 +53,15 @@ public class KepplerTechTree {
                     new Objectives.Research(bridgeConduit),
                     new Objectives.Research(titaniumConveyor),
                     new Objectives.Research(laserDrill),
-                    new Objectives.Research(steamGenerator)
+                    new Objectives.Research(steamGenerator),
+                    new Objectives.Research(swarmer),
+                    new Objectives.Research(fuse),
+                    new Objectives.Research(segment),
+                    new Objectives.Research(tsunami),
+                    new Objectives.Research(lancer),
+                    //埃里克尔科技节点,就几个节点
+                    new Objectives.SectorComplete(ravine),
+                    new Objectives.Research(shipRefabricator)
             ), () -> {
             });
         });
