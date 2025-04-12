@@ -9,8 +9,7 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
-import static TEMod.content.Keppler.KepplerSectorPresets.Landing_area;
-import static TEMod.content.Keppler.KepplerSectorPresets.ResearchAreaNo47;
+import static TEMod.content.Keppler.KepplerSectorPresets.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.craters;
 import static mindustry.content.SectorPresets.ravine;
@@ -25,7 +24,7 @@ public class KepplerTechTree {
         KepplerPlanet.keppler.techTree = nodeRoot("keppler", coreNucleus, () -> {
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon, Seq.with(
-                        new Objectives.SectorComplete(Landing_area),
+                        new Objectives.SectorComplete(Landingarea),
                                 new Objectives.Research(Blocks.scorch),
                                 new Objectives.Research(Blocks.hail)
                         ),
@@ -51,7 +50,7 @@ public class KepplerTechTree {
             node(TEBlocks.erekirIcon, () -> {
             });
 
-            node(Landing_area, Seq.with(
+            node(Landingarea, Seq.with(
                     //赛普罗科技节点,就这点比起源都多
                     new Objectives.SectorComplete(craters),
                     new Objectives.Research(kiln),
@@ -74,7 +73,7 @@ public class KepplerTechTree {
                     new Objectives.Research(shipRefabricator)
             ), () -> {
                 node(ResearchAreaNo47, Seq.with(
-                        new Objectives.SectorComplete(Landing_area)
+                        new Objectives.SectorComplete(Landingarea)
                 ), () -> {
                 });
             });

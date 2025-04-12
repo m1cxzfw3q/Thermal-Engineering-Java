@@ -5,11 +5,11 @@ import mindustry.type.SectorPreset;
 import static TEMod.content.Keppler.KepplerPlanet.*;
 
 public class KepplerSectorPresets {
-    public static SectorPreset Landing_area;//降落区
+    public static SectorPreset Landingarea;//降落区
     public static SectorPreset ResearchAreaNo47;//47号研究区
 
     public static void load(){
-        Landing_area = new SectorPreset("landingArea", keppler, 53) {{
+        Landingarea = new SectorPreset("landingArea", keppler, 53) {{
             alwaysUnlocked = false;
             addStartingItems = false;
             captureWave = 60;
