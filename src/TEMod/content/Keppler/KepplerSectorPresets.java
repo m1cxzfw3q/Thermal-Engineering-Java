@@ -12,7 +12,7 @@ public class KepplerSectorPresets {
             alwaysUnlocked = true;
             addStartingItems = true;
             captureWave = 60;
-            difficulty = 1;
+            difficulty = 2;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
         }};
