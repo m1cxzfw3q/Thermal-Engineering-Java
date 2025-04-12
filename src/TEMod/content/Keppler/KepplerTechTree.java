@@ -21,23 +21,28 @@ public class KepplerTechTree {
 
     public static void load() {
         KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", Blocks.coreShard, () -> {
-            node(TEBlocks.machineCannon, Seq.with(
-                    new Objectives.SectorComplete(KepplerSectorPresets.Landing_area),
-                    new Objectives.Research(Blocks.scorch),
-                    new Objectives.Research(Blocks.hail)
-            ), () -> {
+            node(TEBlocks.surpluoIcon, () -> {
+                node(TEBlocks.machineCannon, Seq.with(
+                        new Objectives.SectorComplete(KepplerSectorPresets.Landing_area),
+                                new Objectives.Research(Blocks.scorch),
+                                new Objectives.Research(Blocks.hail)
+                        ),
+                        () -> {
+                        });
+                node(TEBlocks.highEfficiencyDisassembler,
+                        Seq.with(new Objectives.Research(disassembler),
+                                new Objectives.Research(surgeSmelter),
+                                new Objectives.Research(phaseWeaver),
+                                new Objectives.Research(oilExtractor)
+                        ),
+                        () -> {
+                        });
             });
 
-            node(TEBlocks.highEfficiencyDisassembler, Seq.with(
-                    new Objectives.Research(disassembler),
-                    new Objectives.Research(surgeSmelter),
-                    new Objectives.Research(phaseWeaver),
-                    new Objectives.Research(oilExtractor)
-            ), () -> {
-            });
-
-            nodeProduce(TEItems.uranium, () -> {
-                nodeProduce(TEItems.nuclearFuelRod, () -> {
+            node(TEBlocks.kepplerIcon, () -> {
+                nodeProduce(TEItems.uranium, () -> {
+                    nodeProduce(TEItems.nuclearFuelRod, () -> {
+                    });
                 });
             });
 

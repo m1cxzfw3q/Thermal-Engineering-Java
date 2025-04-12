@@ -9,6 +9,7 @@ import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.draw.*;
 
@@ -19,6 +20,9 @@ import static mindustry.type.ItemStack.with;
 public class TEBlocks {
     public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
+    public static Block surpluoIcon;
+    public static Block erekirIcon;
+    public static Block kepplerIcon;
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -198,6 +202,15 @@ public class TEBlocks {
                     new DrawRegion("-spinner", 7, true),
                     new DrawDefault()
             );
+        }};
+        surpluoIcon = new AirBlock("surpluoIcon") {{
+            alwaysUnlocked = true;
+        }};
+        erekirIcon = new AirBlock("erekirIcon") {{
+            alwaysUnlocked = true;
+        }};
+        kepplerIcon = new AirBlock("kepplerIcon") {{
+            alwaysUnlocked = true;
         }};
     }
 }

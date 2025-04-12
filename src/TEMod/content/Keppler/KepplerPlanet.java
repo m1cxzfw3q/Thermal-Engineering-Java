@@ -19,8 +19,8 @@ public class KepplerPlanet {
             generator = new SerpuloPlanetGenerator();//等等罢先用赛普罗生成后续再写一个独立的
             meshLoader = () -> new HexMesh(keppler, 4);
             cloudMeshLoader = () -> new MultiMesh(
-                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Pal.spore).mul(0.9f).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
-                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Pal.spore, 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
+                    new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Pal.spore).mul(Color.valueOf("a3ffe4")).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
+                    new HexSkyMesh(this, 1, 0.6f, 0.16f, 5, Color.white.cpy().lerp(Color.valueOf("a3ffe4"), 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
             );
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 13;
@@ -42,7 +42,7 @@ public class KepplerPlanet {
             atmosphereRadOut = 0.2f;
             startSector = 53;
             alwaysUnlocked = true;
-            landCloudColor = Pal.spore.cpy().a(0.5f);
+            landCloudColor = Color.valueOf("bcfaff");
         }};
     }
 }
