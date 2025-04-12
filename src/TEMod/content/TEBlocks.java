@@ -222,17 +222,5 @@ public class TEBlocks {
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
         }};
-        exploreCore = new CoreBlock("exploreCore") {{
-            size = 4;
-            alwaysUnlocked = true;
-            requirements(Category.distribution, with(
-                    Items.copper, 2000,
-                    Items.lead, 2000,
-                    Items.graphite, 1000,
-                    Items.beryllium, 1000,
-                    Items.tungsten, 600
-            ));
-            unitType = TEUnits.discover;
-        }};
     }
 }

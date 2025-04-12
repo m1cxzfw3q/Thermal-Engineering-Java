@@ -20,7 +20,7 @@ public class KepplerTechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-        KepplerPlanet.keppler.techTree = nodeRoot("keppler", TEBlocks.exploreCore, () -> {
+        KepplerPlanet.keppler.techTree = nodeRoot("keppler", coreNucleus, () -> {
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon, Seq.with(
                         new Objectives.SectorComplete(KepplerSectorPresets.Landing_area),
