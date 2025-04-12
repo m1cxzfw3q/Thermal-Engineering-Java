@@ -16,7 +16,7 @@ public class KepplerPlanet {
 
     public static void load() {
         keppler = new Planet("keppler", sun, 2, 5) {{
-            generator = new SerpuloPlanetGenerator();//等等罢先用着赛普罗生成后续再写一个独立的
+            generator = new SerpuloPlanetGenerator();//等等罢先用赛普罗生成后续再写一个独立的
             meshLoader = () -> new HexMesh(keppler, 4);
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.15f, 0.13f, 5, new Color().set(Pal.spore).mul(0.9f).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
