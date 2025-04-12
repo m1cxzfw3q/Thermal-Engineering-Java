@@ -171,13 +171,13 @@ public class TEBlocks {
                     Items.phaseFabric, 1,
                     Items.plastanium, 1
             );
-            hasPower = true;
             craftTime = 5f;
             size = 4;
             health = 2500;
             itemCapacity = 40;
             consumePower(8f);
             consumeLiquid(Liquids.slag, 20f / 60f);
+            consumeItem(Items.scrap, 2);
 
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),

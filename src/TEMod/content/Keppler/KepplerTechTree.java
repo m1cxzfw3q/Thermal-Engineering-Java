@@ -1,5 +1,7 @@
-package TEMod.content;
+package TEMod.content.Keppler;
 
+import TEMod.content.TEBlocks;
+import TEMod.content.TEItems;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
 import mindustry.content.TechTree;

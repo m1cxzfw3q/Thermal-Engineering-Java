@@ -1,8 +1,8 @@
-package TEMod.content;
+package TEMod.content.Keppler;
 
 import mindustry.type.SectorPreset;
 
-import static TEMod.content.KepplerPlanet.*;
+import static TEMod.content.Keppler.KepplerPlanet.*;
 
 public class KepplerSectorPresets {
     public static SectorPreset Landing_area;
