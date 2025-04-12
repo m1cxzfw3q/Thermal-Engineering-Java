@@ -10,12 +10,12 @@ import mindustry.ui.dialogs.BaseDialog;
 
 public class ThermalEngineeringCore extends Mod {
     public ThermalEngineeringCore() {
-        Events.on(EventType.ClientLoadEvent.class, e->Time.run(10F,()->{
+        Events.on(EventType.ClientLoadEvent.class, e->Time.run(10F, () -> {
                 BaseDialog dialog = new BaseDialog("Welcome to use ThermalEngineering");
                 dialog.cont.add("test");
-                Time.run(100F, dialog::addCloseButton);
+                Time.run(10F, dialog::addCloseButton);
                 dialog.show();
-            }));
+        }));
     }
     @Override
     public void loadContent() {

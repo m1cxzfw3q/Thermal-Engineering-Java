@@ -10,7 +10,7 @@ public class KepplerSectorPresets {
     public static void load(){
         Landing_area = new SectorPreset("landingArea", keppler, 53) {{
             alwaysUnlocked = false;
-            addStartingItems = true;
+            addStartingItems = false;
             captureWave = 60;
             difficulty = 2;
             overrideLaunchDefaults = true;

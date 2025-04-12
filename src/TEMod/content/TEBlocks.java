@@ -12,6 +12,7 @@ import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.draw.*;
+import mindustry.world.meta.BuildVisibility;
 
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
@@ -204,12 +205,15 @@ public class TEBlocks {
             );
         }};
         surpluoIcon = new AirBlock("surpluoIcon") {{
+            requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
         erekirIcon = new AirBlock("erekirIcon") {{
+            requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
         kepplerIcon = new AirBlock("kepplerIcon") {{
+            requirements(Category.effect, BuildVisibility.hidden, with());
             alwaysUnlocked = true;
         }};
     }

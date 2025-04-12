@@ -46,6 +46,9 @@ public class KepplerTechTree {
                 });
             });
 
+            node(TEBlocks.erekirIcon, () -> {
+            });
+
             node(KepplerSectorPresets.Landing_area, Seq.with(
                     //赛普罗科技节点,就这点比起源都多
                     new Objectives.SectorComplete(craters),
