@@ -156,6 +156,7 @@ public class TEBlocks {
             coolant = this.consumeCoolant(0.3F);
             heatColor = Color.valueOf("ff0000");
             limitRange();
+            alwaysUnlocked = false;
         }};
 
         highEfficiencyDisassembler = new Separator("highEfficiencyDisassembler"){{
@@ -189,6 +190,7 @@ public class TEBlocks {
             consumePower(8f);
             consumeLiquid(Liquids.slag, 20f / 60f);
             consumeItem(Items.scrap, 1);
+            alwaysUnlocked = false;
 
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),
