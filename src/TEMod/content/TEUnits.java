@@ -25,8 +25,7 @@ public class TEUnits {
 
             weapons.add(new Weapon("discover-1") {{
                 reload = 17f;
-                x = 2.75f;
-                y = 1f;
+                y = 3f;
                 top = false;
                 ejectEffect = Fx.casing2;
                 inaccuracy = 1f;
