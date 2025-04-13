@@ -4,6 +4,7 @@ import TEMod.content.TEBlocks;
 import TEMod.content.TEItems;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
+import mindustry.content.Items;
 import mindustry.content.TechTree;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
@@ -11,8 +12,8 @@ import mindustry.type.ItemStack;
 
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
 import static mindustry.content.Blocks.*;
+import static mindustry.content.SectorPresets.*;
 import static mindustry.content.SectorPresets.craters;
-import static mindustry.content.SectorPresets.ravine;
 
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
@@ -21,20 +22,40 @@ public class KepplerTechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-        KepplerPlanet.keppler.techTree = nodeRoot("keppler", coreNucleus, () -> {
+        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreNucleus, () -> {
             node(TEBlocks.surpluoIcon, () -> {
-                node(TEBlocks.machineCannon, Seq.with(
-                        new Objectives.SectorComplete(Landingarea),
+                node(TEBlocks.machineCannon,
+                        ItemStack.with(
+                                Items.copper, 6000,
+                                Items.lead, 4000,
+                                Items.graphite, 3500
+                                ),
+                        Seq.with(
+                                new Objectives.SectorComplete(LandingArea),
                                 new Objectives.Research(Blocks.scorch),
-                                new Objectives.Research(Blocks.hail)
+                                new Objectives.Research(Blocks.hail),
+                                new Objectives.Research(TEItems.primaryWarAgreement)
                         ),
                         () -> {
                         });
                 node(TEBlocks.highEfficiencyDisassembler,
-                        Seq.with(new Objectives.Research(disassembler),
+                        ItemStack.with(
+                                Items.copper, 100000,
+                                Items.titanium, 60000,
+                                Items.lead, 80000,
+                                Items.graphite, 50000,
+                                Items.thorium, 30000,
+                                Items.silicon, 20000,
+                                Items.plastanium, 8000,
+                                Items.phaseFabric, 5000,
+                                TEItems.advancedProductionAgreement, 1
+                        ),
+                        Seq.with(
+                                new Objectives.Research(disassembler),
                                 new Objectives.Research(surgeSmelter),
                                 new Objectives.Research(phaseWeaver),
-                                new Objectives.Research(oilExtractor)
+                                new Objectives.Research(oilExtractor),
+                                new Objectives.Research(TEItems.advancedProductionAgreement)
                         ),
                         () -> {
                         });
@@ -45,13 +66,28 @@ public class KepplerTechTree {
                     nodeProduce(TEItems.nuclearFuelRod, () -> {
                     });
                 });
+
+                nodeProduce(TEItems.primaryWarAgreement, () -> {
+                    nodeProduce(TEItems.advancedWarAgreement, () -> {
+                        nodeProduce(TEItems.specialWarAgreement, () -> {
+                        });
+                    });
+                });
+
+                nodeProduce(TEItems.primaryProductionAgreement, () -> {
+                    nodeProduce(TEItems.advancedProductionAgreement, () -> {
+                        nodeProduce(TEItems.specialProductionAgreement, () -> {
+                        });
+                    });
+                });
+                nodeProduce(TEItems.ultraRemoteTransmissionProtocol, () -> {
+                });
             });
 
             node(TEBlocks.erekirIcon, () -> {
             });
 
-            node(Landingarea, Seq.with(
-                    //赛普罗科技节点,就这点比起源都多
+            node(LandingArea, Seq.with(
                     new Objectives.SectorComplete(craters),
                     new Objectives.Research(kiln),
                     new Objectives.Research(logicProcessor),
@@ -68,12 +104,14 @@ public class KepplerTechTree {
                     new Objectives.Research(segment),
                     new Objectives.Research(tsunami),
                     new Objectives.Research(lancer),
-                    //埃里克尔科技节点,就几个节点
                     new Objectives.SectorComplete(ravine),
                     new Objectives.Research(shipRefabricator)
             ), () -> {
                 node(ResearchAreaNo47, Seq.with(
-                        new Objectives.SectorComplete(Landingarea)
+                        new Objectives.SectorComplete(LandingArea),
+                        new Objectives.Research(TEBlocks.machineCannon),
+                        new Objectives.SectorComplete(stronghold),
+                        new Objectives.SectorComplete(stainedMountains)
                 ), () -> {
                 });
             });

@@ -34,6 +34,7 @@ public class KepplerPlanet {
                 r.waveTeam = Team.blue;
                 r.placeRangeCheck = false;
                 r.showSpawns = true;
+                r.enemyCoreBuildRadius = 45f;
             };
             iconColor = Color.valueOf("87c7ff");
             atmosphereColor = Color.valueOf("87c7ff");

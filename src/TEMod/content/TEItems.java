@@ -4,11 +4,22 @@ import mindustry.type.Item;
 import arc.graphics.Color;
 
 public class TEItems {
+    //普通物品
     public static Item uranium; //铀
     public static Item nuclearFuelRod; //核燃料棒
+    //协议-战争
+    public static Item primaryWarAgreement; //初级战争协议
+    public static Item advancedWarAgreement; //高级战争协议
+    public static Item specialWarAgreement; //特级战争协议
+    //协议-传输
+    public static Item ultraRemoteTransmissionProtocol; //超远程传输协议
+    //协议-生产
+    public static Item primaryProductionAgreement; //初级生产协议
+    public static Item advancedProductionAgreement; //高级生产协议
+    public static Item specialProductionAgreement; //特级生产协议
 
     public static void load() {
-        uranium = new Item("uranium", Color.valueOf("d99d73")){{
+        uranium = new Item("uranium", Color.valueOf("617270")) {{
             hardness = 5;
             cost = 1.2F;
             radioactivity = 1.5F;
@@ -16,9 +27,44 @@ public class TEItems {
             buildable = true;
         }};
 
-        nuclearFuelRod = new Item("nuclearFuelRod", Color.valueOf("d99d73")){{
+        nuclearFuelRod = new Item("nuclearFuelRod", Color.valueOf("4a6949")) {{
             hardness = 0;
             radioactivity = 2F;
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        primaryWarAgreement = new Item("primaryWarAgreement", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        advancedWarAgreement = new Item("advancedWarAgreement", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        specialWarAgreement = new Item("specialWarAgreement", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        primaryProductionAgreement = new Item("primaryProductionAgreement", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        advancedProductionAgreement = new Item("advancedProductionAgreement", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        specialProductionAgreement = new Item("specialProductionAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
             buildable = false;
         }};

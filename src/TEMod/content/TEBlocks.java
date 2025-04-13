@@ -5,7 +5,6 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
-import mindustry.maps.filters.OreFilter;
 import mindustry.type.Category;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
