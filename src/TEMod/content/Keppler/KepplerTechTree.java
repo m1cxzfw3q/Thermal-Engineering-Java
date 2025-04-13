@@ -31,7 +31,7 @@ public class KepplerTechTree {
                                 Items.graphite, 3500
                                 ),
                         Seq.with(
-                                new Objectives.SectorComplete(LandingArea),
+                                new Objectives.SectorComplete(KepplerSectorPresets.LandingArea),
                                 new Objectives.Research(Blocks.scorch),
                                 new Objectives.Research(Blocks.hail),
                                 new Objectives.Research(TEItems.primaryWarAgreement)
@@ -88,7 +88,7 @@ public class KepplerTechTree {
             node(TEBlocks.erekirIcon, () -> {
             });
 
-            node(LandingArea, Seq.with(
+            node(KepplerSectorPresets.LandingArea, Seq.with(
                     new Objectives.SectorComplete(craters),
                     new Objectives.Research(kiln),
                     new Objectives.Research(logicProcessor),
@@ -108,6 +108,12 @@ public class KepplerTechTree {
                     new Objectives.SectorComplete(ravine),
                     new Objectives.Research(shipRefabricator)
             ), () -> {
+                node(KepplerSectorPresets.ResearchAreaNo47, Seq.with(
+                        new Objectives.SectorComplete(LandingArea),
+                        new Objectives.Research(TEBlocks.machineCannon),
+                        new Objectives.SectorComplete(stronghold),
+                        new Objectives.SectorComplete(stainedMountains)
+                ), () ->{});
             });
         });
     }
