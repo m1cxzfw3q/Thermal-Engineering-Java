@@ -38,6 +38,7 @@ public class KepplerTechTree {
                         ),
                         () -> {
                         });
+
                 node(TEBlocks.highEfficiencyDisassembler,
                         ItemStack.with(
                                 Items.copper, 100000,
@@ -107,13 +108,6 @@ public class KepplerTechTree {
                     new Objectives.SectorComplete(ravine),
                     new Objectives.Research(shipRefabricator)
             ), () -> {
-                node(ResearchAreaNo47, Seq.with(
-                        new Objectives.SectorComplete(LandingArea),
-                        new Objectives.Research(TEBlocks.machineCannon),
-                        new Objectives.SectorComplete(stronghold),
-                        new Objectives.SectorComplete(stainedMountains)
-                ), () -> {
-                });
             });
         });
     }
