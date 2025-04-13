@@ -107,6 +107,13 @@ public class KepplerTechTree {
                     new Objectives.SectorComplete(ravine),
                     new Objectives.Research(shipRefabricator)
             ), () -> {
+                node(ResearchAreaNo47, Seq.with(
+                        new Objectives.SectorComplete(LandingArea),
+                        new Objectives.Research(TEBlocks.machineCannon),
+                        new Objectives.SectorComplete(stronghold),
+                        new Objectives.SectorComplete(stainedMountains)
+                ), () -> {
+                });
             });
         });
     }
