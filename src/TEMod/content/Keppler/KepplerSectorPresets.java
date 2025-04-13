@@ -12,8 +12,8 @@ public class KepplerSectorPresets {
         LandingArea = new SectorPreset("LandingArea", keppler, 53) {{
             alwaysUnlocked = false;
             addStartingItems = false;
-            captureWave = 60;
-            difficulty = 2;
+            captureWave = 61;
+            difficulty = 3;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
         }};
@@ -21,8 +21,8 @@ public class KepplerSectorPresets {
         ResearchAreaNo47 = new SectorPreset("ResearchAreaNo47", keppler, 472) {{
             alwaysUnlocked = false;
             addStartingItems = false;
-            captureWave = 80;
-            difficulty = 3;
+            captureWave = 81;
+            difficulty = 4;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
         }};
