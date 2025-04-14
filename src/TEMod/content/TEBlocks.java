@@ -7,13 +7,16 @@ import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.type.Category;
 import mindustry.world.Block;
+import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.Separator;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BuildVisibility;
 
+import static mindustry.Vars.state;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
@@ -204,21 +207,25 @@ public class TEBlocks {
                     new DrawDefault()
             );
         }};
+
         surpluoIcon = new AirBlock("surpluoIcon") {{
             size = 2;
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
         }};
+
         erekirIcon = new AirBlock("erekirIcon") {{
             size = 2;
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
         }};
+
         kepplerIcon = new AirBlock("kepplerIcon") {{
             size = 2;
             requirements(Category.effect, BuildVisibility.shown, with());
             alwaysUnlocked = true;
         }};
+
         oreUranium = new OreBlock("oreUranium", TEItems.uranium) {{
             oreDefault = true;
             oreThreshold = 0.81f;

@@ -22,7 +22,7 @@ public class KepplerTechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreNucleus, () -> {
+        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreShard, () -> {
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon,
                         ItemStack.with(
