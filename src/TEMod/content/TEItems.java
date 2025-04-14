@@ -17,6 +17,10 @@ public class TEItems {
     public static Item primaryProductionAgreement; //初级生产协议
     public static Item advancedProductionAgreement; //高级生产协议
     public static Item specialProductionAgreement; //特级生产协议
+    //芯片
+    public static Item primaryChip; //初级芯片
+    public static Item advancedChip; //高级芯片
+    public static Item specialChip; //特级芯片
 
     public static void load() {
         uranium = new Item("uranium", Color.valueOf("617270")) {{
@@ -36,17 +40,14 @@ public class TEItems {
 
         primaryWarAgreement = new Item("primaryWarAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         advancedWarAgreement = new Item("advancedWarAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         specialWarAgreement = new Item("specialWarAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("d99d73")) {{
@@ -56,17 +57,29 @@ public class TEItems {
 
         primaryProductionAgreement = new Item("primaryProductionAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         advancedProductionAgreement = new Item("advancedProductionAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         specialProductionAgreement = new Item("specialProductionAgreement", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
-            buildable = false;
+        }};
+
+        primaryChip = new Item("primaryChip") {{
+            alwaysUnlocked = false;
+            cost = 0.4f;
+        }};
+
+        advancedChip = new Item("advancedChip") {{
+            alwaysUnlocked = false;
+            cost = 0.5f;
+        }};
+
+        specialChip = new Item("specialChip") {{
+            alwaysUnlocked = false;
+            cost = 0.6f;
         }};
     }
 }

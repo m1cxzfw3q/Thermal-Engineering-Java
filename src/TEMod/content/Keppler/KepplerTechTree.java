@@ -5,6 +5,7 @@ import TEMod.content.TEItems;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
+import mindustry.content.Liquids;
 import mindustry.content.TechTree;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
@@ -49,7 +50,8 @@ public class KepplerTechTree {
                                 Items.silicon, 20000,
                                 Items.plastanium, 8000,
                                 Items.phaseFabric, 5000,
-                                TEItems.advancedProductionAgreement, 1
+                                TEItems.advancedProductionAgreement, 1,
+                                TEItems.advancedChip, 2000
                         ),
                         Seq.with(
                                 new Objectives.Research(disassembler),
@@ -60,11 +62,17 @@ public class KepplerTechTree {
                         ),
                         () -> {
                         });
-            });
 
-            node(TEBlocks.kepplerIcon, () -> {
-                nodeProduce(TEItems.uranium, () -> {
-                    nodeProduce(TEItems.nuclearFuelRod, () -> {
+                node(TEBlocks.primaryLaboratory, Seq.with(
+                        new Objectives.SectorComplete(ResearchAreaNo47)
+                ), () -> {
+                    node(TEBlocks.advancedLaboratory, Seq.with(
+                            new Objectives.Research(Liquids.cryofluid)
+                    ), () -> {
+                        node(TEBlocks.specialLaboratory, Seq.with(
+                        ), () -> {
+
+                        });
                     });
                 });
 
@@ -79,9 +87,24 @@ public class KepplerTechTree {
                     nodeProduce(TEItems.advancedProductionAgreement, () -> {
                         nodeProduce(TEItems.specialProductionAgreement, () -> {
                         });
+
+                        nodeProduce(TEItems.ultraRemoteTransmissionProtocol, () -> {
+                        });
                     });
                 });
-                nodeProduce(TEItems.ultraRemoteTransmissionProtocol, () -> {
+
+                nodeProduce(TEItems.primaryChip, () -> {
+                    nodeProduce(TEItems.advancedChip, () -> {
+                        nodeProduce(TEItems.specialChip, () -> {
+                        });
+                    });
+                });
+            });
+
+            node(TEBlocks.kepplerIcon, () -> {
+                nodeProduce(TEItems.uranium, () -> {
+                    nodeProduce(TEItems.nuclearFuelRod, () -> {
+                    });
                 });
             });
 

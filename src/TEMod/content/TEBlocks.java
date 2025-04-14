@@ -7,16 +7,13 @@ import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.type.Category;
 import mindustry.world.Block;
-import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.Separator;
-import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BuildVisibility;
 
-import static mindustry.Vars.state;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
@@ -28,6 +25,11 @@ public class TEBlocks {
     public static Block surpluoIcon;
     public static Block erekirIcon;
     public static Block kepplerIcon;
+    public static Block primaryLaboratory; //初级实验室
+    public static Block advancedLaboratory; //高级实验室
+    public static Block specialLaboratory; //特级实验室
+    public static Block chipManufacturingMachine; //芯片制造机
+    public static Block chipPrinter; //芯片打印机
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -177,7 +179,8 @@ public class TEBlocks {
                             Items.thorium, 150,
                             Items.silicon, 200,
                             Items.plastanium, 200,
-                            Items.phaseFabric, 80
+                            Items.phaseFabric, 80,
+                            TEItems.advancedChip, 20
                     ));
             results = with(
                     Items.copper, 3,
@@ -230,6 +233,143 @@ public class TEBlocks {
             oreDefault = true;
             oreThreshold = 0.81f;
             oreScale = 23.47619f;
+        }};
+
+        primaryLaboratory = new Separator("primaryLaboratory") {{
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 1000,
+                            Items.titanium, 400,
+                            Items.lead, 1200,
+                            Items.graphite, 800,
+                            Items.thorium, 650,
+                            Items.silicon, 1000,
+                            Items.plastanium, 800,
+                            Items.phaseFabric, 300
+                    ));
+            results = with(
+                    TEItems.primaryProductionAgreement, 1,
+                    TEItems.primaryWarAgreement, 1
+            );
+            craftTime = 10800f;
+            size = 3;
+            health = 1000;
+            itemCapacity = 10;
+            consumePower(40f);
+            alwaysUnlocked = false;
+        }};
+
+        advancedLaboratory = new Separator("advancedLaboratory") {{
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 2000,
+                            Items.titanium, 800,
+                            Items.lead, 2400,
+                            Items.graphite, 1600,
+                            Items.thorium, 1300,
+                            Items.silicon, 6000,
+                            Items.plastanium, 3000,
+                            Items.phaseFabric, 1000,
+                            TEItems.uranium, 400
+                    ));
+            results = with(
+                    TEItems.advancedProductionAgreement, 1,
+                    TEItems.advancedWarAgreement, 1
+            );
+            craftTime = 10800f;
+            size = 5;
+            health = 2000;
+            itemCapacity = 10;
+            consumePower(50f);
+            alwaysUnlocked = false;
+        }};
+
+        specialLaboratory = new Separator("specialLaboratory") {{
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 1000,
+                            Items.titanium, 400,
+                            Items.lead, 1200,
+                            Items.graphite, 800,
+                            Items.thorium, 650,
+                            Items.silicon, 1000,
+                            Items.plastanium, 800,
+                            Items.phaseFabric, 300,
+                            TEItems.uranium, 2000
+                    ));
+            results = with(
+                    TEItems.specialProductionAgreement, 1,
+                    TEItems.specialWarAgreement, 1,
+                    TEItems.ultraRemoteTransmissionProtocol, 1
+            );
+            craftTime = 7200f;
+            size = 7;
+            health = 4000;
+            itemCapacity = 20;
+            consumePower(60f);
+            consumeLiquid(Liquids.cryofluid, 10f / 60f);
+            alwaysUnlocked = false;
+        }};
+
+        chipManufacturingMachine = new Separator("chipManufacturingMachine") {{
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 700,
+                            Items.titanium, 700,
+                            Items.lead, 800,
+                            Items.graphite, 800,
+                            Items.silicon, 8000,
+                            TEItems.primaryProductionAgreement, 1
+                    ));
+            craftTime = 300f;
+            size = 2;
+            health = 800;
+            itemCapacity = 30;
+            consumePower(5f);
+            alwaysUnlocked = false;
+
+            results = with(
+                    TEItems.primaryChip, 12,
+                    TEItems.advancedChip, 7,
+                    TEItems.specialChip, 1
+            );
+
+            consumeItems(
+                    with(
+                            Items.silicon, 2,
+                            Items.lead, 1,
+                            Items.copper, 1
+                    )
+            );
+        }};
+
+        chipPrinter = new Separator("chipPrinter") {{
+            requirements(
+                    Category.crafting, with(
+                            Items.copper, 2000,
+                            Items.titanium, 100,
+                            Items.lead, 2400,
+                            Items.graphite, 1500,
+                            Items.silicon, 10000,
+                            Items.plastanium, 2000,
+                            Items.phaseFabric, 800,
+                            TEItems.advancedProductionAgreement, 1
+                    ));
+            craftTime = 20f;
+            size = 4;
+            health = 1000;
+            itemCapacity = 40;
+            consumePower(6f);
+            alwaysUnlocked = false;
+
+            results = with(
+                    TEItems.primaryChip, 1,
+                    TEItems.advancedChip, 1,
+                    TEItems.specialChip, 1
+            );
+
+            consumeItem(Items.silicon, 3);
+            consumeLiquid(Liquids.cryofluid, 5f / 60f);
         }};
     }
 }
