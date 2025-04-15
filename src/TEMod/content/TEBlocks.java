@@ -5,9 +5,18 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.bullet.ExplosionBulletType;
+import mindustry.entities.bullet.MissileBulletType;
+import mindustry.entities.effect.MultiEffect;
+import mindustry.entities.effect.WaveEffect;
+import mindustry.gen.Sounds;
+import mindustry.graphics.Pal;
 import mindustry.type.Category;
+import mindustry.type.Weapon;
+import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.production.Separator;
@@ -19,15 +28,21 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
+    //矿石
     public static OreBlock oreUranium;
+    //基础方块
     public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
+    public static Block missileLauncher;
+    //特殊
     public static Block surpluoIcon;
     public static Block erekirIcon;
     public static Block kepplerIcon;
+    //实验室
     public static Block primaryLaboratory; //初级实验室
     public static Block advancedLaboratory; //高级实验室
     public static Block specialLaboratory; //特级实验室
+    //芯片
     public static Block chipManufacturingMachine; //芯片制造机
     public static Block chipPrinter; //芯片打印机
 
@@ -369,7 +384,44 @@ public class TEBlocks {
             );
 
             consumeItem(Items.silicon, 3);
-            consumeLiquid(Liquids.cryofluid, 5f / 60f);
+            consumeLiquid(Liquids.cryofluid, 3f / 60f);
+        }};
+
+        missileLauncher = new PowerTurret("missileLauncher") {{
+            health = 500;
+            shootType = new BasicBulletType(0f, 1f) {{
+                killShooter = true;
+                spawnUnit = new MissileUnitType("missileLauncher_Missile") {{
+                    speed = 6f;
+                    lifetime = 30f * 60f;
+                    trailLength = 14;
+                    homingPower = 0.08f;
+                    homingRange = 700f;
+                    missileAccelTime = 600f;
+                    maxRange = 7f;
+                    weapons.add(new Weapon() {{
+                        shootCone = 360f;
+                        mirror = false;
+                        reload = 1f;
+                        x = 0;
+                        y = 0;
+                        deathExplosionEffect = Fx.massiveExplosion;
+                        shootOnDeath = true;
+                        shake = 10f;
+                        bullet = new ExplosionBulletType(1638f, 100f) {{
+                            hitColor = Pal.redLight;
+                            shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
+                                lifetime = 10f;
+                                strokeFrom = 4f;
+                                sizeTo = 130f;
+                            }});
+                            buildingDamageMultiplier = 0.8f;
+                            ammoMultiplier = 1f;
+                        }};
+                    }});
+                }};
+            }};
+            range = 700f;
         }};
     }
 }

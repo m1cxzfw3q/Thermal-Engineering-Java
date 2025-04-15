@@ -13,7 +13,7 @@ public class ThermalEngineeringCore extends Mod {
         Events.on(EventType.ClientLoadEvent.class, e->Time.run(10F, () -> {
                 BaseDialog dialog = new BaseDialog("Welcome to use ThermalEngineering");
                 dialog.cont.add("test");
-                Time.run(10F, dialog::addCloseButton);
+                dialog.addCloseButton();
                 dialog.show();
         }));
     }
@@ -21,6 +21,7 @@ public class ThermalEngineeringCore extends Mod {
     public void loadContent() {
         TEItems.load();
         TEBlocks.load();
+        TEUnitTypes.load();
         KepplerPlanet.load();
         KepplerSectorPresets.load();
         KepplerTechTree.load();
