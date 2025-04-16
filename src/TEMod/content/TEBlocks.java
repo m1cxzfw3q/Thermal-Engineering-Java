@@ -4,10 +4,12 @@ import arc.graphics.Color;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
+import mindustry.content.StatusEffects;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.WaveEffect;
+import mindustry.entities.pattern.ShootBarrel;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.Weapon;
@@ -31,7 +33,8 @@ public class TEBlocks {
     //基础方块
     public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
-    public static Block missileLauncher; //便携式导弹发射井
+    public static Block portableMissileLaunchSilo; //便携式导弹发射井
+    public static Block missileLauncher; //导弹发射井
     //特殊
     public static Block surpluoIcon;
     public static Block erekirIcon;
@@ -384,7 +387,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
         }};
 
-        missileLauncher = new PowerTurret("missileLauncher") {{
+        portableMissileLaunchSilo = new PowerTurret("portableMissileLaunchSilo") {{
             alwaysUnlocked = false;
             health = 500;
             size = 2;
@@ -394,7 +397,8 @@ public class TEBlocks {
                             Items.copper, 450,
                             Items.lead, 600,
                             Items.graphite, 180,
-                            Items.blastCompound, 40
+                            Items.blastCompound, 40,
+                            Items.silicon, 80
                     )
             );
 
@@ -403,7 +407,7 @@ public class TEBlocks {
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
-                spawnUnit = new MissileUnitType("missileLauncherMissile") {{
+                spawnUnit = new MissileUnitType("portableMissileLaunchSiloMissile") {{
                     speed = 16f;
                     lifetime = 30f * 60f;
                     trailLength = 14;
@@ -434,6 +438,97 @@ public class TEBlocks {
                     }});
                 }};
             }};
+        }};
+
+        missileLauncher = new ItemTurret("missileLauncher") {{
+            health = 3500;
+            size = 5;
+            alwaysUnlocked = false;
+
+            requirements(
+                    Category.turret, with(
+                            Items.copper, 900,
+                            Items.lead, 1100,
+                            Items.graphite, 700,
+                            Items.metaglass, 300,
+                            Items.silicon, 250
+                    )
+            );
+
+            rotateSpeed = 0F;
+            range = 700f;
+            reload = 30;
+            liquidCapacity = 20f;
+            coolantMultiplier = 0.3f;
+            maxAmmo = 20;
+            ammoPerShot = 5;
+
+            ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
+                killShooter = true;
+                spawnUnit = new MissileUnitType("portableMissileLaunchSiloMissile") {{
+                    speed = 16f;
+                    lifetime = 30f * 60f;
+                    trailLength = 14;
+                    homingPower = 0.1f;
+                    homingRange = 700f;
+                    missileAccelTime = 800f;
+                    health = 400f;
+                    rotateSpeed = 20f;
+                    weapons.add(new Weapon() {{
+                        shootCone = 360f;
+                        mirror = false;
+                        reload = 1f;
+                        x = 0;
+                        y = 0;
+                        deathExplosionEffect = Fx.massiveExplosion;
+                        shootOnDeath = true;
+                        shake = 10f;
+                        bullet = new ExplosionBulletType(1279f, 96f) {{
+                            hitColor = Pal.redLight;
+                            shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
+                                lifetime = 6f;
+                                strokeFrom = 4f;
+                                sizeTo = 109f;
+                            }});
+                            buildingDamageMultiplier = 0.8f;
+                            ammoMultiplier = 1f;
+                            status = StatusEffects.burning;
+                        }};
+                    }});
+                }};
+            }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
+                killShooter = true;
+                spawnUnit = new MissileUnitType("portableMissileLaunchSiloMissile") {{
+                    speed = 16f;
+                    lifetime = 30f * 60f;
+                    trailLength = 14;
+                    homingPower = 0.1f;
+                    homingRange = 700f;
+                    missileAccelTime = 800f;
+                    health = 400f;
+                    rotateSpeed = 20f;
+                    weapons.add(new Weapon() {{
+                        shootCone = 360f;
+                        mirror = false;
+                        reload = 1f;
+                        x = 0;
+                        y = 0;
+                        deathExplosionEffect = Fx.massiveExplosion;
+                        shootOnDeath = true;
+                        shake = 10f;
+                        bullet = new ExplosionBulletType(2453f, 157f) {{
+                            hitColor = Pal.redLight;
+                            shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
+                                lifetime = 6f;
+                                strokeFrom = 4f;
+                                sizeTo = 168f;
+                            }});
+                            buildingDamageMultiplier = 0.8f;
+                            ammoMultiplier = 1f;
+                        }};
+                    }});
+                }};
+            }});
         }};
     }
 }
