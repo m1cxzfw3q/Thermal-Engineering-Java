@@ -461,6 +461,7 @@ public class TEBlocks {
             coolantMultiplier = 0.3f;
             maxAmmo = 20;
             ammoPerShot = 5;
+            consumePower(1.5f);
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 killShooter = true;

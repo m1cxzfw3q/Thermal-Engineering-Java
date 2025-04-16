@@ -12,6 +12,7 @@ public class TEItems {
     public static Item advancedWarAgreement; //高级战争协议
     public static Item specialWarAgreement; //特级战争协议
     //协议-传输
+    public static Item highSpeedTransmissionProtocol; //高速传输协议
     public static Item ultraRemoteTransmissionProtocol; //超远程传输协议
     //协议-生产
     public static Item primaryProductionAgreement; //初级生产协议
@@ -50,6 +51,11 @@ public class TEItems {
             alwaysUnlocked = false;
         }};
 
+        highSpeedTransmissionProtocol = new Item("highSpeedTransmissionProtocol", Color.valueOf("d99d73")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
         ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
             buildable = false;
@@ -67,17 +73,17 @@ public class TEItems {
             alwaysUnlocked = false;
         }};
 
-        primaryChip = new Item("primaryChip") {{
+        primaryChip = new Item("primaryChip", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
             cost = 0.4f;
         }};
 
-        advancedChip = new Item("advancedChip") {{
+        advancedChip = new Item("advancedChip", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
             cost = 0.5f;
         }};
 
-        specialChip = new Item("specialChip") {{
+        specialChip = new Item("specialChip", Color.valueOf("d99d73")) {{
             alwaysUnlocked = false;
             cost = 0.6f;
         }};
