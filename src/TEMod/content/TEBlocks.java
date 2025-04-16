@@ -9,7 +9,6 @@ import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.WaveEffect;
-import mindustry.entities.pattern.ShootBarrel;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.Weapon;
