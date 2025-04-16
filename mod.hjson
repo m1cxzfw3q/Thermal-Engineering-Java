@@ -6,3 +6,4 @@ description: "热力工程学[acid[]]Java重置版"
 version: 0.0.1
 minGameVersion: 146
 java: true
+hiddenBrowsers: true
