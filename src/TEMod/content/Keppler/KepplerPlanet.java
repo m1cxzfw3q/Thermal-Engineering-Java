@@ -5,7 +5,7 @@ import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
-import mindustry.maps.planet.SerpuloPlanetGenerator;
+
 import mindustry.type.Planet;
 
 import static mindustry.content.Planets.*;
@@ -14,9 +14,9 @@ public class KepplerPlanet {
     public static Planet keppler;
 
     public static void load() {
-        keppler = new Planet("keppler", sun, 1, 4) {{
-            generator = new SerpuloPlanetGenerator();//等等罢先用赛普罗生成后续再写一个独立的
-            meshLoader = () -> new HexMesh(this, 4);
+        keppler = new Planet("keppler", sun, 1, 3) {{
+            generator = new KepplerPlanetGenerator();//生成测试
+            meshLoader = () -> new HexMesh(this, 6);
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 11, 0.15f, 0.13f, 6, new Color().set(Color.valueOf("d8ecff")).mul(Color.valueOf("d8ecff")).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
                     new HexSkyMesh(this, 1, 0.6f, 0.16f, 6, Color.white.cpy().lerp(Color.valueOf("d8ecff"), 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
