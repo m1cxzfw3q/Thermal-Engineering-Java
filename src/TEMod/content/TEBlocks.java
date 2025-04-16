@@ -287,6 +287,7 @@ public class TEBlocks {
                             TEItems.uranium, 400
                     ));
             results = with(
+                    TEItems.highSpeedTransmissionProtocol, 1,
                     TEItems.advancedProductionAgreement, 1,
                     TEItems.advancedWarAgreement, 1
             );
