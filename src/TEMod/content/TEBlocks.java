@@ -31,7 +31,7 @@ public class TEBlocks {
     //基础方块
     public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
-    public static Block missileLauncher;
+    public static Block missileLauncher; //便携式导弹发射井
     //特殊
     public static Block surpluoIcon;
     public static Block erekirIcon;
@@ -178,7 +178,6 @@ public class TEBlocks {
             coolantMultiplier = 2F;
             coolant = this.consumeCoolant(0.3F);
             heatColor = Color.valueOf("ff0000");
-            limitRange();
             alwaysUnlocked = false;
         }};
 
@@ -386,17 +385,33 @@ public class TEBlocks {
         }};
 
         missileLauncher = new PowerTurret("missileLauncher") {{
+            alwaysUnlocked = false;
             health = 500;
+            size = 2;
+
+            requirements(
+                    Category.turret, with(
+                            Items.copper, 450,
+                            Items.lead, 600,
+                            Items.graphite, 180,
+                            Items.blastCompound, 40
+                    )
+            );
+
+            rotateSpeed = 0F;
+            range = 700f;
+
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
-                spawnUnit = new MissileUnitType("missileLauncher_Missile") {{
-                    speed = 6f;
+                spawnUnit = new MissileUnitType("missileLauncherMissile") {{
+                    speed = 16f;
                     lifetime = 30f * 60f;
                     trailLength = 14;
-                    homingPower = 0.08f;
+                    homingPower = 0.1f;
                     homingRange = 700f;
-                    missileAccelTime = 600f;
-                    maxRange = 7f;
+                    missileAccelTime = 800f;
+                    health = 200f;
+                    rotateSpeed = 10f;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -406,7 +421,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        bullet = new ExplosionBulletType(1638f, 100f) {{
+                        bullet = new ExplosionBulletType(1638f, 157f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
                                 lifetime = 10f;
@@ -419,7 +434,6 @@ public class TEBlocks {
                     }});
                 }};
             }};
-            range = 700f;
         }};
     }
 }
