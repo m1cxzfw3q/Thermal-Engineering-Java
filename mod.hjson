@@ -1,9 +1,0 @@
-displayName: "Thermal Engineering Java"
-name: "TEMod"
-author: "[sky[]]114514[white[]]"
-main: "TEMod.ThermalEngineeringCore"
-description: "热力工程学[acid[]]Java[white[]]重置版"
-version: 0.0.1
-minGameVersion: 146
-java: true
-hiddenBrowsers: true
