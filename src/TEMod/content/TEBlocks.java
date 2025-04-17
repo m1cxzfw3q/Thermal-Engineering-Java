@@ -402,7 +402,7 @@ public class TEBlocks {
                     )
             );
 
-            rotateSpeed = 0F;
+            rotateSpeed = 20F;
             range = 700f;
 
             shootType = new BasicBulletType(0f, 1f) {{
@@ -455,7 +455,7 @@ public class TEBlocks {
                     )
             );
 
-            rotateSpeed = 0F;
+            rotateSpeed = 20F;
             range = 1400f;
             reload = 30;
             liquidCapacity = 20f;
