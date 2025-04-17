@@ -413,7 +413,7 @@ public class TEBlocks {
                     trailLength = 14;
                     homingPower = 0.1f;
                     homingRange = 700f;
-                    missileAccelTime = 800f;
+                    missileAccelTime = 120f;
                     health = 200f;
                     rotateSpeed = 10f;
                     weapons.add(new Weapon() {{
@@ -456,7 +456,7 @@ public class TEBlocks {
             );
 
             rotateSpeed = 0F;
-            range = 700f;
+            range = 1400f;
             reload = 30;
             liquidCapacity = 20f;
             coolantMultiplier = 0.3f;
@@ -471,7 +471,7 @@ public class TEBlocks {
                     trailLength = 14;
                     homingPower = 0.1f;
                     homingRange = 700f;
-                    missileAccelTime = 800f;
+                    missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
                     weapons.add(new Weapon() {{
@@ -503,7 +503,7 @@ public class TEBlocks {
                     trailLength = 14;
                     homingPower = 0.1f;
                     homingRange = 700f;
-                    missileAccelTime = 800f;
+                    missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
                     weapons.add(new Weapon() {{
