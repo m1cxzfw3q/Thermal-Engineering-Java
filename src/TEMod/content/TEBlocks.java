@@ -465,7 +465,6 @@ public class TEBlocks {
             consumePower(1.5f);
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
-                killShooter = true;
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
                     speed = 16f;
                     lifetime = 30f * 60f;
@@ -498,7 +497,6 @@ public class TEBlocks {
                     }});
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
-                killShooter = true;
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
                     speed = 16f;
                     lifetime = 30f * 60f;
