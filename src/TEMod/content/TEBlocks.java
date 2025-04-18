@@ -9,6 +9,7 @@ import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.WaveEffect;
+import mindustry.entities.pattern.ShootBarrel;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.Weapon;
@@ -397,13 +398,20 @@ public class TEBlocks {
                             Items.copper, 450,
                             Items.lead, 600,
                             Items.graphite, 180,
-                            Items.blastCompound, 40,
-                            Items.silicon, 80
+                            Items.blastCompound, 10,
+                            Items.silicon, 80,
+                            TEItems.advancedChip, 5
                     )
             );
 
-            rotateSpeed = 20F;
+            rotateSpeed = 0F;
             range = 700f;
+
+            shoot = new ShootBarrel() {{
+                barrels = new float[]{
+                        0, 0, 0
+                };
+            }};
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
@@ -451,18 +459,34 @@ public class TEBlocks {
                             Items.lead, 1100,
                             Items.graphite, 700,
                             Items.metaglass, 300,
-                            Items.silicon, 250
+                            Items.silicon, 250,
+                            TEItems.advancedChip, 20
                     )
             );
 
-            rotateSpeed = 20F;
-            range = 1400f;
-            reload = 30;
+            rotateSpeed = 0F;
+            range = 1000f;
+            reload = 50f;
             liquidCapacity = 20f;
             coolantMultiplier = 0.3f;
-            maxAmmo = 20;
-            ammoPerShot = 5;
+            maxAmmo = 80;
+            ammoPerShot = 10;
             consumePower(1.5f);
+
+            shoot = new ShootBarrel() {{
+                shots = 2;
+                shotDelay = 5f;
+                barrels = new float[]{
+                        -14, 0, 0,
+                        -13, 13, 0,
+                        -14, 14, 0,
+                        13 ,13, 0,
+                        14, 0, 0,
+                        13, -13, 0,
+                        0, -14, 0,
+                        -13, -13, 0
+                };
+            }};
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
@@ -470,7 +494,6 @@ public class TEBlocks {
                     lifetime = 30f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
-                    homingRange = 700f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
@@ -502,7 +525,6 @@ public class TEBlocks {
                     lifetime = 30f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
-                    homingRange = 700f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
