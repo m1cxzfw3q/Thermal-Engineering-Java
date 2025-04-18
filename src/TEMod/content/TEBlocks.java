@@ -410,6 +410,8 @@ public class TEBlocks {
             range = 700f;
             shootCone = 360;
             shootSound = Sounds.missileLaunch;
+            recoil = 0f;
+            shootY = 0;
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
@@ -487,6 +489,8 @@ public class TEBlocks {
                 };
             }};
             shootSound = Sounds.missileLaunch;
+            recoil = 0f;
+            shootY = 0;
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
