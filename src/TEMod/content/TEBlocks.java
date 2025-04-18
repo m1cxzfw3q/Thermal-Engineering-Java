@@ -485,8 +485,8 @@ public class TEBlocks {
             liquidCapacity = 20f;
             coolantMultiplier = 0.8f;
             coolant = consume(new ConsumeLiquid(Liquids.water, 8f / 60f));
-            maxAmmo = 80;
-            ammoPerShot = 10;
+            maxAmmo = 320;
+            ammoPerShot = 40;
             consumePower(1.5f);
             shootCone = 360;
 
@@ -509,6 +509,7 @@ public class TEBlocks {
             shootY = 0;
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
+                ammoMultiplier = 4;
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
                     speed = 8f;
                     lifetime = 5f * 60f;
@@ -542,6 +543,7 @@ public class TEBlocks {
                     }});
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
+                ammoMultiplier = 4;
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
                     speed = 8f;
                     lifetime = 5f * 60f;
@@ -580,7 +582,7 @@ public class TEBlocks {
                     lifetime = 6f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
-                    homingDelay = 110f;
+                    homingDelay = 80f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
