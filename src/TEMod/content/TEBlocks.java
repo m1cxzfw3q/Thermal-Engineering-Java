@@ -197,7 +197,6 @@ public class TEBlocks {
             inaccuracy = 3.0F;
             rotateSpeed = 40.0F;
             coolantMultiplier = 2F;
-            coolant = this.consumeCoolant(0.3F);
             heatColor = Color.valueOf("ff0000");
             alwaysUnlocked = false;
             coolant = consume(new ConsumeLiquid(Liquids.water, 6f / 60f));
@@ -436,7 +435,7 @@ public class TEBlocks {
                     lifetime = 5f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
-                    homingRange = 700f;
+                    homingDelay = 50f;
                     missileAccelTime = 120f;
                     health = 200f;
                     rotateSpeed = 10f;
@@ -484,7 +483,7 @@ public class TEBlocks {
             range = 1000f;
             reload = 65f;
             liquidCapacity = 20f;
-            coolantMultiplier = 0.2f;
+            coolantMultiplier = 0.8f;
             coolant = consume(new ConsumeLiquid(Liquids.water, 8f / 60f));
             maxAmmo = 80;
             ammoPerShot = 10;
@@ -511,14 +510,14 @@ public class TEBlocks {
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
-                    speed = 7f;
+                    speed = 8f;
                     lifetime = 5f * 60f;
-                    trailLength = 14;
+                    trailLength = 11;
                     homingPower = 0.1f;
-                    homingDelay = 30f;
+                    homingDelay = 2f * 60f;
                     missileAccelTime = 120f;
                     health = 400f;
-                    rotateSpeed = 20f;
+                    rotateSpeed = 15f;
                     deathSound = Sounds.largeExplosion;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
@@ -544,13 +543,14 @@ public class TEBlocks {
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
-                    speed = 16f;
+                    speed = 8f;
                     lifetime = 5f * 60f;
-                    trailLength = 14;
+                    trailLength = 11;
                     homingPower = 0.1f;
+                    homingDelay = 2f * 60f;
                     missileAccelTime = 120f;
                     health = 400f;
-                    rotateSpeed = 20f;
+                    rotateSpeed = 15f;
                     deathSound = Sounds.largeExplosion;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
@@ -573,6 +573,38 @@ public class TEBlocks {
                         }};
                     }});
                 }};
+            }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
+                reloadMultiplier = 0.1f;
+                spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
+                    speed = 6f;
+                    lifetime = 5f * 60f;
+                    trailLength = 11;
+                    homingPower = 0.1f;
+                    homingDelay = 2f * 60f;
+                    missileAccelTime = 120f;
+                    health = 400f;
+                    rotateSpeed = 15f;
+                    deathSound = Sounds.largeExplosion;
+                    weapons.add(new Weapon() {{
+                        shootCone = 360f;
+                        mirror = false;
+                        reload = 1f;
+                        x = 0;
+                        y = 0;
+                        deathExplosionEffect = Fx.reactorExplosion;
+                        shootOnDeath = true;
+                        shake = 10f;
+                        bullet = new ExplosionBulletType(99999f, 500f) {{
+                            hitColor = Pal.redLight;
+                            shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
+                                lifetime = 6f;
+                                strokeFrom = 4f;
+                                sizeTo = 496f;
+                            }});
+                            ammoMultiplier = 1f;
+                        }};
+                    }});
+                }};
             }});
         }};
 
@@ -589,14 +621,14 @@ public class TEBlocks {
             lightColor = Color.valueOf("ffffff");
             explosionShake = 9;
             explosionShakeDuration = 120;
-            explosionRadius = 30;
-            explosionDamage = 8000;
+            explosionRadius = 80;
+            explosionDamage = 10000;
             explodeSound = Sounds.explosionbig;
             fuelItem = TEItems.nuclearFuelRod;
             heating = 0.1f;
             coolantPower = 2;
-            consumeItem(TEItems.nuclearFuelRod, (int) 1.4);
-            consumeLiquid(Liquids.cryofluid, 0.37f / 60f);
+            consumeItem(TEItems.nuclearFuelRod, (int) 0.6);
+            consumeLiquid(Liquids.cryofluid, 0.5f / 60f);
             buildCostMultiplier = 3;
             requirements(
                     Category.power, with(
