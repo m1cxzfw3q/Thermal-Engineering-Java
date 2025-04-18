@@ -9,6 +9,7 @@ import mindustry.content.Liquids;
 import mindustry.content.TechTree;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
+import mindustry.type.Item;
 import mindustry.type.ItemStack;
 
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
@@ -30,15 +31,32 @@ public class KepplerTechTree {
                                 Items.copper, 6000,
                                 Items.lead, 4000,
                                 Items.graphite, 3500
-                                ),
-                        Seq.with(
+                        ), Seq.with(
                                 new Objectives.SectorComplete(KepplerSectorPresets.LandingArea),
                                 new Objectives.Research(Blocks.scorch),
                                 new Objectives.Research(Blocks.hail),
                                 new Objectives.Research(TEItems.primaryWarAgreement)
-                        ),
-                        () -> {
-                        });
+                        ), () -> {
+                    node(TEBlocks.portableMissileLaunchSilo, ItemStack.with(
+                            Items.copper, 600,
+                            Items.lead, 8000,
+                            Items.graphite, 2000,
+                            Items.blastCompound, 10,
+                            Items.silicon, 1000,
+                            TEItems.primaryChip, 100,
+                            TEItems.primaryWarAgreement, 1
+                    ), Seq.with(), () -> {
+                        node(TEBlocks.missileLauncher, ItemStack.with(
+                                Items.copper, 10000,
+                                Items.lead, 12000,
+                                Items.graphite, 9000,
+                                Items.metaglass, 4000,
+                                Items.silicon, 500,
+                                TEItems.primaryChip, 300,
+                                TEItems.advancedWarAgreement, 1
+                        ), Seq.with(), () -> {});
+                    });
+                });
 
                 node(TEBlocks.highEfficiencyDisassembler,
                         ItemStack.with(
@@ -50,18 +68,16 @@ public class KepplerTechTree {
                                 Items.silicon, 20000,
                                 Items.plastanium, 8000,
                                 Items.phaseFabric, 5000,
-                                TEItems.advancedProductionAgreement, 1,
+                                TEItems.specialProductionAgreement, 2,
                                 TEItems.advancedChip, 2000
-                        ),
-                        Seq.with(
+                        ), Seq.with(
                                 new Objectives.Research(disassembler),
                                 new Objectives.Research(surgeSmelter),
                                 new Objectives.Research(phaseWeaver),
                                 new Objectives.Research(oilExtractor),
-                                new Objectives.Research(TEItems.advancedProductionAgreement)
-                        ),
-                        () -> {
-                        });
+                                new Objectives.Research(TEItems.specialProductionAgreement)
+                        ), () -> {
+                });
 
                 node(TEBlocks.primaryLaboratory, Seq.with(
                         new Objectives.SectorComplete(ResearchAreaNo47)
@@ -99,9 +115,81 @@ public class KepplerTechTree {
                         });
                     });
                 });
+
+                node(TEBlocks.chipManufacturingMachine, ItemStack.with(
+                        Items.copper, 15000,
+                        Items.titanium, 10000,
+                        Items.lead, 18000,
+                        Items.graphite, 13000,
+                        Items.silicon, 70000,
+                        TEItems.primaryProductionAgreement, 1
+                ), Seq.with(
+                        new Objectives.Research(TEItems.primaryProductionAgreement)
+                ), () -> {
+                    node(TEBlocks.chipPrinter, ItemStack.with(
+                            Items.copper, 26000,
+                            Items.titanium, 15000,
+                            Items.lead, 30000,
+                            Items.graphite, 45000,
+                            Items.silicon, 130000,
+                            Items.plastanium, 20000,
+                            Items.phaseFabric, 18000,
+                            TEItems.advancedProductionAgreement, 1
+                    ), Seq.with(
+                            new Objectives.Research(TEItems.advancedProductionAgreement)
+                    ), () -> {});
+                });
+
+                node(TEBlocks.simpleStorage, ItemStack.with(
+                        Items.copper, 2000,
+                        Items.lead, 2600,
+                        Items.graphite, 1500
+                ), Seq.with(
+                        new Objectives.Research(bridgeConduit)
+                ), () -> {
+                    node(TEBlocks.highSpeedUnloader, ItemStack.with(
+                            Items.thorium, 600,
+                            Items.silicon, 1000,
+                            Items.titanium, 1000,
+                            Items.plastanium, 600,
+                            TEItems.highSpeedTransmissionProtocol, 1
+                    ), Seq.with(
+                            new Objectives.Research(unloader),
+                            new Objectives.Research(vault),
+                            new Objectives.Research(TEItems.highSpeedTransmissionProtocol)
+                    ), () -> {});
+                });
             });
 
             node(TEBlocks.kepplerIcon, () -> {
+                node(TEBlocks.nuclearFuelRodManufacturingMachine, ItemStack.with(
+                        Items.thorium, 6000,
+                        Items.titanium, 7000,
+                        Items.silicon, 6000,
+                        Items.lead, 7000,
+                        Items.surgeAlloy, 2000,
+                        Items.graphite, 82000,
+                        TEItems.advancedChip, 1000,
+                        TEItems.advancedProductionAgreement, 1
+                ), Seq.with(
+                        new Objectives.Research(TEItems.advancedProductionAgreement),
+                        new Objectives.Research(TEItems.uranium)
+                ), () -> {});
+
+                node(TEBlocks.nuclearReactor, ItemStack.with(
+                        Items.lead, 20000,
+                        Items.graphite, 10000,
+                        Items.metaglass, 5000,
+                        Items.thorium, 8000,
+                        Items.titanium, 10000,
+                        Items.surgeAlloy, 3500,
+                        TEItems.advancedChip, 500,
+                        TEItems.advancedProductionAgreement, 1
+                ), Seq.with(
+                        new Objectives.Research(TEItems.nuclearFuelRod),
+                        new Objectives.Research(thoriumReactor)
+                ), () -> {});
+
                 nodeProduce(TEItems.uranium, () -> {
                     nodeProduce(TEItems.nuclearFuelRod, () -> {
                     });

@@ -1,6 +1,7 @@
 package TEMod.content;
 
 import arc.graphics.Color;
+import arc.math.Interp;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -8,11 +9,13 @@ import mindustry.content.StatusEffects;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
+import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
 import mindustry.entities.pattern.ShootBarrel;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
+import mindustry.type.ItemStack;
 import mindustry.type.Weapon;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
@@ -20,10 +23,18 @@ import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
+import mindustry.world.blocks.power.NuclearReactor;
+import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
+import mindustry.world.blocks.sandbox.ItemSource;
+import mindustry.world.blocks.storage.StorageBlock;
+import mindustry.world.blocks.storage.Unloader;
+import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
+import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
+import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
@@ -36,6 +47,7 @@ public class TEBlocks {
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block portableMissileLaunchSilo; //便携式导弹发射井
     public static Block missileLauncher; //导弹发射井
+    public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
     //特殊
     public static Block surpluoIcon;
     public static Block erekirIcon;
@@ -47,6 +59,11 @@ public class TEBlocks {
     //芯片
     public static Block chipManufacturingMachine; //芯片制造机
     public static Block chipPrinter; //芯片打印机
+    //发电
+    public static Block nuclearReactor; //核反应堆
+    //物流
+    public static Block simpleStorage; //简易储存器
+    public static Block highSpeedUnloader; //高速装卸器
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -183,6 +200,7 @@ public class TEBlocks {
             coolant = this.consumeCoolant(0.3F);
             heatColor = Color.valueOf("ff0000");
             alwaysUnlocked = false;
+            coolant = consume(new ConsumeLiquid(Liquids.water, 6f / 60f));
         }};
 
         highEfficiencyDisassembler = new Separator("highEfficiencyDisassembler"){{
@@ -196,7 +214,8 @@ public class TEBlocks {
                             Items.silicon, 200,
                             Items.plastanium, 200,
                             Items.phaseFabric, 80,
-                            TEItems.advancedChip, 20
+                            TEItems.advancedChip, 20,
+                            TEItems.specialProductionAgreement, 1
                     ));
             results = with(
                     Items.copper, 3,
@@ -335,8 +354,7 @@ public class TEBlocks {
                             Items.titanium, 700,
                             Items.lead, 800,
                             Items.graphite, 800,
-                            Items.silicon, 8000,
-                            TEItems.primaryProductionAgreement, 1
+                            Items.silicon, 8000
                     ));
             craftTime = 200f;
             size = 3;
@@ -348,8 +366,7 @@ public class TEBlocks {
 
             results = with(
                     TEItems.primaryChip, 12,
-                    TEItems.advancedChip, 7,
-                    TEItems.specialChip, 1
+                    TEItems.advancedChip, 7
             );
 
             consumeItems(
@@ -365,15 +382,14 @@ public class TEBlocks {
             requirements(
                     Category.crafting, with(
                             Items.copper, 2000,
-                            Items.titanium, 100,
+                            Items.titanium, 1000,
                             Items.lead, 2400,
                             Items.graphite, 1500,
                             Items.silicon, 10000,
                             Items.plastanium, 2000,
-                            Items.phaseFabric, 800,
-                            TEItems.advancedProductionAgreement, 1
+                            Items.phaseFabric, 800
                     ));
-            craftTime = 20f;
+            craftTime = 12f;
             size = 5;
             health = 1000;
             itemCapacity = 40;
@@ -466,9 +482,10 @@ public class TEBlocks {
 
             rotateSpeed = 0F;
             range = 1000f;
-            reload = 35f;
+            reload = 65f;
             liquidCapacity = 20f;
-            coolantMultiplier = 0.3f;
+            coolantMultiplier = 0.2f;
+            coolant = consume(new ConsumeLiquid(Liquids.water, 8f / 60f));
             maxAmmo = 80;
             ammoPerShot = 10;
             consumePower(1.5f);
@@ -476,16 +493,16 @@ public class TEBlocks {
 
             shoot = new ShootBarrel() {{
                 shots = 4;
-                shotDelay = 8f;
+                shotDelay = 10f;
                 barrels = new float[]{
                         -14, 0, 0,
-                        -13, 13, 0,
-                        -14, 14, 0,
-                        13 ,13, 0,
+                        -11, 11, 0,
+                        0, 14, 0,
+                        11 ,11, 0,
                         14, 0, 0,
-                        13, -13, 0,
+                        11, -11, 0,
                         0, -14, 0,
-                        -13, -13, 0
+                        -11, -11, 0
                 };
             }};
             shootSound = Sounds.missileLaunch;
@@ -498,6 +515,7 @@ public class TEBlocks {
                     lifetime = 5f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
+                    homingDelay = 30f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
@@ -556,6 +574,154 @@ public class TEBlocks {
                     }});
                 }};
             }});
+        }};
+
+        nuclearReactor = new NuclearReactor("nuclearReactor") {{
+            health = 5000;
+            size = 5;
+            liquidCapacity = 30;
+            itemCapacity = 20;
+            hasItems = true;
+            hasLiquids = true;
+            outputsPower = true;
+            powerProduction = 230f;
+            itemDuration = 30f;
+            lightColor = Color.valueOf("ffffff");
+            explosionShake = 9;
+            explosionShakeDuration = 120;
+            explosionRadius = 30;
+            explosionDamage = 8000;
+            explodeSound = Sounds.explosionbig;
+            fuelItem = TEItems.nuclearFuelRod;
+            heating = 0.1f;
+            coolantPower = 2;
+            consumeItem(TEItems.nuclearFuelRod, (int) 1.4);
+            consumeLiquid(Liquids.cryofluid, 0.37f / 60f);
+            buildCostMultiplier = 3;
+            requirements(
+                    Category.power, with(
+                    Items.lead, 1400,
+                    Items.graphite, 890,
+                    Items.metaglass, 320,
+                    Items.thorium, 750,
+                    Items.titanium, 800,
+                    Items.surgeAlloy, 260,
+                    TEItems.advancedChip, 10
+            ));
+            explodeEffect = new MultiEffect(
+                    new WaveEffect() {{
+                        lifetime = 20;
+                        sizeFrom = 0;
+                        sizeTo = 320;
+                        strokeFrom = 18;
+                        strokeTo = 0;
+                        colorFrom = Color.valueOf("eec591");
+                        colorTo = Color.valueOf("ffffff");
+                    }},
+                    new ParticleEffect() {{
+                        particles = 25;
+                        interp = Interp.pow10Out;
+                        sizeInterp = Interp.pow5In;
+                        sizeFrom = 35;
+                        sizeTo = 0;
+                        length = 280;
+                        baseLength = 0;
+                        lifetime = 250;
+                        colorFrom = Color.valueOf("dedede70");
+                        colorTo = Color.valueOf("dedede70");
+                    }},
+                    new ParticleEffect() {{
+                        particles = 35;
+                        interp = Interp.pow10Out;
+                        sizeInterp = Interp.pow5In;
+                        sizeFrom = 30;
+                        sizeTo = 0;
+                        length = 290;
+                        baseLength = 0;
+                        lifetime = 300;
+                        colorFrom = Color.valueOf("dedede70");
+                        colorTo = Color.valueOf("dedede70");
+                    }},
+                    new ParticleEffect() {{
+                        particles = 40;
+                        interp = Interp.pow10Out;
+                        sizeInterp = Interp.pow5In;
+                        sizeFrom = 20;
+                        sizeTo = 0;
+                        length = 300;
+                        baseLength = 0;
+                        lifetime = 350;
+                        colorFrom = Color.valueOf("dedede70");
+                        colorTo = Color.valueOf("dedede70");
+                    }},
+                    new ParticleEffect() {{
+                        particles = 25;
+                        line = true;
+                        interp = Interp.pow10Out;
+                        sizeInterp = Interp.pow3In;
+                        strokeFrom = 3;
+                        strokeTo = 0;
+                        lenFrom = 150;
+                        lenTo = 0;
+                        length = 220;
+                        baseLength = 60;
+                        lifetime = 60;
+                        colorFrom = Color.valueOf("dedede");
+                        colorTo = Color.valueOf("dedede");
+                    }}
+            );
+        }};
+
+        simpleStorage = new StorageBlock("simpleStorage") {{
+            requirements(
+                    Category.effect, with(
+                            Items.copper, 200,
+                            Items.lead, 260,
+                            Items.graphite, 80
+                    )
+            );
+            size = 2;
+            itemCapacity = 200;
+            scaledHealth = 55;
+            coreMerge = false;
+        }};
+
+        highSpeedUnloader = new Unloader("highSpeedUnloader") {{
+            speed = 1f;
+            group = BlockGroup.transportation;
+            requirements(
+                    Category.effect, with(
+                            Items.thorium, 20,
+                            Items.silicon, 45,
+                            Items.titanium, 50,
+                            Items.plastanium, 30
+                    )
+            );
+        }};
+
+        nuclearFuelRodManufacturingMachine = new GenericCrafter("nuclearFuelRodManufacturingMachine") {{
+            size = 3;
+            health = 1600;
+            itemCapacity = 10;
+            liquidCapacity = 20;
+            hasPower = true;
+            hasItems = true;
+            hasLiquids = true;
+            craftTime = 30f;
+            updateEffect = none;
+            consumePower(35f / 60f);
+            consumeItem(TEItems.uranium, 5);
+            consumeLiquid(Liquids.water, 10f / 60f);
+            outputItem = new ItemStack(TEItems.nuclearFuelRod, 1);
+            requirements(Category.crafting, with(
+                    Items.thorium, 530,
+                    Items.titanium, 680,
+                    Items.silicon, 580,
+                    Items.lead, 680,
+                    Items.surgeAlloy, 200,
+                    Items.graphite, 790,
+                    TEItems.advancedChip, 20
+            ));
         }};
     }
 }
