@@ -10,6 +10,7 @@ import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.WaveEffect;
 import mindustry.entities.pattern.ShootBarrel;
+import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.Weapon;
@@ -337,10 +338,11 @@ public class TEBlocks {
                             Items.silicon, 8000,
                             TEItems.primaryProductionAgreement, 1
                     ));
-            craftTime = 300f;
-            size = 2;
+            craftTime = 200f;
+            size = 3;
             health = 800;
             itemCapacity = 30;
+            liquidCapacity = 0;
             consumePower(5f);
             alwaysUnlocked = false;
 
@@ -372,15 +374,15 @@ public class TEBlocks {
                             TEItems.advancedProductionAgreement, 1
                     ));
             craftTime = 20f;
-            size = 4;
+            size = 5;
             health = 1000;
             itemCapacity = 40;
             consumePower(6f);
             alwaysUnlocked = false;
 
             results = with(
-                    TEItems.primaryChip, 1,
-                    TEItems.advancedChip, 1,
+                    TEItems.primaryChip, 3,
+                    TEItems.advancedChip, 2,
                     TEItems.specialChip, 1
             );
 
@@ -400,24 +402,20 @@ public class TEBlocks {
                             Items.graphite, 180,
                             Items.blastCompound, 10,
                             Items.silicon, 80,
-                            TEItems.advancedChip, 5
+                            TEItems.primaryChip, 5
                     )
             );
 
             rotateSpeed = 0F;
             range = 700f;
-
-            shoot = new ShootBarrel() {{
-                barrels = new float[]{
-                        0, 0, 0
-                };
-            }};
+            shootCone = 360;
+            shootSound = Sounds.missileLaunch;
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
                 spawnUnit = new MissileUnitType("portableMissileLaunchSiloMissile") {{
-                    speed = 16f;
-                    lifetime = 30f * 60f;
+                    speed = 7f;
+                    lifetime = 5f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
                     homingRange = 700f;
@@ -460,22 +458,23 @@ public class TEBlocks {
                             Items.graphite, 700,
                             Items.metaglass, 300,
                             Items.silicon, 250,
-                            TEItems.advancedChip, 20
+                            TEItems.primaryChip, 20
                     )
             );
 
             rotateSpeed = 0F;
             range = 1000f;
-            reload = 50f;
+            reload = 35f;
             liquidCapacity = 20f;
             coolantMultiplier = 0.3f;
             maxAmmo = 80;
             ammoPerShot = 10;
             consumePower(1.5f);
+            shootCone = 360;
 
             shoot = new ShootBarrel() {{
-                shots = 2;
-                shotDelay = 5f;
+                shots = 4;
+                shotDelay = 8f;
                 barrels = new float[]{
                         -14, 0, 0,
                         -13, 13, 0,
@@ -487,16 +486,18 @@ public class TEBlocks {
                         -13, -13, 0
                 };
             }};
+            shootSound = Sounds.missileLaunch;
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
-                    speed = 16f;
-                    lifetime = 30f * 60f;
+                    speed = 7f;
+                    lifetime = 5f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
+                    deathSound = Sounds.largeExplosion;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -522,12 +523,13 @@ public class TEBlocks {
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
                     speed = 16f;
-                    lifetime = 30f * 60f;
+                    lifetime = 5f * 60f;
                     trailLength = 14;
                     homingPower = 0.1f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 20f;
+                    deathSound = Sounds.largeExplosion;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
