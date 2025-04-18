@@ -578,8 +578,8 @@ public class TEBlocks {
             }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
                 reloadMultiplier = 0.01f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
-                    speed = 7f;
-                    lifetime = 6f * 60f;
+                    speed = 8f;
+                    lifetime = 5f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
                     homingDelay = 80f;
@@ -596,7 +596,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.reactorExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        range = 32f;
+                        range = 16f;
                         bullet = new ExplosionBulletType(99999f, 300f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
