@@ -514,7 +514,7 @@ public class TEBlocks {
                     lifetime = 5f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
-                    homingDelay = 50f;
+                    homingDelay = 80f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
@@ -547,7 +547,7 @@ public class TEBlocks {
                     lifetime = 5f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
-                    homingDelay = 50f;
+                    homingDelay = 80f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
@@ -580,11 +580,11 @@ public class TEBlocks {
                     lifetime = 6f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
-                    homingDelay = 50f;
+                    homingDelay = 110f;
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
-                    deathSound = Sounds.largeExplosion;
+                    deathSound = Sounds.explosionbig;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -594,8 +594,8 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.reactorExplosion;
                         shootOnDeath = true;
                         shake = 10f;
+                        range = 32f;
                         bullet = new ExplosionBulletType(99999f, 300f) {{
-                            range = 32f;
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
                                 lifetime = 6f;
