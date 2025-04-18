@@ -529,7 +529,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        bullet = new ExplosionBulletType(1279f, 96f) {{
+                        bullet = new ExplosionBulletType(874f, 96f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
                                 lifetime = 6f;
@@ -563,7 +563,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        bullet = new ExplosionBulletType(2453f, 126f) {{
+                        bullet = new ExplosionBulletType(1279f, 126f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
                                 lifetime = 6f;
