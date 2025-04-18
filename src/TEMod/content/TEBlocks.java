@@ -574,7 +574,7 @@ public class TEBlocks {
                     }});
                 }};
             }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
-                reloadMultiplier = 0.1f;
+                reloadMultiplier = 0.01f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
                     speed = 6f;
                     lifetime = 5f * 60f;
