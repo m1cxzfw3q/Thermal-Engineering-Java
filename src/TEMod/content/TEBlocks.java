@@ -275,7 +275,7 @@ public class TEBlocks {
             oreScale = 23.47619f;
         }};
 
-        primaryLaboratory = new Separator("primaryLaboratory") {{
+        primaryLaboratory = new MultiCrafter("primaryLaboratory") {{
             requirements(
                     Category.crafting, with(
                             Items.copper, 1000,
@@ -286,12 +286,26 @@ public class TEBlocks {
                             Items.silicon, 1000,
                             Items.plastanium, 800,
                             Items.phaseFabric, 300
-                    ));
-            results = with(
-                    TEItems.primaryProductionAgreement, 1,
-                    TEItems.primaryWarAgreement, 1
+                    )
             );
-            craftTime = 10800f;
+
+            recipes = Seq.with(//ds给的代码，能跑就行
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.primaryWarAgreement, 1));
+                        }});
+                        put("craftTime", 10800f);
+                        put("icon", TEItems.primaryWarAgreement);
+                    }},
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.primaryProductionAgreement, 1));
+                        }});
+                        put("craftTime", 10800f);
+                        put("icon", TEItems.primaryProductionAgreement);
+                    }}
+            );
+
             size = 3;
             health = 1000;
             itemCapacity = 10;
@@ -299,7 +313,7 @@ public class TEBlocks {
             alwaysUnlocked = false;
         }};
 
-        advancedLaboratory = new Separator("advancedLaboratory") {{
+        advancedLaboratory = new MultiCrafter("advancedLaboratory") {{
             requirements(
                     Category.crafting, with(
                             Items.copper, 2000,
@@ -311,13 +325,33 @@ public class TEBlocks {
                             Items.plastanium, 3000,
                             Items.phaseFabric, 1000,
                             TEItems.uranium, 400
-                    ));
-            results = with(
-                    TEItems.highSpeedTransmissionProtocol, 1,
-                    TEItems.advancedProductionAgreement, 1,
-                    TEItems.advancedWarAgreement, 1
+                    )
             );
-            craftTime = 10800f;
+
+            recipes = Seq.with(//ds给的代码，能跑就行
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.advancedWarAgreement, 1));
+                        }});
+                        put("craftTime", 10800f);
+                        put("icon", TEItems.advancedWarAgreement);
+                    }},
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.advancedProductionAgreement, 1));
+                        }});
+                        put("craftTime", 10800f);
+                        put("icon", TEItems.advancedProductionAgreement);
+                    }},
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.highSpeedTransmissionProtocol, 1));
+                        }});
+                        put("craftTime", 10800f);
+                        put("icon", TEItems.highSpeedTransmissionProtocol);
+                    }}
+            );
+
             size = 5;
             health = 2000;
             itemCapacity = 10;
@@ -325,7 +359,7 @@ public class TEBlocks {
             alwaysUnlocked = false;
         }};
 
-        specialLaboratory = new Separator("specialLaboratory") {{
+        specialLaboratory = new MultiCrafter("specialLaboratory") {{
             requirements(
                     Category.crafting, with(
                             Items.copper, 1000,
@@ -337,13 +371,33 @@ public class TEBlocks {
                             Items.plastanium, 800,
                             Items.phaseFabric, 300,
                             TEItems.uranium, 2000
-                    ));
-            results = with(
-                    TEItems.specialProductionAgreement, 1,
-                    TEItems.specialWarAgreement, 1,
-                    TEItems.ultraRemoteTransmissionProtocol, 1
+                    )
             );
-            craftTime = 7200f;
+
+            recipes = Seq.with(//ds给的代码，能跑就行
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.specialWarAgreement, 1));
+                        }});
+                        put("craftTime", 7200f);
+                        put("icon", TEItems.specialWarAgreement);
+                    }},
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.specialProductionAgreement, 1));
+                        }});
+                        put("craftTime", 7200f);
+                        put("icon", TEItems.specialProductionAgreement);
+                    }},
+                    new ObjectMap(){{
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.ultraRemoteTransmissionProtocol, 1));
+                        }});
+                        put("craftTime", 7200f);
+                        put("icon", TEItems.ultraRemoteTransmissionProtocol);
+                    }}
+            );
+
             size = 7;
             health = 4000;
             itemCapacity = 20;
@@ -352,7 +406,7 @@ public class TEBlocks {
             alwaysUnlocked = false;
         }};
 
-        chipManufacturingMachine = new Separator("chipManufacturingMachine") {{
+        chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
             requirements(
                     Category.crafting, with(
                             Items.copper, 700,
@@ -361,25 +415,33 @@ public class TEBlocks {
                             Items.graphite, 800,
                             Items.silicon, 8000
                     ));
-            craftTime = 200f;
             size = 3;
             health = 800;
             itemCapacity = 30;
-            liquidCapacity = 0;
             consumePower(5f);
             alwaysUnlocked = false;
 
-            results = with(
-                    TEItems.primaryChip, 12,
-                    TEItems.advancedChip, 7
-            );
-
-            consumeItems(
-                    with(
-                            Items.silicon, 2,
-                            Items.lead, 1,
-                            Items.copper, 1
-                    )
+            recipes = Seq.with(//ds给的代码，能跑就行
+                    new ObjectMap(){{
+                        put("input", new ObjectMap(){{
+                            put("items", Seq.with(Items.silicon, 2, Items.copper, 1, Items.lead, 1));
+                        }});
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.primaryChip, 1));
+                        }});
+                        put("craftTime", 120f);
+                        put("icon", TEItems.primaryChip);
+                    }},
+                    new ObjectMap(){{
+                        put("input", new ObjectMap(){{
+                            put("items", Seq.with(Items.silicon, 4, Items.lead, 2, Items.copper, 1));
+                        }});
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.advancedChip, 1));
+                        }});
+                        put("craftTime", 120f);
+                        put("icon", TEItems.advancedChip);
+                    }}
             );
         }};
 
@@ -411,7 +473,7 @@ public class TEBlocks {
                         put("output", new ObjectMap(){{
                             put("items", Seq.with(TEItems.primaryChip, 1));
                         }});
-                        put("craftTime", 60f);
+                        put("craftTime", 12f);
                         put("icon", TEItems.primaryChip);
                     }},
                     new ObjectMap(){{
@@ -421,7 +483,7 @@ public class TEBlocks {
                         put("output", new ObjectMap(){{
                             put("items", Seq.with(TEItems.advancedChip, 1));
                         }});
-                        put("craftTime", 60f);
+                        put("craftTime", 12f);
                         put("icon", TEItems.advancedChip);
                     }},
                     new ObjectMap(){{
@@ -431,7 +493,7 @@ public class TEBlocks {
                         put("output", new ObjectMap(){{
                             put("items", Seq.with(TEItems.specialChip, 1));
                         }});
-                        put("craftTime", 60f);
+                        put("craftTime", 12f);
                         put("icon", TEItems.specialChip);
                     }}
             );
