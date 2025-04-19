@@ -40,10 +40,12 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
+import static arc.Core.input;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
+import static mindustry.world.meta.StatUnit.items;
 
 public class TEBlocks {
     //矿石
@@ -292,17 +294,17 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.primaryWarAgreement, 1));
+                            put("items", Seq.with("primaryWarAgreement/1"));
                         }});
                         put("craftTime", 10800f);
-                        put("icon", TEItems.primaryWarAgreement);
+                        put("icon", "primaryWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.primaryProductionAgreement, 1));
+                            put("items", Seq.with("primaryWarAgreement/1"));
                         }});
                         put("craftTime", 10800f);
-                        put("icon", TEItems.primaryProductionAgreement);
+                        put("icon", "primaryWarAgreement");
                     }}
             );
 
@@ -331,24 +333,24 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.advancedWarAgreement, 1));
+                            put("items", Seq.with("advancedWarAgreement/1"));
                         }});
                         put("craftTime", 10800f);
-                        put("icon", TEItems.advancedWarAgreement);
+                        put("icon", "advancedWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.advancedProductionAgreement, 1));
+                            put("items", Seq.with("advancedProductionAgreement/1"));
                         }});
                         put("craftTime", 10800f);
-                        put("icon", TEItems.advancedProductionAgreement);
+                        put("icon", "advancedProductionAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.highSpeedTransmissionProtocol, 1));
+                            put("items", Seq.with("highSpeedTransmissionProtocol/1"));
                         }});
                         put("craftTime", 10800f);
-                        put("icon", TEItems.highSpeedTransmissionProtocol);
+                        put("icon", "highSpeedTransmissionProtocol");
                     }}
             );
 
@@ -377,24 +379,24 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.specialWarAgreement, 1));
+                            put("items", Seq.with("specialWarAgreement/1"));
                         }});
                         put("craftTime", 7200f);
-                        put("icon", TEItems.specialWarAgreement);
+                        put("icon", "specialWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.specialProductionAgreement, 1));
+                            put("items", Seq.with("specialProductionAgreement/1"));
                         }});
                         put("craftTime", 7200f);
-                        put("icon", TEItems.specialProductionAgreement);
+                        put("icon", "specialProductionAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.ultraRemoteTransmissionProtocol, 1));
+                            put("items", Seq.with("ultraRemoteTransmissionProtocol/1"));
                         }});
                         put("craftTime", 7200f);
-                        put("icon", TEItems.ultraRemoteTransmissionProtocol);
+                        put("icon", "ultraRemoteTransmissionProtocol");
                     }}
             );
 
@@ -424,23 +426,23 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with(Items.silicon, 2, Items.copper, 1, Items.lead, 1));
+                            put("items", Seq.with("silicon/2", "lead/1", "copper/1"));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.primaryChip, 1));
+                            put("items", Seq.with("primaryChip/1"));
                         }});
                         put("craftTime", 120f);
-                        put("icon", TEItems.primaryChip);
+                        put("icon", "primaryChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with(Items.silicon, 4, Items.lead, 2, Items.copper, 1));
+                            put("items", Seq.with("silicon/4", "lead/2", "copper/1"));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.advancedChip, 1));
+                            put("items", Seq.with("advancedChip/1"));
                         }});
                         put("craftTime", 120f);
-                        put("icon", TEItems.advancedChip);
+                        put("icon", "advancedChip");
                     }}
             );
         }};
@@ -468,33 +470,33 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with(Items.silicon, 3));
+                            put("items", Seq.with("silicon/3"));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.primaryChip, 1));
+                            put("items", Seq.with("primaryChip/1"));
                         }});
                         put("craftTime", 12f);
-                        put("icon", TEItems.primaryChip);
+                        put("icon", "primaryChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with(Items.silicon, 4));
+                            put("items", Seq.with("silicon/4"));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.advancedChip, 1));
+                            put("items", Seq.with("advancedChip/1"));
                         }});
                         put("craftTime", 12f);
-                        put("icon", TEItems.advancedChip);
+                        put("icon", "advancedChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with(Items.silicon, 5));
+                            put("items", Seq.with("silicon/5"));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with(TEItems.specialChip, 1));
+                            put("items", Seq.with("specialChip/1"));
                         }});
                         put("craftTime", 12f);
-                        put("icon", TEItems.specialChip);
+                        put("icon", "specialChip");
                     }}
             );
 
@@ -512,6 +514,8 @@ public class TEBlocks {
             isConsumeFluid = true;
             isConsumeItem = true;
             isOutputItem = true;
+            liquidCapacity = 20f;
+            isConsumePower = true;
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
         }};
 
