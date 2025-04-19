@@ -73,17 +73,17 @@ public class TEItems {
             alwaysUnlocked = false;
         }};
 
-        primaryChip = new Item("primaryChip", Color.valueOf("d99d73")) {{
+        primaryChip = new Item("primaryChip", Color.valueOf("636363")) {{
             alwaysUnlocked = false;
             cost = 0.4f;
         }};
 
-        advancedChip = new Item("advancedChip", Color.valueOf("d99d73")) {{
+        advancedChip = new Item("advancedChip", Color.valueOf("cdad2d")) {{
             alwaysUnlocked = false;
             cost = 0.5f;
         }};
 
-        specialChip = new Item("specialChip", Color.valueOf("d99d73")) {{
+        specialChip = new Item("specialChip", Color.valueOf("bf4833")) {{
             alwaysUnlocked = false;
             cost = 0.6f;
         }};
