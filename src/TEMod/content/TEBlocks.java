@@ -530,20 +530,20 @@ public class TEBlocks {
                     }}
             );
 
-            drawer = new DrawMulti() {{
-                new DrawRegion("-bottom");
-
-                new DrawLiquidRegion() {{
-                    drawLiquid = Liquids.cryofluid;
-                    suffix = "-cryo";
-                }};
-
-                new DrawRegion() {{
-                    suffix = "-chipBuild";
-                }};
-
-                new DrawDefault();
-            }};
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"),
+                    new DrawLiquidTile(),
+                    new DrawRegion() {{
+                        suffix = "-chipBuild";
+                    }},
+                    new DrawRegion("-bottom"),
+                    new DrawLiquidTile(),
+                    new DrawLiquidRegion() {{
+                        drawLiquid = Liquids.cryofluid;
+                        suffix = "-cryo";
+                    }},
+                    new DrawDefault()
+            );
             isConsumeItem = true;
             liquidCapacity = 20f;
             isOutputItem = true;
@@ -582,7 +582,7 @@ public class TEBlocks {
 
             drawer = new DrawTurret() {{
                 new RegionPart() {{
-                    suffix = "-1";
+                    suffix = "-top";
                     x = y = 0;
                     moveX = 0;
                     moveY = -13;
