@@ -460,7 +460,6 @@ public class TEBlocks {
             isConsumePower = true;
             isConsumeItem = true;
             hasPower = true;
-            canOverdrive = false;
 
             recipes = Seq.with(//能跑就行
                     new ObjectMap(){{
@@ -564,6 +563,7 @@ public class TEBlocks {
             hasLiquids = true;
             hasItems = true;
             hasPower = true;
+            canOverdrive = false;
         }};
 
         portableMissileLaunchSilo = new PowerTurret("portableMissileLaunchSilo") {{
