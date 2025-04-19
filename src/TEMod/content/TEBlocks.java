@@ -582,7 +582,7 @@ public class TEBlocks {
 
             drawer = new DrawTurret() {{
                 new RegionPart() {{
-                    suffix = "-top";
+                    suffix = "-1";
                     x = y = 0;
                     moveX = 0;
                     moveY = -13;
