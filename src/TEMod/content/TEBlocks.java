@@ -530,6 +530,8 @@ public class TEBlocks {
                     x = y = 0;
                     suffix = "-chipBuild";
                 }};
+
+                new DrawDefault();
             }};
             isConsumeItem = true;
             liquidCapacity = 20f;
