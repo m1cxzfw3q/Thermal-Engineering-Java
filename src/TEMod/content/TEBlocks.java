@@ -536,6 +536,11 @@ public class TEBlocks {
                     suffix = "-chipBuild";
                 }};
 
+                new RegionPart() {{
+                    x = y = 0;
+                    suffix = "";
+                }};
+
                 new DrawDefault();
             }};
             isConsumeItem = true;
