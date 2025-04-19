@@ -304,14 +304,14 @@ public class TEBlocks {
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-primaryWarAgreement", 1));
                         }});
-                        put("craftTime", 10800f);
+                        put("craftTime", 7200f);
                         put("icon", "temod-primaryWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-primaryProductionAgreement", 1));
                         }});
-                        put("craftTime", 10800f);
+                        put("craftTime", 7200f);
                         put("icon", "temod-primaryProductionAgreement");
                     }}
             );
@@ -348,21 +348,21 @@ public class TEBlocks {
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-advancedWarAgreement"));
                         }});
-                        put("craftTime", 10800f);
+                        put("craftTime", 5400f);
                         put("icon", "temod-advancedWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-advancedProductionAgreement"));
                         }});
-                        put("craftTime", 10800f);
+                        put("craftTime", 5400f);
                         put("icon", "temod-advancedProductionAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-highSpeedTransmissionProtocol"));
                         }});
-                        put("craftTime", 10800f);
+                        put("craftTime", 5400f);
                         put("icon", "temod-highSpeedTransmissionProtocol");
                     }}
             );
@@ -402,7 +402,7 @@ public class TEBlocks {
                         put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-specialWarAgreement"));
                         }});
-                        put("craftTime", 7200f);
+                        put("craftTime", 3600f);
                         put("icon", "temod-specialWarAgreement");
                     }},
                     new ObjectMap(){{
@@ -412,7 +412,7 @@ public class TEBlocks {
                         put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-specialProductionAgreement"));
                         }});
-                        put("craftTime", 7200f);
+                        put("craftTime", 3600f);
                         put("icon", "temod-specialProductionAgreement");
                     }},
                     new ObjectMap(){{
@@ -422,7 +422,7 @@ public class TEBlocks {
                         put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-ultraRemoteTransmissionProtocol"));
                         }});
-                        put("craftTime", 7200f);
+                        put("craftTime", 3600f);
                         put("icon", "temod-ultraRemoteTransmissionProtocol");
                     }}
             );
@@ -891,9 +891,9 @@ public class TEBlocks {
                     )
             );
             size = 2;
-            itemCapacity = 200;
-            scaledHealth = 55;
+            itemCapacity = 100;
             coreMerge = false;
+            health = 100;
         }};
 
         highSpeedUnloader = new Unloader("highSpeedUnloader") {{
@@ -907,6 +907,7 @@ public class TEBlocks {
                             Items.plastanium, 30
                     )
             );
+            health = 60;
         }};
 
         nuclearFuelRodManufacturingMachine = new GenericCrafter("nuclearFuelRodManufacturingMachine") {{
