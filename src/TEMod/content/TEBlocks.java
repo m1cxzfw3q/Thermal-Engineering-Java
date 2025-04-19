@@ -912,7 +912,7 @@ public class TEBlocks {
         nuclearFuelRodManufacturingMachine = new GenericCrafter("nuclearFuelRodManufacturingMachine") {{
             size = 3;
             health = 1600;
-            itemCapacity = 10;
+            itemCapacity = 20;
             liquidCapacity = 20;
             hasPower = true;
             hasItems = true;
