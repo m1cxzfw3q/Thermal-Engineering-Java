@@ -388,7 +388,9 @@ public class TEBlocks {
                             Items.graphite, 1500,
                             Items.silicon, 10000,
                             Items.plastanium, 2000,
-                            Items.phaseFabric, 800
+                            Items.phaseFabric, 800,
+                            TEItems.advancedChip, 70,
+                            TEItems.advancedProductionAgreement, 1
                     ));
             craftTime = 12f;
             size = 5;

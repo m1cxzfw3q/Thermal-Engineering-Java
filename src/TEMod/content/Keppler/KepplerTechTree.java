@@ -134,7 +134,8 @@ public class KepplerTechTree {
                             Items.silicon, 130000,
                             Items.plastanium, 20000,
                             Items.phaseFabric, 18000,
-                            TEItems.advancedProductionAgreement, 1
+                            TEItems.advancedProductionAgreement, 2,
+                            TEItems.advancedChip, 300
                     ), Seq.with(
                             new Objectives.Research(TEItems.advancedProductionAgreement)
                     ), () -> {});
