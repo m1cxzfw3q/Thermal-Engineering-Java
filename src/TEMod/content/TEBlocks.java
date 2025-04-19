@@ -388,7 +388,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-specialWarAgreement/1"));
-                            put("fuilds", Seq.with("cryofluid/10"));
+                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialWarAgreement");
@@ -396,7 +396,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-specialProductionAgreement/1"));
-                            put("fuilds", Seq.with("cryofluid/10"));
+                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialProductionAgreement");
@@ -404,7 +404,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-ultraRemoteTransmissionProtocol/1"));
-                            put("fuilds", Seq.with("cryofluid/10"));
+                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-ultraRemoteTransmissionProtocol");
@@ -493,7 +493,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/3"));
-                            put("fuilds", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/5"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-primaryChip/1"));
@@ -504,7 +504,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/4"));
-                            put("fuilds", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/5"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-advancedChip/1"));
@@ -515,7 +515,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/5"));
-                            put("fuilds", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/5"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-specialChip/1"));
