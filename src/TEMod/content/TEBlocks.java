@@ -428,7 +428,6 @@ public class TEBlocks {
             isConsumeFluid = true;
             isConsumePower = true;
             hasPower = true;
-            consumeLiquid(Liquids.cryofluid, 10f / 60f);
         }};
 
         chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
@@ -557,7 +556,6 @@ public class TEBlocks {
             hasLiquids = true;
             hasItems = true;
             hasPower = true;
-            consumeLiquid(Liquids.cryofluid, 5f / 60f);
         }};
 
         portableMissileLaunchSilo = new PowerTurret("portableMissileLaunchSilo") {{
