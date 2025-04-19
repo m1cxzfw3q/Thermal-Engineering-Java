@@ -39,37 +39,37 @@ public class TEItems {
             buildable = false;
         }};
 
-        primaryWarAgreement = new Item("primaryWarAgreement", Color.valueOf("d99d73")) {{
+        primaryWarAgreement = new Item("primaryWarAgreement", Color.valueOf("bff1ff")) {{
             alwaysUnlocked = false;
         }};
 
-        advancedWarAgreement = new Item("advancedWarAgreement", Color.valueOf("d99d73")) {{
+        advancedWarAgreement = new Item("advancedWarAgreement", Color.valueOf("ffff42")) {{
             alwaysUnlocked = false;
         }};
 
-        specialWarAgreement = new Item("specialWarAgreement", Color.valueOf("d99d73")) {{
+        specialWarAgreement = new Item("specialWarAgreement", Color.valueOf("e2583d")) {{
             alwaysUnlocked = false;
         }};
 
-        highSpeedTransmissionProtocol = new Item("highSpeedTransmissionProtocol", Color.valueOf("d99d73")) {{
-            alwaysUnlocked = false;
-            buildable = false;
-        }};
-
-        ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("d99d73")) {{
+        highSpeedTransmissionProtocol = new Item("highSpeedTransmissionProtocol", Color.valueOf("ffff42")) {{
             alwaysUnlocked = false;
             buildable = false;
         }};
 
-        primaryProductionAgreement = new Item("primaryProductionAgreement", Color.valueOf("d99d73")) {{
+        ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("e2583d")) {{
+            alwaysUnlocked = false;
+            buildable = false;
+        }};
+
+        primaryProductionAgreement = new Item("primaryProductionAgreement", Color.valueOf("bff1ff")) {{
             alwaysUnlocked = false;
         }};
 
-        advancedProductionAgreement = new Item("advancedProductionAgreement", Color.valueOf("d99d73")) {{
+        advancedProductionAgreement = new Item("advancedProductionAgreement", Color.valueOf("ffff42")) {{
             alwaysUnlocked = false;
         }};
 
-        specialProductionAgreement = new Item("specialProductionAgreement", Color.valueOf("d99d73")) {{
+        specialProductionAgreement = new Item("specialProductionAgreement", Color.valueOf("e2583d")) {{
             alwaysUnlocked = false;
         }};
 
