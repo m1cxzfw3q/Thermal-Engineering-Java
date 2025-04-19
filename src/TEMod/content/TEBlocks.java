@@ -1,5 +1,6 @@
 package TEMod.content;
 
+import TEMod.MultiCraftLib.MultiCrafter;
 import arc.graphics.Color;
 import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
@@ -379,7 +380,7 @@ public class TEBlocks {
             );
         }};
 
-        chipPrinter = new Separator("chipPrinter") {{
+        chipPrinter = new MultiCrafter("chipPrinter") {{
             requirements(
                     Category.crafting, with(
                             Items.copper, 2000,
@@ -392,18 +393,14 @@ public class TEBlocks {
                             TEItems.advancedChip, 70,
                             TEItems.advancedProductionAgreement, 1
                     ));
-            craftTime = 12f;
+
             size = 5;
             health = 1000;
             itemCapacity = 40;
             consumePower(6f);
             alwaysUnlocked = false;
 
-            results = with(
-                    TEItems.primaryChip, 3,
-                    TEItems.advancedChip, 2,
-                    TEItems.specialChip, 1
-            );
+            recipes =
 
             drawer = new DrawMulti() {{
                 new DrawLiquidRegion() {{
