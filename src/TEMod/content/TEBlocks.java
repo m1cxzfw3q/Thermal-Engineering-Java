@@ -313,6 +313,9 @@ public class TEBlocks {
             itemCapacity = 10;
             consumePower(40f);
             alwaysUnlocked = false;
+            hasItems = true;
+            isOutputItem = true;
+            isConsumePower = true;
         }};
 
         advancedLaboratory = new MultiCrafter("advancedLaboratory") {{
@@ -359,6 +362,9 @@ public class TEBlocks {
             itemCapacity = 10;
             consumePower(50f);
             alwaysUnlocked = false;
+            hasItems = true;
+            isOutputItem = true;
+            isConsumePower = true;
         }};
 
         specialLaboratory = new MultiCrafter("specialLaboratory") {{
@@ -406,6 +412,11 @@ public class TEBlocks {
             consumePower(60f);
             consumeLiquid(Liquids.cryofluid, 10f / 60f);
             alwaysUnlocked = false;
+            hasLiquids = true;
+            hasItems = true;
+            isOutputItem = true;
+            isConsumeFluid = true;
+            isConsumePower = true;
         }};
 
         chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
@@ -422,6 +433,11 @@ public class TEBlocks {
             itemCapacity = 30;
             consumePower(5f);
             alwaysUnlocked = false;
+            hasItems = true;
+            isOutputItem = true;
+            isConsumeFluid = true;
+            isConsumePower = true;
+            isConsumeItem = true;
 
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
@@ -511,11 +527,13 @@ public class TEBlocks {
                     suffix = "-chipBuild";
                 }};
             }};
-            isConsumeFluid = true;
             isConsumeItem = true;
-            isOutputItem = true;
             liquidCapacity = 20f;
+            isOutputItem = true;
+            isConsumeFluid = true;
             isConsumePower = true;
+            hasLiquids = true;
+            hasItems = true;
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
         }};
 
