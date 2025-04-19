@@ -8,7 +8,6 @@ import mindustry.ui.*;
 import mindustry.world.*;
 import mindustry.world.consumers.*;
 import mindustry.world.modules.*;
-import TEMod.MultiCraftLib.ui.*;
 
 public class ConsumeFluidDynamic extends Consume {
     public final Func<Building, LiquidStack[]> fluids;
@@ -52,7 +51,7 @@ public class ConsumeFluidDynamic extends Consume {
 
         LiquidStack[] fluids = this.fluids.get(tile);
         for (LiquidStack stack : fluids) {
-            table.add(new ReqImage(new multicraft.ui.FluidImage(stack.liquid.uiIcon),
+            table.add(new ReqImage(new TEMod.MultiCraftLib.ui.FluidImage(stack.liquid.uiIcon),
                 () -> tile.liquids != null && tile.liquids.get(stack.liquid) >= stack.amount)).padRight(8).left();
             if (++i % 4 == 0) table.row();
         }

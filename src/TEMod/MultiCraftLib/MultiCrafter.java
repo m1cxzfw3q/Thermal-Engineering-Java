@@ -375,8 +375,7 @@ public class MultiCrafter extends PayloadBlock {
             if (timer(timerDump, dumpTime / timeScale)) {
                 if (cur.isOutputItem())
                     for (ItemStack output : cur.output.items) dump(output.item);
-                
-                //TODO fix infinite output
+
                 if (cur.isOutputPayload()) {
                     for (PayloadStack output : cur.output.payloads) {
                         Payload payloadOutput = null;
@@ -518,7 +517,6 @@ public class MultiCrafter extends PayloadBlock {
             write.i(curRecipeIndex);
             write.f(heat);
 
-            //TODO Fix save corruption
             if(getCurRecipe().isConsumePayload())
                 payloads.write(write);
             if (getCurRecipe().isOutputPayload())
@@ -533,7 +531,6 @@ public class MultiCrafter extends PayloadBlock {
             curRecipeIndex = Mathf.clamp(read.i(), 0, resolvedRecipes.size - 1);
             heat = read.f();
 
-            //TODO Fix save corruption
             if(getCurRecipe().isConsumePayload())
                 payloads.read(read);
             if (revision >= 1 && getCurRecipe().isOutputPayload())
