@@ -1,9 +1,12 @@
 package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
+import TEMod.MultiCraftLib.Recipe;
 import arc.graphics.Color;
 import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
+import arc.struct.ObjectMap;
+import arc.struct.Seq;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -400,7 +403,38 @@ public class TEBlocks {
             consumePower(6f);
             alwaysUnlocked = false;
 
-            recipes =
+            recipes = Seq.with(//ds给的代码，能跑就行
+                    new ObjectMap(){{
+                        put("input", new ObjectMap(){{
+                            put("items", Seq.with(Items.silicon, 3));
+                        }});
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.primaryChip, 1));
+                        }});
+                        put("craftTime", 60f);
+                        put("icon", TEItems.primaryChip);
+                    }},
+                    new ObjectMap(){{
+                        put("input", new ObjectMap(){{
+                            put("items", Seq.with(Items.silicon, 4));
+                        }});
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.advancedChip, 1));
+                        }});
+                        put("craftTime", 60f);
+                        put("icon", TEItems.advancedChip);
+                    }},
+                    new ObjectMap(){{
+                        put("input", new ObjectMap(){{
+                            put("items", Seq.with(Items.silicon, 5));
+                        }});
+                        put("output", new ObjectMap(){{
+                            put("items", Seq.with(TEItems.specialChip, 1));
+                        }});
+                        put("craftTime", 60f);
+                        put("icon", TEItems.specialChip);
+                    }}
+            );
 
             drawer = new DrawMulti() {{
                 new DrawLiquidRegion() {{
@@ -413,8 +447,9 @@ public class TEBlocks {
                     suffix = "-chipBuild";
                 }};
             }};
-
-            consumeItem(Items.silicon, 3);
+            isConsumeFluid = true;
+            isConsumeItem = true;
+            isOutputItem = true;
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
         }};
 
