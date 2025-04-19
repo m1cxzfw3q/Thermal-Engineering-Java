@@ -294,14 +294,14 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-primaryWarAgreement/1"));
+                            put("items", Seq.with("temod-primaryWarAgreement", 1));
                         }});
                         put("craftTime", 10800f);
                         put("icon", "temod-primaryWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-primaryProductionAgreement/1"));
+                            put("items", Seq.with("temod-primaryProductionAgreement", 1));
                         }});
                         put("craftTime", 10800f);
                         put("icon", "temod-primaryProductionAgreement");
@@ -337,21 +337,21 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-advancedWarAgreement/1"));
+                            put("items", Seq.with("temod-advancedWarAgreement", 1));
                         }});
                         put("craftTime", 10800f);
                         put("icon", "temod-advancedWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-advancedProductionAgreement/1"));
+                            put("items", Seq.with("temod-advancedProductionAgreement", 1));
                         }});
                         put("craftTime", 10800f);
                         put("icon", "temod-advancedProductionAgreement");
                     }},
                     new ObjectMap(){{
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-highSpeedTransmissionProtocol/1"));
+                            put("items", Seq.with("temod-highSpeedTransmissionProtocol", 1));
                         }});
                         put("craftTime", 10800f);
                         put("icon", "temod-highSpeedTransmissionProtocol");
@@ -387,30 +387,30 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                            put("fluids", Seq.with("cryofluid", 10f / 60f));
                         }});
                         put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-specialWarAgreement/1"));
+                            put("items", Seq.with("temod-specialWarAgreement", 1));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialWarAgreement");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                            put("fluids", Seq.with("cryofluid", 10f / 60f));
                         }});
                         put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-specialProductionAgreement/1"));
+                            put("items", Seq.with("temod-specialProductionAgreement", 1));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialProductionAgreement");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                            put("fluids", Seq.with("cryofluid", 10f / 60f));
                         }});
                         put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-ultraRemoteTransmissionProtocol/1"));
+                            put("items", Seq.with("temod-ultraRemoteTransmissionProtocol", 1));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-ultraRemoteTransmissionProtocol");
@@ -453,20 +453,20 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with("silicon/2", "lead/1", "copper/1"));
+                            put("items", Seq.with("silicon", 2,  "lead", 1,  "copper", 1));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-primaryChip/1"));
+                            put("items", Seq.with("temod-primaryChip", 1));
                         }});
                         put("craftTime", 120f);
                         put("icon", "temod-primaryChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with("silicon/4", "lead/2", "copper/1"));
+                            put("items", Seq.with("silicon", 4,  "lead", 2, "copper", 1));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-advancedChip/1"));
+                            put("items", Seq.with("temod-advancedChip", 1));
                         }});
                         put("craftTime", 120f);
                         put("icon", "temod-advancedChip");
@@ -497,33 +497,33 @@ public class TEBlocks {
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with("silicon/3"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+                            put("items", Seq.with("silicon", 3));
+                            put("fluids", Seq.with("cryofluid", 5f / 60f));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-primaryChip/1"));
+                            put("items", Seq.with("temod-primaryChip", 1));
                         }});
-                        put("craftTime", 12f);
+                        put("craftTime", 4f);
                         put("icon", "temod-primaryChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with("silicon/4"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+                            put("items", Seq.with("silicon", 4));
+                            put("fluids", Seq.with("cryofluid", 5f / 60f));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-advancedChip/1"));
+                            put("items", Seq.with("temod-advancedChip", 1));
                         }});
-                        put("craftTime", 12f);
+                        put("craftTime", 8f);
                         put("icon", "temod-advancedChip");
                     }},
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
-                            put("items", Seq.with("silicon/5"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+                            put("items", Seq.with("silicon", 5));
+                            put("fluids", Seq.with("cryofluid", 5f / 60f));
                         }});
                         put("output", new ObjectMap(){{
-                            put("items", Seq.with("temod-specialChip/1"));
+                            put("items", Seq.with("temod-specialChip", 1));
                         }});
                         put("craftTime", 12f);
                         put("icon", "temod-specialChip");
