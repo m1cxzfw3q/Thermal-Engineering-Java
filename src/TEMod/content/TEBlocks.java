@@ -435,9 +435,8 @@ public class TEBlocks {
             drawer = new DrawTurret() {{
                 new RegionPart() {{
                     suffix = "-top";
-                    mirror = true;
-                    x = 0;
-                    y = 0;
+                    x = y = 0;
+                    moveX = 0;
                     moveY = -13;
                 }};
             }};
@@ -457,8 +456,7 @@ public class TEBlocks {
                         shootCone = 360f;
                         mirror = false;
                         reload = 1f;
-                        x = 0;
-                        y = 0;
+                        x = y = 0;
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
@@ -497,8 +495,8 @@ public class TEBlocks {
             range = 1000f;
             reload = 65f;
             liquidCapacity = 20f;
-            coolantMultiplier = 0.8f;
-            coolant = consume(new ConsumeLiquid(Liquids.water, 8f / 60f));
+            coolantMultiplier = 0.6f;
+            coolant = consume(new ConsumeLiquid(Liquids.water, 26f / 60f));
             maxAmmo = 320;
             ammoPerShot = 40;
             consumePower(1.5f);
@@ -526,7 +524,7 @@ public class TEBlocks {
             shootY = 0;
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
-                ammoMultiplier = 4;
+                ammoMultiplier = 4f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
@@ -541,8 +539,7 @@ public class TEBlocks {
                         shootCone = 360f;
                         mirror = false;
                         reload = 1f;
-                        x = 0;
-                        y = 0;
+                        x = y = 0;
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
@@ -560,7 +557,7 @@ public class TEBlocks {
                     }});
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
-                ammoMultiplier = 4;
+                ammoMultiplier = 4f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
@@ -575,8 +572,7 @@ public class TEBlocks {
                         shootCone = 360f;
                         mirror = false;
                         reload = 1f;
-                        x = 0;
-                        y = 0;
+                        x = y = 0;
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
@@ -593,6 +589,7 @@ public class TEBlocks {
                     }});
                 }};
             }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
+                ammoMultiplier = 1f;
                 reloadMultiplier = 0.01f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
                     speed = 8f;
@@ -609,13 +606,12 @@ public class TEBlocks {
                         shootCone = 360f;
                         mirror = false;
                         reload = 1f;
-                        x = 0;
-                        y = 0;
+                        x = y = 0;
                         deathExplosionEffect = Fx.reactorExplosion;
                         shootOnDeath = true;
                         shake = 10f;
                         range = 16f;
-                        bullet = new ExplosionBulletType(99999f, 300f) {{
+                        bullet = new ExplosionBulletType(45628f, 300f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
                                 lifetime = 6f;
