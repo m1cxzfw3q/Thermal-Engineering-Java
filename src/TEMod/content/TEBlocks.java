@@ -317,6 +317,7 @@ public class TEBlocks {
             isOutputItem = true;
             isConsumePower = true;
             hasPower = true;
+            canOverdrive = false;
         }};
 
         advancedLaboratory = new MultiCrafter("advancedLaboratory") {{
@@ -367,6 +368,7 @@ public class TEBlocks {
             isOutputItem = true;
             isConsumePower = true;
             hasPower = true;
+            canOverdrive = false;
         }};
 
         specialLaboratory = new MultiCrafter("specialLaboratory") {{
@@ -428,6 +430,7 @@ public class TEBlocks {
             isConsumeFluid = true;
             isConsumePower = true;
             hasPower = true;
+            canOverdrive = false;
         }};
 
         chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
@@ -449,6 +452,7 @@ public class TEBlocks {
             isConsumePower = true;
             isConsumeItem = true;
             hasPower = true;
+            canOverdrive = false;
 
             recipes = Seq.with(//能跑就行
                     new ObjectMap(){{
@@ -579,6 +583,7 @@ public class TEBlocks {
             minWarmup = 0.8f;
             shootWarmupSpeed = 0.055f;
             warmupMaintainTime = 120;
+            canOverdrive = false;
 
             drawer = new DrawTurret() {{
                 new RegionPart() {{
