@@ -193,6 +193,14 @@ public class TEBlocks {
                 knockback = 0.2F;
                 homingPower = 0.1f;
                 homingRange = 26f;
+            }},TEItems.primaryChip, new BasicBulletType(8.0F, 30.0F) {{
+                width = 2.0F;
+                height = 5.0F;
+                lifetime = 30.0F;
+                ammoMultiplier = 15.0F;
+                shootEffect = Fx.shootSmall;
+                homingPower = 0.2f;
+                homingRange = 30f;
             }});
             maxAmmo = 300;
             recoil = 0.7F;
