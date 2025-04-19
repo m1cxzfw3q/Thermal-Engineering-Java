@@ -316,6 +316,7 @@ public class TEBlocks {
             hasItems = true;
             isOutputItem = true;
             isConsumePower = true;
+            hasPower = true;
         }};
 
         advancedLaboratory = new MultiCrafter("advancedLaboratory") {{
@@ -365,6 +366,7 @@ public class TEBlocks {
             hasItems = true;
             isOutputItem = true;
             isConsumePower = true;
+            hasPower = true;
         }};
 
         specialLaboratory = new MultiCrafter("specialLaboratory") {{
@@ -417,6 +419,7 @@ public class TEBlocks {
             isOutputItem = true;
             isConsumeFluid = true;
             isConsumePower = true;
+            hasPower = true;
         }};
 
         chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
@@ -438,6 +441,7 @@ public class TEBlocks {
             isConsumeFluid = true;
             isConsumePower = true;
             isConsumeItem = true;
+            hasPower = true;
 
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
@@ -534,6 +538,7 @@ public class TEBlocks {
             isConsumePower = true;
             hasLiquids = true;
             hasItems = true;
+            hasPower = true;
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
         }};
 
