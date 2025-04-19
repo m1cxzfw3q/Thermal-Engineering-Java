@@ -11,6 +11,7 @@ import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
+import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootBarrel;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
@@ -427,6 +428,19 @@ public class TEBlocks {
             shootSound = Sounds.missileLaunch;
             recoil = 0f;
             shootY = 0;
+            minWarmup = 0.8f;
+            shootWarmupSpeed = 0.055f;
+            warmupMaintainTime = 120;
+
+            drawer = new DrawTurret() {{
+                new RegionPart() {{
+                    suffix = "-top";
+                    mirror = true;
+                    x = 0;
+                    y = 0;
+                    moveY = -13;
+                }};
+            }};
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
@@ -489,6 +503,9 @@ public class TEBlocks {
             ammoPerShot = 40;
             consumePower(1.5f);
             shootCone = 360;
+            minWarmup = 0.8f;
+            shootWarmupSpeed = 0.055f;
+            warmupMaintainTime = 120;
 
             shoot = new ShootBarrel() {{
                 shots = 4;
@@ -512,7 +529,7 @@ public class TEBlocks {
                 ammoMultiplier = 4;
                 spawnUnit = new MissileUnitType("missileLauncherMissile") {{
                     speed = 8f;
-                    lifetime = 5f * 60f;
+                    lifetime = 4f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
                     homingDelay = 80f;
@@ -546,7 +563,7 @@ public class TEBlocks {
                 ammoMultiplier = 4;
                 spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
                     speed = 8f;
-                    lifetime = 5f * 60f;
+                    lifetime = 4f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
                     homingDelay = 80f;
@@ -579,7 +596,7 @@ public class TEBlocks {
                 reloadMultiplier = 0.01f;
                 spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
                     speed = 8f;
-                    lifetime = 5f * 60f;
+                    lifetime = 4f * 60f;
                     trailLength = 11;
                     homingPower = 0.1f;
                     homingDelay = 80f;
@@ -587,6 +604,7 @@ public class TEBlocks {
                     health = 400f;
                     rotateSpeed = 15f;
                     deathSound = Sounds.explosionbig;
+                    range = 16f;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -630,7 +648,7 @@ public class TEBlocks {
             fuelItem = TEItems.nuclearFuelRod;
             heating = 0.1f;
             coolantPower = 2;
-            consumeItem(TEItems.nuclearFuelRod, (int) 0.6);
+            consumeItem(TEItems.nuclearFuelRod, (int) 1);
             consumeLiquid(Liquids.cryofluid, 0.5f / 60f);
             buildCostMultiplier = 3;
             requirements(
