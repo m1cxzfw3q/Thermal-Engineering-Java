@@ -495,11 +495,11 @@ public class TEBlocks {
             range = 1000f;
             reload = 65f;
             liquidCapacity = 20f;
-            coolantMultiplier = 0.6f;
+            coolantMultiplier = 0.5f;
             coolant = consume(new ConsumeLiquid(Liquids.water, 26f / 60f));
             maxAmmo = 320;
             ammoPerShot = 40;
-            consumePower(1.5f);
+            consumePower(6f);
             shootCone = 360;
             minWarmup = 0.8f;
             shootWarmupSpeed = 0.055f;
