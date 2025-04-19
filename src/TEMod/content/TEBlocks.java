@@ -795,7 +795,7 @@ public class TEBlocks {
             explosionDamage = 10000;
             explodeSound = Sounds.explosionbig;
             fuelItem = TEItems.nuclearFuelRod;
-            heating = 0.1f;
+            heating = 0.2f;
             coolantPower = 2;
             consumeItem(TEItems.nuclearFuelRod, (int) 1);
             consumeLiquid(Liquids.cryofluid, 0.5f / 60f);
