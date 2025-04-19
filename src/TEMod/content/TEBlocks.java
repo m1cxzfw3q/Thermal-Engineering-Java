@@ -386,25 +386,31 @@ public class TEBlocks {
 
             recipes = Seq.with(//ds给的代码，能跑就行
                     new ObjectMap(){{
-                        put("output", new ObjectMap(){{
+                        put("input", new ObjectMap() {{
+                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                        }});
+                        put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-specialWarAgreement/1"));
-                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialWarAgreement");
                     }},
                     new ObjectMap(){{
-                        put("output", new ObjectMap(){{
+                        put("input", new ObjectMap() {{
+                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                        }});
+                        put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-specialProductionAgreement/1"));
-                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-specialProductionAgreement");
                     }},
                     new ObjectMap(){{
-                        put("output", new ObjectMap(){{
+                        put("input", new ObjectMap() {{
+                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+                        }});
+                        put("output", new ObjectMap() {{
                             put("items", Seq.with("temod-ultraRemoteTransmissionProtocol/1"));
-                            put("fluids", Seq.with("cryofluid/10"));
                         }});
                         put("craftTime", 7200f);
                         put("icon", "temod-ultraRemoteTransmissionProtocol");
@@ -493,7 +499,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/3"));
-                            put("fluids", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-primaryChip/1"));
@@ -504,7 +510,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/4"));
-                            put("fluids", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-advancedChip/1"));
@@ -515,7 +521,7 @@ public class TEBlocks {
                     new ObjectMap(){{
                         put("input", new ObjectMap(){{
                             put("items", Seq.with("silicon/5"));
-                            put("fluids", Seq.with("cryofluid/5"));
+                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
                         }});
                         put("output", new ObjectMap(){{
                             put("items", Seq.with("temod-specialChip/1"));
