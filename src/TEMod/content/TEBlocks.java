@@ -536,16 +536,6 @@ public class TEBlocks {
                     suffix = "-cryo";
                 }};
 
-                new RegionPart() {{//临时的物品绘制
-                    x = y = 0;
-                    suffix = "-chipBuild";
-                }};
-
-                new RegionPart() {{
-                    x = y = 0;
-                    suffix = "";
-                }};
-
                 new DrawDefault();
             }};
             isConsumeItem = true;
