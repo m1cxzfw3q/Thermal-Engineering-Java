@@ -1,6 +1,7 @@
 package TEMod.content;
 
 import arc.graphics.Color;
+import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
 import mindustry.content.Fx;
 import mindustry.content.Items;
@@ -401,6 +402,18 @@ public class TEBlocks {
                     TEItems.advancedChip, 2,
                     TEItems.specialChip, 1
             );
+
+            drawer = new DrawMulti() {{
+                new DrawLiquidRegion() {{
+                    drawLiquid = Liquids.cryofluid;
+                    suffix = "-cryo";
+                }};
+
+                new RegionPart() {{//临时的物品绘制
+                    x = y = 0;
+                    suffix = "-chipBuild";
+                }};
+            }};
 
             consumeItem(Items.silicon, 3);
             consumeLiquid(Liquids.cryofluid, 3f / 60f);
