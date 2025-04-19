@@ -531,9 +531,15 @@ public class TEBlocks {
             );
 
             drawer = new DrawMulti() {{
+                new DrawRegion("-bottom");
+
                 new DrawLiquidRegion() {{
                     drawLiquid = Liquids.cryofluid;
                     suffix = "-cryo";
+                }};
+
+                new DrawRegion() {{
+                    suffix = "-chipBuild";
                 }};
 
                 new DrawDefault();
