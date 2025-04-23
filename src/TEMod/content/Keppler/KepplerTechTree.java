@@ -3,6 +3,7 @@ package TEMod.content.Keppler;
 import TEMod.content.TEBlocks;
 import TEMod.content.TEItems;
 import arc.struct.Seq;
+import arc.util.Log;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -24,6 +25,7 @@ public class KepplerTechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
+
         KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreShard, () -> {
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon,
@@ -228,6 +230,9 @@ public class KepplerTechTree {
                 ), () ->{});
             });
         });
+
+        //end
+        Log.info("[Themal-Enginerring] Loading 'KepplerTechTree'");
     }
 
     public static void addToNext(UnlockableContent content, Runnable run) {

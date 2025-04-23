@@ -1,6 +1,8 @@
 package TEMod.content.Keppler;
 
 import arc.graphics.Color;
+import arc.util.Log;
+import mindustry.content.Blocks;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
@@ -43,6 +45,10 @@ public class KepplerPlanet {
             startSector = 53;
             alwaysUnlocked = true;
             landCloudColor = Color.valueOf("89d2ff");
+            defaultCore = Blocks.coreNucleus;
         }};
+
+        //end
+        Log.info("[Themal-Enginerring] Loading 'KepplerPlanet'");
     }
 }

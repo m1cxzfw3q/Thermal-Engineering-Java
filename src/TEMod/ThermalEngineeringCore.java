@@ -3,6 +3,7 @@ package TEMod;
 import TEMod.content.*;
 import TEMod.content.Keppler.*;
 import arc.Events;
+import arc.util.Log;
 import arc.util.Time;
 import mindustry.mod.Mod;
 import mindustry.game.EventType;
@@ -25,5 +26,7 @@ public class ThermalEngineeringCore extends Mod {
         KepplerPlanet.load();
         KepplerSectorPresets.load();
         KepplerTechTree.load();
+        //end
+        Log.info("[Themal-Enginerring] Project loading is completed");
     }
 }

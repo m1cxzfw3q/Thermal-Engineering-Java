@@ -1,5 +1,6 @@
 package TEMod.content.Keppler;
 
+import arc.util.Log;
 import mindustry.type.SectorPreset;
 
 import static TEMod.content.Keppler.KepplerPlanet.*;
@@ -25,5 +26,8 @@ public class KepplerSectorPresets {
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
         }};
+
+        //end
+        Log.info("[Themal-Enginerring] Loading 'KepplerSectorPresets'");
     }
 }

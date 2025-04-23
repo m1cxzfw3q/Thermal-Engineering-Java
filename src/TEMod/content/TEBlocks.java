@@ -7,6 +7,7 @@ import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
 import arc.struct.Seq;
+import arc.util.Log;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -934,5 +935,9 @@ public class TEBlocks {
                     TEItems.advancedChip, 20
             ));
         }};
+
+
+        //end
+        Log.info("[Themal-Enginerring] Loading 'TEBlocks'");
     }
 }

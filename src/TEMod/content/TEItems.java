@@ -1,5 +1,6 @@
 package TEMod.content;
 
+import arc.util.Log;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
@@ -87,5 +88,8 @@ public class TEItems {
             alwaysUnlocked = false;
             cost = 0.6f;
         }};
+
+        //end
+        Log.info("[Themal-Enginerring] Loading 'TEItems'");
     }
 }
