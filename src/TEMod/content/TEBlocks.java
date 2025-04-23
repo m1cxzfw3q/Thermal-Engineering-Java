@@ -2,16 +2,14 @@ package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
 import TEMod.MultiCraftLib.Recipe;
+import arc.Core;
 import arc.graphics.Color;
 import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
 import arc.struct.Seq;
 import arc.util.Log;
-import mindustry.content.Fx;
-import mindustry.content.Items;
-import mindustry.content.Liquids;
-import mindustry.content.StatusEffects;
+import mindustry.content.*;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
 import mindustry.entities.effect.MultiEffect;
@@ -19,13 +17,16 @@ import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
 import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootBarrel;
+import mindustry.game.Team;
 import mindustry.gen.Sounds;
+import mindustry.gen.TileOp;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.Weapon;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
+import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
@@ -34,6 +35,7 @@ import mindustry.world.blocks.power.NuclearReactor;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.blocks.sandbox.ItemSource;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.consumers.ConsumeLiquid;
@@ -42,7 +44,9 @@ import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
 import static arc.Core.input;
+import static mindustry.Vars.state;
 import static mindustry.content.Fx.none;
+import static mindustry.content.Fx.shieldApply;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
@@ -73,8 +77,10 @@ public class TEBlocks {
     //物流
     public static Block simpleStorage; //简易储存器
     public static Block highSpeedUnloader; //高速装卸器
+    //核心
+    public static Block coreExplore; //探索核心
 
-    public static void load() {
+    public static void load() throws InstantiationException, IllegalAccessException {
         machineCannon = new ItemTurret("machineCannon") {{
             requirements(
                     Category.turret, with(
@@ -934,6 +940,27 @@ public class TEBlocks {
                     Items.graphite, 790,
                     TEItems.advancedChip, 20
             ));
+        }};
+
+        coreExplore = new CoreBlock("coreExplore") {{
+            health = 2000;
+            itemCapacity = 0;
+            unitCapModifier = 0;
+            thrusterLength = 20/4f;
+            isFirstTier = true;
+            armor = 15;
+            canBreak(
+                    Tile.class.newInstance()
+            );
+            size = 3;
+            unitType = UnitTypes.alpha;
+            requirements(Category.effect, with(
+                    Items.copper, 1000,
+                    Items.lead, 1200,
+                    Items.graphite, 500,
+                    Items.silicon, 400
+            ));
+            canPlaceOn(Tile.class.newInstance(), Team.get(1), 0);
         }};
 
 

@@ -14,6 +14,7 @@ import mindustry.type.Item;
 import mindustry.type.ItemStack;
 
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
+import static TEMod.content.TEBlocks.coreExplore;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.SectorPresets.craters;
@@ -26,7 +27,7 @@ public class KepplerTechTree {
 
     public static void load() {
 
-        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreShard, () -> {
+        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreExplore, () -> {
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon,
                         ItemStack.with(
