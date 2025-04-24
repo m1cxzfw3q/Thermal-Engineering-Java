@@ -963,7 +963,6 @@ public class TEBlocks {
 
         gwangHee = new MultiChargeTurret("gwangHee") {{
             health = 1024;
-            size = 1;
             hasPower = true;
             consumePower(150f / 60f);
         }};
