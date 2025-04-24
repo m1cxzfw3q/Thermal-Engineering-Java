@@ -27,6 +27,6 @@ public class ThermalEngineeringCore extends Mod {
         KepplerSectorPresets.load();
         KepplerTechTree.load();
         //end
-        Log.info("[Themal-Enginerring] Project loading is completed");
+        Log.info("[Thermal-Engineering] Project loading is completed");
     }
 }

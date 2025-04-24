@@ -10,7 +10,6 @@ import mindustry.content.Liquids;
 import mindustry.content.TechTree;
 import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
-import mindustry.type.Item;
 import mindustry.type.ItemStack;
 
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
@@ -233,7 +232,7 @@ public class KepplerTechTree {
         });
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'KepplerTechTree'");
+        Log.info("[Thermal-Engineering] Loading 'KepplerTechTree'");
     }
 
     public static void addToNext(UnlockableContent content, Runnable run) {

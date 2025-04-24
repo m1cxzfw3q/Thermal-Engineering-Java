@@ -90,6 +90,6 @@ public class TEItems {
         }};
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'TEItems'");
+        Log.info("[Thermal-Engineering] Loading 'TEItems'");
     }
 }

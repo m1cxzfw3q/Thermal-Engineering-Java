@@ -49,6 +49,6 @@ public class KepplerPlanet {
         }};
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'KepplerPlanet'");
+        Log.info("[Thermal-Engineering] Loading 'KepplerPlanet'");
     }
 }

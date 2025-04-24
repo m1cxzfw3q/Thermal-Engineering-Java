@@ -28,6 +28,6 @@ public class KepplerSectorPresets {
         }};
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'KepplerSectorPresets'");
+        Log.info("[Thermal-Engineering] Loading 'KepplerSectorPresets'");
     }
 }

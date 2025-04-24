@@ -9,9 +9,7 @@ import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.BasicBulletType;
-import mindustry.entities.bullet.BulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
-import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
@@ -806,7 +804,7 @@ public class TEBlocks {
             fuelItem = TEItems.nuclearFuelRod;
             heating = 0.2f;
             coolantPower = 2;
-            consumeItem(TEItems.nuclearFuelRod, (int) 1);
+            consumeItem(TEItems.nuclearFuelRod, 1);
             consumeLiquid(Liquids.cryofluid, 0.5f / 60f);
             buildCostMultiplier = 3;
             requirements(
@@ -972,6 +970,6 @@ public class TEBlocks {
 
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'TEBlocks'");
+        Log.info("[Thermal-Engineering] Loading 'TEBlocks'");
     }
 }

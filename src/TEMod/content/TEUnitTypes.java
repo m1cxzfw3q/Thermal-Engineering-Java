@@ -7,6 +7,6 @@ public class TEUnitTypes {
 
 
         //end
-        Log.info("[Themal-Enginerring] Loading 'TEUnitTypes'");
+        Log.info("[Thermal-Engineering] Loading 'TEUnitTypes'");
     }
 }
