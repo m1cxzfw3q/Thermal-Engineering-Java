@@ -1,6 +1,7 @@
 package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
+import TEMod.TECustom.MultiChargeTurret;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
@@ -8,7 +9,9 @@ import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.bullet.BulletType;
 import mindustry.entities.bullet.ExplosionBulletType;
+import mindustry.entities.bullet.LaserBulletType;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
@@ -45,7 +48,6 @@ public class TEBlocks {
     //矿石
     public static OreBlock oreUranium;
     //基础方块
-    public static Block machineCannon; //机炮
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block portableMissileLaunchSilo; //便携式导弹发射井
     public static Block missileLauncher; //导弹发射井
@@ -68,6 +70,9 @@ public class TEBlocks {
     public static Block highSpeedUnloader; //高速装卸器
     //核心
     public static Block coreExplore; //探索核心
+    //炮台
+    public static Block machineCannon; //机炮
+    public static Block gwangHee; //光熙
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -957,6 +962,13 @@ public class TEBlocks {
                 return editor;
             }
         };
+
+        gwangHee = new MultiChargeTurret("gwangHee") {{
+            health = 1024;
+            size = 1;
+            hasPower = true;
+            consumePower(150f / 60f);
+        }};
 
 
         //end
