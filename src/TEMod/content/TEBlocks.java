@@ -22,6 +22,7 @@ import mindustry.type.ItemStack;
 import mindustry.type.Weapon;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
+import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
@@ -71,6 +72,8 @@ public class TEBlocks {
     //炮台
     public static Block machineCannon; //机炮
     public static Block gwangHee; //光熙
+    //墙
+    public static Block mirrorWall; //镜面之墙
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -949,15 +952,12 @@ public class TEBlocks {
                     Items.graphite, 500,
                     Items.silicon, 400
             ));
-            canBreak(true);
-            canPlaceOn(true);
+            canBreak();
+            canPlaceOn();
         }
-            private boolean canPlaceOn(boolean b) {
-                return b;
+            public void canBreak() {
             }
-
-            private boolean canBreak(boolean editor) {
-                return editor;
+            public void canPlaceOn() {
             }
         };
 
@@ -966,6 +966,25 @@ public class TEBlocks {
             size = 1;
             hasPower = true;
             consumePower(150f / 60f);
+        }};
+
+        mirrorWall = new Wall("mirrorWall") {{
+            health = 3000;
+            requirements(
+                    Category.defense, with(
+                            Items.metaglass, 48,
+                            Items.silicon, 24,
+                            Items.surgeAlloy, 24,
+                            Items.thorium, 24,
+                            Items.plastanium, 48
+                    )
+            );
+            size = 2;
+            insulated = true;
+            absorbLasers = true;
+            schematicPriority = 10;
+            chanceDeflect = 100F;
+            flashHit = true;
         }};
 
 
