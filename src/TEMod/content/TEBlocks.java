@@ -1,10 +1,7 @@
 package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
-import TEMod.MultiCraftLib.Recipe;
-import arc.Core;
 import arc.graphics.Color;
-import arc.graphics.g2d.TextureAtlas;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
 import arc.struct.Seq;
@@ -17,16 +14,13 @@ import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
 import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootBarrel;
-import mindustry.game.Team;
 import mindustry.gen.Sounds;
-import mindustry.gen.TileOp;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.Weapon;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
-import mindustry.world.Tile;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
@@ -34,7 +28,6 @@ import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.power.NuclearReactor;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
-import mindustry.world.blocks.sandbox.ItemSource;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
@@ -43,14 +36,10 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
-import static arc.Core.input;
-import static mindustry.Vars.state;
 import static mindustry.content.Fx.none;
-import static mindustry.content.Fx.shieldApply;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
-import static mindustry.world.meta.StatUnit.items;
 
 public class TEBlocks {
     //矿石
@@ -80,7 +69,7 @@ public class TEBlocks {
     //核心
     public static Block coreExplore; //探索核心
 
-    public static void load() throws InstantiationException, IllegalAccessException {
+    public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
             requirements(
                     Category.turret, with(
@@ -949,9 +938,6 @@ public class TEBlocks {
             thrusterLength = 20/4f;
             isFirstTier = true;
             armor = 15;
-            canBreak(
-                    Tile.class.newInstance()
-            );
             size = 3;
             unitType = UnitTypes.alpha;
             requirements(Category.effect, with(
@@ -960,8 +946,17 @@ public class TEBlocks {
                     Items.graphite, 500,
                     Items.silicon, 400
             ));
-            canPlaceOn(Tile.class.newInstance(), Team.get(1), 0);
-        }};
+            canBreak(true);
+            canPlaceOn(true);
+        }
+            private boolean canPlaceOn(boolean b) {
+                return b;
+            }
+
+            private boolean canBreak(boolean editor) {
+                return editor;
+            }
+        };
 
 
         //end

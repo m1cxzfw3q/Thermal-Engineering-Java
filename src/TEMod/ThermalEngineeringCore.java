@@ -21,11 +21,7 @@ public class ThermalEngineeringCore extends Mod {
     @Override
     public void loadContent() {
         TEItems.load();
-        try {
-            TEBlocks.load();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        TEBlocks.load();
         TEUnitTypes.load();
         KepplerPlanet.load();
         KepplerSectorPresets.load();
