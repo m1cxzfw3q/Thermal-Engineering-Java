@@ -23,6 +23,7 @@ import mindustry.type.ItemStack;
 import mindustry.type.Weapon;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
+import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
@@ -80,6 +81,7 @@ public class TEBlocks {
     //发射台
     public static Block unitLauncher; //单位发射台
     public static Block advancedUnitLauncher; //高级单位发射台
+    public static Block advancedLaunchPad; //高级发射台
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -989,6 +991,19 @@ public class TEBlocks {
 
         unitLauncher = new UnitLauncher("unitLauncher");
         advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher");
+
+        advancedLaunchPad = new LaunchPad("advancedLaunchPad") {{
+            requirements(
+                    Category.effect,
+                    BuildVisibility.campaignOnly,
+                    with(Items.copper, 400, Items.silicon, 200, Items.lead, 300, Items.titanium, 200, Items.thorium, 100)
+            );
+            health = 500;
+            size = 4;
+            hasPower = true;
+            launchTime = 700f;
+            consumePower(10f);
+        }};
 
 
         //end

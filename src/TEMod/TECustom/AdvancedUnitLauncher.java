@@ -1,5 +1,6 @@
 package TEMod.TECustom;
 
+import TEMod.content.TEItems;
 import arc.math.geom.Vec2;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -30,7 +31,8 @@ public class AdvancedUnitLauncher extends UnitLauncher {
                         Items.titanium, 300,
                         Items.silicon, 350,
                         Items.thorium, 350,
-                        Items.plastanium, 200
+                        Items.plastanium, 200,
+                        TEItems.primaryChip, 30
                 )
         );
     }

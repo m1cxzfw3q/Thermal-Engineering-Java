@@ -13,7 +13,7 @@ import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
-import static TEMod.content.TEBlocks.coreExplore;
+import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.SectorPresets.craters;
@@ -161,6 +161,36 @@ public class KepplerTechTree {
                             new Objectives.Research(vault),
                             new Objectives.Research(TEItems.highSpeedTransmissionProtocol)
                     ), () -> {});
+                });
+                node(TEBlocks.advancedLaunchPad, ItemStack.with(
+
+                ), Seq.with(
+                        new Objectives.Research(launchPad),
+                        new Objectives.SectorComplete(LandingArea)
+                ), () ->{
+                    node(TEBlocks.unitLauncher, ItemStack.with(
+                            Items.copper, 600,
+                            Items.lead, 8000,
+                            Items.silicon, 9000,
+                            Items.thorium, 3000
+                    ), Seq.with(
+                            new Objectives.Research(advancedLaunchPad),
+                            new Objectives.SectorComplete(ResearchAreaNo47)
+                    ), () -> {
+                        node(TEBlocks.advancedUnitLauncher, ItemStack.with(
+                                Items.copper, 8000,
+                                Items.lead, 600,
+                                Items.titanium, 3000,
+                                Items.silicon, 6000,
+                                Items.thorium, 4500,
+                                Items.plastanium, 5000,
+                                TEItems.primaryChip, 1000
+                        ), Seq.with(
+                                new Objectives.Research(unitLauncher),
+                                new Objectives.SectorComplete(ResearchAreaNo47),
+                                new Objectives.Research(TEItems.primaryChip)
+                        ), () -> {});
+                    });
                 });
             });
 
