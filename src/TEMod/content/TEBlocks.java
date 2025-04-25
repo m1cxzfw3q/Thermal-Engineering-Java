@@ -28,6 +28,7 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.power.NuclearReactor;
+import mindustry.world.blocks.production.Drill;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.blocks.storage.CoreBlock;
@@ -38,6 +39,7 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
+import static mindustry.content.Blocks.blastDrill;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
@@ -1062,6 +1064,24 @@ public class TEBlocks {
             schematicPriority = 10;
             chanceDeflect = 100F;
             flashHit = true;
+        }};
+
+        blastDrill = new Drill("blast-drill") {{
+            requirements(Category.production, ItemStack.with(new Object[]{Items.copper, 65, Items.silicon, 60, Items.titanium, 50, Items.thorium, 75}));
+            drillTime = 210F;
+            size = 4;
+            drawRim = true;
+            hasPower = true;
+            tier = 5;
+            updateEffect = Fx.pulverizeRed;
+            updateEffectChance = 0.03F;
+            drillEffect = Fx.mineHuge;
+            rotateSpeed = 7F;
+            warmupSpeed = 0.01F;
+            itemCapacity = 20;
+            liquidBoostIntensity = 2.6F;
+            consumePower(3.5F);
+            consumeLiquid(Liquids.water, 0.2F).boost();
         }};
 
 
