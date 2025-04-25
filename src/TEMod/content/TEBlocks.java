@@ -2,6 +2,7 @@ package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
 import TEMod.TECustom.AdvancedUnitLauncher;
+import TEMod.TECustom.PortableCoreBlock;
 import TEMod.TECustom.UnitLauncher;
 import arc.graphics.Color;
 import arc.math.Interp;
@@ -9,7 +10,6 @@ import arc.struct.ObjectMap;
 import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
-import mindustry.entities.Effect;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
@@ -30,7 +30,6 @@ import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.power.NuclearReactor;
-import mindustry.world.blocks.production.Drill;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.blocks.storage.CoreBlock;
@@ -41,7 +40,6 @@ import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 
-import static mindustry.content.Blocks.blastDrill;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
@@ -946,12 +944,13 @@ public class TEBlocks {
             ));
         }};
 
-        coreExplore = new CoreBlock("coreExplore") {{
+        coreExplore = new PortableCoreBlock("coreExplore") {{
             health = 2000;
             itemCapacity = 0;
             unitCapModifier = 0;
             thrusterLength = 20/4f;
             isFirstTier = true;
+            alwaysUnlocked = true;
             armor = 15;
             size = 3;
             unitType = UnitTypes.alpha;
@@ -961,14 +960,7 @@ public class TEBlocks {
                     Items.graphite, 500,
                     Items.silicon, 400
             ));
-            canBreak();
-            canPlaceOn();
-        }
-            public void canBreak() {
-            }
-            public void canPlaceOn() {
-            }
-        };
+        }};
 
         mirrorWall = new Wall("mirrorWall") {{
             health = 3000;
