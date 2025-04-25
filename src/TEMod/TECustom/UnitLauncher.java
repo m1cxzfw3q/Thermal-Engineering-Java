@@ -4,6 +4,7 @@ import arc.*;
 import arc.graphics.g2d.Draw;
 import arc.math.*;
 import arc.math.geom.Vec2;
+import arc.struct.EnumSet;
 import arc.util.*;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
@@ -12,6 +13,8 @@ import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.meta.BlockFlag;
+import mindustry.world.meta.BuildVisibility;
 
 public class UnitLauncher extends Block {
     public float launchDelay = 60f; // 发射准备时间（帧）
@@ -20,6 +23,16 @@ public class UnitLauncher extends Block {
 
     public UnitLauncher(String name) {
         super(name);
+
+        inEditor = false;
+        hasPower = true;
+        hasItems = true;
+        solid = true;
+        itemCapacity = 50;
+        update = true;
+
+        flags = EnumSet.of(BlockFlag.launchPad);
+        buildVisibility = BuildVisibility.campaignOnly;
     }
 
     public class UnitLauncherBuild extends Building {
@@ -32,24 +45,27 @@ public class UnitLauncher extends Block {
             super.updateTile();
 
             // 持续电力消耗
-            if(consValid()){
+            if(consValid()) {
                 progressLaunch();
-            }else{
+            } else {
                 interruptLaunch();
             }
+        }
+
+        public UnitLauncherBuild() {
         }
 
         // 处理单位进入
         @Override
         public void unitOn(Unit unit) {
-            if(canLoadUnit(unit)){
+            if(canLoadUnit(unit)) {
                 loadUnit(unit);
             }
         }
 
         // 装载单位逻辑
         public void loadUnit(Unit unit) {
-            if(loadedUnit == null && items.has(costItem, costAmount)){
+            if(loadedUnit == null && items.has(costItem, costAmount)) {
                 loadedUnit = unit;
                 unit.rotation(90f); // 调整单位方向
                 unit.trns(x, y);    // 移动单位到发射台中心
@@ -59,7 +75,7 @@ public class UnitLauncher extends Block {
 
         // 开始发射流程
         public void beginLaunch(Vec2 target) {
-            if(loadedUnit != null && consValid()){
+            if(loadedUnit != null && consValid()) {
                 targetPos = target.cpy();
                 launchProgress = 0f;
             }
@@ -119,7 +135,7 @@ public class UnitLauncher extends Block {
 
         // 中断发射
         public void interruptLaunch() {
-            if(launchProgress > 0){
+            if(launchProgress > 0) {
                 // 退回部分资源
                 items.add(costItem, (int)(costAmount * launchProgress));
                 launchProgress = 0f;
@@ -128,8 +144,10 @@ public class UnitLauncher extends Block {
 
         // 判断可装载单位类型
         public boolean canLoadUnit(Unit unit) {
-            return unit.isPlayer() ||
-                    unit.type.canBoost;
+            // 允许装载所有友方地面单位
+            return unit.team == team &&
+                    !unit.isFlying() &&
+                    unit.type != UnitTypes.block;
         }
 
         // 修正后的绘图方法
@@ -137,11 +155,11 @@ public class UnitLauncher extends Block {
         public void draw() {
             super.draw();
 
-            if(loadedUnit != null){
+            if(loadedUnit != null) {
                 loadedUnit.draw();
             }
 
-            if(launchProgress > 0){
+            if(launchProgress > 0) {
                 Draw.color(Pal.accent);
                 Draw.rect(Core.atlas.find("launch-progress"),
                         x, y + 6f,
@@ -168,6 +186,11 @@ public class UnitLauncher extends Block {
                 int unitId = read.i();
                 loadedUnit = Groups.unit.getByID(unitId);
             }
+        }
+
+        @Override
+        public byte version() {
+            return 1; // 版本号用于存档兼容
         }
     }
 }

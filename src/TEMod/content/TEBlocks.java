@@ -985,9 +985,6 @@ public class TEBlocks {
         unitLauncher = new UnitLauncher("unitLauncher") {{
             size = 3;
             health = 1200;
-            hasPower = true;
-            hasItems = true;
-            solid = true;
 
             consumePower(5f / 60f);
             requirements(
@@ -1000,18 +997,13 @@ public class TEBlocks {
             );
 
             unitCapModifier = 10;
-            itemCapacity = 50;
         }};
 
         advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher") {{
-            health = 1200;
-            hasPower = true;
-            hasItems = true;
-            solid = true;
+            health = 1500;
             size = 5;
             launchDelay = 30f;
             unitCapModifier = 25;
-            itemCapacity = 50;
             liquidCapacity = 30;
 
             // 添加液体冷却需求
