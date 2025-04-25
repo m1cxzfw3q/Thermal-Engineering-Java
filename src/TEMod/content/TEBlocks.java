@@ -1,6 +1,8 @@
 package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
+import TEMod.TECustom.AdvancedUnitLauncher;
+import TEMod.TECustom.UnitLauncher;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
@@ -75,6 +77,9 @@ public class TEBlocks {
     public static Block gwangHee; //光熙
     //墙
     public static Block mirrorWall; //镜面之墙
+    //发射台
+    public static Block unitLauncher; //单位发射台
+    public static Block advancedUnitLauncher; //高级单位发射台
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -777,6 +782,7 @@ public class TEBlocks {
                         range = 16f;
                         bullet = new ExplosionBulletType(45628f, 300f) {{
                             hitColor = Pal.redLight;
+                            pierceArmor = true;
                             shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
                                 lifetime = 6f;
                                 strokeFrom = 4f;
@@ -981,23 +987,8 @@ public class TEBlocks {
             flashHit = true;
         }};
 
-        blastDrill = new Drill("blast-drill") {{
-            requirements(Category.production, ItemStack.with(new Object[]{Items.copper, 65, Items.silicon, 60, Items.titanium, 50, Items.thorium, 75}));
-            drillTime = 210F;
-            size = 4;
-            drawRim = true;
-            hasPower = true;
-            tier = 5;
-            updateEffect = Fx.pulverizeRed;
-            updateEffectChance = 0.03F;
-            drillEffect = Fx.mineHuge;
-            rotateSpeed = 7F;
-            warmupSpeed = 0.01F;
-            itemCapacity = 20;
-            liquidBoostIntensity = 2.6F;
-            consumePower(3.5F);
-            consumeLiquid(Liquids.water, 0.2F).boost();
-        }};
+        unitLauncher = new UnitLauncher("unitLauncher");
+        advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher");
 
 
         //end
