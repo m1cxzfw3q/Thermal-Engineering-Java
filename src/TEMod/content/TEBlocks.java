@@ -39,6 +39,7 @@ import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
+import mindustry.world.modules.LiquidModule;
 
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
@@ -981,8 +982,54 @@ public class TEBlocks {
             flashHit = true;
         }};
 
-        unitLauncher = new UnitLauncher("unitLauncher");
-        advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher");
+        unitLauncher = new UnitLauncher("unitLauncher") {{
+            size = 3;
+            health = 1200;
+            hasPower = true;
+            hasItems = true;
+            solid = true;
+
+            consumePower(5f / 60f);
+            requirements(
+                    Category.effect, with(
+                            Items.copper, 450,
+                            Items.lead, 600,
+                            Items.silicon, 300,
+                            Items.thorium, 150
+                    )
+            );
+
+            unitCapModifier = 10;
+            itemCapacity = 50;
+        }};
+
+        advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher") {{
+            health = 1200;
+            hasPower = true;
+            hasItems = true;
+            solid = true;
+            size = 5;
+            launchDelay = 30f;
+            unitCapModifier = 25;
+            itemCapacity = 50;
+            liquidCapacity = 30;
+
+            // 添加液体冷却需求
+            consumeLiquid(Liquids.cryofluid, 0.2f);
+            consumePower(7f / 60f);
+
+            requirements(
+                    Category.effect, with(
+                            Items.copper, 600,
+                            Items.lead, 450,
+                            Items.titanium, 300,
+                            Items.silicon, 350,
+                            Items.thorium, 350,
+                            Items.plastanium, 200,
+                            TEItems.primaryChip, 30
+                    )
+            );
+        }};
 
         advancedLaunchPad = new LaunchPad("advancedLaunchPad") {{
             requirements(
@@ -995,6 +1042,7 @@ public class TEBlocks {
             hasPower = true;
             launchTime = 700f;
             consumePower(10f);
+            itemCapacity = 200;
         }};
 
 

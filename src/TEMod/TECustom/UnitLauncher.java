@@ -13,36 +13,13 @@ import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.world.*;
 
-import static mindustry.type.ItemStack.with;
-
 public class UnitLauncher extends Block {
-    // 配置参数
     public float launchDelay = 60f; // 发射准备时间（帧）
     public Item costItem = Items.silicon; // 消耗物品
     public int costAmount = 25;      // 每次发射消耗量
 
     public UnitLauncher(String name) {
         super(name);
-
-        // 基础属性配置
-        size = 3;
-        health = 1200;
-        hasPower = true;
-        hasItems = true;
-        solid = true;
-
-        consumePower(5f / 60f);
-        requirements(
-                Category.effect, with(
-                        Items.copper, 450,
-                        Items.lead, 600,
-                        Items.silicon, 300,
-                        Items.thorium, 150
-                )
-        );
-
-        // 允许单位进入
-        unitCapModifier = 10;
     }
 
     public class UnitLauncherBuild extends Building {

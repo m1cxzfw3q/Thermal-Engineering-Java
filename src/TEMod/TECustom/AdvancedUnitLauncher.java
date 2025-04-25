@@ -1,40 +1,14 @@
 package TEMod.TECustom;
 
-import TEMod.content.TEItems;
 import arc.math.geom.Vec2;
-import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.content.StatusEffects;
 import mindustry.gen.Unit;
-import mindustry.type.Category;
-
-import static mindustry.type.ItemStack.with;
 
 // 添加多方块升级版本
 public class AdvancedUnitLauncher extends UnitLauncher {
     public AdvancedUnitLauncher(String name) {
         super(name);
-
-        // 增强参数
-        size = 5;
-        launchDelay = 30f;
-        unitCapModifier = 25;
-
-        // 添加液体冷却需求
-        consumeLiquid(Liquids.cryofluid, 0.1f);
-        consumePower(7f / 60f);
-
-        requirements(
-                Category.effect, with(
-                        Items.copper, 600,
-                        Items.lead, 450,
-                        Items.titanium, 300,
-                        Items.silicon, 350,
-                        Items.thorium, 350,
-                        Items.plastanium, 200,
-                        TEItems.primaryChip, 30
-                )
-        );
     }
 
     public class AdvancedLauncherBuild extends UnitLauncherBuild {
