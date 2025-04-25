@@ -1007,7 +1007,7 @@ public class TEBlocks {
             liquidCapacity = 30;
 
             // 添加液体冷却需求
-            consumeLiquid(Liquids.cryofluid, 0.2f);
+            consumeLiquid(Liquids.cryofluid, 0.1f);
             consumePower(7f / 60f);
 
             requirements(

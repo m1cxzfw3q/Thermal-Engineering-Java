@@ -30,6 +30,7 @@ public class UnitLauncher extends Block {
         solid = true;
         itemCapacity = 50;
         update = true;
+        category = Category.effect;
 
         flags = EnumSet.of(BlockFlag.launchPad);
         buildVisibility = BuildVisibility.campaignOnly;
