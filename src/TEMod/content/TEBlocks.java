@@ -8,8 +8,8 @@ import arc.struct.ObjectMap;
 import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
-import mindustry.entities.bullet.BasicBulletType;
-import mindustry.entities.bullet.ExplosionBulletType;
+import mindustry.entities.Effect;
+import mindustry.entities.bullet.*;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
@@ -965,6 +965,84 @@ public class TEBlocks {
             health = 1024;
             hasPower = true;
             consumePower(150f / 60f);
+            MultiCharge(
+                    new LightningBulletType() {{
+                        damage = 20f;
+                        lightningLength = 25;
+                        ammoMultiplier = 1f;
+                        buildingDamageMultiplier = 0.5f;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        lightningType = new BulletType(1.0E-4F, 0.0F) {{
+                            lifetime = Fx.lightning.lifetime;
+                            hitEffect = Fx.hitLancer;
+                            despawnEffect = Fx.none;
+                            status = StatusEffects.shocked;
+                            statusDuration = 10.0F;
+                            hittable = false;
+                            lightColor = Color.white;
+                            buildingDamageMultiplier = 0.5f;
+                        }};
+                    }}, new LaserBulletType(200f) {{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4F), Pal.lancerLaser, Color.white};
+                        length = 26.625f * 8f;
+                        hitSize = 4.0F;
+                        lifetime = 16.0F;
+                        drawSize = 400.0F;
+                        ammoMultiplier = 1.0F;
+                        pierceCap = 6;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        hitEffect = Fx.hitLancer;
+                        buildingDamageMultiplier = 0.5f;
+                    }}, new LaserBulletType(540f) {{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4F), Pal.lancerLaser, Color.white};
+                        length = 51.625f * 8f;
+                        hitSize = 4.0F;
+                        lifetime = 16.0F;
+                        drawSize = 400.0F;
+                        ammoMultiplier = 1.0F;
+                        pierceCap = 10;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        hitEffect = Fx.hitLancer;
+                        buildingDamageMultiplier = 0.5f;
+                    }}, new LaserBulletType(760f) {{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4F), Pal.lancerLaser, Color.white};
+                        length = 76.625f * 8f;
+                        hitSize = 4.0F;
+                        lifetime = 16.0F;
+                        drawSize = 400.0F;
+                        ammoMultiplier = 1.0F;
+                        pierceCap = 25;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        hitEffect = Fx.hitLancer;
+                        buildingDamageMultiplier = 0.5f;
+                    }}, new LaserBulletType(1350f) {{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4F), Pal.lancerLaser, Color.white};
+                        length = 126.625f * 8f;
+                        hitSize = 4.0F;
+                        lifetime = 16.0F;
+                        drawSize = 400.0F;
+                        ammoMultiplier = 1.0F;
+                        pierceCap = 60;
+                        pierceBuilding = true;
+                        pierceArmor = true;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        hitEffect = Fx.hitLancer;
+                        buildingDamageMultiplier = 0.5f;
+                    }}, new LaserBulletType(2000f) {{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4F), Pal.lancerLaser, Color.white};
+                        length = 161.625f * 8f;
+                        hitSize = 8.0F;
+                        lifetime = 32.0F;
+                        drawSize = 400.0F;
+                        ammoMultiplier = 1.0F;
+                        pierce = true;
+                        pierceBuilding = true;
+                        pierceArmor = true;
+                        chargeEffect = new MultiEffect(new Effect[]{Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin});
+                        hitEffect = Fx.hitLancer;
+                        buildingDamageMultiplier = 0.5f;
+                    }}
+            );
         }};
 
         mirrorWall = new Wall("mirrorWall") {{

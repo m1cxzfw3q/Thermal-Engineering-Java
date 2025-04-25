@@ -1,10 +1,9 @@
 package TEMod.TECustom;
 
-import mindustry.content.*;
+import mindustry.content.Fx;
 import mindustry.entities.*;
-import mindustry.entities.bullet.*;
-import mindustry.type.Category;
-import mindustry.type.ItemStack;
+import mindustry.entities.bullet.BulletType;
+import mindustry.game.Team;
 import mindustry.world.blocks.defense.turrets.*;
 
 import static mindustry.Vars.tilesize;
@@ -12,75 +11,32 @@ import static mindustry.Vars.tilesize;
 public class MultiChargeTurret extends PowerTurret {
     //============== 可配置参数 ==============
     /** 最大充能时间（帧数） */
-    protected float maxCharge = 180f;
+    protected float maxCharge = 3f * 60f;
     /** 各阶段充能阈值（百分比数组） */
     protected float[] chargeThresholds = {0.25f, 0.5f, 0.75f, 1.0f};
     /** 自伤比例 */
     protected float selfDamageRatio = 0.5f;
     /** 过载爆炸伤害 */
-    protected float MultiChargeDamage = 350f;
+    protected float overloadDamage = 350f;
     /** 过载爆炸半径 */
-    protected float MultiChargeRadius = 8f;
+    protected float overloadRadius = 8f;
 
     //============== 子弹类型 ==============
     protected BulletType[] stageBullets = new BulletType[4];
-    protected Effect[] stageEffects = {Fx.generatespark, Fx.shootBigSmoke, Fx.massiveExplosion};
+    protected Effect[] stageEffects = {
+            Fx.generatespark, Fx.shootBigSmoke, Fx.massiveExplosion
+    };
 
     public MultiChargeTurret(String name) {
         super(name);
-        setupRequirements();
-        configureTurret();
-        configureBullets();
+        MultiCharge();
     }
 
     //============== 初始化方法 ==============
-    /** 配置炮台基础属性（可重写） */
-    protected void configureTurret() {
-        size = 4;
-        health = 2500;
-        range = 25f * 8;
-        rotateSpeed = 4f;
-        consumePower(15f);
-    }
-
-    protected void setupRequirements() {
-        requirements(Category.turret,
-                ItemStack.with(
-                        Items.copper, 500,
-                        Items.lead, 750,
-                        Items.silicon, 600,
-                        Items.thorium, 400
-                ));
-    }
 
     /** 配置子弹类型（关键扩展点） */
-    protected void configureBullets() {
-        //----- 阶段1 子弹 -----
-        stageBullets[0] = new LaserBulletType(){{
-            damage = 25;
-            length = 21.625f *8f;
-            pierceCap = 2;
-        }};
-
-        //----- 阶段2 子弹 -----
-        stageBullets[1] = new LaserBulletType() {{
-            damage = 50;
-            length = 21.625f *8f;
-        }};
-
-        //----- 阶段3 子弹 -----
-        stageBullets[2] = new LaserBulletType() {{
-            damage = 150;
-            length = 21.625f *8f;
-        }};
-
-        //----- 阶段4 子弹 -----
-        stageBullets[3] = new LaserBulletType() {{
-            damage = 150;
-            splashDamage = 200f;
-            splashDamageRadius = 50f;
-            hitEffect = Fx.blastExplosion;
-        }};
+    public void MultiCharge(Object... objects) {
+        stageBullets = (BulletType[]) objects;
     }
 
     //============== 逻辑类 ==============
@@ -89,22 +45,6 @@ public class MultiChargeTurret extends PowerTurret {
         protected int currentStage = 0;
         protected boolean isCharging = false;
 
-        //============== 新增缺失的方法 ==============
-        /** 检查是否满足充能条件 */
-        protected boolean consValid() {
-            // 同时满足电力需求和冷却状态
-            return enabled && power.status >= 0.99f && !Charging();
-        }
-
-        /** 开始充能时的初始化 */
-        protected void startCharging() {
-            if(!isCharging){
-                isCharging = true;
-                onChargeStart(); // 触发回调
-            }
-        }
-
-        //============== 更新后的updateTile方法 ==============
         @Override
         public void updateTile() {
             super.updateTile();
@@ -121,7 +61,6 @@ public class MultiChargeTurret extends PowerTurret {
         }
 
         //============== 核心逻辑方法 ==============
-        //============== 改进后的充能处理 ==============
         /** 更新后的充能处理方法 */
         protected void handleCharging() {
             if(target != null){
@@ -136,7 +75,7 @@ public class MultiChargeTurret extends PowerTurret {
         /** 自动开火检测（可重写） */
         protected void handleAutoFire() {
             if(charge >= maxCharge){
-                releaseMultiCharge();
+                releaseOverload();
                 onOverloadReleased();
             }
         }
@@ -191,8 +130,8 @@ public class MultiChargeTurret extends PowerTurret {
         }
 
         /** 过载攻击释放 */
-        protected void releaseMultiCharge() {
-            Damage.damage(team, x, y, MultiChargeRadius * tilesize, MultiChargeDamage);
+        protected void releaseOverload() {
+            Damage.damage(Team.get(0), x, y, overloadRadius * tilesize, overloadDamage);
             createBullet();
             resetSystem();
         }
@@ -214,6 +153,10 @@ public class MultiChargeTurret extends PowerTurret {
             stageEffects[Math.min(currentStage, stageEffects.length-1)].at(x, y);
         }
 
+        protected boolean Charging() {
+            return charge < maxCharge && isCharging;
+        }
+
         /** 更新后的重置方法 */
         protected void resetSystem() {
             charge = 0;
@@ -221,8 +164,18 @@ public class MultiChargeTurret extends PowerTurret {
             isCharging = false;
         }
 
-        protected boolean Charging() {
-            return charge < maxCharge && isCharging;
+        /** 检查是否满足充能条件 */
+        protected boolean consValid() {
+            // 同时满足电力需求和冷却状态
+            return enabled && power.status >= 0.99f && !Charging();
+        }
+
+        /** 开始充能时的初始化 */
+        protected void startCharging() {
+            if(!isCharging){
+                isCharging = true;
+                onChargeStart(); // 触发回调
+            }
         }
     }
 }
