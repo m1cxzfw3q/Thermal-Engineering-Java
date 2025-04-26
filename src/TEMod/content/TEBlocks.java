@@ -1046,6 +1046,7 @@ public class TEBlocks {
             health = 10000;
             unitCapModifier = 20;
             size = 5;
+            armor = 10;
             requirements(
                     Category.effect, with(
                             Items.silicon, 8000,
@@ -1065,6 +1066,7 @@ public class TEBlocks {
             health = 50000;
             unitCapModifier = 48;
             size = 9;
+            armor = 80;
             requirements(
                     Category.effect, with(
                             Items.silicon, 80000,
