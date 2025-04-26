@@ -9,6 +9,7 @@ import mindustry.gen.Unit;
 public class AdvancedUnitLauncher extends UnitLauncher {
     public AdvancedUnitLauncher(String name) {
         super(name);
+        buildCostMultiplier = 0.8f;
     }
 
     public class AdvancedLauncherBuild extends UnitLauncherBuild {

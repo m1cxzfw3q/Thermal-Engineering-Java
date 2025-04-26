@@ -48,6 +48,7 @@ public class UnitLauncher extends Block {
         configurable = true;
         saveConfig = true;
         config(Vec2.class, UnitLauncherBuild::beginLaunch);
+        buildCostMultiplier = 0.6f;
     }
 
     public class UnitLauncherBuild extends Building {

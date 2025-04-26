@@ -10,6 +10,7 @@ public class PortableCoreBlock extends CoreBlock {
         super(name);
         canBreak(null);
         canPlaceOn(null, Team.get(1), 0);
+        buildCostMultiplier = 0.8f;
     }
 
     public boolean canBreak(Tile tile) {
