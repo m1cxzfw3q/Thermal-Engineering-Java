@@ -1,5 +1,6 @@
 package TEMod.content;
 
+import arc.util.Log;
 import mindustry.content.Fx;
 import mindustry.graphics.Pal;
 import mindustry.type.StatusEffect;
@@ -16,5 +17,8 @@ public class TEStatusEffects {
             effect = Fx.regenSuppressSeek;
             color = Pal.lancerLaser;
         }};
+
+        //end
+        Log.info("[Thermal-Engineering] Loading 'TEStatusEffects'");
     }
 }
