@@ -61,11 +61,14 @@ public class UnitLauncher extends Block {
         public void updateTile() {
             super.updateTile();
 
-            // 自动寻找核心作为目标
+            // 自动寻找核心作为目标（增加空值检查）
             if(loadedUnit != null && targetPos == null){
                 CoreBlock.CoreBuild core = team.core();
                 if(core != null){
-                    beginLaunch(core().getCommandPosition());
+                    Vec2 corePos = core.getCommandPosition();
+                    if(corePos != null){ // 确保坐标有效
+                        beginLaunch(corePos);
+                    }
                 }
             }
 
@@ -115,10 +118,16 @@ public class UnitLauncher extends Block {
             }
         }
 
-        // 开始发射流程
+        // 在beginLaunch方法中添加空值防护
         public void beginLaunch(Vec2 target) {
             if(!validTarget(target)) return;
             if(loadedUnit != null && consValid()) {
+                if(target == null) {
+                    Log.err("发射目标异常：@ 建筑位置：@,@",
+                            team, x, y); // 记录上下文信息
+                    return;
+                }
+                Log.info("开始发射至：@,@", target.x, target.y);
                 targetPos = target.cpy();
                 launchProgress = 0f;
             }
@@ -229,7 +238,11 @@ public class UnitLauncher extends Block {
             super.read(read);
             float x = read.f();
             float y = read.f();
-            targetPos = (x < 0 || y < 0) ? null : new Vec2(x, y);
+            targetPos = (x < 0 || y < 0) ? null :
+                    new Vec2(
+                            Mathf.clamp(x, 0, world.width()*tilesize), // 坐标限幅
+                            Mathf.clamp(y, 0, world.height()*tilesize)
+                    );
         }
 
         @Override
@@ -237,8 +250,9 @@ public class UnitLauncher extends Block {
             return 1; // 版本号用于存档兼容
         }
 
-        // 添加传送目标校验方法
+        // 修改validTarget方法，添加空值检查
         private boolean validTarget(Vec2 pos){
+            if(pos == null) return false; // 新增空检查
             return pos.x >= 0 &&
                     pos.y >= 0 &&
                     pos.x < world.width()*tilesize &&
@@ -248,6 +262,10 @@ public class UnitLauncher extends Block {
         public void onConfigure(Vec2 value) {
             // 安全距离校验（至少距离自身3格）
             if(value.dst(x, y) < tilesize * 3) {
+                Fx.smeltsmoke.at(x, y);
+                return;
+            }
+            if(value == null){ // 配置值空检查
                 Fx.smeltsmoke.at(x, y);
                 return;
             }
