@@ -75,6 +75,17 @@ public class UnitLauncher extends Block {
             }else{
                 interruptLaunch();
             }
+
+            try {
+                // 原有更新逻辑...
+                if(loadedUnit != null && !loadedUnit.isValid()){
+                    // 单位意外消失时的恢复处理
+                    loadedUnit = null;
+                    items.add(costItem, costAmount); // 返还资源
+                }
+            } catch(Exception e){
+                Log.err("[Thermal-Engineering] Launch pad error: @", e);
+            }
         }
 
         public UnitLauncherBuild() {
@@ -99,6 +110,8 @@ public class UnitLauncher extends Block {
                 unit.vel().isZero();
                 unit.set(x, y);
                 loadedUnit = unit;
+
+                Log.info("[Thermal-Engineering] Launch pad Unit status: @", loadedUnit.statusBits());
             }
         }
 
@@ -131,7 +144,7 @@ public class UnitLauncher extends Block {
             // 同步扣除资源（防止异步问题）
             items.remove(costItem, -costAmount);
 
-            Log.info("发射完成: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
+            Log.info("[Thermal-Engineering] Launching complete: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
 
             // 强制解除状态（双重保险）
             loadedUnit.unapply(captured);
