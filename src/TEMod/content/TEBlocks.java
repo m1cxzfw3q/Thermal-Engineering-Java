@@ -2,7 +2,6 @@ package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
 import TEMod.TECustom.PortableCoreBlock;
-import TEMod.TECustom.UnitLauncherNew;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
@@ -980,46 +979,6 @@ public class TEBlocks {
             schematicPriority = 10;
             chanceDeflect = 100F;
             flashHit = true;
-        }};
-
-        unitLauncher = new UnitLauncherNew("unitLauncher") {{
-            size = 3;
-            health = 1200;
-
-            consumePower(5f / 60f);
-            consumeItem(Items.silicon, 25);
-            requirements(
-                    Category.effect, with(
-                            Items.copper, 450,
-                            Items.lead, 600,
-                            Items.silicon, 300,
-                            Items.thorium, 150
-                    )
-            );
-        }};
-
-        advancedUnitLauncher = new UnitLauncherNew("advancedUnitLauncher") {{
-            health = 1500;
-            size = 5;
-            launchTime = 12f * 60f;
-            liquidCapacity = 30;
-
-            // 添加液体冷却需求
-            consumeLiquid(Liquids.cryofluid, 0.1f);
-            consumePower(7f / 60f);
-            consumeItem(Items.silicon, 25);
-
-            requirements(
-                    Category.effect, with(
-                            Items.copper, 600,
-                            Items.lead, 450,
-                            Items.titanium, 300,
-                            Items.silicon, 350,
-                            Items.thorium, 350,
-                            Items.plastanium, 200,
-                            TEItems.primaryChip, 30
-                    )
-            );
         }};
 
         advancedLaunchPad = new LaunchPad("advancedLaunchPad") {{
