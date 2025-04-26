@@ -87,7 +87,7 @@ public class UnitLauncher extends Block {
                     items.add(costItem, costAmount); // 返还资源
                 }
             } catch(Exception e){
-                Log.err("[Thermal-Engineering] Launch pad error: @", e);
+                Log.err("[Thermal-Engineering] 发射台错误: @", e);
             }
         }
 
@@ -114,7 +114,7 @@ public class UnitLauncher extends Block {
                 unit.set(x, y);
                 loadedUnit = unit;
 
-                Log.info("[Thermal-Engineering] Launch pad Unit status: @", loadedUnit.statusBits());
+                Log.info("[Thermal-Engineering] 发射台单位状态: @", loadedUnit.statusBits());
             }
         }
 
@@ -123,11 +123,10 @@ public class UnitLauncher extends Block {
             if(!validTarget(target)) return;
             if(loadedUnit != null && consValid()) {
                 if(target == null) {
-                    Log.err("发射目标异常：@ 建筑位置：@,@",
-                            team, x, y); // 记录上下文信息
+                    Log.err("[Thermal-Engineering] 发射目标异常：@ 建筑位置：@,@", team, x, y); // 记录上下文信息
                     return;
                 }
-                Log.info("开始发射至：@,@", target.x, target.y);
+                Log.info("[Thermal-Engineering] 开始发射至：@,@", target.x, target.y);
                 targetPos = target.cpy();
                 launchProgress = 0f;
             }
@@ -153,7 +152,7 @@ public class UnitLauncher extends Block {
             // 同步扣除资源（防止异步问题）
             items.remove(costItem, -costAmount);
 
-            Log.info("[Thermal-Engineering] Launching complete: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
+            Log.info("[Thermal-Engineering] 发射完成: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
 
             // 强制解除状态（双重保险）
             loadedUnit.unapply(captured);
@@ -218,9 +217,7 @@ public class UnitLauncher extends Block {
 
             if(launchProgress > 0) {
                 Draw.color(Pal.accent);
-                Draw.rect(Core.atlas.find("launch-progress"),
-                        x, y + 6f,
-                        20f * launchProgress, 3f);
+                Draw.rect(Core.atlas.find("launch-progress"), x, y + 6f, 20f * launchProgress, 3f);
                 Draw.reset();
             }
         }
@@ -239,8 +236,7 @@ public class UnitLauncher extends Block {
             float x = read.f();
             float y = read.f();
             targetPos = (x < 0 || y < 0) ? null :
-                    new Vec2(
-                            Mathf.clamp(x, 0, world.width()*tilesize), // 坐标限幅
+                    new Vec2(Mathf.clamp(x, 0, world.width()*tilesize), // 坐标限幅
                             Mathf.clamp(y, 0, world.height()*tilesize)
                     );
         }
