@@ -1039,6 +1039,7 @@ public class TEBlocks {
             launchTime = 700f;
             consumePower(10f);
             itemCapacity = 200;
+            buildCostMultiplier = 0.8f;
         }};
 
         unitStorageWarehouse = new StorageBlock("unitStorageWarehouse") {{
@@ -1057,6 +1058,7 @@ public class TEBlocks {
                             Items.lead, 8000
                     )
             );
+            buildCostMultiplier = 0.8f;
         }};
 
         unitStorageWarehouseLarge = new StorageBlock("unitStorageWarehouseLarge") {{
@@ -1077,6 +1079,7 @@ public class TEBlocks {
                             Items.phaseFabric, 100000
                     )
             );
+            buildCostMultiplier = 0.8f;
         }};
 
 
