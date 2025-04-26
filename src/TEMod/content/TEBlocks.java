@@ -81,6 +81,9 @@ public class TEBlocks {
     public static Block unitLauncher; //单位发射台
     public static Block advancedUnitLauncher; //高级单位发射台
     public static Block advancedLaunchPad; //高级发射台
+    //储存仓
+    public static Block unitStorageWarehouse; //单位储存仓
+    public static Block unitStorageWarehouseLarge; //大型单位储存仓
 
     public static void load() {
         machineCannon = new ItemTurret("machineCannon") {{
@@ -995,15 +998,12 @@ public class TEBlocks {
                             Items.thorium, 150
                     )
             );
-
-            unitCapModifier = 10;
         }};
 
         advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher") {{
             health = 1500;
             size = 5;
             launchDelay = 30f;
-            unitCapModifier = 25;
             liquidCapacity = 30;
 
             // 添加液体冷却需求
@@ -1035,6 +1035,44 @@ public class TEBlocks {
             launchTime = 700f;
             consumePower(10f);
             itemCapacity = 200;
+        }};
+
+        unitStorageWarehouse = new StorageBlock("unitStorageWarehouse") {{
+            health = 10000;
+            unitCapModifier = 20;
+            size = 5;
+            requirements(
+                    Category.effect, with(
+                            Items.silicon, 8000,
+                            Items.thorium, 4000,
+                            Items.surgeAlloy, 2000,
+                            Items.graphite, 6000,
+                            TEItems.advancedChip, 40,
+                            Items.titanium, 5000,
+                            Items.metaglass, 6000,
+                            Items.lead, 8000
+                    )
+            );
+        }};
+
+        unitStorageWarehouseLarge = new StorageBlock("unitStorageWarehouse") {{
+            health = 50000;
+            unitCapModifier = 48;
+            size = 9;
+            requirements(
+                    Category.effect, with(
+                            Items.silicon, 80000,
+                            Items.thorium, 40000,
+                            Items.surgeAlloy, 20000,
+                            Items.graphite, 60000,
+                            TEItems.advancedChip, 300,
+                            TEItems.specialChip, 70,
+                            Items.titanium, 50000,
+                            Items.metaglass, 60000,
+                            Items.lead, 80000,
+                            Items.phaseFabric, 100000
+                    )
+            );
         }};
 
 
