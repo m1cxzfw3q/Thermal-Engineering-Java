@@ -5,6 +5,7 @@ import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Lines;
 import arc.math.*;
 import arc.math.geom.Vec2;
+import arc.scene.ui.layout.Table;
 import arc.struct.EnumSet;
 import arc.util.*;
 import arc.util.io.Reads;
@@ -13,12 +14,14 @@ import mindustry.content.*;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
+import mindustry.ui.fragments.PlacementFragment;
 import mindustry.world.*;
 import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.BlockFlag;
 import mindustry.world.meta.BuildVisibility;
 
 import static TEMod.content.TEStatusEffects.captured;
+import static arc.scene.actions.Actions.show;
 import static mindustry.Vars.tilesize;
 import static mindustry.Vars.world;
 
@@ -40,7 +43,7 @@ public class UnitLauncher extends Block {
         category = Category.effect;
         acceptsPayload = true;
 
-        clipSize = 40f; // 检测范围扩大
+        clipSize = 50f; // 检测范围扩大
 
         flags = EnumSet.of(BlockFlag.launchPad);
         buildVisibility = BuildVisibility.campaignOnly;
@@ -48,6 +51,7 @@ public class UnitLauncher extends Block {
         configurable = true;
         saveConfig = true;
         config(Vec2.class, UnitLauncherBuild::beginLaunch);
+        config(Vec2.class, UnitLauncherBuild::onConfigure);
         buildCostMultiplier = 0.6f;
     }
 
@@ -255,19 +259,44 @@ public class UnitLauncher extends Block {
                     pos.y < world.height()*tilesize;
         }
 
+        // 修正后的配置处理方法
         public void onConfigure(Vec2 value) {
-            // 安全距离校验（至少距离自身3格）
-            if(value.dst(x, y) < tilesize * 3) {
-                Fx.smeltsmoke.at(x, y);
+            // 强化空值校验
+            if(value == null){
                 return;
             }
-            if(value == null){ // 配置值空检查
+
+            // 转换为精确坐标
+            Vec2 exactPos = Tmp.v1.set(
+                    Mathf.clamp(value.x, 0, world.width() * tilesize),
+                    Mathf.clamp(value.y, 0, world.height() * tilesize)
+            );
+
+            // 安全距离检查（至少3格）
+            if(exactPos.dst(x, y) < tilesize * 3){
                 Fx.smeltsmoke.at(x, y);
                 return;
             }
 
-            beginLaunch(value);
-            Fx.select.at(value); // 显示目标位置标记
+            // 触发发射流程
+            beginLaunch(exactPos);
+            Fx.placeBlock.at(exactPos);
+            Log.info("配置坐标: @ -> @ (原始值: @)", value, exactPos, pos);
+        }
+
+        @Override
+        public void buildConfiguration(Table table) {
+            // 创建位置选择界面
+            new PlacementFragment(){{
+                show(
+                        size * tilesize, // 选择半径
+                        team, tile -> tile().team() == team, // 只能选择友方区域
+                        pos -> { // 接收的是tile坐标需要转换
+                            Vec2 worldPos = new Vec2(pos.x() * tilesize + tilesize/2f, pos.y() * tilesize + tilesize/2f);
+                            configure(worldPos);
+                        }
+                );
+            }};
         }
     }
 }
