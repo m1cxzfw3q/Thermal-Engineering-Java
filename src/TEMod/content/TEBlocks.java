@@ -1,9 +1,8 @@
 package TEMod.content;
 
 import TEMod.MultiCraftLib.MultiCrafter;
-import TEMod.TECustom.AdvancedUnitLauncher;
 import TEMod.TECustom.PortableCoreBlock;
-import TEMod.TECustom.UnitLauncher;
+import TEMod.TECustom.UnitLauncherNew;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.struct.ObjectMap;
@@ -32,14 +31,12 @@ import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.power.NuclearReactor;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
-import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
-import mindustry.world.modules.LiquidModule;
 
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
@@ -985,10 +982,9 @@ public class TEBlocks {
             flashHit = true;
         }};
 
-        unitLauncher = new UnitLauncher("unitLauncher") {{
+        unitLauncher = new UnitLauncherNew("unitLauncher") {{
             size = 3;
             health = 1200;
-            payloadLimit = 2.0F;
 
             consumePower(5f / 60f);
             consumeItem(Items.silicon, 25);
@@ -1002,12 +998,11 @@ public class TEBlocks {
             );
         }};
 
-        advancedUnitLauncher = new AdvancedUnitLauncher("advancedUnitLauncher") {{
+        advancedUnitLauncher = new UnitLauncherNew("advancedUnitLauncher") {{
             health = 1500;
             size = 5;
-            launchDelay = 30f;
+            launchTime = 12f * 60f;
             liquidCapacity = 30;
-            payloadLimit = 4.0F;
 
             // 添加液体冷却需求
             consumeLiquid(Liquids.cryofluid, 0.1f);
