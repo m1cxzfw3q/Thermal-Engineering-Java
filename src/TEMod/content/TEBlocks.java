@@ -991,6 +991,7 @@ public class TEBlocks {
             payloadLimit = 2.0F;
 
             consumePower(5f / 60f);
+            consumeItem(Items.silicon, 25);
             requirements(
                     Category.effect, with(
                             Items.copper, 450,
@@ -1011,6 +1012,7 @@ public class TEBlocks {
             // 添加液体冷却需求
             consumeLiquid(Liquids.cryofluid, 0.1f);
             consumePower(7f / 60f);
+            consumeItem(Items.silicon, 25);
 
             requirements(
                     Category.effect, with(
