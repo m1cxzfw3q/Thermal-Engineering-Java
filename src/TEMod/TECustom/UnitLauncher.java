@@ -2,6 +2,7 @@ package TEMod.TECustom;
 
 import arc.*;
 import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.Lines;
 import arc.math.*;
 import arc.math.geom.Vec2;
 import arc.struct.EnumSet;
@@ -9,17 +10,23 @@ import arc.util.*;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import mindustry.content.*;
+import mindustry.core.World;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.BlockFlag;
 import mindustry.world.meta.BuildVisibility;
+
+import static mindustry.Vars.tilesize;
+import static mindustry.Vars.world;
 
 public class UnitLauncher extends Block {
     public float launchDelay = 60f; // 发射准备时间（帧）
     public Item costItem = Items.silicon; // 消耗物品
     public int costAmount = 25;      // 每次发射消耗量
+    public float payloadLimit;       //单位载荷空间大小
 
     public UnitLauncher(String name) {
         super(name);
@@ -27,13 +34,20 @@ public class UnitLauncher extends Block {
         inEditor = false;
         hasPower = true;
         hasItems = true;
-        solid = true;
+        solid = false;
         itemCapacity = 50;
         update = true;
         category = Category.effect;
+        acceptsPayload = true;
+
+        clipSize = 40f; // 检测范围扩大
 
         flags = EnumSet.of(BlockFlag.launchPad);
         buildVisibility = BuildVisibility.campaignOnly;
+
+        configurable = true;
+        saveConfig = true;
+        config(Vec2.class, UnitLauncherBuild::beginLaunch);
     }
 
     public class UnitLauncherBuild extends Building {
@@ -41,14 +55,23 @@ public class UnitLauncher extends Block {
         public float launchProgress;      // 发射进度
         public Vec2 targetPos;            // 目标坐标
 
+        // 在updateTile中添加自动发射检测
         @Override
         public void updateTile() {
             super.updateTile();
 
-            // 持续电力消耗
-            if(consValid()) {
+            // 自动寻找核心作为目标
+            if(loadedUnit != null && targetPos == null){
+                CoreBlock.CoreBuild core = team.core();
+                if(core != null){
+                    beginLaunch(core().getCommandPosition());
+                }
+            }
+
+            // 持续发射流程
+            if(consValid() && loadedUnit != null){
                 progressLaunch();
-            } else {
+            }else{
                 interruptLaunch();
             }
         }
@@ -64,18 +87,21 @@ public class UnitLauncher extends Block {
             }
         }
 
-        // 装载单位逻辑
+        // 增强单位吸附逻辑
         public void loadUnit(Unit unit) {
-            if(loadedUnit == null && items.has(costItem, costAmount)) {
+            if(loadedUnit == null && items.has(costItem, costAmount) && unit.within(x, y, size * 8f)) { // 增加范围检测
+                Log.info("单位进入: @ [@,@]", unit.type, unit.x, unit.y);
+                // 强制捕获单位
+                unit.controller(null);
+                unit.vel().isZero();
+                unit.set(x, y);
                 loadedUnit = unit;
-                unit.rotation(90f); // 调整单位方向
-                unit.trns(x, y);    // 移动单位到发射台中心
-                unit.add();
             }
         }
 
         // 开始发射流程
         public void beginLaunch(Vec2 target) {
+            if(!validTarget(target)) return;
             if(loadedUnit != null && consValid()) {
                 targetPos = target.cpy();
                 launchProgress = 0f;
@@ -95,36 +121,40 @@ public class UnitLauncher extends Block {
             loadedUnit.elevation = Mathf.curve(launchProgress, 0, 0.8f);
         }
 
-        // 完成发射
+        // 修改completeLaunch方法
         public void completeLaunch() {
-            if(loadedUnit == null) return;
+            if(!items.has(costItem, costAmount)) return; // 双重验证
 
-            // 扣除成本
-            items.remove(costItem, costAmount);
+            // 同步扣除资源（防止异步问题）
+            items.remove(costItem, -costAmount);
 
-            // 传送单位
-            teleportUnit(loadedUnit, targetPos);
+            Log.info("发射完成: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
 
-            // 重置状态
-            loadedUnit = null;
-            launchProgress = 0f;
-            targetPos = null;
+            // 强制单位释放
+            if(loadedUnit != null){
+                loadedUnit.controller(null);
+                loadedUnit = null;
+            }
 
-            // 播放特效
-            Fx.teleportActivate.at(x, y);
+            // 跨区块音效
+            Fx.smeltsmoke.at(x, y);
+            Fx.teleport.at(targetPos);
         }
 
-        // 单位传送实现
+        // 在teleportUnit中修正坐标对齐
         public void teleportUnit(Unit unit, Vec2 target) {
             // 设置无敌状态
             unit.apply(StatusEffects.invincible, 30f);
 
             // 执行传送
-            unit.set(target);
             unit.vel().isZero();
 
             // 目标点特效
             Fx.teleport.at(target.x, target.y);
+
+            float cx = World.toTile(target.x) * tilesize + (float) tilesize / 2;
+            float cy = World.toTile(target.y) * tilesize + (float) tilesize / 2;
+            unit.set(cx, cy);
         }
 
         // 验证发射条件
@@ -160,6 +190,13 @@ public class UnitLauncher extends Block {
                 loadedUnit.draw();
             }
 
+            if(targetPos != null){
+                Draw.color(Pal.accent);
+                Lines.stroke(2f);
+                Lines.line(x, y, targetPos.x, targetPos.y);
+                Draw.reset();
+            }
+
             if(launchProgress > 0) {
                 Draw.color(Pal.accent);
                 Draw.rect(Core.atlas.find("launch-progress"),
@@ -169,29 +206,44 @@ public class UnitLauncher extends Block {
             }
         }
 
+        // 在write/read方法中处理targetPos
         @Override
         public void write(Writes write) {
             super.write(write);
-            write.f(launchProgress);
-            write.bool(loadedUnit != null);
-            if(loadedUnit != null) {
-                write.i(loadedUnit.id);
-            }
+            write.f(targetPos == null ? -1 : targetPos.x);
+            write.f(targetPos == null ? -1 : targetPos.y);
         }
 
         @Override
         public void read(Reads read) {
             super.read(read);
-            launchProgress = read.f();
-            if(read.bool()) {
-                int unitId = read.i();
-                loadedUnit = Groups.unit.getByID(unitId);
-            }
+            float x = read.f();
+            float y = read.f();
+            targetPos = (x < 0 || y < 0) ? null : new Vec2(x, y);
         }
 
         @Override
         public byte version() {
             return 1; // 版本号用于存档兼容
+        }
+
+        // 添加传送目标校验方法
+        private boolean validTarget(Vec2 pos){
+            return pos.x >= 0 &&
+                    pos.y >= 0 &&
+                    pos.x < world.width()*tilesize &&
+                    pos.y < world.height()*tilesize;
+        }
+
+        public void onConfigure(Vec2 value) {
+            // 安全距离校验（至少距离自身3格）
+            if(value.dst(x, y) < tilesize * 3) {
+                Fx.smeltsmoke.at(x, y);
+                return;
+            }
+
+            beginLaunch(value);
+            Fx.select.at(value); // 显示目标位置标记
         }
     }
 }

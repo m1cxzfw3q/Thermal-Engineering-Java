@@ -18,21 +18,11 @@ public class PortableCoreBlock extends CoreBlock {
 
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
         if (tile == null) {
-            return false;
+            return true;
         } else if (Vars.state.isEditor()) {
             return true;
         } else if (!Vars.state.isEditor()) {
             return true;
-        } else {
-            CoreBuild core = team.core();
-            tile.getLinkedTilesAs(this, tempTiles);
-            if (!tempTiles.contains((o) -> !o.floor().allowCorePlacement || o.block() instanceof CoreBlock)) {
-                return true;
-            } else if (core != null && (Vars.state.rules.infiniteResources || core.items.has(requirements, Vars.state.rules.buildCostMultiplier))) {
-                return tile.block() instanceof CoreBlock && size > tile.block().size && (!requiresCoreZone || tempTiles.allMatch((o) -> o.floor().allowCorePlacement));
-            } else {
-                return false;
-            }
-        }
+        } else return true;
     }
 }

@@ -952,7 +952,7 @@ public class TEBlocks {
             health = 2000;
             itemCapacity = 0;
             unitCapModifier = 0;
-            thrusterLength = 20/4f;
+            thrusterLength = 20 / 4f;
             isFirstTier = true;
             alwaysUnlocked = true;
             armor = 15;
@@ -988,6 +988,7 @@ public class TEBlocks {
         unitLauncher = new UnitLauncher("unitLauncher") {{
             size = 3;
             health = 1200;
+            payloadLimit = 2.0F;
 
             consumePower(5f / 60f);
             requirements(
@@ -1005,6 +1006,7 @@ public class TEBlocks {
             size = 5;
             launchDelay = 30f;
             liquidCapacity = 30;
+            payloadLimit = 4.0F;
 
             // 添加液体冷却需求
             consumeLiquid(Liquids.cryofluid, 0.1f);
