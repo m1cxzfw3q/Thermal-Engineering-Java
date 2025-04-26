@@ -90,10 +90,10 @@ public class UnitLauncher extends Block {
 
         // 增强单位吸附逻辑
         public void loadUnit(Unit unit) {
-            if(loadedUnit == null && items.has(costItem, costAmount) && unit.within(x, y, size * 8f)) { // 增加范围检测
+            if(loadedUnit == null && items.has(costItem, costAmount) && unit.within(x, y, size * 12f)) { // 增加范围检测
                 Log.info("单位进入: @ [@,@]", unit.type, unit.x, unit.y);
                 // 强制捕获单位
-                unit.controller(null);
+                unit.controller(loadedUnit.controller());
                 unit.vel().isZero();
                 unit.set(x, y);
                 loadedUnit = unit;
