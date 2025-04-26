@@ -1057,7 +1057,7 @@ public class TEBlocks {
             );
         }};
 
-        unitStorageWarehouseLarge = new StorageBlock("unitStorageWarehouse") {{
+        unitStorageWarehouseLarge = new StorageBlock("unitStorageWarehouseLarge") {{
             health = 50000;
             unitCapModifier = 48;
             size = 9;
