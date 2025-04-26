@@ -10,7 +10,6 @@ import arc.util.*;
 import arc.util.io.Reads;
 import arc.util.io.Writes;
 import mindustry.content.*;
-import mindustry.core.World;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
@@ -19,6 +18,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 import mindustry.world.meta.BlockFlag;
 import mindustry.world.meta.BuildVisibility;
 
+import static TEMod.content.TEStatusEffects.captured;
 import static mindustry.Vars.tilesize;
 import static mindustry.Vars.world;
 
@@ -88,12 +88,14 @@ public class UnitLauncher extends Block {
             }
         }
 
-        // 增强单位吸附逻辑
+        // 修改后的装载单位逻辑
         public void loadUnit(Unit unit) {
-            if(loadedUnit == null && items.has(costItem, costAmount) && unit.within(x, y, size * 12f)) { // 增加范围检测
-                Log.info("单位进入: @ [@,@]", unit.type, unit.x, unit.y);
-                // 强制捕获单位
-                unit.controller(loadedUnit.controller());
+            if(loadedUnit == null &&
+                    items.has(costItem, costAmount) &&
+                    unit.within(x, y, size * 12f)) {
+
+                // 应用捕获状态（代替controller置空）
+                unit.apply(captured, 99999f);
                 unit.vel().isZero();
                 unit.set(x, y);
                 loadedUnit = unit;
@@ -131,31 +133,25 @@ public class UnitLauncher extends Block {
 
             Log.info("发射完成: @ -> @,@", loadedUnit.type, targetPos.x, targetPos.y);
 
-            // 强制单位释放
-            if(loadedUnit != null){
-                loadedUnit.controller(null);
-                loadedUnit = null;
-            }
+            // 强制解除状态（双重保险）
+            loadedUnit.unapply(captured);
 
             // 跨区块音效
             Fx.smeltsmoke.at(x, y);
             Fx.teleport.at(targetPos);
         }
 
-        // 在teleportUnit中修正坐标对齐
         public void teleportUnit(Unit unit, Vec2 target) {
-            // 设置无敌状态
-            unit.apply(StatusEffects.invincible, 30f);
+            // 解除捕获状态
+            unit.unapply(captured);
 
-            // 执行传送
+            // 设置新位置
+            unit.set(target);
             unit.vel().isZero();
 
-            // 目标点特效
+            // 播放特效
+            Fx.teleportActivate.at(x, y);
             Fx.teleport.at(target.x, target.y);
-
-            float cx = World.toTile(target.x) * tilesize + (float) tilesize / 2;
-            float cy = World.toTile(target.y) * tilesize + (float) tilesize / 2;
-            unit.set(cx, cy);
         }
 
         // 验证发射条件
