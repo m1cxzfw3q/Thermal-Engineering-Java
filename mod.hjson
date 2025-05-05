@@ -10,4 +10,5 @@ version: 0.0.1,
 minGameVersion: 146,
 java: true,
 hideInBrowser: false,
+hidden: false,
 repo: "m1cxzfw3q/Thermal-Engineering-Java"
