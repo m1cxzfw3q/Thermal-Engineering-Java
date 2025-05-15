@@ -1,0 +1,33 @@
+package TEMod.content.Keppler;
+
+import arc.util.Log;
+import mindustry.type.SectorPreset;
+
+import static TEMod.content.Keppler.KepplerPlanet.*;
+
+public class KepplerSectorPresets {
+    public static SectorPreset LandingArea;//降落区
+    public static SectorPreset ResearchAreaNo47;//47号研究区
+
+    public static void load(){
+        LandingArea = new SectorPreset("LandingArea", keppler, 53) {{
+            alwaysUnlocked = false;
+            addStartingItems = false;
+            difficulty = 3;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 4f;
+        }};
+
+        ResearchAreaNo47 = new SectorPreset("ResearchAreaNo47", keppler, 472) {{
+            alwaysUnlocked = false;
+            addStartingItems = false;
+            captureWave = 81;
+            difficulty = 4;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 4f;
+        }};
+
+        //end
+        Log.info("[Thermal-Engineering] Loading 'KepplerSectorPresets'");
+    }
+}
