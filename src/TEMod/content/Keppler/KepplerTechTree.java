@@ -238,7 +238,7 @@ public class KepplerTechTree {
                 ), () ->{});
             });
         });
-        isComplete(String.valueOf(KepplerTechTree.class));
+        isComplete(KepplerTechTree.class);
     }
 
     public static void addToNext(UnlockableContent content, Runnable run) {

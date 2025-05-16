@@ -187,6 +187,6 @@ public class TEUnitTypes {
             ));
         }};
 
-        isComplete(String.valueOf(TEUnitTypes.class));
+        isComplete(TEUnitTypes.class);
     }
 }

@@ -105,6 +105,6 @@ public class TEItems {
             buildable = false;
         }};
 
-        isComplete(String.valueOf(TEItems.class));
+        isComplete(TEItems.class);
     }
 }

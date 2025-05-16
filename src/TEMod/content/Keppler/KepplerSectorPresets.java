@@ -28,6 +28,6 @@ public class KepplerSectorPresets {
             startWaveTimeMultiplier = 4f;
         }};
 
-        isComplete(String.valueOf(KepplerSectorPresets.class));
+        isComplete(KepplerSectorPresets.class);
     }
 }

@@ -48,6 +48,6 @@ public class KepplerPlanet {
             landCloudColor = Color.valueOf("89d2ff");
             defaultCore = Blocks.coreNucleus;
         }};
-        isComplete(String.valueOf(KepplerPlanet.class));
+        isComplete(KepplerPlanet.class);
     }
 }

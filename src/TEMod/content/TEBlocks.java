@@ -1284,6 +1284,6 @@ public class TEBlocks {
         }};
 
 
-        isComplete(String.valueOf(TEBlocks.class));
+        isComplete(TEBlocks.class);
     }
 }
