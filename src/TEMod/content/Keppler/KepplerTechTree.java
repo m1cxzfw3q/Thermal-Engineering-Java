@@ -1,9 +1,9 @@
 package TEMod.content.Keppler;
 
+import TEMod.ThermalEngineeringCore;
 import TEMod.content.TEBlocks;
 import TEMod.content.TEItems;
 import arc.struct.Seq;
-import arc.util.Log;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
@@ -12,6 +12,7 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
+import static TEMod.ThermalEngineeringCore.isComplete;
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;
@@ -237,9 +238,7 @@ public class KepplerTechTree {
                 ), () ->{});
             });
         });
-
-        //end
-        Log.info("[Thermal-Engineering] Loading 'KepplerTechTree'");
+        isComplete(String.valueOf(KepplerTechTree.class));
     }
 
     public static void addToNext(UnlockableContent content, Runnable run) {

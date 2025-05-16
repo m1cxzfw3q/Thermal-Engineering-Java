@@ -30,7 +30,10 @@ public class ThermalEngineeringCore extends Mod {
         //TEUnitTypes.load();
         //TechTree
         KepplerTechTree.load();
-        //end
-        Log.info("[Thermal-Engineering] Project loading is completed");
+        isComplete(String.valueOf(ThermalEngineeringCore.class));
+    }
+
+    public static void isComplete(String name) {
+        Log.info("[Thermal-Engineering] isComplete(" + name + ")");
     }
 }

@@ -1,11 +1,10 @@
 package TEMod.content;
 
-import arc.util.Log;
+import static TEMod.ThermalEngineeringCore.isComplete;
 
 public class TEStatusEffects {
     public static void load() {
 
-        //end
-        Log.info("[Thermal-Engineering] Loading 'TEStatusEffects'");
+        isComplete(String.valueOf(TEStatusEffects.class));
     }
 }

@@ -187,7 +187,6 @@ public class TEUnitTypes {
             ));
         }};
 
-        //end
-        Log.info("[Thermal-Engineering] Loading 'TEUnitTypes'");
+        isComplete(String.valueOf(TEUnitTypes.class));
     }
 }

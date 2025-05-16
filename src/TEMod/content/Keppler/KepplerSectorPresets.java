@@ -3,6 +3,7 @@ package TEMod.content.Keppler;
 import arc.util.Log;
 import mindustry.type.SectorPreset;
 
+import static TEMod.ThermalEngineeringCore.isComplete;
 import static TEMod.content.Keppler.KepplerPlanet.*;
 
 public class KepplerSectorPresets {
@@ -27,7 +28,6 @@ public class KepplerSectorPresets {
             startWaveTimeMultiplier = 4f;
         }};
 
-        //end
-        Log.info("[Thermal-Engineering] Loading 'KepplerSectorPresets'");
+        isComplete(String.valueOf(KepplerSectorPresets.class));
     }
 }

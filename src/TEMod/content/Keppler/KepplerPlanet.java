@@ -10,6 +10,7 @@ import mindustry.graphics.g3d.MultiMesh;
 
 import mindustry.type.Planet;
 
+import static TEMod.ThermalEngineeringCore.isComplete;
 import static mindustry.content.Planets.*;
 
 public class KepplerPlanet {
@@ -47,8 +48,6 @@ public class KepplerPlanet {
             landCloudColor = Color.valueOf("89d2ff");
             defaultCore = Blocks.coreNucleus;
         }};
-
-        //end
-        Log.info("[Thermal-Engineering] Loading 'KepplerPlanet'");
+        isComplete(String.valueOf(KepplerPlanet.class));
     }
 }

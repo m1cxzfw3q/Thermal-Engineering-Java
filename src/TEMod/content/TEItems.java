@@ -1,8 +1,11 @@
 package TEMod.content;
 
+import TEMod.content.Keppler.KepplerTechTree;
 import arc.util.Log;
 import mindustry.type.Item;
 import arc.graphics.Color;
+
+import static TEMod.ThermalEngineeringCore.isComplete;
 
 public class TEItems {
     //普通物品
@@ -102,8 +105,6 @@ public class TEItems {
             buildable = false;
         }};
 
-
-        //end
-        Log.info("[Thermal-Engineering] Loading 'TEItems'");
+        isComplete(String.valueOf(TEItems.class));
     }
 }

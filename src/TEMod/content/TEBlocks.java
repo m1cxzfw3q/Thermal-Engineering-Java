@@ -4,6 +4,7 @@ import TEMod.MultiCraftLib.MultiCrafter;
 import TEMod.TECustom.ExplosionLaserBulletType;
 import TEMod.TECustom.MultiChargeTurret;
 import TEMod.TECustom.PortableCoreBlock;
+import TEMod.content.Keppler.KepplerTechTree;
 import arc.graphics.Color;
 import arc.graphics.g2d.Fill;
 import arc.graphics.g2d.Lines;
@@ -59,6 +60,7 @@ import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 import TEMod.TECustom.MultiChargeTurret;
 
+import static TEMod.ThermalEngineeringCore.isComplete;
 import static arc.graphics.g2d.Draw.color;
 import static arc.graphics.g2d.Lines.stroke;
 import static mindustry.content.Fx.none;
@@ -1282,10 +1284,6 @@ public class TEBlocks {
         }};
 
 
-
-
-
-        //end
-        Log.info("[Thermal-Engineering] Loading 'TEBlocks'");
+        isComplete(String.valueOf(TEBlocks.class));
     }
 }
