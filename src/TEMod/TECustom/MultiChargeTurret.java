@@ -103,11 +103,11 @@ public class MultiChargeTurret extends PowerTurret {
                 if (chargeTier == 1) {shoot(Tier1Charge());Sounds.laser.at(x, y);Log.info("AmmoShoot: Tier1Charge");}
                 else if (chargeTier == 2) {shoot(Tier2Charge());Sounds.laser.at(x, y);Log.info("AmmoShoot: Tier2Charge");}
                 else if (chargeTier == 3) {shoot(Tier3Charge());Sounds.laser.at(x, y);Log.info("AmmoShoot: Tier3Charge");}
-                else if (overdriveChargeTier == 1) {shoot(OverdriveCharge());Sounds.laserblast.at(x, y);ArcExplosion(health / 0.5f, 45f);Log.info("AmmoShoot: OverdriveCharge");}
+                else if (overdriveChargeTier == 1) {shoot(OverdriveCharge());ArcExplosion(health / 0.5f, 45f);Sounds.laserblast.at(x, y);Log.info("AmmoShoot: OverdriveCharge");}
                 else if (chargeProgress >= 56f) {shoot(NotCharge());Sounds.spark.at(x, y);Log.info("AmmoShoot: NotCharge");}
                 resetCharge();
             } else if(superOverdriveChargeTier == 1) {
-                shoot(SuperOverdriveCharge());Sounds.laserblast.at(x, y);ArcExplosion(health, 56f);Log.info("AmmoShoot: SuperOverdriveCharge");
+                shoot(SuperOverdriveCharge());ArcExplosion(health, 56f);Sounds.laserblast.at(x, y);Log.info("AmmoShoot: SuperOverdriveCharge");
                 resetCharge();
             }
         }
