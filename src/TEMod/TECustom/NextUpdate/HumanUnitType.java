@@ -1,4 +1,4 @@
-package TEMod.TECustom.V007Update;
+package TEMod.TECustom.NextUpdate;
 
 import mindustry.type.UnitType;
 
