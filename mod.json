@@ -1,11 +1,11 @@
 {
   "author": "[sky[]]114514[white[]]",
-  "description": "[blue[]]-----INFO----------------[white[]]\nThermal Engineering [acid[]]0.0.2[red[]]\nAlpha[white[]]\n\n当前版本已正式发布",
+  "description": "[blue[]]-----INFO----------------[white[]]\nThermal Engineering [acid[]]0.0.2[red[]]\nAlpha\n\n当前版本未正式发布",
   "displayName": "Thermal Engineering Java",
   "java": true,
   "main": "TEMod.ThermalEngineeringCore",
-  "minGameVersion": 146,
+  "minGameVersion": 147,
   "name": "TEMod",
   "repo": "m1cxzfw3q/Thermal-Engineering-Java",
-  "version": "v0.0.2 Alpha"
+  "version": "v0.0.2Alpha"
 }
