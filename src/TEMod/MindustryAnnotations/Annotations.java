@@ -51,7 +51,7 @@ public class Annotations{
     @Target(ElementType.TYPE)
     @Retention(RetentionPolicy.SOURCE)
     public @interface Component{
-        /** Whether to generate a base class for this components.
+        /** Whether to generate a base class for these components.
          * An entity cannot have two base classes, so only one component can have base be true. */
         boolean base() default false;
         /** Whether to generate a proper interface for this component class. */

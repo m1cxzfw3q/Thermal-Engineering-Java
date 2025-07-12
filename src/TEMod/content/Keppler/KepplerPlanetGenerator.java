@@ -20,7 +20,9 @@ import mindustry.world.blocks.environment.*;
 import static mindustry.Vars.*;
 
 public class KepplerPlanetGenerator extends PlanetGenerator{
+    //alternate, less direct generation (wip)
     public static boolean alt = false;
+
     BaseGenerator basegen = new BaseGenerator();
     float scl = 5f;
     float waterOffset = 0.07f;
@@ -208,6 +210,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
                                 other.setBlock(Blocks.air);
                                 if(Mathf.within(x, y, rad - 1) && !other.floor().isLiquid){
                                     Floor floor = other.floor();
+                                    //TODO does not respect tainted floors
                                     other.setFloor((Floor)(floor == Blocks.sand || floor == Blocks.salt ? Blocks.sandWater : Blocks.darksandTaintedWater));
                                 }
                             }
@@ -280,7 +283,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
 
                 for(int j = 0; j < enemySpawns; j++){
                     float enemyOffset = rand.range(60f);
-                    Tmp.v1.set(cx - (float) width /2, cy - (float) height/2).rotate(180f + enemyOffset).add((float) width/2, (float) height/2);
+                    Tmp.v1.set(cx - (float) width /2, cy - (float) height /2).rotate(180f + enemyOffset).add((float) width /2, (float) height /2);
                     Room espawn = new Room((int)Tmp.v1.x, (int)Tmp.v1.y, rand.random(8, 16));
                     roomseq.add(espawn);
                     enemies.add(espawn);
@@ -438,10 +441,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
             ores.add(TEBlocks.oreSphularite);
         }
 
-        if(rand.chance(0.25)){
-            ores.add(Blocks.oreScrap);
-        }
-
         FloatSeq frequencies = new FloatSeq();
         for(int i = 0; i < ores.size; i++){
             frequencies.add(rand.random(-0.1f, 0.01f) - i * 0.01f + poles * 0.04f);
@@ -470,9 +469,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
 
         median(2);
 
-        if (spawn != null) {
-            inverseFloodFill(tiles.getn(spawn.x, spawn.y));
-        }
+        inverseFloodFill(tiles.getn(spawn.x, spawn.y));
 
         tech();
 
@@ -533,7 +530,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
             //random stuff
             dec: {
                 for(int i = 0; i < 4; i++){
-                    Tile near = world.tile(x + Geometry.d4[i].x, y + Geometry.d4[i].y);
+                    Tile near = tiles.get(x + Geometry.d4[i].x, y + Geometry.d4[i].y);
                     if(near != null && near.block() != Blocks.air){
                         break dec;
                     }
@@ -546,11 +543,11 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
         });
 
         float difficulty = sector.threat;
-        ints.clear();
-        ints.ensureCapacity(width * height / 4);
-
         int ruinCount = rand.random(-2, 4);
+
         if(ruinCount > 0){
+            IntSeq ints = new IntSeq(width * height / 4);
+
             int padding = 25;
 
             //create list of potential positions
@@ -590,7 +587,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
                 }
 
                 //actually place the part
-                if(part != null && BaseGenerator.tryPlace(part, x, y, Team.derelict, (cx, cy) -> {
+                if(part != null && BaseGenerator.tryPlace(part, x, y, Team.derelict, rand, (cx, cy) -> {
                     Tile other = tiles.getn(cx, cy);
                     if(other.floor().hasSurface()){
                         other.setOverlay(Blocks.oreScrap);

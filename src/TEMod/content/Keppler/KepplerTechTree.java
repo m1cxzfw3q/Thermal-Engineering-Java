@@ -1,6 +1,5 @@
 package TEMod.content.Keppler;
 
-import TEMod.ThermalEngineeringCore;
 import TEMod.content.TEBlocks;
 import TEMod.content.TEItems;
 import arc.struct.Seq;
@@ -22,7 +21,6 @@ import static mindustry.content.SectorPresets.craters;
 public class KepplerTechTree {
     private static TechTree.TechNode context = null;
 
-    public static Seq<TechTree.TechNode> all = new Seq<>();
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
@@ -239,11 +237,6 @@ public class KepplerTechTree {
             });
         });
         isComplete(KepplerTechTree.class);
-    }
-
-    public static void addToNext(UnlockableContent content, Runnable run) {
-        context = TechTree.all.find(KepplerTechNode -> KepplerTechNode.content == content);
-        run.run();
     }
 
     public static TechTree.TechNode nodeRoot(String name, UnlockableContent content, Runnable children){

@@ -77,15 +77,15 @@ public class TEBlocks {
     //物流
     public static Block simpleStorage; //简易储存器
     public static Block highSpeedUnloader; //高速装卸器
-    public static Block itemQuantumTransmissionLightBridge, liquidQuantumTransmissionLightBridge; //量子传输光侨
+    public static Block itemQuantumTransmissionLightBridge, liquidQuantumTransmissionLightBridge; //量子传输光桥
     //核心
     public static Block coreExplore; //探索核心
     //炮台
     public static Block machineCannon; //机炮
-    public static Block prism; //棱镜
+    public static Block prism; //棱镜 //重名了
     public static Block railGun; //轨道炮
     //发射台
-    public static Block primaryUnitLauncher, advancedUnitLauncher; //废稿之单位发射台
+    public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
     public static Block advancedLaunchPad; //高级发射台
     public static Block unitStorageWarehouse, unitStorageWarehouseLarge; //单位储存仓
     //逻辑
@@ -93,7 +93,7 @@ public class TEBlocks {
     public static Block hugeLogicDisplay; //巨型逻辑显示屏
     public static Block memoryBankLarge; //大型内存库
     //单位
-    public static Block IllustratedReconstructor; //虚数级单位重构厂//
+    public static Block IllustratedReconstructor; //虚数级单位重构厂 //鸽
     //载荷
     public static Block payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic; //载荷传送带
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
@@ -102,7 +102,7 @@ public class TEBlocks {
     public static Block advancedWaterExtractor; //抽水机
 
     public static void load() {
-        machineCannon = new ItemTurret("machineCannon") {{
+        machineCannon = new ItemTurret("machinecannon") {{
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
@@ -233,7 +233,7 @@ public class TEBlocks {
             coolant = consume(new ConsumeLiquid(Liquids.water, 6f / 60f));
         }};
 
-        highEfficiencyDisassembler = new Separator("highEfficiencyDisassembler"){{
+        highEfficiencyDisassembler = new Separator("high-efficiency-disassembler"){{
             requirements(Category.crafting, with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200, Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.specialProductionAgreement, 1));
             results = with(
                     Items.copper, 3,
@@ -263,31 +263,31 @@ public class TEBlocks {
             );
         }};
 
-        surpluoIcon = new AirBlock("surpluoIcon") {{
+        surpluoIcon = new AirBlock("surpluo-icon") {{
             size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
         }};
 
-        erekirIcon = new AirBlock("erekirIcon") {{
+        erekirIcon = new AirBlock("erekir-icon") {{
             size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
         }};
 
-        kepplerIcon = new AirBlock("kepplerIcon") {{
+        kepplerIcon = new AirBlock("keppler-icon") {{
             size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
         }};
 
-        oreUranium = new OreBlock("oreUranium", TEItems.uranium) {{
+        oreUranium = new OreBlock("ore-uranium", TEItems.uranium) {{
             oreDefault = true;
             oreThreshold = 0.81f;
             oreScale = 23.47619f;
         }};
 
-        primaryLaboratory = new MultiCrafter("primaryLaboratory") {{
+        primaryLaboratory = new MultiCrafter("primary-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300));
 
             recipes = Seq.with(//ds给的代码，能跑就行
@@ -314,7 +314,7 @@ public class TEBlocks {
             canOverdrive = false;
         }};
 
-        advancedLaboratory = new MultiCrafter("advancedLaboratory") {{
+        advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300, Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400));
 
             recipes = Seq.with(//能跑就行
@@ -347,7 +347,7 @@ public class TEBlocks {
             canOverdrive = false;
         }};
 
-        specialLaboratory = new MultiCrafter("specialLaboratory") {{
+        specialLaboratory = new MultiCrafter("special-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000));
 
             recipes = Seq.with(//能跑就行
@@ -389,7 +389,7 @@ public class TEBlocks {
             canOverdrive = false;
         }};
 
-        chipManufacturingMachine = new MultiCrafter("chipManufacturingMachine") {{
+        chipManufacturingMachine = new MultiCrafter("chip-manufacturing-machine") {{
             requirements(Category.crafting, with(Items.copper, 700, Items.titanium, 700, Items.lead, 800, Items.graphite, 800, Items.silicon, 8000));
             size = 3;
             health = 800;
@@ -420,7 +420,7 @@ public class TEBlocks {
             );
         }};
 
-        chipPrinter = new MultiCrafter("chipPrinter") {{
+        chipPrinter = new MultiCrafter("chip-printer") {{
             requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000, Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1));
 
             size = 5;
@@ -475,7 +475,7 @@ public class TEBlocks {
             liquidCapacity = 20f;
         }};
 
-        portableMissileLaunchSilo = new PowerTurret("portableMissileLaunchSilo") {{
+        portableMissileLaunchSilo = new PowerTurret("portable-missile-launch-silo") {{
             alwaysUnlocked = false;
             health = 500;
             size = 2;
@@ -504,7 +504,7 @@ public class TEBlocks {
 
             shootType = new BasicBulletType(0f, 1f) {{
                 killShooter = true;
-                spawnUnit = new MissileUnitType("portableMissileLaunchSiloMissile") {{
+                spawnUnit = new MissileUnitType("portable-missile-launch-silo-missile") {{
                     speed = 7f;
                     lifetime = 5f * 60f;
                     trailLength = 14;
@@ -536,7 +536,7 @@ public class TEBlocks {
             }};
         }};
 
-        missileLauncher = new ItemTurret("missileLauncher") {{
+        missileLauncher = new ItemTurret("missile-launcher") {{
             health = 3500;
             size = 5;
 
@@ -576,7 +576,7 @@ public class TEBlocks {
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
                 ammoMultiplier = 4f;
-                spawnUnit = new MissileUnitType("missileLauncherMissile") {{
+                spawnUnit = new MissileUnitType("missile-launcher-missile-pyratite") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
                     trailLength = 11;
@@ -609,7 +609,7 @@ public class TEBlocks {
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
                 ammoMultiplier = 4f;
-                spawnUnit = new MissileUnitType("missileLauncherMissile1") {{
+                spawnUnit = new MissileUnitType("missile-launcher-missile-blast-compound") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
                     trailLength = 11;
@@ -642,7 +642,7 @@ public class TEBlocks {
             }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
                 ammoMultiplier = 1f;
                 reloadMultiplier = 0.01f;
-                spawnUnit = new MissileUnitType("missileLauncherMissile2") {{
+                spawnUnit = new MissileUnitType("missile-launcher-missile-nuclear-fuel-rod") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
                     trailLength = 11;
@@ -677,7 +677,7 @@ public class TEBlocks {
             }});
         }};
 
-        nuclearReactor = new NuclearReactor("nuclearReactor") {{
+        nuclearReactor = new NuclearReactor("nuclear-reactor") {{
             health = 5000;
             size = 5;
             liquidCapacity = 30;
@@ -764,7 +764,7 @@ public class TEBlocks {
             );
         }};
 
-        simpleStorage = new StorageBlock("simpleStorage") {{
+        simpleStorage = new StorageBlock("simple-storage") {{
             requirements(Category.effect, with(Items.copper, 200, Items.lead, 260, Items.graphite, 80));
             size = 2;
             itemCapacity = 100;
@@ -772,14 +772,14 @@ public class TEBlocks {
             health = 100;
         }};
 
-        highSpeedUnloader = new Unloader("highSpeedUnloader") {{
+        highSpeedUnloader = new Unloader("high-speed-unloader") {{
             speed = 0.75f;
             group = BlockGroup.transportation;
             requirements(Category.effect, with(Items.thorium, 20, Items.silicon, 45, Items.titanium, 50, Items.plastanium, 30));
             health = 60;
         }};
 
-        nuclearFuelRodManufacturingMachine = new GenericCrafter("nuclearFuelRodManufacturingMachine") {{
+        nuclearFuelRodManufacturingMachine = new GenericCrafter("nuclear-fuel-rod-manufacturing-machine") {{
             size = 3;
             health = 1600;
             itemCapacity = 20;
@@ -794,7 +794,7 @@ public class TEBlocks {
             requirements(Category.crafting, with(Items.thorium, 530, Items.titanium, 680, Items.silicon, 580, Items.lead, 680, Items.surgeAlloy, 200, Items.graphite, 790, TEItems.advancedChip, 20));
         }};
 
-        coreExplore = new PortableCoreBlock("coreExplore") {{
+        coreExplore = new PortableCoreBlock("core-explore") {{
             health = 3000;
             itemCapacity = 0;
             unitCapModifier = 0;
@@ -806,7 +806,7 @@ public class TEBlocks {
             requirements(Category.effect, with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
         }};
 
-        advancedLaunchPad = new LaunchPad("advancedLaunchPad") {{
+        advancedLaunchPad = new LaunchPad("advanced-launchpad") {{
             requirements(Category.effect, BuildVisibility.campaignOnly, with(Items.copper, 400, Items.silicon, 200, Items.lead, 300, Items.titanium, 200, Items.thorium, 100));
             health = 500;
             size = 4;
@@ -817,7 +817,7 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
-        unitStorageWarehouse = new StorageBlock("unitStorageWarehouse") {{
+        unitStorageWarehouse = new StorageBlock("unit-storage-vault") {{
             health = 24000;
             unitCapModifier = 24;
             size = 5;
@@ -827,7 +827,7 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
-        unitStorageWarehouseLarge = new StorageBlock("unitStorageWarehouseLarge") {{
+        unitStorageWarehouseLarge = new StorageBlock("large-unit-storage-vault") {{
             health = 70000;
             unitCapModifier = 64;
             itemCapacity = 0;
@@ -904,7 +904,7 @@ public class TEBlocks {
             coolant = consume(consumeLiquid(Liquids.water, 16f / 60f));
         }};
 
-        oreSmeltingFurnace = new MultiCrafter("oreSmeltingFurnace") {{
+        oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
             hasPower = isConsumeItem = isOutputItem = isConsumePower = hasItems = true;
             consumePower(8f);
@@ -973,13 +973,13 @@ public class TEBlocks {
             );
         }};
 
-        oreSphularite = new OreBlock("oreSphularite", TEItems.sphularite) {{
+        oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
             oreDefault = true;
             oreThreshold = 0.81f;
             oreScale = 23.47619f;
         }};
 
-        oreCrusher = new MultiCrafter("oreCrusher") {{
+        oreCrusher = new MultiCrafter("ore-crusher") {{
             health = 1000;
             size = 2;
             recipes = Seq.with(
@@ -1054,7 +1054,7 @@ public class TEBlocks {
             updateEffect = Fx.pulverizeSmall;
         }};
 
-        cryofluidMixerLarge = new GenericCrafter("cryofluidMixerLarge"){{
+        cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer"){{
             requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 400, Items.titanium, 600, Items.thorium, 350));
             outputLiquid = new LiquidStack(Liquids.cryofluid, 35f / 60f);
             size = 3;
@@ -1072,7 +1072,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.water, 30f / 60f);
         }};
 
-        advancedOverdriveDome = new OverdriveProjector("advancedOverdriveDome"){{
+        advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome"){{
             requirements(Category.effect, with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1500, Items.plastanium, 1200, Items.surgeAlloy, 850, TEItems.zinc, 450, TEItems.advancedChip, 450));
             consumePower(14f);
             size = 4;
@@ -1085,13 +1085,13 @@ public class TEBlocks {
             consumeItems(with(Items.phaseFabric, 3, Items.silicon, 3, TEItems.zinc, 2));
         }};
 
-        advancedPowerNode = new PowerNode("advancedPowerNode"){{
+        advancedPowerNode = new PowerNode("advanced-power-node"){{
             requirements(Category.power, with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 5));
             maxNodes = 20;
             laserRange = 12;
         }};
 
-        terminalProcessor = new LogicBlock("terminalProcessor"){{
+        terminalProcessor = new LogicBlock("terminal-processor"){{
             requirements(Category.logic, with(Items.lead, 4500, Items.silicon, 3000, Items.thorium, 1000, Items.surgeAlloy, 500, Items.titanium, 2000, TEItems.zinc, 800, Items.phaseFabric, 300, Items.plastanium, 1200, TEItems.specialChip, 400));
 
             consumeLiquid(Liquids.cryofluid, 0.2f);
@@ -1102,7 +1102,7 @@ public class TEBlocks {
             size = 5;
         }};
 
-        hugeLogicDisplay = new LogicDisplay("hugeLogicDisplay"){{
+        hugeLogicDisplay = new LogicDisplay("huge-logic-display"){{
             requirements(Category.logic, with(Items.lead, 2000, Items.silicon, 1500, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300, TEItems.zinc, 500, TEItems.advancedChip, 100, Items.plastanium, 600));
 
             displaySize = 300;
@@ -1110,72 +1110,74 @@ public class TEBlocks {
             size = 10;
         }};
 
-        memoryBankLarge = new MemoryBlock("memoryBankLarge"){{
+        memoryBankLarge = new MemoryBlock("large-memory-bank"){{
             requirements(Category.logic, with(Items.graphite, 800, Items.silicon, 100, Items.phaseFabric, 400, Items.copper, 800, TEItems.advancedChip, 400, TEItems.zinc, 500, Items.plastanium, 700, Items.surgeAlloy, 200));
 
             memoryCapacity = 1024;
             size = 3;
         }};
 
-        IllustratedReconstructor = new Reconstructor("IllustratedReconstructor"){{
-            requirements(Category.units, with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000, TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000));
 
-            size = 11;
-            consumePower(75f);
-            consumeItems(with(Items.silicon, 16384, Items.plastanium, 12356, Items.surgeAlloy, 5420, Items.phaseFabric, 3500, TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.specialChip, 100));
-            consumeLiquid(Liquids.cryofluid, 5f);
-            liquidCapacity = 300f;
 
-            constructTime = 60f * 60f * 12.5f;
+//        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor"){{
+//            requirements(Category.units, with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000, TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000));
+//
+//            size = 11;
+//            consumePower(75f);
+//            consumeItems(with(Items.silicon, 16384, Items.plastanium, 12356, Items.surgeAlloy, 5420, Items.phaseFabric, 3500, TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.specialChip, 100));
+//            consumeLiquid(Liquids.cryofluid, 220f / 60f);
+//            liquidCapacity = 440f;
+//
+//            constructTime = 60f * 60f * 12.5f;
+//
+//            upgrades.addAll(
+//                    new UnitType[]{UnitTypes.eclipse, UnitTypes.pulsar},
+//                    new UnitType[]{UnitTypes.toxopid, UnitTypes.toxopid},
+//                    new UnitType[]{UnitTypes.reign, UnitTypes.reign},
+//                    new UnitType[]{UnitTypes.omura, UnitTypes.omura},
+//                    new UnitType[]{UnitTypes.oct, UnitTypes.oct},
+//                    new UnitType[]{UnitTypes.corvus, UnitTypes.risso},
+//                    new UnitType[]{UnitTypes.navanax, UnitTypes.retusa}
+//            );
+//        }};
 
-            upgrades.addAll(
-                    new UnitType[]{UnitTypes.eclipse, UnitTypes.pulsar},
-                    new UnitType[]{UnitTypes.toxopid, UnitTypes.toxopid},
-                    new UnitType[]{UnitTypes.reign, UnitTypes.reign},
-                    new UnitType[]{UnitTypes.omura, UnitTypes.omura},
-                    new UnitType[]{UnitTypes.oct, UnitTypes.oct},
-                    new UnitType[]{UnitTypes.corvus, UnitTypes.risso},
-                    new UnitType[]{UnitTypes.navanax, UnitTypes.retusa}
-            );
-        }};
-
-        payloadConveyorLarge = new PayloadConveyor("payloadConveyorLarge"){{
+        payloadConveyorLarge = new PayloadConveyor("payload-conveyor-large"){{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             size = (int) (payloadLimit = 5);
             canOverdrive = false;
         }};
 
-        payloadConveyorHuge = new PayloadConveyor("payloadConveyorHuge"){{
+        payloadConveyorHuge = new PayloadConveyor("huge-payload-cConveyor"){{
             requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
             size = (int) (payloadLimit = 7);
             canOverdrive = false;
         }};
 
-        payloadConveyorGigantic = new PayloadConveyor("payloadConveyorGigantic"){{
+        payloadConveyorGigantic = new PayloadConveyor("gigantic-payload-conveyor"){{
             requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = 9);
             canOverdrive = false;
         }};
 
-        payloadRouterLarge = new PayloadRouter("payloadRouterLarge"){{
+        payloadRouterLarge = new PayloadRouter("large-payload-routerlarge"){{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             canOverdrive = false;
             size = (int) (payloadLimit = payloadConveyorLarge.size);
         }};
 
-        payloadRouterHuge = new PayloadRouter("payloadRouterHuge"){{
+        payloadRouterHuge = new PayloadRouter("huge-payload-router"){{
             requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
             size = (int) (payloadLimit = payloadConveyorHuge.size);
             canOverdrive = false;
         }};
 
-        payloadRouterGigantic = new PayloadRouter("payloadRouterGigantic"){{
+        payloadRouterGigantic = new PayloadRouter("gigantic-payload-router"){{
             requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = payloadConveyorGigantic.size);
             canOverdrive = false;
         }};
 
-        shieldGenerator = new ForceProjector("shieldGenerator"){{
+        shieldGenerator = new ForceProjector("shield-generator"){{
             requirements(Category.effect, with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.primaryChip, 5));
             phaseRadiusBoost = 6f * 8f;
             radius = 8f * 8f;
@@ -1189,7 +1191,7 @@ public class TEBlocks {
             consumePower(1f);
         }};
 
-        shieldGeneratorLarge = new ForceProjector("shieldGeneratorLarge"){{
+        shieldGeneratorLarge = new ForceProjector("largeshield-generator"){{
             requirements(Category.effect, with(Items.lead, 450, Items.titanium, 230, Items.silicon, 150, Items.copper, 550, TEItems.advancedChip, 10));
             size = 2;
             phaseRadiusBoost = 16f * 8f;
@@ -1204,7 +1206,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        shieldGeneratorHuge = new ForceProjector("shieldGeneratorHuge"){{
+        shieldGeneratorHuge = new ForceProjector("huge-shield-generator"){{
             requirements(Category.effect, with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.specialChip, 50, Items.phaseFabric, 400));
             size = 4;
             phaseRadiusBoost = 45f * 8f;
@@ -1219,7 +1221,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        sectorShieldGenerator = new ForceProjector("sectorShieldGenerator"){{
+        sectorShieldGenerator = new ForceProjector("sector-shield-generator"){{
             requirements(Category.effect, with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.specialChip, 500, Items.phaseFabric, 2000));
             size = 6;
             radius = 900f * 8f;
@@ -1234,7 +1236,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        itemQuantumTransmissionLightBridge = new ItemBridge("itemQuantumTransmissionLightBridge"){{
+        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge"){{
             requirements(Category.distribution, with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
             range = 60;
             arrowPeriod = 0.9f;
@@ -1246,7 +1248,7 @@ public class TEBlocks {
             itemCapacity = 30;
         }};
 
-        liquidQuantumTransmissionLightBridge = new LiquidBridge("liquidQuantumTransmissionLightBridge"){{
+        liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge"){{
             requirements(Category.liquid, with(Items.phaseFabric, 30, Items.silicon, 35, Items.metaglass, 100, Items.titanium, 60));
             range = 60;
             arrowPeriod = 0.9f;
@@ -1257,7 +1259,10 @@ public class TEBlocks {
             liquidCapacity = 30;
         }};
 
-        advancedWaterExtractor = new SolidPump("advancedWaterExtractor"){{
+        advancedWaterExtractor = new SolidPump("advanced-water-e" +
+                "" +
+                "" +
+                "xtractor"){{
             requirements(Category.production, with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150, TEItems.primaryChip, 20));
             result = Liquids.water;
             pumpAmount = 15f / 60f;

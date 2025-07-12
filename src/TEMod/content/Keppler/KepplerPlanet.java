@@ -1,7 +1,6 @@
 package TEMod.content.Keppler;
 
 import arc.graphics.Color;
-import arc.util.Log;
 import mindustry.content.Blocks;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;

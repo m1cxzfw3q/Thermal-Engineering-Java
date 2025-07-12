@@ -1,7 +1,5 @@
 package TEMod.content;
 
-import TEMod.content.Keppler.KepplerTechTree;
-import arc.util.Log;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
@@ -37,71 +35,56 @@ public class TEItems {
             alwaysUnlocked = false;
         }};
 
-        nuclearFuelRod = new Item("nuclearFuelRod", Color.valueOf("4a6949")) {{
+        nuclearFuelRod = new Item("nuclear-fuel-rod", Color.valueOf("4a6949")) {{
             hardness = 0;
             radioactivity = 2F;
             alwaysUnlocked = false;
             buildable = false;
         }};
 
-        primaryWarAgreement = new Item("primaryWarAgreement", Color.valueOf("bff1ff"));
-        advancedWarAgreement = new Item("advancedWarAgreement", Color.valueOf("ffff42"));
-        specialWarAgreement = new Item("specialWarAgreement", Color.valueOf("e2583d"));
+        primaryWarAgreement = new Item("primary-war-agreement", Color.valueOf("bff1ff"));
+        advancedWarAgreement = new Item("advanced-war-agreement", Color.valueOf("ffff42"));
+        specialWarAgreement = new Item("special-war-agreement", Color.valueOf("e2583d"));
 
-        highSpeedTransmissionProtocol = new Item("highSpeedTransmissionProtocol", Color.valueOf("ffff42")) {{
+        highSpeedTransmissionProtocol = new Item("high-speed-transmission-protocol", Color.valueOf("ffff42")) {{
             alwaysUnlocked = false;
             buildable = false;
         }};
 
-        ultraRemoteTransmissionProtocol = new Item("ultraRemoteTransmissionProtocol", Color.valueOf("e2583d")) {{
+        ultraRemoteTransmissionProtocol = new Item("ultra-remote-transmission-protocol", Color.valueOf("e2583d")) {{
             alwaysUnlocked = false;
             buildable = false;
         }};
 
-        primaryProductionAgreement = new Item("primaryProductionAgreement", Color.valueOf("bff1ff"));
-        advancedProductionAgreement = new Item("advancedProductionAgreement", Color.valueOf("ffff42"));
-        specialProductionAgreement = new Item("specialProductionAgreement", Color.valueOf("e2583d"));
+        primaryProductionAgreement = new Item("primary-production-agreement", Color.valueOf("bff1ff"));
+        advancedProductionAgreement = new Item("advanced-production-agreement", Color.valueOf("ffff42"));
+        specialProductionAgreement = new Item("special-production-agreement", Color.valueOf("e2583d"));
 
-        primaryChip = new Item("primaryChip", Color.valueOf("636363")) {{
-            cost = 0.4f;
-        }};
+        primaryChip = new Item("primary-chip", Color.valueOf("636363")) {{cost = 0.4f;}};
 
-        advancedChip = new Item("advancedChip", Color.valueOf("cdad2d")) {{
-            cost = 0.5f;
-        }};
+        advancedChip = new Item("advanced-chip", Color.valueOf("cdad2d")) {{cost = 0.5f;}};
 
-        specialChip = new Item("specialChip", Color.valueOf("bf4833")) {{
-            cost = 0.6f;
-        }};
+        specialChip = new Item("special-chip", Color.valueOf("bf4833")) {{cost = 0.6f;}};
 
-        sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{
-            hardness = 3;
+        sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{hardness = 3;buildable = false;}};
+
+        zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 2f;}};
+
+        copperPowder = new Item("copper-powder", Color.valueOf("d99d73")) {{buildable = false;}};
+
+        leadPowder = new Item("lead-powder", Color.valueOf("8c7fa9")) {{buildable = false;}};
+
+        titaniumPowder = new Item("titanium-powder", Color.valueOf("8da1e3")) {{
             buildable = false;
         }};
 
-        zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{
-            cost = 2f;
-        }};
-
-        copperPowder = new Item("copperPowder", Color.valueOf("d99d73")) {{
-            buildable = false;
-        }};
-
-        leadPowder = new Item("leadPowder", Color.valueOf("8c7fa9")) {{
-            buildable = false;
-        }};
-
-        titaniumPowder = new Item("titaniumPowder", Color.valueOf("8da1e3")) {{
-            buildable = false;
-        }};
-
-        thoriumPowder = new Item("thoriumPowder", Color.valueOf("f9a3c7")) {{
+        thoriumPowder = new Item("thorium-powder", Color.valueOf("f9a3c7")) {{
             buildable = false;
             explosiveness = 0.1f;
             radioactivity = 0.5f;
         }};
 
-        zincPowder = new Item("zincPowder", Color.valueOf("BFCDBC")) {{
+        zincPowder = new Item("zinc-powder", Color.valueOf("BFCDBC")) {{
             buildable = false;
         }};
 

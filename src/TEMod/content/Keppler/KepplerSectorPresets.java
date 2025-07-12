@@ -1,6 +1,5 @@
 package TEMod.content.Keppler;
 
-import arc.util.Log;
 import mindustry.type.SectorPreset;
 
 import static TEMod.ThermalEngineeringCore.isComplete;
