@@ -23,6 +23,6 @@ public class ExplosionLaserBulletType extends LaserBulletType {
     }
 
     protected void ArcExplosions(float x, float y) {
-        Call.logicExplosion(Team.get(0), x, y, explosionRadius, explosionDamage, true, true, true);
+        Call.logicExplosion(Team.get(0), x, y, explosionRadius, explosionDamage, true, true, true, false);
     }
 }

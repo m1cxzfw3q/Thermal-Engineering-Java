@@ -51,7 +51,7 @@ public class MultiChargeTurret extends PowerTurret {
                     }}
             );
             Sounds.spark.at(x, y);
-            Call.logicExplosion(Team.get(0), x, y, radius, explosionDamage, true, true, true);
+            Call.logicExplosion(Team.get(0), x, y, radius, explosionDamage, true, true, true, false);
             Log.info("ArcExplosion -> @,@",x ,y);
         }
 
