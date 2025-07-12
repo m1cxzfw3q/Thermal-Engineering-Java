@@ -210,7 +210,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
                                 other.setBlock(Blocks.air);
                                 if(Mathf.within(x, y, rad - 1) && !other.floor().isLiquid){
                                     Floor floor = other.floor();
-                                    //TODO does not respect tainted floors
                                     other.setFloor((Floor)(floor == Blocks.sand || floor == Blocks.salt ? Blocks.sandWater : Blocks.darksandTaintedWater));
                                 }
                             }
