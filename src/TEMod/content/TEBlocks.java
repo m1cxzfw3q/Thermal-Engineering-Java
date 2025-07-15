@@ -251,6 +251,7 @@ public class TEBlocks {
             size = 4;
             health = 2500;
             itemCapacity = 40;
+            liquidCapacity = 40;
             consumePower(8f);
             consumeLiquid(Liquids.slag, 20f / 60f);
             consumeItem(Items.scrap, 1);
