@@ -1,6 +1,5 @@
 package TEMod.content;
 
-import TEMod.MultiCraftLib.MultiCrafter;
 import TEMod.TECustom.MultiChargeTurret;
 import TEMod.TECustom.PortableCoreBlock;
 import arc.graphics.Color;
@@ -63,14 +62,14 @@ public class TEBlocks {
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block portableMissileLaunchSilo, missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
-    public static Block oreSmeltingFurnace; //矿石熔炼炉
-    public static Block oreCrusher; //矿石粉碎机
+    //public static Block oreSmeltingFurnace; //矿石熔炼炉
+    //public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
     //特殊
     public static Block surpluoIcon, erekirIcon, kepplerIcon; //星球图标
-    public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
-    public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
+    //public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
+    //public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
     //电力
     public static Block nuclearReactor; //核反应堆
     public static Block advancedPowerNode; //高级电力节点
@@ -287,193 +286,193 @@ public class TEBlocks {
             oreScale = 23.47619f;
         }};
 
-        primaryLaboratory = new MultiCrafter("primary-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300));
-
-            recipes = Seq.with(//ds给的代码，能跑就行
-                    new ObjectMap() {{
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-primaryWarAgreement", 1));
-                        }});
-                        put("craftTime", 7200f);
-                        put("icon", "temod-primaryWarAgreement");
-                    }}, new ObjectMap() {{
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-primaryProductionAgreement", 1));
-                        }});
-                        put("craftTime", 7200f);
-                        put("icon", "temod-primaryProductionAgreement");
-                    }}
-            );
-
-            size = 3;
-            health = 1000;
-            itemCapacity = 10;
-            consumePower(40f);
-            hasItems = isOutputItem = isConsumePower = hasPower = true;
-            canOverdrive = false;
-        }};
-
-        advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300, Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400));
-
-            recipes = Seq.with(//能跑就行
-                    new ObjectMap() {{
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-advancedWarAgreement"));
-                        }});
-                        put("craftTime", 5400f);
-                        put("icon", "temod-advancedWarAgreement");
-                    }}, new ObjectMap() {{
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-advancedProductionAgreement"));
-                        }});
-                        put("craftTime", 5400f);
-                        put("icon", "temod-advancedProductionAgreement");
-                    }}, new ObjectMap() {{
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-highSpeedTransmissionProtocol"));
-                        }});
-                        put("craftTime", 5400f);
-                        put("icon", "temod-highSpeedTransmissionProtocol");
-                    }}
-            );
-
-            size = 5;
-            health = 2000;
-            itemCapacity = 10;
-            consumePower(50f);
-            hasItems = isOutputItem = isConsumePower = hasPower = true;
-            canOverdrive = false;
-        }};
-
-        specialLaboratory = new MultiCrafter("special-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000));
-
-            recipes = Seq.with(//能跑就行
-                    new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-specialWarAgreement"));
-                        }});
-                        put("craftTime", 3600f);
-                        put("icon", "temod-specialWarAgreement");
-                    }}, new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-specialProductionAgreement"));
-                        }});
-                        put("craftTime", 3600f);
-                        put("icon", "temod-specialProductionAgreement");
-                    }}, new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-ultraRemoteTransmissionProtocol"));
-                        }});
-                        put("craftTime", 3600f);
-                        put("icon", "temod-ultraRemoteTransmissionProtocol");
-                    }}
-            );
-
-            size = 7;
-            health = 4000;
-            itemCapacity = 20;
-            consumePower(60f);
-            hasLiquids = hasPower = hasItems = isOutputItem = isConsumeFluid = isConsumePower = true;
-            canOverdrive = false;
-        }};
-
-        chipManufacturingMachine = new MultiCrafter("chip-manufacturing-machine") {{
-            requirements(Category.crafting, with(Items.copper, 700, Items.titanium, 700, Items.lead, 800, Items.graphite, 800, Items.silicon, 8000));
-            size = 3;
-            health = 800;
-            itemCapacity = 30;
-            consumePower(5f);
-            hasItems = isOutputItem = isConsumePower = isConsumeItem = hasPower = true;
-
-            recipes = Seq.with(//能跑就行
-                    new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("items", Seq.with("silicon/2", "lead", "copper"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-primaryChip"));
-                        }});
-                        put("craftTime", 120f);
-                        put("icon", "temod-primaryChip");
-                    }}, new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("items", Seq.with("silicon/4", "lead/2", "copper"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-advancedChip"));
-                        }});
-                        put("craftTime", 120f);
-                        put("icon", "temod-advancedChip");
-                    }}
-            );
-        }};
-
-        chipPrinter = new MultiCrafter("chip-printer") {{
-            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000, Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1));
-
-            size = 5;
-            health = 1000;
-            itemCapacity = 40;
-            consumePower(6f);
-            alwaysUnlocked = false;
-
-            recipes = Seq.with(//ds给的代码，能跑就行
-                    new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("items", Seq.with("silicon/3"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-primaryChip"));
-                        }});
-                        put("craftTime", 4f);
-                        put("icon", "temod-primaryChip");
-                    }}, new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("items", Seq.with("silicon/4"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-advancedChip"));
-                        }});
-                        put("craftTime", 8f);
-                        put("icon", "temod-advancedChip");
-                    }}, new ObjectMap() {{
-                        put("input", new ObjectMap() {{
-                            put("items", Seq.with("silicon/5"));
-                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
-                        }});
-                        put("output", new ObjectMap() {{
-                            put("items", Seq.with("temod-specialChip"));
-                        }});
-                        put("craftTime", 12f);
-                        put("icon", "temod-specialChip");
-                    }}
-            );
-
-            drawer = new DrawMulti(
-                    new DrawRegion("-bottom"),
-                    new DrawLiquidRegion() {{
-                        drawLiquid = Liquids.cryofluid;
-                        suffix = "-cryo";
-                    }},
-                    new DrawDefault()
-            );
-            isConsumeItem = isConsumeFluid = isOutputItem = isConsumePower = hasLiquids = hasItems = hasPower = true;
-            liquidCapacity = 20f;
-        }};
+//        primaryLaboratory = new MultiCrafter("primary-laboratory") {{
+//            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300));
+//
+//            recipes = Seq.with(//ds给的代码，能跑就行
+//                    new ObjectMap() {{
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-primaryWarAgreement", 1));
+//                        }});
+//                        put("craftTime", 7200f);
+//                        put("icon", "temod-primaryWarAgreement");
+//                    }}, new ObjectMap() {{
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-primaryProductionAgreement", 1));
+//                        }});
+//                        put("craftTime", 7200f);
+//                        put("icon", "temod-primaryProductionAgreement");
+//                    }}
+//            );
+//
+//            size = 3;
+//            health = 1000;
+//            itemCapacity = 10;
+//            consumePower(40f);
+//            hasItems = isOutputItem = isConsumePower = hasPower = true;
+//            canOverdrive = false;
+//        }};
+//
+//        advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
+//            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300, Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400));
+//
+//            recipes = Seq.with(//能跑就行
+//                    new ObjectMap() {{
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-advancedWarAgreement"));
+//                        }});
+//                        put("craftTime", 5400f);
+//                        put("icon", "temod-advancedWarAgreement");
+//                    }}, new ObjectMap() {{
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-advancedProductionAgreement"));
+//                        }});
+//                        put("craftTime", 5400f);
+//                        put("icon", "temod-advancedProductionAgreement");
+//                    }}, new ObjectMap() {{
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-highSpeedTransmissionProtocol"));
+//                        }});
+//                        put("craftTime", 5400f);
+//                        put("icon", "temod-highSpeedTransmissionProtocol");
+//                    }}
+//            );
+//
+//            size = 5;
+//            health = 2000;
+//            itemCapacity = 10;
+//            consumePower(50f);
+//            hasItems = isOutputItem = isConsumePower = hasPower = true;
+//            canOverdrive = false;
+//        }};
+//
+//        specialLaboratory = new MultiCrafter("special-laboratory") {{
+//            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000));
+//
+//            recipes = Seq.with(//能跑就行
+//                    new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-specialWarAgreement"));
+//                        }});
+//                        put("craftTime", 3600f);
+//                        put("icon", "temod-specialWarAgreement");
+//                    }}, new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-specialProductionAgreement"));
+//                        }});
+//                        put("craftTime", 3600f);
+//                        put("icon", "temod-specialProductionAgreement");
+//                    }}, new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("fluids", Seq.with("cryofluid/0.1666666666666667"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-ultraRemoteTransmissionProtocol"));
+//                        }});
+//                        put("craftTime", 3600f);
+//                        put("icon", "temod-ultraRemoteTransmissionProtocol");
+//                    }}
+//            );
+//
+//            size = 7;
+//            health = 4000;
+//            itemCapacity = 20;
+//            consumePower(60f);
+//            hasLiquids = hasPower = hasItems = isOutputItem = isConsumeFluid = isConsumePower = true;
+//            canOverdrive = false;
+//        }};
+//
+//        chipManufacturingMachine = new MultiCrafter("chip-manufacturing-machine") {{
+//            requirements(Category.crafting, with(Items.copper, 700, Items.titanium, 700, Items.lead, 800, Items.graphite, 800, Items.silicon, 8000));
+//            size = 3;
+//            health = 800;
+//            itemCapacity = 30;
+//            consumePower(5f);
+//            hasItems = isOutputItem = isConsumePower = isConsumeItem = hasPower = true;
+//
+//            recipes = Seq.with(//能跑就行
+//                    new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("items", Seq.with("silicon/2", "lead", "copper"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-primaryChip"));
+//                        }});
+//                        put("craftTime", 120f);
+//                        put("icon", "temod-primaryChip");
+//                    }}, new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("items", Seq.with("silicon/4", "lead/2", "copper"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-advancedChip"));
+//                        }});
+//                        put("craftTime", 120f);
+//                        put("icon", "temod-advancedChip");
+//                    }}
+//            );
+//        }};
+//
+//        chipPrinter = new MultiCrafter("chip-printer") {{
+//            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000, Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1));
+//
+//            size = 5;
+//            health = 1000;
+//            itemCapacity = 40;
+//            consumePower(6f);
+//            alwaysUnlocked = false;
+//
+//            recipes = Seq.with(//ds给的代码，能跑就行
+//                    new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("items", Seq.with("silicon/3"));
+//                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-primaryChip"));
+//                        }});
+//                        put("craftTime", 4f);
+//                        put("icon", "temod-primaryChip");
+//                    }}, new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("items", Seq.with("silicon/4"));
+//                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-advancedChip"));
+//                        }});
+//                        put("craftTime", 8f);
+//                        put("icon", "temod-advancedChip");
+//                    }}, new ObjectMap() {{
+//                        put("input", new ObjectMap() {{
+//                            put("items", Seq.with("silicon/5"));
+//                            put("fluids", Seq.with("cryofluid/0.0833333333333333"));
+//                        }});
+//                        put("output", new ObjectMap() {{
+//                            put("items", Seq.with("temod-specialChip"));
+//                        }});
+//                        put("craftTime", 12f);
+//                        put("icon", "temod-specialChip");
+//                    }}
+//            );
+//
+//            drawer = new DrawMulti(
+//                    new DrawRegion("-bottom"),
+//                    new DrawLiquidRegion() {{
+//                        drawLiquid = Liquids.cryofluid;
+//                        suffix = "-cryo";
+//                    }},
+//                    new DrawDefault()
+//            );
+//            isConsumeItem = isConsumeFluid = isOutputItem = isConsumePower = hasLiquids = hasItems = hasPower = true;
+//            liquidCapacity = 20f;
+//        }};
 
         portableMissileLaunchSilo = new PowerTurret("portable-missile-launch-silo") {{
             alwaysUnlocked = false;
@@ -904,74 +903,74 @@ public class TEBlocks {
             coolant = consume(consumeLiquid(Liquids.water, 16f / 60f));
         }};
 
-        oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
-            health = 1280;
-            hasPower = isConsumeItem = isOutputItem = isConsumePower = hasItems = true;
-            consumePower(8f);
-            size = 3;
-
-            drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
-
-            requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
-
-            recipes = Seq.with(//ds给的代码，能跑就行
-                    new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-sphularite"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zinc"));
-                        }});
-                        put("craftTime", 40f);
-                        put("icon", "temod-zinc");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-copperPowder"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("copper"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "copper");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-leadPowder"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("lead"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "lead");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-thoriumPowder"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("thorium"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "thorium");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-titaniumPowder"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("titanium"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "titanium");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zincPowder"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zinc"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-zinc");
-                    }}
-            );
-        }};
+//        oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
+//            health = 1280;
+//            hasPower = isConsumeItem = isOutputItem = isConsumePower = hasItems = true;
+//            consumePower(8f);
+//            size = 3;
+//
+//            drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
+//
+//            requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
+//
+//            recipes = Seq.with(//ds给的代码，能跑就行
+//                    new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-sphularite"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zinc"));
+//                        }});
+//                        put("craftTime", 40f);
+//                        put("icon", "temod-zinc");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-copperPowder"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("copper"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "copper");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-leadPowder"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("lead"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "lead");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-thoriumPowder"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("thorium"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "thorium");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-titaniumPowder"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("titanium"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "titanium");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zincPowder"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zinc"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-zinc");
+//                    }}
+//            );
+//        }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
             oreDefault = true;
@@ -979,80 +978,80 @@ public class TEBlocks {
             oreScale = 23.47619f;
         }};
 
-        oreCrusher = new MultiCrafter("ore-crusher") {{
-            health = 1000;
-            size = 2;
-            recipes = Seq.with(
-                    new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("copper"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-copperPowder"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-copperPowder");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("lead"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-leadPowder"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-leadPowder");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("titanium"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-titaniumPowder"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-titaniumPowder");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("thorium"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-thoriumPowder"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-thoriumPowder");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zinc"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zincPowder"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-zincPowder");
-                    }},new ObjectMap<>() {{
-                        put("input", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-sphularite"));
-                        }});
-                        put("output", new ObjectMap<>() {{
-                            put("items", Seq.with("temod-zincPowder/2"));
-                        }});
-                        put("craftTime", 30f);
-                        put("icon", "temod-zincPowder");
-                    }}
-            );
-
-            requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
-
-            hasPower = isConsumeItem = isOutputItem = isConsumePower = hasItems = true;
-            consumePower(5f);
-
-            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
-                spinSprite = true;
-                rotateSpeed = 2f;
-            }}, new DrawRegion("-top"));
-
-            craftEffect = Fx.pulverize;
-            updateEffect = Fx.pulverizeSmall;
-        }};
+//        oreCrusher = new MultiCrafter("ore-crusher") {{
+//            health = 1000;
+//            size = 2;
+//            recipes = Seq.with(
+//                    new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("copper"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-copperPowder"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-copperPowder");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("lead"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-leadPowder"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-leadPowder");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("titanium"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-titaniumPowder"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-titaniumPowder");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("thorium"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-thoriumPowder"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-thoriumPowder");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zinc"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zincPowder"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-zincPowder");
+//                    }},new ObjectMap<>() {{
+//                        put("input", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-sphularite"));
+//                        }});
+//                        put("output", new ObjectMap<>() {{
+//                            put("items", Seq.with("temod-zincPowder/2"));
+//                        }});
+//                        put("craftTime", 30f);
+//                        put("icon", "temod-zincPowder");
+//                    }}
+//            );
+//
+//            requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
+//
+//            hasPower = isConsumeItem = isOutputItem = isConsumePower = hasItems = true;
+//            consumePower(5f);
+//
+//            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
+//                spinSprite = true;
+//                rotateSpeed = 2f;
+//            }}, new DrawRegion("-top"));
+//
+//            craftEffect = Fx.pulverize;
+//            updateEffect = Fx.pulverizeSmall;
+//        }};
 
         cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer"){{
             requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 400, Items.titanium, 600, Items.thorium, 350));
