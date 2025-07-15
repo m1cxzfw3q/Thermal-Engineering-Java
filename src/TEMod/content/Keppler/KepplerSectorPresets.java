@@ -10,7 +10,7 @@ public class KepplerSectorPresets {
     public static SectorPreset ResearchAreaNo47;//47号研究区
 
     public static void load(){
-        LandingArea = new SectorPreset("LandingArea", keppler, 53) {{
+        LandingArea = new SectorPreset("landing-area", keppler, 53) {{
             alwaysUnlocked = false;
             addStartingItems = false;
             difficulty = 3;
@@ -18,7 +18,7 @@ public class KepplerSectorPresets {
             startWaveTimeMultiplier = 4f;
         }};
 
-        ResearchAreaNo47 = new SectorPreset("ResearchAreaNo47", keppler, 472) {{
+        ResearchAreaNo47 = new SectorPreset("research-area-no-47", keppler, 472) {{
             alwaysUnlocked = false;
             addStartingItems = false;
             captureWave = 81;
