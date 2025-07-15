@@ -800,7 +800,7 @@ public class TEBlocks {
                     new ItemStack[]{new ItemStack(Items.copper, 3)},
                     new ItemStack[]{new ItemStack(Items.graphite, 1)},
                     80f
-            ),new Recipe(
+            ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.copper, 3)},
                     new ItemStack[]{new ItemStack(Items.graphite, 1)},
                     80f

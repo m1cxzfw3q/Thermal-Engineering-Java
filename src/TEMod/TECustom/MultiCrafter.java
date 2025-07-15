@@ -127,7 +127,6 @@ public class MultiCrafter extends GenericCrafter {
         public float craftTime = 60f;
         public LiquidStack[] inputLiquids = {};
         public LiquidStack[] outputLiquids = {};
-        public float liquidCapacity = 10f;
 
         public Recipe() {}
 
