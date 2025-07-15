@@ -87,7 +87,7 @@ public class TEBlocks {
     //发射台
     public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
     public static Block advancedLaunchPad; //高级发射台
-    public static Block unitStorageWarehouse, unitStorageWarehouseLarge; //单位储存仓
+    public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
     //逻辑
     public static Block terminalProcessor; //终端处理器
     public static Block hugeLogicDisplay; //巨型逻辑显示屏
@@ -703,7 +703,7 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
-        unitStorageWarehouse = new StorageBlock("unit-storage-vault") {{
+        unitStorageVault = new StorageBlock("unit-storage-vault") {{
             health = 24000;
             unitCapModifier = 24;
             size = 5;
@@ -713,7 +713,7 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
-        unitStorageWarehouseLarge = new StorageBlock("large-unit-storage-vault") {{
+        unitStorageVaultLarge = new StorageBlock("large-unit-storage-vault") {{
             health = 70000;
             unitCapModifier = 64;
             itemCapacity = 0;
@@ -975,7 +975,7 @@ public class TEBlocks {
             consumePower(1f);
         }};
 
-        shieldGeneratorLarge = new ForceProjector("largeshield-generator"){{
+        shieldGeneratorLarge = new ForceProjector("large-shield-generator"){{
             requirements(Category.effect, with(Items.lead, 450, Items.titanium, 230, Items.silicon, 150, Items.copper, 550, TEItems.advancedChip, 10));
             size = 2;
             phaseRadiusBoost = 16f * 8f;
