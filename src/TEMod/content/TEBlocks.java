@@ -102,7 +102,7 @@ public class TEBlocks {
     public static Block advancedWaterExtractor; //抽水机
 
     public static void load() {
-        machineCannon = new ItemTurret("machinecannon") {{
+        machineCannon = new ItemTurret("machine-cannon") {{
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
