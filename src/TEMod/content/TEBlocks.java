@@ -925,13 +925,13 @@ public class TEBlocks {
 //            );
 //        }};
 
-        payloadConveyorLarge = new PayloadConveyor("payload-conveyor-large"){{
+        payloadConveyorLarge = new PayloadConveyor("large-payload-conveyor"){{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             size = (int) (payloadLimit = 5);
             canOverdrive = false;
         }};
 
-        payloadConveyorHuge = new PayloadConveyor("huge-payload-cConveyor"){{
+        payloadConveyorHuge = new PayloadConveyor("huge-payload-conveyor"){{
             requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
             size = (int) (payloadLimit = 7);
             canOverdrive = false;
@@ -943,7 +943,7 @@ public class TEBlocks {
             canOverdrive = false;
         }};
 
-        payloadRouterLarge = new PayloadRouter("large-payload-routerlarge"){{
+        payloadRouterLarge = new PayloadRouter("large-payload-router"){{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             canOverdrive = false;
             size = (int) (payloadLimit = payloadConveyorLarge.size);
@@ -1043,10 +1043,7 @@ public class TEBlocks {
             liquidCapacity = 30;
         }};
 
-        advancedWaterExtractor = new SolidPump("advanced-water-e" +
-                "" +
-                "" +
-                "xtractor"){{
+        advancedWaterExtractor = new SolidPump("advanced-water-extractor"){{
             requirements(Category.production, with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150, TEItems.primaryChip, 20));
             result = Liquids.water;
             pumpAmount = 15f / 60f;
