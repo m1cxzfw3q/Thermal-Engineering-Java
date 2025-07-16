@@ -431,9 +431,9 @@ public class TEBlocks {
             rotateSpeed = 0F;
             range = 145f * 8;
             reload = 65f;
-            liquidCapacity = 20f;
-            coolantMultiplier = 0.5f;
-            coolant = consume(consumeLiquid(Liquids.water, 26f / 60f));
+            liquidCapacity = 50f;
+            coolantMultiplier = 2f;
+            coolant = consume(consumeLiquid(Liquids.water, 13f / 60f));
             maxAmmo = 320;
             ammoPerShot = 40;
             consumePower(6f);
