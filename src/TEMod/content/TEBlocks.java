@@ -1040,7 +1040,7 @@ public class TEBlocks {
             hasPower = true;
             pulse = true;
             consumePower(0.9f);
-            liquidCapacity = 30;
+            liquidCapacity = 200;
         }};
 
         advancedWaterExtractor = new SolidPump("advanced-water-extractor"){{
@@ -1048,7 +1048,7 @@ public class TEBlocks {
             result = Liquids.water;
             pumpAmount = 15f / 60f;
             size = 3;
-            liquidCapacity = 50f;
+            liquidCapacity = 60f;
             rotateSpeed = 2.4f;
             attribute = Attribute.water;
             envRequired |= Env.groundWater;
