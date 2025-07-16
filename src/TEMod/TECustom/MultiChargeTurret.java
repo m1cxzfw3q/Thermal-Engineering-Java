@@ -26,7 +26,7 @@ public class MultiChargeTurret extends PowerTurret {
         super.setStats();
         stats.remove(Stat.bullet);
         stats.add(Stat.bullet, table -> {
-            table.add("[accent]" + Core.bundle.format("misc.multicharge.not-charge") + Core.bundle.format("misc.multicharge.charge" + "(70%)")).left().row();
+            table.add("[accent]" + Core.bundle.format("misc.multicharge.not-charge") + "(70%)").left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, NotCharge())));
         });
         stats.add(Stat.bullet, table -> {
