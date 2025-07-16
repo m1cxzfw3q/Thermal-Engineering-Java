@@ -24,28 +24,28 @@ public class MultiChargeTurret extends PowerTurret {
     @Override
     public void setStats() {
         super.setStats();
-        stats.remove(Stat.bullet);
-        stats.add(Stat.bullet, table -> {
+        stats.remove(Stat.ammo);
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.not-charge") + "(70%)").left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, NotCharge())));
         });
-        stats.add(Stat.bullet, table -> {
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.t1-charge") + Core.bundle.format("misc.multicharge.charge")).left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, Tier1Charge())));
         });
-        stats.add(Stat.bullet, table -> {
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.t2-charge") + Core.bundle.format("misc.multicharge.charge")).left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, Tier2Charge())));
         });
-        stats.add(Stat.bullet, table -> {
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.t3-charge") + Core.bundle.format("misc.multicharge.charge")).left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, Tier3Charge())));
         });
-        stats.add(Stat.bullet, table -> {
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.overdrive-charge") + Core.bundle.format("misc.multicharge.charge")).left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, OverdriveCharge())));
         });
-        stats.add(Stat.bullet, table -> {
+        stats.add(Stat.ammo, table -> {
             table.add("[accent]" + Core.bundle.format("misc.multicharge.sup-overdrive-charge") + Core.bundle.format("misc.multicharge.charge")).left().row();
             table.add((Element) StatValues.ammo(ObjectMap.of(this, SuperOverdriveCharge())));
         });
