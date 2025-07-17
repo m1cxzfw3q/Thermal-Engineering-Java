@@ -117,7 +117,6 @@ public class TEBlocks {
                 height = 5.0F;
                 lifetime = 30.0F;
                 ammoMultiplier = 10.0F;
-                shootEffect = Fx.shootSmall;
                 knockback = 0.2F;
             }}, Items.graphite, new BasicBulletType(8.0F, 35.0F) {{
                 pierceCap = 4;
@@ -126,7 +125,6 @@ public class TEBlocks {
                 reloadMultiplier = 0.7F;
                 ammoMultiplier = 10.0F;
                 lifetime = 30.0F;
-                shootEffect = Fx.shootSmall;
                 status = unmoving;
                 statusDuration = 2F;
                 knockback = 0.2F;
@@ -137,7 +135,6 @@ public class TEBlocks {
                 reloadMultiplier = 0.8F;
                 ammoMultiplier = 7.0F;
                 lifetime = 30.0F;
-                shootEffect = Fx.shootSmall;
                 status = unmoving;
                 statusDuration = 2F;
                 fragBullets = 2;
@@ -160,7 +157,6 @@ public class TEBlocks {
                 height = 5.0F;
                 lifetime = 30.0F;
                 ammoMultiplier = 25.0F;
-                shootEffect = Fx.shootSmall;
                 knockback = 0.5F;
                 lightningDamage = 5F;
                 lightning = 2;
@@ -205,7 +201,6 @@ public class TEBlocks {
                 height = 5.0F;
                 lifetime = 30.0F;
                 ammoMultiplier = 10.0F;
-                shootEffect = Fx.shootSmall;
                 knockback = 0.2F;
                 homingPower = 0.1f;
                 homingRange = 26f;
@@ -214,17 +209,17 @@ public class TEBlocks {
                 height = 5.0F;
                 lifetime = 30.0F;
                 ammoMultiplier = 15.0F;
-                shootEffect = Fx.shootSmall;
                 homingPower = 0.2f;
                 homingRange = 30f;
             }});
             maxAmmo = 300;
             recoil = 0.7F;
             recoilTime = 2F;
-            shootY = 3.0F;
+            shootY = 8.0F;
             reload = 1.0F;
             range = 240.0F;
             ammoUseEffect = Fx.casing2;
+            shootEffect = Fx.shootSmall;
             health = 2560;
             inaccuracy = 3.0F;
             rotateSpeed = 40.0F;
