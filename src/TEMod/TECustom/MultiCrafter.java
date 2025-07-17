@@ -131,6 +131,7 @@ public class MultiCrafter extends GenericCrafter {
                     return items.get(item) < itemCapacity;
                 }
             }
+            super.acceptItem(source, item);
             return false;
         }
 
@@ -146,6 +147,7 @@ public class MultiCrafter extends GenericCrafter {
                     return liquids.get(liquid) < liquidCapacity;
                 }
             }
+            super.acceptLiquid(source, liquid);
             return false;
         }
 
