@@ -370,11 +370,11 @@ public class TEBlocks {
             recipes.add(new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 3), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
                     new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
-                    15
+                    30
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 4), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
                     new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
-                    20
+                    40
             ));
         }};
 
@@ -391,15 +391,15 @@ public class TEBlocks {
             recipes.add(new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 3)},
                     new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
-                    5
+                    10
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 5)},
                     new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
-                    10
+                    20
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 6)},
                     new ItemStack[]{new ItemStack(TEItems.specialChip, 1)},
-                    15
+                    30
             ));
 
             drawer = new DrawMulti(
