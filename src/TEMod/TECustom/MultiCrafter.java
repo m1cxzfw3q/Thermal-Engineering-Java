@@ -151,7 +151,7 @@ public class MultiCrafter extends GenericCrafter {
             table.button("\uE835", Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
                 rebuildConfig(table);
-            }).size(80).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
+            }).size(60).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
 
             table.table(Styles.black5, t -> {
                 Recipe current = getCurrentRecipe();
