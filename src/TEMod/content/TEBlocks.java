@@ -366,11 +366,11 @@ public class TEBlocks {
             hasItems = hasPower = true;
 
             recipes.add(new Recipe(
-                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(Items.silicon, 3), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
                     new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
-                    20
+                    15
             ), new Recipe(
-                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(Items.silicon, 4), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
                     new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
                     20
             ));
@@ -387,15 +387,15 @@ public class TEBlocks {
             alwaysUnlocked = false;
 
             recipes.add(new Recipe(
-                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(Items.silicon, 3)},
                     new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
                     5
             ), new Recipe(
-                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(Items.silicon, 5)},
                     new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
                     10
             ), new Recipe(
-                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(Items.silicon, 6)},
                     new ItemStack[]{new ItemStack(TEItems.specialChip, 1)},
                     15
             ));
