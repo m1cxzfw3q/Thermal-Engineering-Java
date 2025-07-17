@@ -10,8 +10,6 @@ import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
-import static mindustry.Vars.content;
-
 public class MultiCrafter extends GenericCrafter {
     // 存储所有可用配方
     public Seq<Recipe> recipes = new Seq<>();
@@ -112,17 +110,20 @@ public class MultiCrafter extends GenericCrafter {
             super.updateTile();
         }
 
-        // 关键修复：自动输出方法
+        // 关键修复：自动输出方法 - 只输出产品，不输出原料
         public void dumpOutputs() {
-            // 输出所有物品
-            for (Item item : content.items()) {
-                if (items.has(item)) {
-                    dump(item);
+            Recipe recipe = getCurrentRecipe();
+            if(recipe == null) return;
+
+            // 只输出配方中的产品物品
+            for(ItemStack out : recipe.outputItems) {
+                if(items.has(out.item)) {
+                    dump(out.item);
                 }
             }
 
-            // 输出所有液体
-            if (liquids.currentAmount() > 0.001f) {
+            // 输出所有液体（包括产品液体）
+            if(liquids.currentAmount() > 0.001f) {
                 dumpLiquid(liquids.current());
             }
         }
@@ -140,6 +141,23 @@ public class MultiCrafter extends GenericCrafter {
             // 验证液体输入
             for(LiquidStack in : recipe.inputLiquids) {
                 if(liquids.get(in.liquid) < in.amount) return false;
+            }
+
+            // 关键修复：检查输出空间是否足够
+            // 检查物品输出空间
+            for(ItemStack out : recipe.outputItems) {
+                if(items.get(out.item) + out.amount > itemCapacity) {
+                    return false;
+                }
+            }
+
+            // 检查液体输出空间
+            float totalOutput = 0f;
+            for(LiquidStack out : recipe.outputLiquids) {
+                totalOutput += out.amount;
+            }
+            if(liquids.currentAmount() + totalOutput > liquidCapacity) {
+                return false;
             }
 
             return enabled;
