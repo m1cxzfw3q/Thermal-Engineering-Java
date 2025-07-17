@@ -1,30 +1,29 @@
 package TEMod.TECustom;
 
 import arc.*;
-import arc.scene.ui.layout.Table;
+import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
+import mindustry.gen.*;
 import mindustry.type.*;
-import mindustry.ui.Styles;
-import mindustry.world.blocks.ItemSelection;
+import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
-
-import static mindustry.Vars.content;
 
 public class MultiCrafter extends GenericCrafter {
     // 存储所有可用配方
     public Seq<Recipe> recipes = new Seq<>();
     // 当前选中的配方索引
     public int currentRecipe = 0;
-    private Recipe[] recipe;
 
     public MultiCrafter(String name) {
         super(name);
         configurable = true;
         saveConfig = true;
 
-        config(Integer.class, (MultiCrafterBuild build, Integer value) -> build.currentRecipe = value % recipes.size);
+        config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
+            if(recipes.size > 0) build.currentRecipe = value % recipes.size;
+        });
     }
 
     @Override
@@ -39,22 +38,22 @@ public class MultiCrafter extends GenericCrafter {
                 tab.add("[accent]" + (finalI +1) + ". " + recipe.localizedName()).left().row();
                 // 显示输入物品
                 for(ItemStack input : recipe.inputItems) {
-                    tab.add(Core.bundle.format("misc.inputItem", input.item.emoji() + " " + input.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.inputItem", input.item.emoji() + " " + input.amount)).left();
                     tab.row();
                 }
                 // 显示输出物品
                 for(ItemStack output : recipe.outputItems) {
-                    tab.add(Core.bundle.format("misc.outputItem", output.item.emoji() + " " + output.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.outputItem", output.item.emoji() + " " + output.amount)).left();
                     tab.row();
                 }
                 // 显示输入流体
                 for(LiquidStack input : recipe.inputLiquids) {
-                    tab.add(Core.bundle.format("misc.inputLiquid", input.liquid.emoji() + " " + input.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.inputLiquid", input.liquid.emoji() + " " + input.amount)).left();
                     tab.row();
                 }
                 // 显示输出流体
                 for(LiquidStack output : recipe.outputLiquids) {
-                    tab.add(Core.bundle.format("misc.outputLiquid", output.liquid.emoji() + " " + output.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.outputLiquid", output.liquid.emoji() + " " + output.amount)).left();
                     tab.row();
                 }
             }).padTop(8));
@@ -81,40 +80,64 @@ public class MultiCrafter extends GenericCrafter {
                 lastRecipe = recipe;
             }
 
-            // 设置当前配方到父类
-            MultiCrafter.this.recipe = new Recipe[]{recipe};
+            // 设置当前配方的合成时间
+            craftTime = recipe.craftTime;
             super.updateTile();
         }
 
         @Override
         public boolean shouldConsume() {
             Recipe recipe = getCurrentRecipe();
-            return recipe != null && items.has(recipe.inputItems);
+            if(recipe == null) return false;
+
+            // 验证物品输入
+            for(ItemStack input : recipe.inputItems) {
+                if(items.get(input.item) < input.amount) return false;
+            }
+
+            // 验证液体输入
+            for(LiquidStack input : recipe.inputLiquids) {
+                if(liquids.get(input.liquid) < input.amount) return false;
+            }
+
+            return enabled;
+        }
+
+        @Override
+        public void consume() {
+            Recipe recipe = getCurrentRecipe();
+            if(recipe == null) return;
+
+            // 消耗物品
+            for(ItemStack input : recipe.inputItems) {
+                items.remove(input.item, input.amount);
+            }
+
+            // 消耗液体
+            for(LiquidStack input : recipe.inputLiquids) {
+                liquids.remove(input.liquid, input.amount);
+            }
         }
 
         @Override
         public void craft() {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
-                float inc = getProgressIncrease(1f);
-                // 消耗输入
-                consume();
-                // 生成输出
-                for (ItemStack output : recipe.outputItems) {
-                    for (int i = 0; i < output.amount; i++) {
+                // 生成输出物品
+                for(ItemStack output : recipe.outputItems) {
+                    for(int i = 0; i < output.amount; i++) {
                         offload(output.item);
                     }
                 }
-                for (LiquidStack output : recipe.outputLiquids) {
-                    for (int i = 0; i < output.amount; i++) {
-                        handleLiquid(this, output.liquid, Math.min(output.amount * inc, liquidCapacity - liquids.get(output.liquid)));
-                    }
+
+                // 生成输出液体
+                for(LiquidStack output : recipe.outputLiquids) {
+                    liquids.add(output.liquid, output.amount);
                 }
 
                 if(wasVisible){
                     craftEffect.at(x, y);
                 }
-                progress %= 1f;
             }
         }
 
@@ -125,14 +148,48 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public void buildConfiguration(Table table) {
-            ItemSelection.buildTable(table, content.items(), () -> {
-                Recipe r = getCurrentRecipe();
-                return r != null ? r.outputItems[0].item : null;
-            }, item -> {
-                // 查找包含该物品输出的配方
-                int index = recipes.indexOf(r -> r.outputItems[0].item == item);
-                if(index >= 0) configure(index);
-            });
+            // 自定义配方选择器
+            table.button(String.valueOf(Icon.undo), Styles.defaultt, () -> {
+                currentRecipe = (currentRecipe + 1) % recipes.size;
+                rebuildConfig(table);
+            }).size(40).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
+
+            table.table(Styles.black5, t -> {
+                Recipe current = getCurrentRecipe();
+                if(current == null) return;
+
+                t.add(current.localizedName()).left();
+                t.row();
+
+                // 显示输入
+                t.add(Core.bundle.format("misc.multicraft.input")).left();
+                for(ItemStack in : current.inputItems) {
+                    t.image(in.item.uiIcon).size(24).padRight(4);
+                    t.add(in.amount + "").left().padRight(8);
+                }
+                for(LiquidStack in : current.inputLiquids) {
+                    t.image(in.liquid.uiIcon).size(24).padRight(4);
+                    t.add(in.amount + "").left().padRight(8);
+                }
+                t.row();
+
+                // 显示输出
+                t.add(Core.bundle.format("misc.multicraft.output")).left();
+                for(ItemStack out : current.outputItems) {
+                    t.image(out.item.uiIcon).size(24).padRight(4);
+                    t.add(out.amount + "").left().padRight(8);
+                }
+                for(LiquidStack out : current.outputLiquids) {
+                    t.image(out.liquid.uiIcon).size(24).padRight(4);
+                    t.add(out.amount + "").left().padRight(8);
+                }
+            }).padLeft(8);
+        }
+
+        // 重建配置界面
+        private void rebuildConfig(Table table) {
+            table.clear();
+            buildConfiguration(table);
         }
 
         private @Nullable Recipe getCurrentRecipe() {
@@ -198,8 +255,10 @@ public class MultiCrafter extends GenericCrafter {
         public String localizedName() {
             if(outputItems.length > 0) {
                 return outputItems[0].item.localizedName;
+            } else if(outputLiquids.length > 0) {
+                return outputLiquids[0].liquid.localizedName;
             }
-            return "Unknown Recipe";
+            return "未知配方";
         }
     }
 }
