@@ -215,7 +215,7 @@ public class TEBlocks {
             maxAmmo = 300;
             recoil = 0.7F;
             recoilTime = 2F;
-            shootY = 8.0F;
+            shootY = 5.0F;
             reload = 1.0F;
             range = 240.0F;
             ammoUseEffect = Fx.casing2;
