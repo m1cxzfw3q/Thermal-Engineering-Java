@@ -1,6 +1,8 @@
 package TEMod.TECustom;
 
 import arc.*;
+import arc.func.Cons;
+import arc.scene.ui.Button;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
@@ -149,7 +151,7 @@ public class MultiCrafter extends GenericCrafter {
         @Override
         public void buildConfiguration(Table table) {
             // 自定义配方选择器
-            table.button(String.valueOf(Icon.undo), Styles.defaultt, () -> {
+            table.button((Cons<Button>) Icon.undo, Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
                 rebuildConfig(table);
             }).size(40).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
