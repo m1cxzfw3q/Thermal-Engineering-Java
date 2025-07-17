@@ -1,12 +1,9 @@
 package TEMod.TECustom;
 
 import arc.*;
-import arc.func.Cons;
-import arc.scene.ui.Button;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
-import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
