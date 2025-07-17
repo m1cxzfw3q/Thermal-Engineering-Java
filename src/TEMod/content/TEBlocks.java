@@ -385,6 +385,7 @@ public class TEBlocks {
             itemCapacity = 40;
             consumePower(6f);
             alwaysUnlocked = false;
+            consumeLiquid(Liquids.cryofluid, 0.5f);
 
             recipes.add(new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 3)},
@@ -409,7 +410,7 @@ public class TEBlocks {
                     new DrawDefault(),
                     new DrawRegion("-chipBuild")
             );
-            hasLiquids = hasItems = hasPower = true;
+            hasItems = hasPower = true;
             liquidCapacity = 20f;
         }};
 
