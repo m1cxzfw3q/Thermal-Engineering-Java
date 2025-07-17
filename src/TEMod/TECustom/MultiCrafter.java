@@ -347,7 +347,6 @@ public class MultiCrafter extends GenericCrafter {
                 craftEffect.at(x, y);
             }
         }
-        }
 
         @Override
         public Object config() {
