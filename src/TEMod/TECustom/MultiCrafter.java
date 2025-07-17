@@ -37,22 +37,22 @@ public class MultiCrafter extends GenericCrafter {
                 tab.add("[accent]" + (finalI +1) + ". " + recipe.localizedName()).left().row();
                 // 显示输入物品
                 for(ItemStack input : recipe.inputItems) {
-                    tab.add(Core.bundle.format("misc.multicraft.inputItem", input.item.emoji() + " " + input.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.inputItem", input.item.uiIcon + " " + input.amount)).left();
                     tab.row();
                 }
                 // 显示输出物品
                 for(ItemStack output : recipe.outputItems) {
-                    tab.add(Core.bundle.format("misc.multicraft.outputItem", output.item.emoji() + " " + output.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.outputItem", output.item.uiIcon + " " + output.amount)).left();
                     tab.row();
                 }
                 // 显示输入流体
                 for(LiquidStack input : recipe.inputLiquids) {
-                    tab.add(Core.bundle.format("misc.multicraft.inputLiquid", input.liquid.emoji() + " " + input.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.inputLiquid", input.liquid.uiIcon + " " + input.amount)).left();
                     tab.row();
                 }
                 // 显示输出流体
                 for(LiquidStack output : recipe.outputLiquids) {
-                    tab.add(Core.bundle.format("misc.multicraft.outputLiquid", output.liquid.emoji() + " " + output.amount)).left();
+                    tab.add(Core.bundle.format("misc.multicraft.outputLiquid", output.liquid.uiIcon + " " + output.amount)).left();
                     tab.row();
                 }
             }).padTop(8));
@@ -90,13 +90,13 @@ public class MultiCrafter extends GenericCrafter {
             if(recipe == null) return false;
 
             // 验证物品输入
-            for(ItemStack input : recipe.inputItems) {
-                if(items.get(input.item) < input.amount) return false;
+            for(ItemStack in : recipe.inputItems) {
+                if(items.get(in.item) < in.amount) return false;
             }
 
             // 验证液体输入
-            for(LiquidStack input : recipe.inputLiquids) {
-                if(liquids.get(input.liquid) < input.amount) return false;
+            for(LiquidStack in : recipe.inputLiquids) {
+                if(liquids.get(in.liquid) < in.amount) return false;
             }
 
             return enabled;
@@ -108,13 +108,13 @@ public class MultiCrafter extends GenericCrafter {
             if(recipe == null) return;
 
             // 消耗物品
-            for(ItemStack input : recipe.inputItems) {
-                items.remove(input.item, input.amount);
+            for(ItemStack in : recipe.inputItems) {
+                items.remove(in.item, in.amount);
             }
 
             // 消耗液体
-            for(LiquidStack input : recipe.inputLiquids) {
-                liquids.remove(input.liquid, input.amount);
+            for(LiquidStack in : recipe.inputLiquids) {
+                liquids.remove(in.liquid, in.amount);
             }
         }
 
@@ -123,15 +123,15 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
                 // 生成输出物品
-                for(ItemStack output : recipe.outputItems) {
-                    for(int i = 0; i < output.amount; i++) {
-                        offload(output.item);
+                for(ItemStack out : recipe.outputItems) {
+                    for(int i = 0; i < out.amount; i++) {
+                        offload(out.item);
                     }
                 }
 
                 // 生成输出液体
-                for(LiquidStack output : recipe.outputLiquids) {
-                    liquids.add(output.liquid, output.amount);
+                for(LiquidStack out : recipe.outputLiquids) {
+                    liquids.add(out.liquid, out.amount);
                 }
 
                 if(wasVisible){
