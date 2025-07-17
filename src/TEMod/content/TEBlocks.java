@@ -160,7 +160,8 @@ public class TEBlocks {
                 knockback = 0.5F;
                 lightningDamage = 5F;
                 lightning = 2;
-                lightningLength = 4;
+                lightningLength = 6;
+                lightningLengthRand = 8;
                 lightningColor = Color.valueOf("ab99d3ff");
                 status = shocked;
                 fragBullets = 2;
@@ -180,6 +181,7 @@ public class TEBlocks {
                     fragSpread = 45F;
                     fragVelocityMin = 0.5F;
                     fragVelocityMax = 1F;
+                    lightningLength = 2;
                     fragBullet = new BasicBulletType(2F, 20.0F) {{
                         width = 0.6F;
                         height = 0.6F;
@@ -189,6 +191,7 @@ public class TEBlocks {
                         fragSpread = 45F;
                         fragVelocityMin = 0.5F;
                         fragVelocityMax = 1F;
+                        lightningLength = 1;
                         fragBullet = new BasicBulletType(2F, 15.0F) {{
                             width = 0.2F;
                             height = 0.2F;
