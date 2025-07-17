@@ -71,17 +71,6 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }).padTop(8));
         }
-
-        // 新增：显示必需流体
-        if(!requiredLiquids.isEmpty()) {
-            stats.add(Stat.input, t -> {
-                t.add(Core.bundle.get("misc.multicraft.requiredLiquids") + ":");
-                for(Liquid liquid : requiredLiquids) {
-                    t.image(liquid.uiIcon).size(24).padRight(4);
-                    t.add(liquid.localizedName).left().padRight(8);
-                }
-            });
-        }
     }
 
     public class MultiCrafterBuild extends GenericCrafterBuild {
