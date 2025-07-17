@@ -88,9 +88,7 @@ public class MultiCrafter extends GenericCrafter {
         public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
 
-        // 新增：配方切换处理方法
         public void switchRecipe(int newRecipe) {
-            // 清理非当前配方原料
             Recipe nextRecipe = recipes.get(newRecipe);
             Seq<Item> neededItems = new Seq<>();
 
@@ -99,10 +97,12 @@ public class MultiCrafter extends GenericCrafter {
                 neededItems.add(stack.item);
             }
 
-            // 清理非新配方需要的物品
+            // 完全清理非新配方需要的物品（包括产物）
             for(int i = 0; i < items.length(); i++) {
                 Item item = content.item(i);
                 if(items.get(i) > 0 && !neededItems.contains(item)) {
+                    // 直接输出全部多余物品
+                    int amount = items.get(i);
                     items.set(item, 0);
                     offload(item);
                 }
