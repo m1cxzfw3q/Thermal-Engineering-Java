@@ -121,6 +121,8 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean acceptItem(Building source, Item item) {
+            super.acceptItem(source, item);
+
             Recipe recipe = getCurrentRecipe();
             if (recipe == null) return false;
 
@@ -131,12 +133,14 @@ public class MultiCrafter extends GenericCrafter {
                     return items.get(item) < itemCapacity;
                 }
             }
-            super.acceptItem(source, item);
+
             return false;
         }
 
         @Override
         public boolean acceptLiquid(Building source, Liquid liquid) {
+            super.acceptLiquid(source, liquid);
+
             Recipe recipe = getCurrentRecipe();
             if (recipe == null) return false;
 
@@ -147,7 +151,7 @@ public class MultiCrafter extends GenericCrafter {
                     return liquids.get(liquid) < liquidCapacity;
                 }
             }
-            super.acceptLiquid(source, liquid);
+
             return false;
         }
 
