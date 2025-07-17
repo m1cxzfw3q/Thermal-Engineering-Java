@@ -99,12 +99,12 @@ public class MultiCrafter extends GenericCrafter {
                 // 消耗输入
                 for (ItemStack input : recipe.inputItems) {
                     for (int i = 0; i < input.amount; i++) {
-                        this.items.remove(input.item, input.amount);
+                        this.items.remove(input.item, 1);
                     }
                 }
                 for (LiquidStack input : recipe.inputLiquids) {
                     for (int i = 0; i < input.amount; i++) {
-                        this.liquids.remove(input.liquid, input.amount);
+                        this.liquids.remove(input.liquid, 1);
                     }
                 }
                 // 生成输出
