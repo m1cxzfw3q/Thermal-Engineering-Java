@@ -4,25 +4,29 @@ import arc.*;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
-import mindustry.gen.Building;
+import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
+import static mindustry.Vars.content;
+
 public class MultiCrafter extends GenericCrafter {
     // 存储所有可用配方
     public Seq<Recipe> recipes = new Seq<>();
-    // 当前选中的配方索引
-    public int currentRecipe = 0;
 
-    // 新增：存储必需的流体（如冷却液），这些流体会被工厂始终接受
     public Seq<Liquid> requiredLiquids = new Seq<>();
 
     public MultiCrafter(String name) {
         super(name);
         configurable = true;
         saveConfig = true;
+
+        // 关键修复：启用物品输出和传送带连接
+        hasItems = true;
+        itemCapacity = 100; // 确保设置足够的物品容量
+        liquidCapacity = 100f; // 确保设置足够的液体容量
 
         config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
             if(recipes.size > 0) build.currentRecipe = value % recipes.size;
@@ -37,6 +41,12 @@ public class MultiCrafter extends GenericCrafter {
 
     public void requiresLiquid(Liquid liquid) {
         requiredLiquids.add(liquid);
+    }
+
+    // 关键修复：重写输出连接方法
+    @Override
+    public boolean outputsItems() {
+        return true; // 确保工厂被识别为物品输出源
     }
 
     @Override
@@ -77,8 +87,12 @@ public class MultiCrafter extends GenericCrafter {
         public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
 
+        // 关键修复：添加自动输出逻辑
         @Override
         public void updateTile() {
+            // 先尝试输出物品和液体
+            dumpOutputs();
+
             Recipe recipe = getCurrentRecipe();
 
             // 配方无效时停止生产
@@ -96,6 +110,21 @@ public class MultiCrafter extends GenericCrafter {
             // 设置当前配方的合成时间
             craftTime = recipe.craftTime;
             super.updateTile();
+        }
+
+        // 关键修复：自动输出方法
+        public void dumpOutputs() {
+            // 输出所有物品
+            for (Item item : content.items()) {
+                if (items.has(item)) {
+                    dump(item);
+                }
+            }
+
+            // 输出所有液体
+            if (liquids.currentAmount() > 0.001f) {
+                dumpLiquid(liquids.current());
+            }
         }
 
         @Override
@@ -175,11 +204,9 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
                 consume();
-                // 生成输出物品
+                // 关键修复：改为将物品添加到库存，由dumpOutputs处理输出
                 for(ItemStack out : recipe.outputItems) {
-                    for(int i = 0; i < out.amount; i++) {
-                        offload(out.item);
-                    }
+                    items.add(out.item, out.amount);
                 }
 
                 // 生成输出液体
@@ -259,6 +286,12 @@ public class MultiCrafter extends GenericCrafter {
         private @Nullable Recipe getCurrentRecipe() {
             if(recipes.isEmpty()) return null;
             return recipes.get(currentRecipe % recipes.size);
+        }
+
+        // 关键修复：允许液体输出
+        @Override
+        public boolean canDumpLiquid(Building to, Liquid liquid) {
+            return true;
         }
     }
 
