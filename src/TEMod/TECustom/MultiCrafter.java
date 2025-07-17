@@ -122,6 +122,7 @@ public class MultiCrafter extends GenericCrafter {
         public void craft() {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
+                consume();
                 // 生成输出物品
                 for(ItemStack out : recipe.outputItems) {
                     for(int i = 0; i < out.amount; i++) {

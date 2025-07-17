@@ -374,7 +374,6 @@ public class TEBlocks {
                     new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
                     20
             ));
-
         }};
 
         chipPrinter = new MultiCrafter("chip-printer") {{
