@@ -4,6 +4,7 @@ import arc.*;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
+import mindustry.gen.Building;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
@@ -116,6 +117,36 @@ public class MultiCrafter extends GenericCrafter {
             for(LiquidStack in : recipe.inputLiquids) {
                 liquids.remove(in.liquid, in.amount);
             }
+        }
+
+        @Override
+        public boolean acceptItem(Building source, Item item) {
+            Recipe recipe = getCurrentRecipe();
+            if (recipe == null) return false;
+
+            // 检查物品是否是当前配方需要的
+            for (ItemStack input : recipe.inputItems) {
+                if (input.item == item) {
+                    // 检查物品数量是否达到容量上限
+                    return items.get(item) < itemCapacity;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public boolean acceptLiquid(Building source, Liquid liquid) {
+            Recipe recipe = getCurrentRecipe();
+            if (recipe == null) return false;
+
+            // 检查液体是否是当前配方需要的
+            for (LiquidStack input : recipe.inputLiquids) {
+                if (input.liquid == liquid) {
+                    // 检查液体量是否达到容量上限
+                    return liquids.get(liquid) < liquidCapacity;
+                }
+            }
+            return false;
         }
 
         @Override
