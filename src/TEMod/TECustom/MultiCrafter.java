@@ -4,7 +4,6 @@ import arc.*;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
-import mindustry.gen.Icon;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
