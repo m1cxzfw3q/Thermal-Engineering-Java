@@ -410,7 +410,7 @@ public class TEBlocks {
                     new DrawDefault(),
                     new DrawRegion("-chipBuild")
             );
-            hasItems = hasPower = true;
+            hasItems = hasPower = hasLiquids = true;
             liquidCapacity = 20f;
         }};
 
