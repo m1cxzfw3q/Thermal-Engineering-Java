@@ -28,7 +28,7 @@ public class TEItems {
     public static Item specialChip; //特级芯片
 
     public static void load() {
-        uranium = new Item("uranium", Color.valueOf("617270")) {{
+        uranium = new Item("uranium", Color.valueOf("617270")) {{//这个mod从Json开始的第一个物品
             hardness = 5;
             cost = 1.2F;
             radioactivity = 1.5F;

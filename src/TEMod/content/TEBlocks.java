@@ -102,7 +102,7 @@ public class TEBlocks {
     public static Block advancedWaterExtractor; //抽水机
 
     public static void load() {
-        machineCannon = new ItemTurret("machine-cannon") {{
+        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
@@ -291,7 +291,15 @@ public class TEBlocks {
         primaryLaboratory = new MultiCrafter("primary-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300));
 
-
+            recipes.add(new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.primaryProductionAgreement, 1)},
+                    180 * 60
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.primaryWarAgreement, 1)},
+                    180 * 60
+            ));
 
             size = 3;
             health = 1000;
@@ -304,7 +312,19 @@ public class TEBlocks {
         advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300, Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400));
 
-
+            recipes.add(new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.advancedProductionAgreement, 1)},
+                    120 * 60
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.advancedWarAgreement, 1)},
+                    120 * 60
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.highSpeedTransmissionProtocol, 1)},
+                    120 * 60
+            ));
 
             size = 5;
             health = 2000;
@@ -317,7 +337,19 @@ public class TEBlocks {
         specialLaboratory = new MultiCrafter("special-laboratory") {{
             requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000));
 
-
+            recipes.add(new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.specialProductionAgreement, 1)},
+                    80 * 60
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.specialWarAgreement, 1)},
+                    80 * 60
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.ultraRemoteTransmissionProtocol, 1)},
+                    80 * 60
+            ));
 
             size = 7;
             health = 4000;
@@ -335,6 +367,15 @@ public class TEBlocks {
             consumePower(5f);
             hasItems = hasPower = true;
 
+            recipes.add(new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
+                    20
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
+                    20
+            ));
 
         }};
 
@@ -347,7 +388,19 @@ public class TEBlocks {
             consumePower(6f);
             alwaysUnlocked = false;
 
-
+            recipes.add(new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
+                    5
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
+                    10
+            ), new Recipe(
+                    new ItemStack[]{},
+                    new ItemStack[]{new ItemStack(TEItems.specialChip, 1)},
+                    15
+            ));
 
             drawer = new DrawMulti(
                     new DrawRegion("-bottom"),
@@ -355,7 +408,8 @@ public class TEBlocks {
                         drawLiquid = Liquids.cryofluid;
                         suffix = "-cryo";
                     }},
-                    new DrawDefault()
+                    new DrawDefault(),
+                    new DrawRegion("-chipBuild")
             );
             hasLiquids = hasItems = hasPower = true;
             liquidCapacity = 20f;
@@ -797,19 +851,31 @@ public class TEBlocks {
             size = 3;
 
             recipes.add(new Recipe(
-                    new ItemStack[]{new ItemStack(Items.copper, 3)},
-                    new ItemStack[]{new ItemStack(Items.graphite, 1)},
-                    80f
+                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)},
+                    new ItemStack[]{new ItemStack(Items.copper, 1)},
+                    40f
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.copper, 3)},
-                    new ItemStack[]{new ItemStack(Items.graphite, 1)},
-                    80f
+                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)},
+                    new ItemStack[]{new ItemStack(Items.lead, 1)},
+                    40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)},
+                    new ItemStack[]{new ItemStack(Items.thorium, 1)},
+                    40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)},
+                    new ItemStack[]{new ItemStack(Items.titanium, 1)},
+                    40f
+            ));
+            recipes.add(new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
+                    40f
             ));
 
             drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
 
             requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
-
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
@@ -822,7 +888,28 @@ public class TEBlocks {
             health = 1000;
             size = 2;
 
-
+            recipes.add(new Recipe(
+                    new ItemStack[]{new ItemStack(Items.copper, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)},
+                    40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(Items.lead, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)},
+                    40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(Items.thorium, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)},
+                    40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(Items.titanium, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)},
+                    40f
+            ));
+            recipes.add(new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
+                    40f
+            ));
 
             requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
 

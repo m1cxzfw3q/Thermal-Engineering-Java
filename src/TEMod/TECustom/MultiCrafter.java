@@ -96,17 +96,9 @@ public class MultiCrafter extends GenericCrafter {
         public void craft() {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
+                float inc = getProgressIncrease(1f);
                 // 消耗输入
-                for (ItemStack input : recipe.inputItems) {
-                    for (int i = 0; i < input.amount; i++) {
-                        this.items.remove(input.item, 1);
-                    }
-                }
-                for (LiquidStack input : recipe.inputLiquids) {
-                    for (int i = 0; i < input.amount; i++) {
-                        this.liquids.remove(input.liquid, 1);
-                    }
-                }
+                consume();
                 // 生成输出
                 for (ItemStack output : recipe.outputItems) {
                     for (int i = 0; i < output.amount; i++) {
@@ -115,9 +107,14 @@ public class MultiCrafter extends GenericCrafter {
                 }
                 for (LiquidStack output : recipe.outputLiquids) {
                     for (int i = 0; i < output.amount; i++) {
-                        handleLiquid(this, output.liquid, output.amount);
+                        handleLiquid(this, output.liquid, Math.min(output.amount * inc, liquidCapacity - liquids.get(output.liquid)));
                     }
                 }
+
+                if(wasVisible){
+                    craftEffect.at(x, y);
+                }
+                progress %= 1f;
             }
         }
 
