@@ -47,6 +47,16 @@ public class MultiCrafter extends GenericCrafter {
                     tab.add(Core.bundle.format("misc.outputItem", output.item.emoji() + " " + output.amount)).left();
                     tab.row();
                 }
+                // 显示输入流体
+                for(LiquidStack input : recipe.inputLiquids) {
+                    tab.add(Core.bundle.format("misc.inputLiquid", input.liquid.emoji() + " " + input.amount)).left();
+                    tab.row();
+                }
+                // 显示输出流体
+                for(LiquidStack output : recipe.outputLiquids) {
+                    tab.add(Core.bundle.format("misc.outputLiquid", output.liquid.emoji() + " " + output.amount)).left();
+                    tab.row();
+                }
             }).padTop(8));
         }
     }
@@ -87,11 +97,25 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe != null) {
                 // 消耗输入
-                consume();
+                for (ItemStack input : recipe.inputItems) {
+                    for (int i = 0; i < input.amount; i++) {
+                        this.items.remove(input.item, input.amount);
+                    }
+                }
+                for (LiquidStack input : recipe.inputLiquids) {
+                    for (int i = 0; i < input.amount; i++) {
+                        this.liquids.remove(input.liquid, input.amount);
+                    }
+                }
                 // 生成输出
-                for(ItemStack output : recipe.outputItems) {
-                    for(int i = 0; i < output.amount; i++) {
+                for (ItemStack output : recipe.outputItems) {
+                    for (int i = 0; i < output.amount; i++) {
                         offload(output.item);
+                    }
+                }
+                for (LiquidStack output : recipe.outputLiquids) {
+                    for (int i = 0; i < output.amount; i++) {
+                        handleLiquid(this, output.liquid, output.amount);
                     }
                 }
             }
