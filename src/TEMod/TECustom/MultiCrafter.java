@@ -151,7 +151,7 @@ public class MultiCrafter extends GenericCrafter {
             // 自定义配方选择器
             table.button(String.valueOf(Icon.undo), Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
-                rebuildConfig(table);
+                //rebuildConfig(table);
             }).size(80).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
 
             table.table(Styles.black5, t -> {
