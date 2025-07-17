@@ -353,6 +353,8 @@ public class TEBlocks {
             health = 4000;
             itemCapacity = 20;
             consumePower(60f);
+            liquidCapacity = 50f;
+            requiresLiquid(Liquids.cryofluid, 2f);
             hasLiquids = hasPower = hasItems = true;
             canOverdrive = false;
         }};
@@ -384,7 +386,7 @@ public class TEBlocks {
             itemCapacity = 40;
             consumePower(6f);
             alwaysUnlocked = false;
-            consumeLiquid(Liquids.cryofluid, 0.5f);
+            requiresLiquid(Liquids.cryofluid, 0.2f);
 
             recipes.add(new Recipe(
                     new ItemStack[]{new ItemStack(Items.silicon, 3)},

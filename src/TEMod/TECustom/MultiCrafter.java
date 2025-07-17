@@ -16,6 +16,9 @@ public class MultiCrafter extends GenericCrafter {
     // 当前选中的配方索引
     public int currentRecipe = 0;
 
+    // 新增：存储必需的流体（如冷却液），这些流体会被工厂始终接受
+    public Seq<Liquid> requiredLiquids = new Seq<>();
+
     public MultiCrafter(String name) {
         super(name);
         configurable = true;
@@ -24,6 +27,16 @@ public class MultiCrafter extends GenericCrafter {
         config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
             if(recipes.size > 0) build.currentRecipe = value % recipes.size;
         });
+    }
+
+    // 新增：添加必需流体
+    public void requiresLiquid(Liquid liquid, float amount) {
+        requiredLiquids.add(liquid);
+        consumeLiquid(liquid, amount);
+    }
+
+    public void requiresLiquid(Liquid liquid) {
+        requiredLiquids.add(liquid);
     }
 
     @Override
@@ -57,6 +70,17 @@ public class MultiCrafter extends GenericCrafter {
                     tab.row();
                 }
             }).padTop(8));
+        }
+
+        // 新增：显示必需流体
+        if(!requiredLiquids.isEmpty()) {
+            stats.add(Stat.input, t -> {
+                t.add(Core.bundle.get("misc.multicraft.requiredLiquids") + ":");
+                for(Liquid liquid : requiredLiquids) {
+                    t.image(liquid.uiIcon).size(24).padRight(4);
+                    t.add(liquid.localizedName).left().padRight(8);
+                }
+            });
         }
     }
 
@@ -121,8 +145,6 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean acceptItem(Building source, Item item) {
-            super.acceptItem(source, item);
-
             Recipe recipe = getCurrentRecipe();
             if (recipe == null) return false;
 
@@ -139,15 +161,19 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean acceptLiquid(Building source, Liquid liquid) {
-            super.acceptLiquid(source, liquid);
+            // 修改：首先检查必需流体
+            for(Liquid required : ((MultiCrafter)block).requiredLiquids) {
+                if(required == liquid) {
+                    return liquids.get(liquid) < liquidCapacity;
+                }
+            }
 
+            // 然后检查当前配方需要的流体
             Recipe recipe = getCurrentRecipe();
             if (recipe == null) return false;
 
-            // 检查液体是否是当前配方需要的
             for (LiquidStack input : recipe.inputLiquids) {
                 if (input.liquid == liquid) {
-                    // 检查液体量是否达到容量上限
                     return liquids.get(liquid) < liquidCapacity;
                 }
             }
@@ -219,6 +245,18 @@ public class MultiCrafter extends GenericCrafter {
                 for(LiquidStack out : current.outputLiquids) {
                     t.image(out.liquid.uiIcon).size(24).padRight(4);
                     t.add(out.amount + "").left().padRight(8);
+                }
+
+                // 新增：显示必需流体
+                MultiCrafter block = (MultiCrafter) this.block;
+                if(!block.requiredLiquids.isEmpty()) {
+                    t.row();
+                    t.add(Core.bundle.format("misc.multicraft.requiredLiquids")).left().row();
+                    for(Liquid required : block.requiredLiquids) {
+                        t.image(required.uiIcon).size(24).padRight(4);
+                        t.add(required.localizedName).left().padRight(8);
+                        t.row();
+                    }
                 }
             }).padLeft(8);
         }
