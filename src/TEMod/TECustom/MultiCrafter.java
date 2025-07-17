@@ -10,6 +10,8 @@ import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
+import static mindustry.Vars.content;
+
 public class MultiCrafter extends GenericCrafter {
     // 存储所有可用配方
     public Seq<Recipe> recipes = new Seq<>();
@@ -26,7 +28,13 @@ public class MultiCrafter extends GenericCrafter {
         hasItems = true;
 
         config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
-            if(recipes.size > 0) build.currentRecipe = value % recipes.size;
+            if(recipes.size > 0) {
+                int newRecipe = value % recipes.size;
+                // 仅在配方改变时执行清理
+                if(build.currentRecipe != newRecipe) {
+                    build.switchRecipe(newRecipe);
+                }
+            }
         });
     }
 
@@ -80,7 +88,32 @@ public class MultiCrafter extends GenericCrafter {
         public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
 
-        // 关键修复：添加自动输出逻辑
+        // 新增：配方切换处理方法
+        public void switchRecipe(int newRecipe) {
+            // 清理非当前配方原料
+            Recipe nextRecipe = recipes.get(newRecipe);
+            Seq<Item> neededItems = new Seq<>();
+
+            // 收集新配方所需物品
+            for(ItemStack stack : nextRecipe.inputItems) {
+                neededItems.add(stack.item);
+            }
+
+            // 清理非新配方需要的物品
+            for(int i = 0; i < items.length(); i++) {
+                Item item = content.item(i);
+                if(items.get(i) > 0 && !neededItems.contains(item)) {
+                    items.set(item, 0);
+                    offload(item);
+                }
+            }
+
+            // 重置生产状态
+            currentRecipe = newRecipe;
+            progress = 0;
+            lastRecipe = null;
+        }
+
         @Override
         public void updateTile() {
             // 先尝试输出物品和液体
@@ -189,15 +222,7 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe == null) return;
 
-            // 关键修复：消耗必需流体 - 增加空安全检查
-            if(requiredLiquids != null && liquids != null) {
-                for(LiquidStack required : ((MultiCrafter)block).requiredLiquids) {
-                    if(required != null) {
-                        liquids.remove(required.liquid, required.amount);
-                    }
-                }
-            }
-
+            // 仅消耗配方中的液体，不消耗必需流体（必需流体在shouldConsume中检查，但不消耗）
             // 消耗物品
             for(ItemStack in : recipe.inputItems) {
                 items.remove(in.item, in.amount);
