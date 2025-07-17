@@ -4,6 +4,7 @@ import arc.*;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
+import mindustry.gen.Icon;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
@@ -148,7 +149,7 @@ public class MultiCrafter extends GenericCrafter {
         @Override
         public void buildConfiguration(Table table) {
             // 自定义配方选择器
-            table.button("\uE835", Styles.defaultt, () -> {
+            table.button(String.valueOf(Icon.undo), Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
                 rebuildConfig(table);
             }).size(80).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
