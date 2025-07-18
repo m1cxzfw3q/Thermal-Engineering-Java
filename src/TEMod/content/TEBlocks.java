@@ -909,6 +909,10 @@ public class TEBlocks {
                     new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
                     new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
                     40f
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.sphularite, 1)},
+                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 2)},
+                    40f
             ));
 
             requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
