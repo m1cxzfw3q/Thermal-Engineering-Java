@@ -48,7 +48,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
     ObjectMap<Block, Block> dec = ObjectMap.of(
             Blocks.taintedWater, Blocks.water, Blocks.darksandTaintedWater, Blocks.darksandWater
     );
-
     ObjectMap<Block, Block> tars = ObjectMap.of(
             Blocks.shale
     );
@@ -506,23 +505,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
                     }else{
                         floor = (floor == Blocks.sand ? floor : Blocks.darksand);
                     }
-                }
-            }
-
-            if(rand.chance(0.0075)){
-                //random spore trees
-                boolean any = false;
-                boolean all = true;
-                for(Point2 p : Geometry.d4){
-                    Tile other = tiles.get(x + p.x, y + p.y);
-                    if(other != null && other.block() == Blocks.air){
-                        any = true;
-                    }else{
-                        all = false;
-                    }
-                }
-                if(any && ((block == Blocks.snowWall || block == Blocks.iceWall) || (all && block == Blocks.air && floor == Blocks.snow && rand.chance(0.03)))){
-                    block = rand.chance(0.5) ? Blocks.whiteTree : Blocks.whiteTreeDead;
                 }
             }
 

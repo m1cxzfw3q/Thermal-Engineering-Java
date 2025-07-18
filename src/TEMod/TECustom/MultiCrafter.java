@@ -448,7 +448,7 @@ public class MultiCrafter extends GenericCrafter {
                     for(LiquidStack required : block.requiredLiquids) {
                         if(required != null && required.liquid != null) {
                             t.image(required.liquid.uiIcon).size(24).padRight(4);
-                            t.add(required.liquid.localizedName + (required.amount * 60) + "/s").left().padRight(8);
+                            t.add(required.liquid.localizedName + (required.amount * 60 / 1) + "/s").left().padRight(8);
                             t.row();
                         }
                     }
