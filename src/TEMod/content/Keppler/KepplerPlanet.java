@@ -16,7 +16,7 @@ public class KepplerPlanet {
     public static Planet keppler;
 
     public static void load() {
-        keppler = new Planet("keppler", sun, 3, 3) {{
+        keppler = new Planet("keppler", sun, 3, 2) {{
             generator = new KepplerPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 8);
             cloudMeshLoader = () -> new MultiMesh(
