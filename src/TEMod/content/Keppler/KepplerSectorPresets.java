@@ -16,6 +16,7 @@ public class KepplerSectorPresets {
             difficulty = 3;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
+            rules = rules1 -> rules1.attackMode = true;
         }};
 
         ResearchAreaNo47 = new SectorPreset("research-area-no-47", keppler, 472) {{
