@@ -24,7 +24,7 @@ public class KepplerPlanet {
                     new HexSkyMesh(this, 1, 0.8f, 0.392f, 8, Color.white.cpy().lerp(Color.valueOf("d8ecff"), 0.55f).a(0.75f), 2, 0.45f, 1f, 0.41f)
             );
             launchCapacityMultiplier = 0.5f;
-            sectorSeed = 13;
+            sectorSeed = 8;
             allowWaves = true;
             allowWaveSimulation = true;
             allowSectorInvasion = true;

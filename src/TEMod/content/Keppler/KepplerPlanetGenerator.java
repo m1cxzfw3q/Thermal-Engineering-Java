@@ -16,6 +16,7 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.world.blocks.environment.*;
 
+import static TEMod.content.Keppler.KepplerPlanet.keppler;
 import static mindustry.Vars.*;
 
 public class KepplerPlanetGenerator extends PlanetGenerator{
@@ -26,6 +27,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
     float scl = 5f;
     float waterOffset = 0.07f;
     boolean genLakes = false;
+    int seed = keppler.sectorSeed - (keppler.id - 2);
 
     Block[][] arr =
             {
