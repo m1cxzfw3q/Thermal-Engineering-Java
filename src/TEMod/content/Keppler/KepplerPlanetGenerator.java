@@ -435,10 +435,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
             ores.add(Blocks.oreTungsten);
         }
 
-        if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.6f*addscl){
-            ores.add(TEBlocks.oreSphularite);
-        }
-
         FloatSeq frequencies = new FloatSeq();
         for(int i = 0; i < ores.size; i++){
             frequencies.add(rand.random(-0.1f, 0.01f) - i * 0.01f + poles * 0.04f);
