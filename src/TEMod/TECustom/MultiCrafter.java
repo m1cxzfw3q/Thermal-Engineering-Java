@@ -92,27 +92,29 @@ public class MultiCrafter extends GenericCrafter {
             Recipe nextRecipe = recipes.get(newRecipe);
             Seq<Item> neededItems = new Seq<>();
 
-            // 收集新配方所需物品
-            for(ItemStack stack : nextRecipe.inputItems) {
-                neededItems.add(stack.item);
-            }
+        // 收集新配方所需物品
+        for(ItemStack stack : nextRecipe.inputItems) {
+            neededItems.add(stack.item);
+        }
 
-            // 完全清理非新配方需要的物品（包括产物）
-            for(int i = 0; i < items.length(); i++) {
-                Item item = content.item(i);
-                if(items.get(i) > 0 && !neededItems.contains(item)) {
-                    // 直接输出全部多余物品
-                    int amount = items.get(i);
-                    items.set(item, 0);
+        // 完全清理非新配方需要的物品（包括产物）
+        for(int i = 0; i < items.length(); i++) {
+            Item item = content.item(i);
+            int currentAmount = items.get(i);
+            if(currentAmount > 0 && !neededItems.contains(item)) {
+                // 直接输出全部多余物品
+                items.set(item, 0); // 使用索引正确设置数量
+                for (int j = 0; j < currentAmount; j++) {
                     offload(item);
                 }
             }
-
-            // 重置生产状态
-            currentRecipe = newRecipe;
-            progress = 0;
-            lastRecipe = null;
         }
+
+        // 重置生产状态
+        currentRecipe = newRecipe;
+        progress = 0;
+        lastRecipe = null;
+    }
 
         @Override
         public void updateTile() {
@@ -304,9 +306,9 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 检查液体输出空间
+            // 修复：使用正确的液体总量检查方法
             if(canProduce && liquids != null) {
-                float currentTotal = liquids.total();
+                float currentTotal = liquids.currentAmount(); // 改为使用 currentAmount()
                 float outputTotal = 0f;
 
                 if(recipe.outputLiquids != null) {
