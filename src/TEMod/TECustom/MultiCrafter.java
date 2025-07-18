@@ -153,8 +153,10 @@ public class MultiCrafter extends GenericCrafter {
             }
 
             // 输出所有液体（包括产品液体）- 修复：使用正确的液体量检查方法
-            if(liquids != null && liquids.currentAmount() > 0.001f) {
-                dumpLiquid(liquids.current());
+            for(LiquidStack out : recipe.outputLiquids) {
+                if(out.liquid != null && out.amount > 0.001f) {
+                    dumpLiquid(out.liquid);
+                }
             }
         }
 
