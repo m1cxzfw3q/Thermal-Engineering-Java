@@ -87,34 +87,36 @@ public class MultiCrafter extends GenericCrafter {
     public class MultiCrafterBuild extends GenericCrafterBuild {
         public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
+        private float partialProgress = 0f; // 新增：跟踪部分进度
+
 
         public void switchRecipe(int newRecipe) {
             Recipe nextRecipe = recipes.get(newRecipe);
             Seq<Item> neededItems = new Seq<>();
 
-        // 收集新配方所需物品
-        for(ItemStack stack : nextRecipe.inputItems) {
-            neededItems.add(stack.item);
-        }
+            // 收集新配方所需物品
+            for(ItemStack stack : nextRecipe.inputItems) {
+                neededItems.add(stack.item);
+            }
 
-        // 完全清理非新配方需要的物品（包括产物）
-        for(int i = 0; i < items.length(); i++) {
-            Item item = content.item(i);
-            int currentAmount = items.get(i);
-            if(currentAmount > 0 && !neededItems.contains(item)) {
-                // 直接输出全部多余物品
-                items.set(item, 0); // 使用索引正确设置数量
-                for (int j = 0; j < currentAmount; j++) {
-                    offload(item);
+            // 完全清理非新配方需要的物品（包括产物）
+            for(int i = 0; i < items.length(); i++) {
+                Item item = content.item(i);
+                int currentAmount = items.get(i);
+                if(currentAmount > 0 && !neededItems.contains(item)) {
+                    // 直接输出全部多余物品
+                    items.set(item, 0); // 使用索引正确设置数量
+                    for (int j = 0; j < currentAmount; j++) {
+                        offload(item);
+                    }
                 }
             }
-        }
 
-        // 重置生产状态
-        currentRecipe = newRecipe;
-        progress = 0;
-        lastRecipe = null;
-    }
+            // 重置生产状态
+            currentRecipe = newRecipe;
+            progress = 0;
+            lastRecipe = null;
+        }
 
         @Override
         public void updateTile() {
@@ -126,18 +128,45 @@ public class MultiCrafter extends GenericCrafter {
             // 配方无效时停止生产
             if(recipe == null) {
                 progress = 0;
+                partialProgress = 0f; // 重置部分进度
                 return;
             }
 
             // 配方发生变化时重置进度
             if(lastRecipe != recipe) {
                 progress = 0;
+                partialProgress = 0f; // 重置部分进度
                 lastRecipe = recipe;
             }
 
             // 设置当前配方的合成时间
             craftTime = recipe.craftTime;
-            super.updateTile();
+
+            // 关键修复：使用部分进度跟踪，防止过度生产
+            if(shouldConsume() && enabled) {
+                // 修复：使用 efficiency 字段而不是 efficiency() 方法
+                float progressDelta = efficiency * edelta();
+
+                // 累计部分进度
+                partialProgress += progressDelta;
+
+                // 当部分进度达到完整生产周期时执行生产
+                if(partialProgress >= craftTime) {
+                    int productionCycles = (int)(partialProgress / craftTime);
+                    partialProgress %= craftTime; // 保留剩余进度
+
+                    // 执行生产循环
+                    for(int i = 0; i < productionCycles; i++) {
+                        if(shouldConsume()) { // 每次生产前都检查条件
+                            craft();
+                        } else {
+                            break; // 条件不满足时停止生产
+                        }
+                    }
+                }
+            } else {
+                partialProgress = 0f; // 条件不满足时重置进度
+            }
         }
 
         // 关键修复：自动输出方法 - 只输出产品，不输出原料
@@ -308,9 +337,9 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 修复：使用正确的液体总量检查方法
+            // 检查液体输出空间
             if(canProduce && liquids != null) {
-                float currentTotal = liquids.currentAmount(); // 改为使用 currentAmount()
+                float currentTotal = liquids.currentAmount();
                 float outputTotal = 0f;
 
                 if(recipe.outputLiquids != null) {
@@ -331,9 +360,16 @@ public class MultiCrafter extends GenericCrafter {
                 return;
             }
 
+            // 关键修复：再次检查输入物品是否足够（防御性检查）
+            for(ItemStack in : recipe.inputItems) {
+                if(items.get(in.item) < in.amount) {
+                    return;
+                }
+            }
+
             consume();
 
-            // 添加产出物品
+            // 添加产出物品 - 确保只添加配方设定的数量
             for(ItemStack out : recipe.outputItems) {
                 items.add(out.item, out.amount);
             }
