@@ -1,0 +1,192 @@
+package TEMod.content;
+
+import TEMod.MindustryAnnotations.Annotations;
+import TEMod.TECustom.ExplosionLaserBulletType;
+import TEMod.TECustom.TEUnitType;
+import arc.struct.Seq;
+import arc.util.Log;
+import mindustry.content.Fx;
+import mindustry.content.Items;
+import mindustry.content.StatusEffects;
+import mindustry.entities.abilities.UnitSpawnAbility;
+import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.bullet.MissileBulletType;
+import mindustry.entities.pattern.ShootBarrel;
+import mindustry.gen.Sounds;
+import mindustry.gen.Unitc;
+import mindustry.type.Weapon;
+
+public class TEUnitTypes {
+    public static @Annotations.EntityDef({Unitc.class}) TEUnitType test, t6test; //test
+
+    public static void load() {
+        test = new TEUnitType("test", true, 700, 7.5f, 20, 7f) {{
+            AccDr(0.08f, 0.04f);
+            rotateSpeed = 15f;
+            isEnemy = false;
+            HSize(1.5f);
+            AmmoType(Items.graphite, 300);
+            range = 37.5f * 8f;
+
+            weapons.add(
+                    new Weapon("test-machineCannon") {{  //机炮
+                        reload = 2f;
+                        x = 3f;
+                        y = 3f;
+                        useAmmo = false;
+
+                        bullet = new BasicBulletType(8f, 15) {{
+                            knockback = 0.2F;
+                            width = 2.0F;
+                            height = 5F;
+                            lifetime = 32F;
+                            ammoMultiplier = 10.0F;
+                        }};
+                    }},new Weapon("test-cannon") {{  //主炮
+                        shootSound = Sounds.shootBig;
+                        mirror = false;
+                        x = 0;
+                        y = 2f;
+                        reload = 30f;
+
+                        bullet = new BasicBulletType(5f, 67){{
+                            width = 8f;
+                            height = 14f;
+                            shootEffect = Fx.shootBig;
+                            smokeEffect = Fx.shootBigSmoke;
+                            lifetime = 60f;
+                        }};
+                    }},new Weapon("test-missile") {{  //导弹仓
+                        shootSound = Sounds.missile;
+                        x = -6f;
+                        y = -6f;
+                        shootCone = 180;
+                        reload = 30f;
+
+                        shoot = new ShootBarrel(){{
+                            barrels = new float[]{0, 0, 25};
+                            shots = 3;
+                            shotDelay = 5f;
+                        }};
+
+                        bullet = new MissileBulletType(4.2f, 36){{
+                            width = 8f;
+                            height = 8f;
+                            shrinkY = 0f;
+                            splashDamageRadius = 30f;
+                            splashDamage = 30f * 1.5f;
+                            hitEffect = Fx.blastExplosion;
+                            despawnEffect = Fx.blastExplosion;
+
+                            status = StatusEffects.blasted;
+                            statusDuration = 60f;
+                        }};
+                    }}
+            );
+        }};
+
+        t6test = new TEUnitType("testT6", true, 154000, 1.0f, 450, 45f) {{
+            HSize(12.25f);
+            AccDr(0.08f, 0.04f);
+            AmmoType(Items.surgeAlloy, 500);
+
+            float spawnTimer = 60f * 10f;
+
+            abilities.add(
+                    new UnitSpawnAbility(test, spawnTimer, 0, 0),
+                    new UnitSpawnAbility(test, spawnTimer, 0, 0)
+            );
+
+            weapons.add(Seq.with(
+                    new Weapon("testT6-cannon1") {{
+                        shootSound = Sounds.shootBig;
+                        x = 10f;
+                        y = 5f;
+                        reload = 30f;
+
+                        bullet = new BasicBulletType(5f, 67) {{
+                            width = 8f;
+                            height = 14f;
+                            shootEffect = Fx.shootBig;
+                            smokeEffect = Fx.shootBigSmoke;
+                            lifetime = 60f;
+                        }};
+                    }}, new Weapon("testT6-cannon2") {{
+                        shootSound = Sounds.shootBig;
+                        x = 5f;
+                        y = 5f;
+                        reload = 30f;
+
+                        bullet = new BasicBulletType(5f, 67) {{
+                            width = 8f;
+                            height = 14f;
+                            shootEffect = Fx.shootBig;
+                            smokeEffect = Fx.shootBigSmoke;
+                            lifetime = 60f;
+                        }};
+                    }}, new Weapon("testT6-cannon3") {{
+                        shootSound = Sounds.shootBig;
+                        x = 0;
+                        y = 5f;
+                        reload = 30f;
+
+                        bullet = new BasicBulletType(5f, 67) {{
+                            width = 8f;
+                            height = 14f;
+                            shootEffect = Fx.shootBig;
+                            smokeEffect = Fx.shootBigSmoke;
+                            lifetime = 60f;
+                        }};
+                    }}, new Weapon("testT6-cannon4") {{
+                        shootSound = Sounds.shootBig;
+                        x = -5;
+                        y = 5f;
+                        reload = 30f;
+
+                        bullet = new BasicBulletType(5f, 67) {{
+                            width = 8f;
+                            height = 14f;
+                            shootEffect = Fx.shootBig;
+                            smokeEffect = Fx.shootBigSmoke;
+                            lifetime = 60f;
+                        }};
+                    }}, new Weapon("testT6-missile1") {{
+                        shootSound = Sounds.missile;
+                        x = -6f;
+                        y = -6f;
+                        shootCone = 180;
+                        reload = 20f;
+
+                        shoot = new ShootBarrel(){{
+                            barrels = new float[]{0, 0, 25};
+                            shots = 3;
+                            shotDelay = 5f;
+                        }};
+
+                        bullet = new MissileBulletType(3.7f, 36) {{
+                            width = 8f;
+                            height = 8f;
+                            shrinkY = 0f;
+                            splashDamageRadius = 30f;
+                            splashDamage = 30f * 1.5f;
+                            hitEffect = Fx.blastExplosion;
+                            despawnEffect = Fx.blastExplosion;
+
+                            status = StatusEffects.blasted;
+                            statusDuration = 60f;
+                        }};
+                    }}, new Weapon("testT6-laser1") {{
+                        reload = 50f;
+
+                        bullet = new ExplosionLaserBulletType(300) {{
+                            explosionDamage = 450f;
+                            explosionRadius = 20f;
+                            lifetime = 30f;
+                        }};
+                    }}
+            ));
+        }};
+
+        isComplete(TEUnitTypes.class);
+    }
+}
