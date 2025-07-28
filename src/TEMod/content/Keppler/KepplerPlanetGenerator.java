@@ -120,8 +120,8 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
     public void getEmissiveColor(Vec3 position, Color out){
         float dst = 999f, captureDst = 999f, lightScl = 0f;
 
-        Object[] sectors = Planets.serpulo.sectors.items;
-        int size = Planets.serpulo.sectors.size;
+        Object[] sectors = KepplerPlanet.keppler.sectors.items;
+        int size = KepplerPlanet.keppler.sectors.size;
 
         for(int i = 0; i < size; i ++){
             var sector = (Sector)sectors[i];
@@ -190,8 +190,8 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
 
                 float dst = 999f;
 
-                Object[] sectors = Planets.serpulo.sectors.items;
-                int size = Planets.serpulo.sectors.size;
+                Object[] sectors = KepplerPlanet.keppler.sectors.items;
+                int size = KepplerPlanet.keppler.sectors.size;
 
                 for(int i = 0; i < size; i ++){
                     var sector = (Sector)sectors[i];
@@ -279,7 +279,7 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
                                 other.setBlock(Blocks.air);
                                 if(Mathf.within(x, y, rad - 1) && !other.floor().isLiquid){
                                     Floor floor = other.floor();
-                                    //TODO does not respect tainted floors
+
                                     other.setFloor((Floor)(floor == Blocks.sand || floor == Blocks.salt ? Blocks.sandWater : Blocks.darksandTaintedWater));
                                 }
                             }
@@ -458,7 +458,6 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
         if(naval){
             int deepRadius = 2;
 
-            //TODO code is very similar, but annoying to extract into a separate function
             pass((x, y) -> {
                 if(floor.asFloor().isLiquid && !floor.asFloor().isDeep() && !floor.asFloor().shallow){
 
