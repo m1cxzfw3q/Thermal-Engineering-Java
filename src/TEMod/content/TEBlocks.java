@@ -5,15 +5,12 @@ import TEMod.TECustom.MultiCrafter;
 import TEMod.TECustom.PortableCoreBlock;
 import arc.graphics.Color;
 import arc.math.Interp;
-import arc.struct.ObjectMap;
-import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.entities.effect.WaveEffect;
-import mindustry.entities.part.RegionPart;
 import mindustry.entities.pattern.ShootBarrel;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
@@ -24,10 +21,10 @@ import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.defense.ForceProjector;
 import mindustry.world.blocks.defense.OverdriveProjector;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
-import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.OreBlock;
+import mindustry.world.blocks.heat.HeatProducer;
 import mindustry.world.blocks.liquid.LiquidBridge;
 import mindustry.world.blocks.logic.LogicBlock;
 import mindustry.world.blocks.logic.LogicDisplay;
@@ -41,7 +38,6 @@ import mindustry.world.blocks.production.Separator;
 import mindustry.world.blocks.production.SolidPump;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
-import mindustry.world.blocks.units.Reconstructor;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.world.draw.*;
 import mindustry.world.meta.Attribute;
@@ -56,10 +52,8 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    //矿石
-    public static OreBlock oreUranium;
-    public static OreBlock oreSphularite;
-    //基础方块
+    public static OreBlock oreUranium, oreSphularite;//矿石
+    //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block portableMissileLaunchSilo, missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
@@ -101,7 +95,13 @@ public class TEBlocks {
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
     public static Block advancedWaterExtractor; //抽水机
 
-    public static void load() {
+    //基础方块(E)
+    public static Block reinforcedPowerNode; //E电力节点
+
+    //基础方块(TEMod)
+    public static Block pyratiteHeater; //硫热
+
+    public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
@@ -413,67 +413,6 @@ public class TEBlocks {
             );
             hasItems = hasPower = hasLiquids = true;
             liquidCapacity = 20f;
-        }};
-
-        portableMissileLaunchSilo = new PowerTurret("portable-missile-launch-silo") {{
-            alwaysUnlocked = false;
-            health = 500;
-            size = 2;
-
-            requirements(Category.turret, with(Items.copper, 450, Items.lead, 600, Items.graphite, 180, Items.blastCompound, 10, Items.silicon, 80, TEItems.primaryChip, 5));
-
-            rotateSpeed = 0F;
-            range = 700f;
-            shootCone = 360;
-            shootSound = Sounds.missileLaunch;
-            recoil = 0f;
-            shootY = 0;
-            minWarmup = 0.8f;
-            shootWarmupSpeed = 0.055f;
-            warmupMaintainTime = 120;
-            canOverdrive = false;
-
-            drawer = new DrawTurret() {{
-                new RegionPart() {{
-                    suffix = "-top";
-                    x = y = 0;
-                    moveX = 0;
-                    moveY = -13;
-                }};
-            }};
-
-            shootType = new BasicBulletType(0f, 1f) {{
-                killShooter = true;
-                spawnUnit = new MissileUnitType("portable-missile-launch-silo-missile") {{
-                    speed = 7f;
-                    lifetime = 5f * 60f;
-                    trailLength = 14;
-                    homingPower = 0.1f;
-                    homingDelay = 50f;
-                    missileAccelTime = 120f;
-                    health = 200f;
-                    rotateSpeed = 10f;
-                    weapons.add(new Weapon() {{
-                        shootCone = 360f;
-                        mirror = false;
-                        reload = 1f;
-                        x = y = 0;
-                        deathExplosionEffect = Fx.massiveExplosion;
-                        shootOnDeath = true;
-                        shake = 10f;
-                        bullet = new ExplosionBulletType(1638f, 157f) {{
-                            hitColor = Pal.redLight;
-                            shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
-                                lifetime = 10f;
-                                strokeFrom = 4f;
-                                sizeTo = 130f;
-                            }});
-                            buildingDamageMultiplier = 0.8f;
-                            ammoMultiplier = 1f;
-                        }};
-                    }});
-                }};
-            }};
         }};
 
         missileLauncher = new ItemTurret("missile-launcher") {{
@@ -920,7 +859,7 @@ public class TEBlocks {
             hasPower = hasItems = true;
             consumePower(5f);
 
-            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
+            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator") {{
                 spinSprite = true;
                 rotateSpeed = 2f;
             }}, new DrawRegion("-top"));
@@ -929,7 +868,7 @@ public class TEBlocks {
             updateEffect = Fx.pulverizeSmall;
         }};
 
-        cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer"){{
+        cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer") {{
             requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 400, Items.titanium, 600, Items.thorium, 350));
             outputLiquid = new LiquidStack(Liquids.cryofluid, 35f / 60f);
             size = 3;
@@ -947,7 +886,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.water, 30f / 60f);
         }};
 
-        advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome"){{
+        advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome") {{
             requirements(Category.effect, with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1500, Items.plastanium, 1200, Items.surgeAlloy, 850, TEItems.zinc, 450, TEItems.advancedChip, 450));
             consumePower(14f);
             size = 4;
@@ -960,13 +899,13 @@ public class TEBlocks {
             consumeItems(with(Items.phaseFabric, 3, Items.silicon, 3, TEItems.zinc, 2));
         }};
 
-        advancedPowerNode = new PowerNode("advanced-power-node"){{
+        advancedPowerNode = new PowerNode("advanced-power-node") {{
             requirements(Category.power, with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 5));
             maxNodes = 20;
             laserRange = 12;
         }};
 
-        terminalProcessor = new LogicBlock("terminal-processor"){{
+        terminalProcessor = new LogicBlock("terminal-processor") {{
             requirements(Category.logic, with(Items.lead, 4500, Items.silicon, 3000, Items.thorium, 1000, Items.surgeAlloy, 500, Items.titanium, 2000, TEItems.zinc, 800, Items.phaseFabric, 300, Items.plastanium, 1200, TEItems.specialChip, 400));
 
             consumeLiquid(Liquids.cryofluid, 0.2f);
@@ -977,7 +916,7 @@ public class TEBlocks {
             size = 5;
         }};
 
-        hugeLogicDisplay = new LogicDisplay("huge-logic-display"){{
+        hugeLogicDisplay = new LogicDisplay("huge-logic-display") {{
             requirements(Category.logic, with(Items.lead, 2000, Items.silicon, 1500, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300, TEItems.zinc, 500, TEItems.advancedChip, 100, Items.plastanium, 600));
 
             displaySize = 300;
@@ -985,7 +924,7 @@ public class TEBlocks {
             size = 10;
         }};
 
-        memoryBankLarge = new MemoryBlock("large-memory-bank"){{
+        memoryBankLarge = new MemoryBlock("large-memory-bank") {{
             requirements(Category.logic, with(Items.graphite, 800, Items.silicon, 100, Items.phaseFabric, 400, Items.copper, 800, TEItems.advancedChip, 400, TEItems.zinc, 500, Items.plastanium, 700, Items.surgeAlloy, 200));
 
             memoryCapacity = 1024;
@@ -994,7 +933,7 @@ public class TEBlocks {
 
 
 
-//        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor"){{
+//        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor") {{
 //            requirements(Category.units, with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000, TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000));
 //
 //            size = 11;
@@ -1016,48 +955,48 @@ public class TEBlocks {
 //            );
 //        }};
 
-        payloadConveyorLarge = new PayloadConveyor("large-payload-conveyor"){{
+        payloadConveyorLarge = new PayloadConveyor("large-payload-conveyor") {{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             size = (int) (payloadLimit = 5);
             canOverdrive = false;
         }};
 
-        payloadConveyorHuge = new PayloadConveyor("huge-payload-conveyor"){{
+        payloadConveyorHuge = new PayloadConveyor("huge-payload-conveyor") {{
             requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
             size = (int) (payloadLimit = 7);
             canOverdrive = false;
         }};
 
-        payloadConveyorGigantic = new PayloadConveyor("gigantic-payload-conveyor"){{
+        payloadConveyorGigantic = new PayloadConveyor("gigantic-payload-conveyor") {{
             requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = 9);
             canOverdrive = false;
         }};
 
-        payloadRouterLarge = new PayloadRouter("large-payload-router"){{
+        payloadRouterLarge = new PayloadRouter("large-payload-router") {{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
             canOverdrive = false;
             size = (int) (payloadLimit = payloadConveyorLarge.size);
         }};
 
-        payloadRouterHuge = new PayloadRouter("huge-payload-router"){{
+        payloadRouterHuge = new PayloadRouter("huge-payload-router") {{
             requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
             size = (int) (payloadLimit = payloadConveyorHuge.size);
             canOverdrive = false;
         }};
 
-        payloadRouterGigantic = new PayloadRouter("gigantic-payload-router"){{
+        payloadRouterGigantic = new PayloadRouter("gigantic-payload-router") {{
             requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = payloadConveyorGigantic.size);
             canOverdrive = false;
         }};
 
-        shieldGenerator = new ForceProjector("shield-generator"){{
+        shieldGenerator = new ForceProjector("shield-generator") {{
             requirements(Category.effect, with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.primaryChip, 5));
             phaseRadiusBoost = 6f * 8f;
             radius = 8f * 8f;
             shieldHealth = 450f;
-            cooldownNormal = 60f / 60f;
+            cooldownNormal = 1.0f;
             cooldownLiquid = 1.5f;
             cooldownBrokenBase = 5f / 60f;
             phaseShieldBoost = 250f;
@@ -1066,7 +1005,7 @@ public class TEBlocks {
             consumePower(1f);
         }};
 
-        shieldGeneratorLarge = new ForceProjector("large-shield-generator"){{
+        shieldGeneratorLarge = new ForceProjector("large-shield-generator") {{
             requirements(Category.effect, with(Items.lead, 450, Items.titanium, 230, Items.silicon, 150, Items.copper, 550, TEItems.advancedChip, 10));
             size = 2;
             phaseRadiusBoost = 16f * 8f;
@@ -1074,14 +1013,14 @@ public class TEBlocks {
             shieldHealth = 1200f;
             cooldownNormal = 0.9f;
             cooldownLiquid = 1.5f;
-            cooldownBrokenBase = 60f / 60f;
+            cooldownBrokenBase = 1.0f;
             phaseShieldBoost = 900f;
 
             itemConsumer = consumeItem(Items.phaseFabric, 2).boost();
             consumePower(8f);
         }};
 
-        shieldGeneratorHuge = new ForceProjector("huge-shield-generator"){{
+        shieldGeneratorHuge = new ForceProjector("huge-shield-generator") {{
             requirements(Category.effect, with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.specialChip, 50, Items.phaseFabric, 400));
             size = 4;
             phaseRadiusBoost = 45f * 8f;
@@ -1096,7 +1035,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        sectorShieldGenerator = new ForceProjector("sector-shield-generator"){{
+        sectorShieldGenerator = new ForceProjector("sector-shield-generator") {{
             requirements(Category.effect, with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.specialChip, 500, Items.phaseFabric, 2000));
             size = 6;
             radius = 900f * 8f;
@@ -1111,7 +1050,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge"){{
+        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
             requirements(Category.distribution, with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
             range = 60;
             arrowPeriod = 0.9f;
@@ -1123,7 +1062,7 @@ public class TEBlocks {
             itemCapacity = 30;
         }};
 
-        liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge"){{
+        liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
             requirements(Category.liquid, with(Items.phaseFabric, 30, Items.silicon, 35, Items.metaglass, 100, Items.titanium, 60));
             range = 60;
             arrowPeriod = 0.9f;
@@ -1134,7 +1073,7 @@ public class TEBlocks {
             liquidCapacity = 200;
         }};
 
-        advancedWaterExtractor = new SolidPump("advanced-water-extractor"){{
+        advancedWaterExtractor = new SolidPump("advanced-water-extractor") {{
             requirements(Category.production, with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150, TEItems.primaryChip, 20));
             result = Liquids.water;
             pumpAmount = 15f / 60f;
@@ -1147,6 +1086,26 @@ public class TEBlocks {
             consumePower(3f);
         }};
 
+        //基础方块(E)
+
+        reinforcedPowerNode = new PowerNode("reinforced-power-node") {{
+            requirements(Category.power, with(Items.beryllium, 10, Items.tungsten, 6, Items.graphite, 8));
+            maxNodes = 6;
+            laserRange = 10;
+            health = 150;
+        }};
+
+        //基础方块(TEMod)
+
+        pyratiteHeater = new HeatProducer("pyratite-heater") {{
+            requirements(Category.crafting, ItemStack.with(Items.copper, 120, Items.silicon, 200, Items.lead, 150, Items.graphite, 225, Items.titanium, 100));
+            drawer = new DrawMulti(new DrawDefault(), new DrawHeatOutput());
+            size = 2;
+            heatOutput = 6.0F;
+            craftTime = 200.0F;
+            ambientSound = Sounds.hum;
+            consumeItem(Items.pyratite);
+        }};
 
         isComplete(TEBlocks.class);
     }

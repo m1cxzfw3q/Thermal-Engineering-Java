@@ -36,6 +36,8 @@ public class KepplerPlanet {
                 r.placeRangeCheck = false;
                 r.showSpawns = true;
                 r.enemyCoreBuildRadius = 45f * 8f;
+
+                r.hideBannedBlocks = true;
             };
             iconColor = Color.valueOf("87c7ff");
             atmosphereColor = Color.valueOf("87c7ff");

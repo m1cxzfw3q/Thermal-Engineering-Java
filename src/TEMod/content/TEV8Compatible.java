@@ -125,7 +125,7 @@ public class TEV8Compatible {//由Anuken的傻逼源代码构成
             Log.info("[Thermal-Engineering] V8TechTree LoadItem(" + item.name + ")");
         }
 
-        for (UnitType unitType : unitTypes ) {
+        for (UnitType unitType : unitTypes) {
             unitType.shownPlanets.add(keppler);
             unitType.postInit();
             Log.info("[Thermal-Engineering] V8TechTree LoadUnitType(" + unitType.name + ")");
