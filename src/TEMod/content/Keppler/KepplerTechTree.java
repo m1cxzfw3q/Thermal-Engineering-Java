@@ -38,25 +38,15 @@ public class KepplerTechTree {
                                 new Objectives.Research(Blocks.hail),
                                 new Objectives.Research(TEItems.primaryWarAgreement)
                         ), () -> {
-                    node(TEBlocks.portableMissileLaunchSilo, ItemStack.with(
-                            Items.copper, 600,
-                            Items.lead, 8000,
-                            Items.graphite, 2000,
-                            Items.blastCompound, 10,
-                            Items.silicon, 1000,
-                            TEItems.primaryChip, 100,
-                            TEItems.primaryWarAgreement, 1
-                    ), Seq.with(), () -> {
-                        node(TEBlocks.missileLauncher, ItemStack.with(
-                                Items.copper, 10000,
-                                Items.lead, 12000,
-                                Items.graphite, 9000,
-                                Items.metaglass, 4000,
-                                Items.silicon, 500,
-                                TEItems.primaryChip, 300,
-                                TEItems.advancedWarAgreement, 1
-                        ), Seq.with(), () -> {});
-                    });
+                            node(TEBlocks.missileLauncher, ItemStack.with(
+                                    Items.copper, 10000,
+                                    Items.lead, 12000,
+                                    Items.graphite, 9000,
+                                    Items.metaglass, 4000,
+                                    Items.silicon, 500,
+                                    TEItems.primaryChip, 300,
+                                    TEItems.advancedWarAgreement, 1
+                            ), Seq.with(), () -> {});
                 });
 
                 node(TEBlocks.highEfficiencyDisassembler,
