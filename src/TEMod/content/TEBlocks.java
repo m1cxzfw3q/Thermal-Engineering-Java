@@ -1091,8 +1091,8 @@ public class TEBlocks {
 
         smallCliffCrusher = new WallCrafter("small-cliff-crusher") {{
             health = 120;
-            drillTime = 110f;
-            consumeLiquid(Liquids.water, 1f / 60f).boost();
+            drillTime = 220f;
+            consumeLiquid(Liquids.water, 4f / 60f).boost();
             attribute = Attribute.sand;
             output = Items.sand;
             ambientSound = Sounds.drill;
