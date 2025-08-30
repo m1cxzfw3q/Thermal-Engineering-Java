@@ -96,7 +96,7 @@ public class TEBlocks {
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
     //挖掘
     public static Block advancedWaterExtractor; //抽水机
-    public static Block smallCliffCrusher; //小墙钻
+    public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -1089,7 +1089,20 @@ public class TEBlocks {
             consumePower(3f);
         }};
 
-        smallCliffCrusher = new WallCrafter("small-cliff-crusher") {{
+        mechanicalCliffCrusher = new WallCrafter("mechanical-cliff-crusher") {{
+            health = 120;
+            drillTime = 300f;
+            consumeLiquid(Liquids.water, 4f / 60f).boost();
+            attribute = Attribute.sand;
+            output = Items.sand;
+            ambientSound = Sounds.drill;
+            ambientSoundVolume = 0.04f;
+            fogRadius = 2;
+            liquidBoostIntensity = 2.56f;
+            requirements(Category.production, with(Items.copper, 35, Items.lead, 20));
+        }};
+
+        pneumaticCliffCrusher = new WallCrafter("pneumatic-cliff-crusher") {{
             health = 120;
             drillTime = 200f;
             consumeLiquid(Liquids.water, 4f / 60f).boost();
@@ -1099,7 +1112,7 @@ public class TEBlocks {
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
             liquidBoostIntensity = 2.56f;
-            requirements(Category.production, with(Items.copper, 50, Items.lead, 35, Items.graphite, 20));
+            requirements(Category.production, with(Items.copper, 50, Items.lead, 30, Items.graphite, 15));
         }};
 
         pyratiteHeater = new HeatProducer("pyratite-heater") {{
