@@ -36,6 +36,7 @@ import mindustry.world.blocks.power.PowerNode;
 import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Separator;
 import mindustry.world.blocks.production.SolidPump;
+import mindustry.world.blocks.production.WallCrafter;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.consumers.ConsumeLiquid;
@@ -55,7 +56,7 @@ public class TEBlocks {
     public static OreBlock oreUranium, oreSphularite;//矿石
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
-    public static Block portableMissileLaunchSilo, missileLauncher; //导弹发射井
+    public static Block missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
     public static Block oreSmeltingFurnace; //矿石熔炼炉
     public static Block oreCrusher; //矿石粉碎机
@@ -93,7 +94,9 @@ public class TEBlocks {
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
     //护盾
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
+    //挖掘
     public static Block advancedWaterExtractor; //抽水机
+    public static Block smallCliffCrusher; //小墙钻
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -1084,6 +1087,18 @@ public class TEBlocks {
             envRequired |= Env.groundWater;
 
             consumePower(3f);
+        }};
+
+        smallCliffCrusher = new WallCrafter("small-cliff-crusher") {{
+            health = 120;
+            drillTime = 110f;
+            consumeLiquid(Liquids.water, 1f / 60f).boost();
+            attribute = Attribute.sand;
+            output = Items.sand;
+            ambientSound = Sounds.drill;
+            ambientSoundVolume = 0.04f;
+            fogRadius = 2;
+            requirements(Category.production, with(Items.copper, 50, Items.lead, 35, Items.graphite, 20));
         }};
 
         //基础方块(E)
