@@ -1,7 +1,8 @@
-package TEMod.content.Keppler;
+package TEMod.content;
 
-import TEMod.content.TEBlocks;
-import TEMod.content.TEItems;
+import TEMod.content.Keppler.KepplerPlanet;
+import TEMod.content.Keppler.KepplerSectorPresets;
+import arc.func.Boolf;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
@@ -17,15 +18,13 @@ import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 
-public class KepplerTechTree {
+public class TETechTree {
     private static TechTree.TechNode context = null;
 
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-
-        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreExplore, () -> {
-            
+        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreExplore, () -> {//开普勒科技树
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon,
                         ItemStack.with(
@@ -189,28 +188,36 @@ public class KepplerTechTree {
                         new Objectives.Research(thoriumReactor)
                 ), () -> {});
 
-                nodeProduce(TEItems.uranium, () -> {
-                    nodeProduce(TEItems.nuclearFuelRod, () -> {
-                    });
-                });
+                nodeProduce(TEItems.uranium, () ->
+                        nodeProduce(TEItems.nuclearFuelRod, () -> {
+                }));
             });
 
-            node(TEBlocks.erekirIcon, () -> {
-            });
+            node(TEBlocks.erekirIcon, () -> {});
 
             node(KepplerSectorPresets.LandingArea, Seq.with(
                     new Objectives.SectorComplete(planetaryTerminal),
                     new Objectives.SectorComplete(origin)
-            ), () -> {
-                node(KepplerSectorPresets.ResearchAreaNo47, Seq.with(
-                        new Objectives.SectorComplete(LandingArea),
-                        new Objectives.Research(TEBlocks.machineCannon),
-                        new Objectives.SectorComplete(stronghold),
-                        new Objectives.SectorComplete(stainedMountains)
-                ), () ->{});
-            });
+            ), () -> node(KepplerSectorPresets.ResearchAreaNo47, Seq.with(
+                    new Objectives.SectorComplete(LandingArea),
+                    new Objectives.Research(TEBlocks.machineCannon),
+                    new Objectives.SectorComplete(stronghold),
+                    new Objectives.SectorComplete(stainedMountains)
+            ), () ->{}));
         });
-        isComplete(KepplerTechTree.class);
+
+        addToNext(mechanicalDrill, () ->
+                node(mechanicalCliffCrusher, () ->{}));
+
+        addToNext(pneumaticDrill, () ->
+                node(pneumaticCliffCrusher, () ->{}));
+
+        isComplete(TETechTree.class);
+    }
+
+    public static void addToNext(UnlockableContent content, Runnable run) {
+        context = TechTree.all.find(t -> t.content == content);
+        run.run();
     }
 
     public static TechTree.TechNode nodeRoot(String name, UnlockableContent content, Runnable children){

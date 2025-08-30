@@ -30,7 +30,7 @@ public class ThermalEngineeringCore extends Mod {
             TEV8Compatible.load();
             Log.info("[Thermal-Engineering] isV8()");
         }
-        KepplerTechTree.load();
+        TETechTree.load();
         isComplete(ThermalEngineeringCore.class);
     }
 
