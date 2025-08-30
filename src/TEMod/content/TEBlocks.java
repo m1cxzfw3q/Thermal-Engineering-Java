@@ -1091,7 +1091,7 @@ public class TEBlocks {
 
         smallCliffCrusher = new WallCrafter("small-cliff-crusher") {{
             health = 120;
-            drillTime = 220f;
+            drillTime = 400f;
             consumeLiquid(Liquids.water, 4f / 60f).boost();
             attribute = Attribute.sand;
             output = Items.sand;
@@ -1099,6 +1099,16 @@ public class TEBlocks {
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
             requirements(Category.production, with(Items.copper, 50, Items.lead, 35, Items.graphite, 20));
+        }};
+
+        pyratiteHeater = new HeatProducer("pyratite-heater") {{
+            requirements(Category.crafting, ItemStack.with(Items.copper, 120, Items.silicon, 200, Items.lead, 150, Items.graphite, 225, Items.titanium, 100));
+            drawer = new DrawMulti(new DrawDefault(), new DrawHeatOutput());
+            size = 2;
+            heatOutput = 6.0F;
+            craftTime = 200.0F;
+            ambientSound = Sounds.hum;
+            consumeItem(Items.pyratite);
         }};
 
         //基础方块(E)
@@ -1112,15 +1122,7 @@ public class TEBlocks {
 
         //基础方块(TEMod)
 
-        pyratiteHeater = new HeatProducer("pyratite-heater") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 120, Items.silicon, 200, Items.lead, 150, Items.graphite, 225, Items.titanium, 100));
-            drawer = new DrawMulti(new DrawDefault(), new DrawHeatOutput());
-            size = 2;
-            heatOutput = 6.0F;
-            craftTime = 200.0F;
-            ambientSound = Sounds.hum;
-            consumeItem(Items.pyratite);
-        }};
+
 
         isComplete(TEBlocks.class);
     }
