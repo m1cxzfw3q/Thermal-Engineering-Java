@@ -1098,7 +1098,7 @@ public class TEBlocks {
             ambientSound = Sounds.drill;
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
-            itemBoostIntensity = 2.56f;
+            liquidBoostIntensity = 2.56f;
             requirements(Category.production, with(Items.copper, 50, Items.lead, 35, Items.graphite, 20));
         }};
 
