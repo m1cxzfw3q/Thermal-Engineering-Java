@@ -94,9 +94,10 @@ public class TEBlocks {
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
     //护盾
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
-    //挖掘
+    //钻机
     public static Block advancedWaterExtractor; //抽水机
     public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
+    public static Block sporeCliffCrusher; //孢子墙粉碎机
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -1113,6 +1114,19 @@ public class TEBlocks {
             fogRadius = 2;
             liquidBoostIntensity = 2.56f;
             requirements(Category.production, with(Items.copper, 50, Items.lead, 30, Items.graphite, 15));
+        }};
+
+        sporeCliffCrusher = new WallCrafter("spore-cliff-crusher") {{
+            health = 120;
+            drillTime = 150f;
+            consumeLiquid(Liquids.water, 4f / 60f).boost();
+            attribute = Attribute.spores;
+            output = Items.sporePod;
+            ambientSound = Sounds.drill;
+            ambientSoundVolume = 0.04f;
+            fogRadius = 2;
+            liquidBoostIntensity = 2.56f;
+            requirements(Category.production, with(Items.copper, 120, Items.lead, 45, Items.graphite, 25));
         }};
 
         pyratiteHeater = new HeatProducer("pyratite-heater") {{
