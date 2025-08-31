@@ -18,7 +18,6 @@ public class TECore extends Mod {
         KepplerSectorPresets.load();
         TEStatusEffects.load();
         //TEUnitTypes.load();
-        TEV8Compatible.load();
         Log.info("[Thermal-Engineering] isV8()");
         TEFix.load();
         TETechTree.load();//TechTree

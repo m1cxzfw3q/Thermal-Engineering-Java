@@ -1,6 +1,5 @@
 package TEMod.content;
 
-import TEMod.MindustryAnnotations.Annotations;
 import TEMod.TECustom.ExplosionLaserBulletType;
 import TEMod.TECustom.TEUnitType;
 import arc.struct.Seq;
@@ -17,10 +16,14 @@ import mindustry.gen.Unitc;
 import mindustry.type.Weapon;
 
 public class TEUnitTypes {
-    public static @Annotations.EntityDef({Unitc.class}) TEUnitType test, t6test; //test
+    public static TEUnitType test, t6test; //test
 
     public static void load() {
-        test = new TEUnitType("test", true, 700, 7.5f, 20, 7f) {{
+        test = new TEUnitType("test", true) {{
+            health = 700;
+            speed = 7.5f;
+            itemCapacity = 20;
+            armor = 7f;
             AccDr(0.08f, 0.04f);
             rotateSpeed = 15f;
             isEnemy = false;
@@ -85,7 +88,11 @@ public class TEUnitTypes {
             );
         }};
 
-        t6test = new TEUnitType("testT6", true, 154000, 1.0f, 450, 45f) {{
+        t6test = new TEUnitType("testT6", true) {{
+            health = 154000;
+            speed = 1.0f;
+            itemCapacity = 450;
+            armor = 45f;
             HSize(12.25f);
             AccDr(0.08f, 0.04f);
             AmmoType(Items.surgeAlloy, 500);

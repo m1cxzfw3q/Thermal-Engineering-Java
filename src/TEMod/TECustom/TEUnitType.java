@@ -1,19 +1,14 @@
 package TEMod.TECustom;
 
-import mindustry.gen.UnitEntity;
+import mindustry.gen.*;
 import mindustry.type.*;
-import mindustry.type.ammo.ItemAmmoType;
-import mindustry.type.ammo.PowerAmmoType;
+import mindustry.type.ammo.*;
 
 public class TEUnitType extends UnitType {
-    public TEUnitType(String name, boolean flying, float health, float speed, int itemCapacity, float armor) {
+    public TEUnitType(String name, boolean flying) {
         super(name);
         constructor = UnitEntity::create;
         this.flying = flying;
-        this.health = health;
-        this.speed = speed;
-        this.itemCapacity = itemCapacity;
-        this.armor = armor;
     }
 
     public void AccDr(float accel, float drag) {
