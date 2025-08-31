@@ -1148,13 +1148,13 @@ public class TEBlocks {
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
             consumePower(1.1f);
 
-            drillTime = 140;
+            drillTime = 70;
             tier = 4;
             size = 2;
             range = 2;
             fogRadius = 3;
 
-            consumeLiquid(Liquids.water, 0.1f).boost();
+            consumeLiquid(Liquids.water, 0.09f).boost();
         }};
 
         //基础方块(E)
