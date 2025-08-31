@@ -18,10 +18,9 @@ public class ThermalEngineeringCore extends Mod {
         KepplerSectorPresets.load();
         TEStatusEffects.load();
         //TEUnitTypes.load();
-        //TechTree
         TEV8Compatible.load();
         Log.info("[Thermal-Engineering] isV8()");
-        TETechTree.load();
+        TETechTree.load();//TechTree
         isComplete(ThermalEngineeringCore.class);
     }
 
