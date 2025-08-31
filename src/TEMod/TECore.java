@@ -20,6 +20,7 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEV8Compatible.load();
         Log.info("[Thermal-Engineering] isV8()");
+        TEFix.load();
         TETechTree.load();//TechTree
         isComplete(TECore.class);
     }
