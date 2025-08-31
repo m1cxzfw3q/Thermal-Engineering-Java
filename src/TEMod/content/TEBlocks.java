@@ -1148,7 +1148,7 @@ public class TEBlocks {
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
             consumePower(1.1f);
 
-            drillTime = 280;
+            drillTime = 200;
             tier = 4;
             size = 2;
             range = 2;
