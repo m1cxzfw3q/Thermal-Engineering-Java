@@ -53,7 +53,8 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    public static OreBlock oreUranium, oreSphularite;//矿石
+    public static OreBlock oreUranium, oreSphularite; //矿石
+    public static OreBlock wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
@@ -97,6 +98,7 @@ public class TEBlocks {
     //钻机
     public static Block advancedWaterExtractor; //抽水机
     public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
+    public static Block laserBore; //激光墙钻
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -1123,6 +1125,26 @@ public class TEBlocks {
             craftTime = 200.0F;
             ambientSound = Sounds.hum;
             consumeItem(Items.pyratite);
+        }};
+
+        wallOreCopper = new OreBlock("wall-ore-copper", Items.copper) {{
+            wallOre = true;
+        }};
+
+        wallOreLead = new OreBlock("wall-ore-lead", Items.lead) {{
+            wallOre = true;
+        }};
+
+        wallOreTitanium = new OreBlock("wall-ore-titanium", Items.titanium) {{
+            wallOre = true;
+        }};
+
+        wallOreCoal = new OreBlock("wall-ore-coal", Items.coal) {{
+            wallOre = true;
+        }};
+
+        wallOreScrap = new OreBlock("wall-ore-scrap", Items.scrap) {{
+            wallOre = true;
         }};
 
         //基础方块(E)
