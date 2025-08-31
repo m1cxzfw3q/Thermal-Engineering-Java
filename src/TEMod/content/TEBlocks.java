@@ -52,6 +52,7 @@ import static mindustry.type.ItemStack.with;
 public class TEBlocks {
     public static OreBlock oreUranium, oreSphularite; //矿石
     public static OreBlock wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
+    public static OreBlock oreGraphitic; //地石墨
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
@@ -1143,6 +1144,8 @@ public class TEBlocks {
         wallOreScrap = new OreBlock("wall-ore-scrap", Items.scrap) {{
             wallOre = true;
         }};
+
+        oreGraphitic = new OreBlock("ore-graphitic", Items.graphite);
 
         laserBore = new BeamDrill("laser-bore"){{
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
