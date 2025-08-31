@@ -33,10 +33,7 @@ import mindustry.world.blocks.payloads.PayloadConveyor;
 import mindustry.world.blocks.payloads.PayloadRouter;
 import mindustry.world.blocks.power.NuclearReactor;
 import mindustry.world.blocks.power.PowerNode;
-import mindustry.world.blocks.production.GenericCrafter;
-import mindustry.world.blocks.production.Separator;
-import mindustry.world.blocks.production.SolidPump;
-import mindustry.world.blocks.production.WallCrafter;
+import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.storage.StorageBlock;
 import mindustry.world.blocks.storage.Unloader;
 import mindustry.world.consumers.ConsumeLiquid;
@@ -1145,6 +1142,19 @@ public class TEBlocks {
 
         wallOreScrap = new OreBlock("wall-ore-scrap", Items.scrap) {{
             wallOre = true;
+        }};
+
+        laserBore = new BeamDrill("laser-bore"){{
+            requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
+            consumePower(1.1f);
+
+            drillTime = 280;
+            tier = 4;
+            size = 2;
+            range = 2;
+            fogRadius = 3;
+
+            consumeLiquid(Liquids.water, 0.1f).boost();
         }};
 
         //基础方块(E)
