@@ -5,9 +5,9 @@ import TEMod.content.Keppler.*;
 import arc.util.Log;
 import mindustry.mod.Mod;
 
-public class ThermalEngineeringCore extends Mod {
+public class TECore extends Mod {
 
-    public ThermalEngineeringCore() {
+    public TECore() {
 
     }
     @Override
@@ -21,7 +21,7 @@ public class ThermalEngineeringCore extends Mod {
         TEV8Compatible.load();
         Log.info("[Thermal-Engineering] isV8()");
         TETechTree.load();//TechTree
-        isComplete(ThermalEngineeringCore.class);
+        isComplete(TECore.class);
     }
 
     public static void isComplete(Object obj) {

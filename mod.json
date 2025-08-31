@@ -3,7 +3,7 @@
   "description": "[blue[]]-----INFO----------------[white[]]\nThermal Engineering [acid[]]0.0.2[red[]]\nAlpha(Pre)\n\n当前版本已发布",
   "displayName": "Thermal Engineering Java",
   "java": true,
-  "main": "TEMod.ThermalEngineeringCore",
+  "main": "TEMod.TECore",
   "minGameVersion": 150,
   "name": "TEMod",
   "repo": "m1cxzfw3q/Thermal-Engineering-Java",

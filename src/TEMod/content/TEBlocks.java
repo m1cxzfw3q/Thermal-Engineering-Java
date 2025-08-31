@@ -46,7 +46,7 @@ import mindustry.world.meta.BlockGroup;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.world.meta.Env;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;

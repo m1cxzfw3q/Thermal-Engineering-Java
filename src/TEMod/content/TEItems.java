@@ -3,7 +3,7 @@ package TEMod.content;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 
 public class TEItems {
     //普通物品

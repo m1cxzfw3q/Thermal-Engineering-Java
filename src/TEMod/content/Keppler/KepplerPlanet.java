@@ -8,7 +8,7 @@ import mindustry.graphics.g3d.MultiMesh;
 
 import mindustry.type.Planet;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 import static mindustry.content.Planets.*;
 
 public class KepplerPlanet {

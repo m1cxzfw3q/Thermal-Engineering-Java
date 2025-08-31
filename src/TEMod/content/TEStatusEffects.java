@@ -1,6 +1,6 @@
 package TEMod.content;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 
 public class TEStatusEffects {
     public static void load() {

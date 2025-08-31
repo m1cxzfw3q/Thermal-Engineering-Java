@@ -2,7 +2,6 @@ package TEMod.content;
 
 import TEMod.content.Keppler.KepplerPlanet;
 import TEMod.content.Keppler.KepplerSectorPresets;
-import arc.func.Boolf;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
@@ -12,7 +11,7 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 import static TEMod.content.Keppler.KepplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;

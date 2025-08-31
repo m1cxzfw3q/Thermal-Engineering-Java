@@ -2,7 +2,7 @@ package TEMod.content.Keppler;
 
 import mindustry.type.SectorPreset;
 
-import static TEMod.ThermalEngineeringCore.isComplete;
+import static TEMod.TECore.isComplete;
 import static TEMod.content.Keppler.KepplerPlanet.*;
 
 public class KepplerSectorPresets {
