@@ -1,5 +1,6 @@
 package TEMod;
 
+import TEMod.TECustom.SmartTechTree;
 import TEMod.content.*;
 import TEMod.content.Keppler.*;
 import arc.util.Log;
@@ -22,6 +23,11 @@ public class TECore extends Mod {
         TEFix.load();
         TETechTree.load();//TechTree
         isComplete(TECore.class);
+    }
+
+    @Override
+    public void init() {
+        SmartTechTree.use();
     }
 
     public static void isComplete(Object obj) {
