@@ -27,7 +27,7 @@ public class TECore extends Mod {
 
     @Override
     public void init() {
-        SmartTechTree.use();
+        //SmartTechTree.use();
     }
 
     public static void isComplete(Object obj) {

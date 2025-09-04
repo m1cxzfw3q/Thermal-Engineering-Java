@@ -53,6 +53,7 @@ public class TEBlocks {
     public static OreBlock oreUranium, oreSphularite; //矿石
     public static OreBlock wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
     public static OreBlock oreGraphitic; //地石墨
+    public static Block ; //一些盖板地板
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
