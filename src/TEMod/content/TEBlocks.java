@@ -108,7 +108,7 @@ public class TEBlocks {
     public static Block cover; //盖板
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
+        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
             requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
