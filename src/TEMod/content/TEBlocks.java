@@ -158,15 +158,16 @@ public class TEBlocks {
                 }};
             }}, Items.surgeAlloy, new BasicBulletType(8.0F, 200.0F) {{
                 pierceCap = 1;
+                pierceArmor = true;
                 reloadMultiplier = 0.25F;
                 width = 2.0F;
                 height = 5.0F;
                 lifetime = 30.0F;
                 ammoMultiplier = 25.0F;
                 knockback = 0.5F;
-                lightningDamage = 5F;
-                lightning = 2;
-                lightningLength = 6;
+                lightningDamage = 25F;
+                lightning = 4;
+                lightningLength = 8;
                 lightningLengthRand = 8;
                 lightningColor = Color.valueOf("ab99d3ff");
                 status = shocked;
@@ -176,33 +177,13 @@ public class TEBlocks {
                 fragSpread = 45F;
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
-                fragBullet = new BasicBulletType(2F, 40.0F) {{
+                fragBullet = new BasicBulletType(2F, 65.0F) {{
                     pierce = true;
-                    width = 1.0F;
-                    height = 1.0F;
+                    width = 2.0F;
+                    height = 2.0F;
                     pierceCap = 1;
-                    fragBullets = 1;
-                    fragLifeMin = 0.1F;
-                    fragRandomSpread = 30F;
-                    fragSpread = 45F;
-                    fragVelocityMin = 0.5F;
-                    fragVelocityMax = 1F;
-                    lightningLength = 2;
-                    fragBullet = new BasicBulletType(2F, 20.0F) {{
-                        width = 0.6F;
-                        height = 0.6F;
-                        fragBullets = 1;
-                        fragLifeMin = 0.1F;
-                        fragRandomSpread = 30F;
-                        fragSpread = 45F;
-                        fragVelocityMin = 0.5F;
-                        fragVelocityMax = 1F;
-                        lightningLength = 1;
-                        fragBullet = new BasicBulletType(2F, 15.0F) {{
-                            width = 0.2F;
-                            height = 0.2F;
-                        }};
-                    }};
+                    lightningLength = 4;
+                    lightning = 2;
                 }};
             }},Items.silicon, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 2;
