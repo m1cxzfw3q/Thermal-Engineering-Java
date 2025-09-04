@@ -1,5 +1,6 @@
 package TEMod.content;
 
+import TEMod.TECustom.CoverBlock;
 import TEMod.TECustom.MultiChargeTurret;
 import TEMod.TECustom.MultiCrafter;
 import TEMod.TECustom.PortableCoreBlock;
@@ -50,10 +51,10 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    public static OreBlock oreUranium, oreSphularite; //矿石
-    public static OreBlock wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
-    public static OreBlock oreGraphitic; //地石墨
-    public static Block ; //一些盖板地板
+    public static Block oreUranium, oreSphularite; //矿石
+    public static Block wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
+    public static Block oreGraphitic; //地石墨
+    //public static Block ; //一些盖板地板
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
@@ -98,12 +99,13 @@ public class TEBlocks {
     public static Block advancedWaterExtractor; //抽水机
     public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
     public static Block laserBore; //激光墙钻
+    public static Block pyratiteHeater; //硫热
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
 
     //基础方块(TEMod)
-    public static Block pyratiteHeater; //硫热
+    public static Block cover; //盖板
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
@@ -1174,7 +1176,9 @@ public class TEBlocks {
         }};
 
         //基础方块(TEMod)
-
+//        cover = new CoverBlock("cover") {{
+//
+//        }};        TODO cover
 
 
         isComplete(TEBlocks.class);
