@@ -1,4 +1,4 @@
-package TEMod.content.Keppler;
+package TEMod.content.Kepler;
 
 import arc.Core;
 import arc.graphics.*;
@@ -19,7 +19,7 @@ import mindustry.world.blocks.environment.*;
 
 import static mindustry.Vars.*;
 
-public class KepplerPlanetGenerator extends PlanetGenerator{
+public class KeplerPlanetGenerator extends PlanetGenerator{
     //alternate, less direct generation
     public static boolean indirectPaths = false;
     //random water patches
@@ -120,8 +120,8 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
     public void getEmissiveColor(Vec3 position, Color out){
         float dst = 999f, captureDst = 999f, lightScl = 0f;
 
-        Object[] sectors = KepplerPlanet.keppler.sectors.items;
-        int size = KepplerPlanet.keppler.sectors.size;
+        Object[] sectors = KeplerPlanet.kepler.sectors.items;
+        int size = KeplerPlanet.kepler.sectors.size;
 
         for(int i = 0; i < size; i ++){
             var sector = (Sector)sectors[i];
@@ -190,8 +190,8 @@ public class KepplerPlanetGenerator extends PlanetGenerator{
 
                 float dst = 999f;
 
-                Object[] sectors = KepplerPlanet.keppler.sectors.items;
-                int size = KepplerPlanet.keppler.sectors.size;
+                Object[] sectors = KeplerPlanet.kepler.sectors.items;
+                int size = KeplerPlanet.kepler.sectors.size;
 
                 for(int i = 0; i < size; i ++){
                     var sector = (Sector)sectors[i];

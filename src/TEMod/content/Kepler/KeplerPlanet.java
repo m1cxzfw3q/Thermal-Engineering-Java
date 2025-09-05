@@ -1,4 +1,4 @@
-package TEMod.content.Keppler;
+package TEMod.content.Kepler;
 
 import arc.graphics.Color;
 import mindustry.game.Team;
@@ -11,12 +11,12 @@ import mindustry.type.Planet;
 import static TEMod.TECore.isComplete;
 import static mindustry.content.Planets.*;
 
-public class KepplerPlanet {
-    public static Planet keppler;
+public class KeplerPlanet {
+    public static Planet kepler;
 
     public static void load() {
-        keppler = new Planet("keppler", sun, 2, 3) {{
-            generator = new KepplerPlanetGenerator();
+        kepler = new Planet("kepler", sun, 2, 3) {{
+            generator = new KeplerPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
             cloudMeshLoader = () -> new MultiMesh(
                     new HexSkyMesh(this, 4, 0.3f, 0.28f, 6, new Color().set(Color.valueOf("d8ecff")).mul(Color.valueOf("d8ecff")).a(0.75f), 2, 0.45f, 0.9f, 0.38f),
@@ -47,6 +47,6 @@ public class KepplerPlanet {
             alwaysUnlocked = true;
             landCloudColor = Color.valueOf("89d2ff");
         }};
-        isComplete(KepplerPlanet.class);
+        isComplete(KeplerPlanet.class);
     }
 }

@@ -64,7 +64,7 @@ public class TEBlocks {
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
     //特殊
-    public static Block surpluoIcon, erekirIcon, kepplerIcon; //星球图标
+    public static Block surpluoIcon, erekirIcon, keplerIcon; //星球图标
     public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
     public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
     //电力
@@ -261,7 +261,7 @@ public class TEBlocks {
             requirements(Category.effect, BuildVisibility.hidden, with());
         }};
 
-        kepplerIcon = new AirBlock("keppler-icon") {{
+        keplerIcon = new AirBlock("kepler-icon") {{
             size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());

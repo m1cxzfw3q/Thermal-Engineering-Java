@@ -1,16 +1,16 @@
-package TEMod.content.Keppler;
+package TEMod.content.Kepler;
 
 import mindustry.type.SectorPreset;
 
 import static TEMod.TECore.isComplete;
-import static TEMod.content.Keppler.KepplerPlanet.*;
+import static TEMod.content.Kepler.KeplerPlanet.*;
 
-public class KepplerSectorPresets {
+public class KeplerSectorPresets {
     public static SectorPreset LandingArea;//降落区
     public static SectorPreset ResearchAreaNo47;//47号研究区
 
     public static void load(){
-        LandingArea = new SectorPreset("landing-area", keppler, 53) {{
+        LandingArea = new SectorPreset("landing-area", kepler, 53) {{
             alwaysUnlocked = false;
             addStartingItems = true;;
             difficulty = 3;
@@ -21,7 +21,7 @@ public class KepplerSectorPresets {
             };
         }};
 
-        ResearchAreaNo47 = new SectorPreset("research-area-no-47", keppler, 472) {{
+        ResearchAreaNo47 = new SectorPreset("research-area-no-47", kepler, 472) {{
             alwaysUnlocked = false;
             addStartingItems = true;
             captureWave = 81;
@@ -30,6 +30,6 @@ public class KepplerSectorPresets {
             startWaveTimeMultiplier = 4f;
         }};
 
-        isComplete(KepplerSectorPresets.class);
+        isComplete(KeplerSectorPresets.class);
     }
 }

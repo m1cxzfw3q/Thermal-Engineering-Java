@@ -1,7 +1,7 @@
 package TEMod.content;
 
-import TEMod.content.Keppler.KepplerPlanet;
-import TEMod.content.Keppler.KepplerSectorPresets;
+import TEMod.content.Kepler.KeplerPlanet;
+import TEMod.content.Kepler.KeplerSectorPresets;
 import arc.struct.Seq;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
@@ -12,7 +12,7 @@ import mindustry.game.Objectives;
 import mindustry.type.ItemStack;
 
 import static TEMod.TECore.isComplete;
-import static TEMod.content.Keppler.KepplerSectorPresets.*;
+import static TEMod.content.Kepler.KeplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
@@ -23,7 +23,7 @@ public class TETechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-        KepplerPlanet.keppler.techTree = nodeRoot("kepplerTechTree", coreExplore, () -> {//开普勒科技树
+        KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {//开普勒科技树
             node(TEBlocks.surpluoIcon, () -> {
                 node(TEBlocks.machineCannon,
                         ItemStack.with(
@@ -31,7 +31,7 @@ public class TETechTree {
                                 Items.lead, 4000,
                                 Items.graphite, 3500
                         ), Seq.with(
-                                new Objectives.SectorComplete(KepplerSectorPresets.LandingArea),
+                                new Objectives.SectorComplete(KeplerSectorPresets.LandingArea),
                                 new Objectives.Research(Blocks.scorch),
                                 new Objectives.Research(Blocks.hail),
                                 new Objectives.Research(TEItems.primaryWarAgreement)
@@ -158,7 +158,7 @@ public class TETechTree {
                 });
             });
 
-            node(TEBlocks.kepplerIcon, () -> {
+            node(TEBlocks.keplerIcon, () -> {
                 node(TEBlocks.nuclearFuelRodManufacturingMachine, ItemStack.with(
                         Items.thorium, 6000,
                         Items.titanium, 7000,
@@ -194,10 +194,10 @@ public class TETechTree {
 
             node(TEBlocks.erekirIcon, () -> {});
 
-            node(KepplerSectorPresets.LandingArea, Seq.with(
+            node(KeplerSectorPresets.LandingArea, Seq.with(
                     new Objectives.SectorComplete(planetaryTerminal),
                     new Objectives.SectorComplete(origin)
-            ), () -> node(KepplerSectorPresets.ResearchAreaNo47, Seq.with(
+            ), () -> node(KeplerSectorPresets.ResearchAreaNo47, Seq.with(
                     new Objectives.SectorComplete(LandingArea),
                     new Objectives.Research(TEBlocks.machineCannon),
                     new Objectives.SectorComplete(stronghold),

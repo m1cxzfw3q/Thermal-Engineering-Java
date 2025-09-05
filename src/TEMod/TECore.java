@@ -1,8 +1,7 @@
 package TEMod;
 
-import TEMod.TECustom.SmartTechTree;
 import TEMod.content.*;
-import TEMod.content.Keppler.*;
+import TEMod.content.Kepler.*;
 import arc.util.Log;
 import mindustry.mod.Mod;
 
@@ -15,8 +14,8 @@ public class TECore extends Mod {
     public void loadContent() {
         TEItems.load();
         TEBlocks.load();
-        KepplerPlanet.load();
-        KepplerSectorPresets.load();
+        KeplerPlanet.load();
+        KeplerSectorPresets.load();
         TEStatusEffects.load();
         //TEUnitTypes.load();
         Log.info("[Thermal-Engineering] isV8()");
