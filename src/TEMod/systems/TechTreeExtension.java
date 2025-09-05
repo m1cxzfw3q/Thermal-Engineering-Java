@@ -46,7 +46,7 @@ public class TechTreeExtension {
                 shieldedWall,
 
                 mender, mendProjector, overdriveProjector, overdriveDome, forceProjector, shockMine,
-                scrapWall, scrapWallLarge, scrapWallHuge, scrapWallGigantic, thruster, //ok, these names are getting ridiculous, but at least I don't have humongous walls yet
+                scrapWall, scrapWallLarge, scrapWallHuge, scrapWallGigantic, thruster,
 
                 radar,
                 buildTower,

@@ -23,10 +23,10 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEFix.load();
 
+        TechTreeConfig.load();//TechTreeExt
         TechTreeExtension.updateAllBlocksVisibility();
         TechTreeExtension.updateAllItemsVisibility();
         TechTreeExtension.updateAllLiquidsVisibility();
-        TechTreeConfig.load();//TechTreeExt
 
         TETechTree.load();//TechTree
         isComplete(TECore.class);
