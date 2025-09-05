@@ -662,11 +662,11 @@ public class TEBlocks {
 
         coreExplore = new PortableCoreBlock("core-explore") {{
             health = 3000;
-            itemCapacity = 0;
-            unitCapModifier = 0;
+            itemCapacity = 1000;
+            unitCapModifier = 3;
             thrusterLength = 20 / 4f;
             isFirstTier = alwaysUnlocked = true;
-            armor = 18;
+            armor = 15;
             size = 3;
             unitType = UnitTypes.alpha;
             requirements(Category.effect, with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
