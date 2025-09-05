@@ -9,7 +9,6 @@ import arc.util.Log;
 import mindustry.mod.Mod;
 
 public class TECore extends Mod {
-
     public TECore() {
 
     }
@@ -28,8 +27,8 @@ public class TECore extends Mod {
         TechTreeExtension.updateAllItemsVisibility();
         TechTreeExtension.updateAllLiquidsVisibility();
 
-        TETechTree.load();//TechTree
         isComplete(TECore.class);
+        TETechTree.load();
     }
 
     @Override

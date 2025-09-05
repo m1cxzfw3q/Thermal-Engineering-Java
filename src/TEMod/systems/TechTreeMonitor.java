@@ -1,6 +1,7 @@
 package TEMod.systems;
 
 import arc.Events;
+import arc.util.Log;
 import mindustry.game.EventType;
 
 public class TechTreeMonitor {
@@ -11,6 +12,7 @@ public class TechTreeMonitor {
             TechTreeExtension.updateAllBlocksVisibility();
             TechTreeExtension.updateAllItemsVisibility();
             TechTreeExtension.updateAllLiquidsVisibility();
+            Log.info("ResearchEvent Update");
         });
 
         // 监听世界加载事件
@@ -19,6 +21,7 @@ public class TechTreeMonitor {
             TechTreeExtension.updateAllBlocksVisibility();
             TechTreeExtension.updateAllItemsVisibility();
             TechTreeExtension.updateAllLiquidsVisibility();
+            Log.info("WorldLoadEvent Update");
         });
     }
 }
