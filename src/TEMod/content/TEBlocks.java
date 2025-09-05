@@ -1129,9 +1129,7 @@ public class TEBlocks {
             wallOre = true;
         }};
 
-        oreGraphitic = new OreBlock("ore-graphitic", Items.graphite) {{
-
-        }};
+        oreGraphitic = new OreBlock("ore-graphitic", Items.graphite);
 
         laserBore = new BeamDrill("laser-bore"){{
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
