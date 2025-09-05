@@ -2,6 +2,9 @@ package TEMod;
 
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
+import TEMod.systems.TechTreeConfig;
+import TEMod.systems.TechTreeExtension;
+import TEMod.systems.TechTreeMonitor;
 import arc.util.Log;
 import mindustry.mod.Mod;
 
@@ -18,15 +21,21 @@ public class TECore extends Mod {
         KeplerSectorPresets.load();
         TEStatusEffects.load();
         //TEUnitTypes.load();
-        Log.info("[Thermal-Engineering] isV8()");
         TEFix.load();
+
+        TechTreeExtension.updateAllBlocksVisibility();
+        TechTreeExtension.updateAllItemsVisibility();
+        TechTreeExtension.updateAllLiquidsVisibility();
+        TechTreeConfig.load();//TechTreeExt
+
         TETechTree.load();//TechTree
         isComplete(TECore.class);
     }
 
     @Override
     public void init() {
-        //SmartTechTree.use();
+        TechTreeExtension.init();
+        TechTreeMonitor.init();
     }
 
     public static void isComplete(Object obj) {
