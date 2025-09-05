@@ -17,6 +17,6 @@ public class PortableCoreBlock extends CoreBlock {
     }
 
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
-        return state.teams.cores(tile.team()).size <= 10;
+        return state.teams.cores(tile.team()).size <= 18;
     }
 }
