@@ -6,11 +6,9 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.FlakBulletType;
-import mindustry.type.Category;
-import mindustry.type.ItemStack;
+import mindustry.graphics.Pal;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.meta.Attribute;
-import mindustry.world.meta.BuildVisibility;
 
 public class TEFix {
     public static void load() {
@@ -48,6 +46,19 @@ public class TEFix {
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
+
+                    splashDamage = 30f * 1.5f;
+                    splashDamageRadius = 15f;
+                    fragBullet = new BasicBulletType(3f, 5){{
+                        width = 5f;
+                        height = 12f;
+                        shrinkY = 1f;
+                        lifetime = 20f;
+                        backColor = trailColor = Color.valueOf("94949a");
+                        hitColor = frontColor = Color.valueOf("94949a");
+                        despawnEffect = Fx.none;
+                        collidesGround = false;
+                    }};
                 }}
         );
         salvo.ammoTypes.put(
