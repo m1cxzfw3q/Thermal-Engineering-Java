@@ -205,11 +205,20 @@ public class TETechTree {
             ), () ->{}));
         });
 
-        addToNext(mechanicalDrill, () ->
-                node(mechanicalCliffCrusher, () ->{}));
+        addToNext(mechanicalDrill, () -> {
+            node(mechanicalCliffCrusher);
+            node(stoneDrill, ItemStack.with(TEItems.stone, 100, Items.copper, 20), () -> {});
+        });
 
         addToNext(pneumaticDrill, () ->
-                node(pneumaticCliffCrusher, () ->{}));
+                node(pneumaticCliffCrusher));
+        addToNext(laserDrill, () ->
+                node(laserBore));
+        addToNext(copperWall, () ->
+                node(TEBlocks.stoneWall, ItemStack.with(TEItems.stone, 30), () ->
+                        node(stoneWallLarge, ItemStack.with(TEItems.stone, 120), () ->{})));
+        addToNext(conveyor, () ->
+                node(stoneConveyor, ItemStack.with(TEItems.stone, 5), () -> {}));
 
         isComplete(TETechTree.class);
     }

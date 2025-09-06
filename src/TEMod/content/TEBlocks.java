@@ -111,8 +111,9 @@ public class TEBlocks {
     public static Block liquidCover; //盖板
 
     //石头！
-    public static Block stoneWall, stoneWallLarge; //石头墙！
-    public static Block stoneConveyor; //石头传送带！
+    public static Block stoneWall, stoneWallLarge,
+    stoneConveyor,
+    stoneDrill;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
@@ -1213,9 +1214,17 @@ public class TEBlocks {
             requirements(Category.distribution, with(TEItems.stone, 1));
             health = 20;
             speed = 1f / 60f;
-            displayedSpeed = 1f;
+            displayedSpeed = 2.5f;
             buildCostMultiplier = 2f;
             researchCost = with(TEItems.stone, 20);
+        }};
+
+        stoneDrill = new Drill("stone-drill") {{
+            health = 100;
+            requirements(Category.production, with(TEItems.stone, 15, Items.copper, 2));
+            tier = 2;
+            drillTime = 300;
+            consumeLiquid(Liquids.water, 0.09f).boost();
         }};
 
 
