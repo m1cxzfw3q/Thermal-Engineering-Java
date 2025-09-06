@@ -6,6 +6,7 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.BulletType;
+import mindustry.entities.bullet.FlakBulletType;
 import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
@@ -32,7 +33,7 @@ public class TEFix {
         ItemTurret scatter = (ItemTurret) Blocks.scatter;
         ItemTurret salvo = (ItemTurret) Blocks.salvo;
         duo.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(2.5f, 15){{
+                TEItems.stone, new BasicBulletType(2.6f, 15){{
                     width = 7f;
                     height = 9f;
                     lifetime = 60f;
@@ -44,7 +45,7 @@ public class TEFix {
                 }}
         );
         scatter.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(4f, 5){{
+                TEItems.stone, new FlakBulletType(4f, 5){{
                     width = 6f;
                     height = 8f;
                     lifetime = 60f;
@@ -72,5 +73,8 @@ public class TEFix {
         Blocks.stone.itemDrop = TEItems.stone;
         Blocks.dacite.itemDrop = TEItems.stone;
         Blocks.basalt.itemDrop = TEItems.stone;
+        Blocks.stone.playerUnmineable = true;
+        Blocks.dacite.playerUnmineable = true;
+        Blocks.basalt.playerUnmineable = true;
     }
 }
