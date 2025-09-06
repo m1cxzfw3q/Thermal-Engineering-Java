@@ -39,6 +39,7 @@ public class CoverBlock extends Block {
                     kill();
                 }
             }
+            kill();//开创世神放的哥们，你最好有事
         }
     }
 }
