@@ -108,7 +108,7 @@ public class TEBlocks {
     public static Block reinforcedPowerNode; //E电力节点
 
     //基础方块(TEMod)
-    //public static Block liquidCover; //盖板      TODO liquid cover
+    public static Block liquidCover; //盖板
 
     //石头！
     public static Block stoneWall, stoneWallLarge; //石头墙！
@@ -1163,9 +1163,23 @@ public class TEBlocks {
         }};
 
         //基础方块(TEMod)
-//        liquidCover = new CoverBlock("liquid-cover") {{
-//              requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.copper, 25));
-//        }};        TODO liquid cover
+        liquidCover = new CoverBlock("liquid-cover") {{
+            requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.copper, 25));
+            requireFloor = new Floor[]{
+                    Blocks.cryofluid.asFloor(),
+                    Blocks.slag.asFloor(),
+                    Blocks.water.asFloor(),
+                    Blocks.arkyciteFloor.asFloor(),
+                    Blocks.tar.asFloor()
+            };
+            replacementFloor = new Floor[]{
+                    TEBlocks.liquidCoverCryo.asFloor(),
+                    TEBlocks.liquidCoverSlag.asFloor(),
+                    TEBlocks.liquidCoverWater.asFloor(),
+                    TEBlocks.liquidCoverArkycite.asFloor(),
+                    TEBlocks.liquidCoverOil.asFloor()
+            };
+        }};
 
         liquidCoverOil = new Floor("liquid-cover-oil"){{
             attributes.set(Attribute.oil, 8f);
