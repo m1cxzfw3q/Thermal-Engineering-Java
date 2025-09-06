@@ -80,5 +80,9 @@ public class TEFix {
         Blocks.stone.playerUnmineable = true;
         Blocks.dacite.playerUnmineable = true;
         Blocks.basalt.playerUnmineable = true;
+        Blocks.charr.itemDrop = TEItems.stone;
+        Blocks.craters.itemDrop = TEItems.stone;
+        Blocks.charr.playerUnmineable = true;
+        Blocks.craters.playerUnmineable = true;
     }
 }
