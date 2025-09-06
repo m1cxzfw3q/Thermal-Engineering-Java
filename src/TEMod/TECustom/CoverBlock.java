@@ -28,6 +28,11 @@ public class CoverBlock extends Block {
         return false;
     }
 
+    @Override
+    public boolean canReplace(Block other) {
+        return false;
+    }
+
     public class CoverBlockBuild extends Building {
         @Override
         public void updateTile() {
@@ -36,6 +41,7 @@ public class CoverBlock extends Block {
             for (int i = 0; i < requireFloor.length; i++) {//别换增强for 不然秒炸
                 if (floorTile.floor() == requireFloor[i] && floorTile.floor() != null) {
                     floorTile.setFloor(replacementFloor[i]);
+                    kill();
                 }
             }
         }
