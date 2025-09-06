@@ -1197,7 +1197,7 @@ public class TEBlocks {
         }};
 
         //石头！！！
-        float stoneWallHealth = 120;
+        float stoneWallHealth = 150;
 
         stoneWall = new Wall("stone-wall") {{
             health = (int) ((size * size) * stoneWallHealth);
@@ -1223,7 +1223,7 @@ public class TEBlocks {
             health = 100;
             requirements(Category.production, with(TEItems.stone, 15, Items.copper, 2));
             tier = 2;
-            drillTime = 222;
+            drillTime = 250;
             consumeLiquid(Liquids.water, 3f / 60f).boost();
         }};
 
