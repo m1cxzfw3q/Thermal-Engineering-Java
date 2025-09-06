@@ -44,7 +44,7 @@ public class TEFix {
                 }}
         );
         scatter.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(2.5f, 5){{
+                TEItems.stone, new BasicBulletType(4f, 5){{
                     width = 6f;
                     height = 8f;
                     lifetime = 60f;
@@ -57,7 +57,7 @@ public class TEFix {
                 }}
         );
         salvo.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(2.5f, 15){{
+                TEItems.stone, new BasicBulletType(3f, 15){{
                     width = 7f;
                     height = 9f;
                     lifetime = 60f;
