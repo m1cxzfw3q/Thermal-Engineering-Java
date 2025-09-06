@@ -28,11 +28,6 @@ public class CoverBlock extends Block {
         return false;
     }
 
-    @Override
-    public boolean canReplace(Block other) {
-        return false;
-    }
-
     public class CoverBlockBuild extends Building {
         @Override
         public void updateTile() {
