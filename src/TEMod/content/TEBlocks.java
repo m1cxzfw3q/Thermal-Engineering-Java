@@ -23,6 +23,7 @@ import mindustry.world.blocks.defense.ForceProjector;
 import mindustry.world.blocks.defense.OverdriveProjector;
 import mindustry.world.blocks.defense.Wall;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.distribution.Conveyor;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.environment.AirBlock;
 import mindustry.world.blocks.environment.Floor;
@@ -110,7 +111,8 @@ public class TEBlocks {
     //public static Block liquidCover; //盖板      TODO liquid cover
 
     //石头！
-    public static Block stoneWall, stoneWallLarge;//石头墙！
+    public static Block stoneWall, stoneWallLarge; //石头墙！
+    public static Block stoneConveyor; //石头传送带！
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
@@ -1189,6 +1191,15 @@ public class TEBlocks {
             size = 2;
             health = (int) ((size * size) * stoneWallHealth);
             requirements(Category.defense, ItemStack.with(TEItems.stone, 3 * (size * size)));
+        }};
+
+        stoneConveyor = new Conveyor("stone-conveyor"){{
+            requirements(Category.distribution, with(TEItems.stone, 1));
+            health = 20;
+            speed = 1f / 60f;
+            displayedSpeed = 1f;
+            buildCostMultiplier = 2f;
+            researchCost = with(TEItems.stone, 20);
         }};
 
 
