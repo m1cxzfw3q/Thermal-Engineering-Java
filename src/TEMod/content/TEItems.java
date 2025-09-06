@@ -27,6 +27,8 @@ public class TEItems {
     public static Item advancedChip; //高级芯片
     public static Item specialChip; //特级芯片
 
+    public static Item stone; //石！
+
     public static void load() {
         uranium = new Item("uranium", Color.valueOf("617270")) {{//这个mod从Json开始的第一个物品
             hardness = 5;
@@ -86,6 +88,10 @@ public class TEItems {
 
         zincPowder = new Item("zinc-powder", Color.valueOf("BFCDBC")) {{
             buildable = false;
+        }};
+
+        stone = new Item("stone", Color.valueOf("94949a")) {{
+            hardness = 2;
         }};
 
         isComplete(TEItems.class);
