@@ -15,6 +15,7 @@ public class CoverBlock extends Block {
         super(name);
         solid = false;
         update = true;
+        floating = true;
     }
 
     @Override
