@@ -1196,7 +1196,7 @@ public class TEBlocks {
         stoneConveyor = new Conveyor("stone-conveyor"){{
             requirements(Category.distribution, with(TEItems.stone, 1));
             health = 20;
-            speed = 1f / 60f /;
+            speed = 1f / 60f;
             displayedSpeed = 1f;
             buildCostMultiplier = 2f;
             researchCost = with(TEItems.stone, 20);
