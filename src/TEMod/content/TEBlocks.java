@@ -1163,6 +1163,18 @@ public class TEBlocks {
         }};
 
         //基础方块(TEMod)
+        liquidCoverOil = new Floor("liquid-cover-oil"){{
+            attributes.set(Attribute.oil, 8f);
+        }};
+
+        liquidCoverWater = new Floor("liquid-cover-water"){{
+            attributes.set(Attribute.water, 8f);
+        }};
+
+        liquidCoverSlag = new Floor("liquid-cover-slag");
+        liquidCoverArkycite = new Floor("liquid-cover-arkycite");
+        liquidCoverCryo = new Floor("liquid-cover-cryo");
+
         liquidCover = new CoverBlock("liquid-cover") {{
             requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.copper, 25));
             requireFloor = new Floor[]{
@@ -1180,18 +1192,6 @@ public class TEBlocks {
                     TEBlocks.liquidCoverOil.asFloor()
             };
         }};
-
-        liquidCoverOil = new Floor("liquid-cover-oil"){{
-            attributes.set(Attribute.oil, 8f);
-        }};
-
-        liquidCoverWater = new Floor("liquid-cover-water"){{
-            attributes.set(Attribute.water, 8f);
-        }};
-
-        liquidCoverSlag = new Floor("liquid-cover-slag");
-        liquidCoverArkycite = new Floor("liquid-cover-arkycite");
-        liquidCoverCryo = new Floor("liquid-cover-cryo");
 
         //石头！！！
         float stoneWallHealth = 120;
