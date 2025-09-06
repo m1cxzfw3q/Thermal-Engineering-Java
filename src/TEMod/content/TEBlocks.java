@@ -1224,7 +1224,7 @@ public class TEBlocks {
             requirements(Category.production, with(TEItems.stone, 15, Items.copper, 2));
             tier = 2;
             drillTime = 300;
-            consumeLiquid(Liquids.water, 0.09f).boost();
+            consumeLiquid(Liquids.water, 3f / 60f).boost();
         }};
 
 
