@@ -29,12 +29,39 @@ public class TEFix {
         Blocks.basaltBoulder.requirements(Category.distribution, BuildVisibility.hidden, ItemStack.with(TEItems.stone, 2));
 
         ItemTurret duo = (ItemTurret) Blocks.duo;
+        ItemTurret scatter = (ItemTurret) Blocks.scatter;
+        ItemTurret salvo = (ItemTurret) Blocks.salvo;
         duo.ammoTypes.put(
                 TEItems.stone, new BasicBulletType(2.5f, 15){{
                     width = 7f;
                     height = 9f;
                     lifetime = 60f;
-                    reloadMultiplier = 0.5f;
+                    reloadMultiplier = 0.7f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = Color.valueOf("94949a");
+                    frontColor = Color.valueOf("94949a");
+                }}
+        );
+        scatter.ammoTypes.put(
+                TEItems.stone, new BasicBulletType(2.5f, 5){{
+                    width = 6f;
+                    height = 8f;
+                    lifetime = 60f;
+                    reloadMultiplier = 0.7f;
+                    shootEffect = Fx.shootSmall;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = Color.valueOf("94949a");
+                    frontColor = Color.valueOf("94949a");
+                }}
+        );
+        salvo.ammoTypes.put(
+                TEItems.stone, new BasicBulletType(2.5f, 15){{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 60f;
+                    reloadMultiplier = 0.7f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
