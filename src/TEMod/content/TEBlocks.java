@@ -1178,7 +1178,7 @@ public class TEBlocks {
         liquidCoverCryo = new Floor("liquid-cover-cryo");
 
         //石头！！！
-        float stoneWallHealth = 10;
+        float stoneWallHealth = 120;
 
         stoneWall = new Wall("stone-wall") {{
             health = (int) ((size * size) * stoneWallHealth);
