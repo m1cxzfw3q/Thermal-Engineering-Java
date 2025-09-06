@@ -1223,7 +1223,7 @@ public class TEBlocks {
             health = 100;
             requirements(Category.production, with(TEItems.stone, 15, Items.copper, 2));
             tier = 2;
-            drillTime = 300;
+            drillTime = 222;
             consumeLiquid(Liquids.water, 3f / 60f).boost();
         }};
 
