@@ -24,6 +24,7 @@ import mindustry.world.blocks.defense.OverdriveProjector;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.distribution.ItemBridge;
 import mindustry.world.blocks.environment.AirBlock;
+import mindustry.world.blocks.environment.Floor;
 import mindustry.world.blocks.environment.OreBlock;
 import mindustry.world.blocks.heat.HeatProducer;
 import mindustry.world.blocks.liquid.LiquidBridge;
@@ -54,7 +55,7 @@ public class TEBlocks {
     public static Block oreUranium, oreSphularite; //矿石
     public static Block wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
     public static Block oreGraphitic; //地石墨
-    //public static Block ; //一些盖板地板
+    public static Block liquidCoverCryo, liquidCoverOil, liquidCoverWater, liquidCoverSlag, liquidCoverArkycite; //一些盖板地板
     //基础方块(S)
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
@@ -105,7 +106,7 @@ public class TEBlocks {
     public static Block reinforcedPowerNode; //E电力节点
 
     //基础方块(TEMod)
-    public static Block cover; //盖板
+    //public static Block liquidCover; //盖板      TODO liquid cover
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
@@ -941,7 +942,7 @@ public class TEBlocks {
 //                    new UnitType[]{UnitTypes.corvus, UnitTypes.risso},
 //                    new UnitType[]{UnitTypes.navanax, UnitTypes.retusa}
 //            );
-//        }};
+//        }};      TODO T6Unit
 
         payloadConveyorLarge = new PayloadConveyor("large-payload-conveyor") {{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
@@ -1156,9 +1157,21 @@ public class TEBlocks {
         }};
 
         //基础方块(TEMod)
-//        cover = new CoverBlock("cover") {{
-//
-//        }};        TODO cover
+//        liquidCover = new CoverBlock("liquid-cover") {{
+//              requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.copper, 25));
+//        }};        TODO liquid cover
+
+        liquidCoverOil = new Floor("liquid-cover-oil"){{
+            attributes.set(Attribute.oil, 8f);
+        }};
+
+        liquidCoverWater = new Floor("liquid-cover-water"){{
+            attributes.set(Attribute.water, 8f);
+        }};
+
+        liquidCoverSlag = new Floor("liquid-cover-slag");
+        liquidCoverArkycite = new Floor("liquid-cover-arkycite");
+        liquidCoverCryo = new Floor("liquid-cover-cryo");
 
 
         isComplete(TEBlocks.class);
