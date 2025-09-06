@@ -16,17 +16,12 @@ public class TEFix {
     public static void load() {
         Items.graphite.hardness = 2;
 
-        //这里是给孢子墙壁粉碎机预留的
+        //这里是给孢子墙壁粉碎机留的
         Blocks.sporeWall.attributes.set(Attribute.spores, 1f);
         Blocks.whiteTree.attributes.set(Attribute.spores, 1f);
         Blocks.sporePine.attributes.set(Attribute.spores, 1f);
 
         //666石头科技
-        Blocks.boulder.requirements(Category.distribution, BuildVisibility.hidden, ItemStack.with(TEItems.stone, 2));
-        Blocks.sandBoulder.requirements(Category.distribution, BuildVisibility.hidden, ItemStack.with(TEItems.stone, 1, Items.sand, 1));
-        Blocks.daciteBoulder.requirements(Category.distribution, BuildVisibility.hidden, ItemStack.with(TEItems.stone, 2));
-        Blocks.basaltBoulder.requirements(Category.distribution, BuildVisibility.hidden, ItemStack.with(TEItems.stone, 2));
-
         ItemTurret duo = (ItemTurret) Blocks.duo;
         ItemTurret scatter = (ItemTurret) Blocks.scatter;
         ItemTurret salvo = (ItemTurret) Blocks.salvo;
