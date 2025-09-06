@@ -14,6 +14,7 @@ public class CoverBlock extends Block {
     public CoverBlock(String name) {
         super(name);
         solid = false;
+        update = true;
     }
 
     @Override

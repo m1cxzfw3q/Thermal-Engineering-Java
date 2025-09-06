@@ -1191,6 +1191,8 @@ public class TEBlocks {
                     TEBlocks.liquidCoverArkycite.asFloor(),
                     TEBlocks.liquidCoverOil.asFloor()
             };
+            health = 120;
+
         }};
 
         //石头！！！
