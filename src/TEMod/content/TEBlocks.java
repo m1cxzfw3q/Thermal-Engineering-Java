@@ -18,7 +18,6 @@ import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.type.unit.MissileUnitType;
 import mindustry.world.Block;
-import mindustry.world.blocks.campaign.LaunchPad;
 import mindustry.world.blocks.defense.ForceProjector;
 import mindustry.world.blocks.defense.OverdriveProjector;
 import mindustry.world.blocks.defense.Wall;
@@ -63,7 +62,7 @@ public class TEBlocks {
     public static Block missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
     public static Block oreSmeltingFurnace; //矿石熔炼炉
-    public static Block oreCrusher; //矿石粉碎机
+    public static Block oreCrusher, stonePulverizer; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
     //特殊
@@ -85,7 +84,6 @@ public class TEBlocks {
     public static Block railGun; //轨道炮
     //发射台
     public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
-    public static Block advancedLaunchPad; //高级发射台
     public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
     //逻辑
     public static Block terminalProcessor; //终端处理器
@@ -681,17 +679,6 @@ public class TEBlocks {
             requirements(Category.effect, with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
         }};
 
-        advancedLaunchPad = new LaunchPad("advanced-launchpad") {{
-            requirements(Category.effect, BuildVisibility.campaignOnly, with(Items.copper, 400, Items.silicon, 200, Items.lead, 300, Items.titanium, 200, Items.thorium, 100));
-            health = 500;
-            size = 4;
-            hasPower = true;
-            launchTime = 400f;
-            consumePower(10f);
-            itemCapacity = 200;
-            buildCostMultiplier = 0.8f;
-        }};
-
         unitStorageVault = new StorageBlock("unit-storage-vault") {{
             health = 24000;
             unitCapModifier = 24;
@@ -1151,6 +1138,24 @@ public class TEBlocks {
             fogRadius = 3;
 
             consumeLiquid(Liquids.water, 0.09f).boost();
+        }};
+
+        stonePulverizer = new GenericCrafter("stone-pulverizer"){{
+            requirements(Category.crafting, with(Items.copper, 40, Items.lead, 30));
+            outputItem = new ItemStack(Items.sand, 1);
+            craftEffect = Fx.pulverize;
+            craftTime = 35f;
+            updateEffect = Fx.pulverizeSmall;
+            hasItems = hasPower = true;
+            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
+                spinSprite = true;
+                rotateSpeed = 2f;
+            }}, new DrawRegion("-top"));
+            ambientSound = Sounds.grinding;
+            ambientSoundVolume = 0.025f;
+
+            consumeItem(TEItems.stone, 1);
+            consumePower(0.30f);
         }};
 
 

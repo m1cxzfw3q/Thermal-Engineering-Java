@@ -149,13 +149,6 @@ public class TETechTree {
                             new Objectives.Research(TEItems.highSpeedTransmissionProtocol)
                     ), () -> {});
                 });
-                node(TEBlocks.advancedLaunchPad, ItemStack.with(
-
-                ), Seq.with(
-                        new Objectives.Research(launchPad),
-                        new Objectives.SectorComplete(LandingArea)
-                ), () ->{
-                });
             });
 
             node(TEBlocks.keplerIcon, () -> {
@@ -219,6 +212,8 @@ public class TETechTree {
                         node(stoneWallLarge, ItemStack.with(TEItems.stone, 120), () ->{})));
         addToNext(conveyor, () ->
                 node(stoneConveyor, ItemStack.with(TEItems.stone, 5), () -> {}));
+        addToNext(pulverizer, () ->
+                node(stonePulverizer));
 
         isComplete(TETechTree.class);
     }
