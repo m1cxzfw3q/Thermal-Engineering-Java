@@ -41,5 +41,9 @@ public class TEFix {
                     frontColor = Color.valueOf("94949a");
                 }}
         );
+
+        Blocks.stone.itemDrop = TEItems.stone;
+        Blocks.dacite.itemDrop = TEItems.stone;
+        Blocks.basalt.itemDrop = TEItems.stone;
     }
 }
