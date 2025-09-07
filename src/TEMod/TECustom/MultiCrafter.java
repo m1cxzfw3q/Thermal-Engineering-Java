@@ -67,42 +67,35 @@ public class MultiCrafter extends GenericCrafter {
                     tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName()).left().row();
                     if (recipe.inputItems != null) {
                         tab.add(Core.bundle.format("misc.multicraft.inputItem") + "[");
-                        tab.row();
                         for (ItemStack input : recipe.inputItems) {
-                            tab.add("     " + input.item.emoji() + " " + input.amount).left();
                             tab.row();
+                            tab.add("     " + input.item.emoji() + " " + input.amount).left();
                         }
-                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.outputItems != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputItem") + "[");
-                        tab.row();
                         for (ItemStack output : recipe.outputItems) {
-                            tab.add("     " + output.item.emoji() + " " + output.amount).left();
                             tab.row();
+                            tab.add("     " + output.item.emoji() + " " + output.amount).left();
                         }
-                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.inputLiquids != null){
                         tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + "[");
-                        tab.row();
                         for (LiquidStack input : recipe.inputLiquids) {
-                            tab.add("     " + input.liquid.emoji() + " " + input.amount).left();
                             tab.row();
+                            tab.add("     " + input.liquid.emoji() + " " + input.amount).left();
                         }
-                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.outputLiquids != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + "[");
                         tab.row();
                         for (LiquidStack output : recipe.outputLiquids) {
-                            tab.add("     " + output.liquid.emoji() + " " + output.amount).left();
                             tab.row();
+                            tab.add("     " + output.liquid.emoji() + " " + output.amount).left();
                         }
-                        tab.row();
                         tab.add("]");
                     }
                 }).padTop(8);
