@@ -77,6 +77,7 @@ public class MultiCrafter extends GenericCrafter {
                     }
                     if (recipe.outputItems != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputItem") + "[");
+                        tab.row();
                         for (ItemStack output : recipe.outputItems) {
                             tab.add("     " + output.item.emoji() + " " + output.amount).left();
                             tab.row();
@@ -86,6 +87,7 @@ public class MultiCrafter extends GenericCrafter {
                     }
                     if (recipe.inputLiquids != null){
                         tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + "[");
+                        tab.row();
                         for (LiquidStack input : recipe.inputLiquids) {
                             tab.add("     " + input.liquid.emoji() + " " + input.amount).left();
                             tab.row();
@@ -95,6 +97,7 @@ public class MultiCrafter extends GenericCrafter {
                     }
                     if (recipe.outputLiquids != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + "[");
+                        tab.row();
                         for (LiquidStack output : recipe.outputLiquids) {
                             tab.add("     " + output.liquid.emoji() + " " + output.amount).left();
                             tab.row();
