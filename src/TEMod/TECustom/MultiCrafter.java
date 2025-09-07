@@ -554,9 +554,9 @@ public class MultiCrafter extends GenericCrafter {
 
         public String localizedName() {
             if(outputItems != null && outputItems.length > 0 && outputItems[0] != null) {
-                return outputItems[0].item.localizedName + " " + outputItems[0].item.emoji();
+                return outputItems[0].item.localizedName + " [white]" + outputItems[0].item.emoji() + "[]";
             } else if(outputLiquids != null && outputLiquids.length > 0 && outputLiquids[0] != null) {
-                return outputLiquids[0].liquid.localizedName + " " + outputLiquids[0].liquid.emoji();
+                return outputLiquids[0].liquid.localizedName + " [white]" + outputLiquids[0].liquid.emoji() + "[]";
             }
             return "未知配方";
         }
