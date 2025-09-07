@@ -64,7 +64,7 @@ public class MultiCrafter extends GenericCrafter {
             stats.add(Stat.output, t -> {
                 t.row();
                 t.table(Styles.grayPanel, tab -> {
-                    tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName()).left().row();
+                    tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName() + " " + recipe.localizedEmoji()).left().row();
                     if (recipe.inputItems != null) {
                         tab.add(Core.bundle.format("misc.multicraft.inputItem") + "[");
                         tab.row();
@@ -560,6 +560,15 @@ public class MultiCrafter extends GenericCrafter {
                 return outputItems[0].item.localizedName;
             } else if(outputLiquids != null && outputLiquids.length > 0 && outputLiquids[0] != null) {
                 return outputLiquids[0].liquid.localizedName;
+            }
+            return "未知配方";
+        }
+
+        public String localizedEmoji() {
+            if(outputItems != null && outputItems.length > 0 && outputItems[0] != null) {
+                return outputItems[0].item.emoji();
+            } else if(outputLiquids != null && outputLiquids.length > 0 && outputLiquids[0] != null) {
+                return outputLiquids[0].liquid.emoji();
             }
             return "未知配方";
         }
