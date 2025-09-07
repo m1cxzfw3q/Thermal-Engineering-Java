@@ -61,29 +61,32 @@ public class MultiCrafter extends GenericCrafter {
         for(int i = 0; i < recipes.size; i++) {
             Recipe recipe = recipes.get(i);
             int finalI = i;
-            stats.add(Stat.output, t -> t.table(Styles.grayPanel, tab -> {
-                tab.add("[accent]" + (finalI +1) + ". " + recipe.localizedName()).left().row();
-                // 显示输入物品
-                for(ItemStack input : recipe.inputItems) {
-                    tab.add(Core.bundle.format("misc.multicraft.inputItem") + input.item.emoji() + " " + input.amount).left();
-                    tab.row();
-                }
-                // 显示输出物品
-                for(ItemStack output : recipe.outputItems) {
-                    tab.add(Core.bundle.format("misc.multicraft.outputItem") + output.item.emoji() + " " + output.amount).left();
-                    tab.row();
-                }
-                // 显示输入流体
-                for(LiquidStack input : recipe.inputLiquids) {
-                    tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + input.liquid.emoji() + " " + input.amount).left();
-                    tab.row();
-                }
-                // 显示输出流体
-                for(LiquidStack output : recipe.outputLiquids) {
-                    tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + output.liquid.emoji() + " " + output.amount).left();
-                    tab.row();
-                }
-            }).padTop(8));
+            stats.add(Stat.output, t -> {
+                t.row();
+                t.table(Styles.grayPanel, tab -> {//速速修改显示效果()
+                    tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName()).left().row();
+                    // 显示输入物品
+                    for (ItemStack input : recipe.inputItems) {
+                        tab.add(Core.bundle.format("misc.multicraft.inputItem") + input.item.emoji() + " " + input.amount).left();
+                        tab.row();
+                    }
+                    // 显示输出物品
+                    for (ItemStack output : recipe.outputItems) {
+                        tab.add(Core.bundle.format("misc.multicraft.outputItem") + output.item.emoji() + " " + output.amount).left();
+                        tab.row();
+                    }
+                    // 显示输入流体
+                    for (LiquidStack input : recipe.inputLiquids) {
+                        tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + input.liquid.emoji() + " " + input.amount).left();
+                        tab.row();
+                    }
+                    // 显示输出流体
+                    for (LiquidStack output : recipe.outputLiquids) {
+                        tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + output.liquid.emoji() + " " + output.amount).left();
+                        tab.row();
+                    }
+                }).padTop(8);
+            });
         }
     }
 
