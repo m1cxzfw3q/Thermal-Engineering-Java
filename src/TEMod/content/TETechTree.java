@@ -47,12 +47,6 @@ public class TETechTree {
 //                        )
 //                );
 //
-//                node(TEBlocks.primaryLaboratory, Seq.with(new Objectives.SectorComplete(ResearchAreaNo47)), () ->
-//                    node(TEBlocks.advancedLaboratory, Seq.with(new Objectives.Research(Liquids.cryofluid)), () ->
-//                        node(TEBlocks.specialLaboratory)
-//                    )
-//                );
-//
 //                node(TEBlocks.simpleStorage,
 //                        with(Items.copper, 2000, Items.lead, 2600, Items.graphite, 1500),
 //                        Seq.with(new Objectives.Research(bridgeConduit)),
