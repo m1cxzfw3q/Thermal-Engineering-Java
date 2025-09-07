@@ -13,27 +13,19 @@ import mindustry.world.meta.*;
 import static mindustry.Vars.content;
 
 public class MultiCrafter extends GenericCrafter {
-    // 存储所有可用配方
     public Seq<Recipe> recipes = new Seq<>();
-
-    // 修改：存储必需流体及其消耗量
     public Seq<LiquidStack> requiredLiquids = new Seq<>();
+
     public static float uniCraftTime;
 
     public MultiCrafter(String name) {
         super(name);
         configurable = true;
         saveConfig = true;
-
-        // 关键修复：启用物品输出和传送带连接
         hasItems = true;
-
-        if (uniCraftTime > 0) craftTime = uniCraftTime;
-
         config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
             if(recipes.size > 0) {
                 int newRecipe = value % recipes.size;
-                // 仅在配方改变时执行清理
                 if(build.currentRecipe != newRecipe) {
                     build.switchRecipe(newRecipe);
                 }
@@ -41,24 +33,23 @@ public class MultiCrafter extends GenericCrafter {
         });
     }
 
-    // 修改：添加必需流体及其消耗量
     public void requiresLiquid(Liquid liquid, float amount) {
         requiredLiquids.add(new LiquidStack(liquid, amount));
         consumeLiquid(liquid, amount);
     }
 
-    // 关键修复：重写输出连接方法
     @Override
     public boolean outputsItems() {
-        return true; // 确保工厂被识别为物品输出源
+        return true;
     }
 
     @Override
     public void setStats() {
         super.setStats();
         stats.remove(Stat.output);
-        stats.add(Stat.input, tab -> tab.add(Core.bundle.format("misc.multicraft.input-tips")));
-        // 显示所有配方
+        stats.remove(Stat.productionTime);
+        stats.add(Stat.productionTime, uniCraftTime / 60f, StatUnit.seconds);
+
         for(int i = 0; i < recipes.size; i++) {
             Recipe recipe = recipes.get(i);
             int finalI = i;
@@ -122,25 +113,22 @@ public class MultiCrafter extends GenericCrafter {
     public class MultiCrafterBuild extends GenericCrafterBuild {
         public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
-        private float partialProgress = 0f; // 新增：跟踪部分进度
+        private float partialProgress = 0f;
 
 
         public void switchRecipe(int newRecipe) {
             Recipe nextRecipe = recipes.get(newRecipe);
             Seq<Item> neededItems = new Seq<>();
 
-            // 收集新配方所需物品
             for(ItemStack stack : nextRecipe.inputItems) {
                 neededItems.add(stack.item);
             }
 
-            // 完全清理非新配方需要的物品（包括产物）
             for(int i = 0; i < items.length(); i++) {
                 Item item = content.item(i);
                 int currentAmount = items.get(i);
                 if(currentAmount > 0 && !neededItems.contains(item)) {
-                    // 直接输出全部多余物品
-                    items.set(item, 0); // 使用索引正确设置数量
+                    items.set(item, 0);
                     for (int j = 0; j < currentAmount; j++) {
                         offload(item);
                     }
@@ -175,8 +163,8 @@ public class MultiCrafter extends GenericCrafter {
             }
 
             // 设置当前配方的合成时间
-            craftTime = recipe.craftTime;
             if (uniCraftTime > 0) craftTime = uniCraftTime;
+            else craftTime = recipe.craftTime;
 
             // 关键修复：使用部分进度跟踪，防止过度生产
             if(shouldConsume() && enabled) {
@@ -435,7 +423,7 @@ public class MultiCrafter extends GenericCrafter {
             table.button("\uE835", Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
                 rebuildConfig(table);
-            }).size(60).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
+            }).size(50).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
 
             table.table(Styles.black5, t -> {
                 Recipe current = getCurrentRecipe();
@@ -510,7 +498,6 @@ public class MultiCrafter extends GenericCrafter {
         }
     }
 
-    // 配方数据结构
     public static class Recipe {
         public ItemStack[] inputItems = {};
         public ItemStack[] outputItems = {};
