@@ -57,6 +57,7 @@ public class MultiCrafter extends GenericCrafter {
     public void setStats() {
         super.setStats();
         stats.remove(Stat.output);
+        stats.add(Stat.input, tab -> tab.add(Core.bundle.format("misc.multicraft.input-tips")));
         // 显示所有配方
         for(int i = 0; i < recipes.size; i++) {
             Recipe recipe = recipes.get(i);
