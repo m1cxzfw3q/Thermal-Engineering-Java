@@ -6,29 +6,29 @@ import static TEMod.TECore.isComplete;
 import static TEMod.content.Kepler.KeplerPlanet.*;
 
 public class KeplerSectorPresets {
-//    public static SectorPreset LandingArea;//降落区
-//    public static SectorPreset ResearchAreaNo47;//47号研究区
+    public static SectorPreset LandingArea;//降落区
+    public static SectorPreset ResearchAreaNo47;//47号研究区
 
     public static void load(){
-//        LandingArea = new SectorPreset("landing-area", kepler, 53) {{
-//            alwaysUnlocked = false;
-//            addStartingItems = true;;
-//            difficulty = 3;
-//            overrideLaunchDefaults = true;
-//            startWaveTimeMultiplier = 4f;
-//            rules = rules1 -> {
-//                rules1.attackMode = true;
-//            };
-//        }};
-//
-//        ResearchAreaNo47 = new SectorPreset("research-area-no-47", kepler, 472) {{
-//            alwaysUnlocked = false;
-//            addStartingItems = true;
-//            captureWave = 81;
-//            difficulty = 4;
-//            overrideLaunchDefaults = true;
-//            startWaveTimeMultiplier = 4f;
-//        }};
+        LandingArea = new SectorPreset("landing-area", kepler, 53) {{
+            alwaysUnlocked = false;
+            addStartingItems = true;;
+            difficulty = 3;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 4f;
+            rules = rules1 -> {
+                rules1.attackMode = true;
+            };
+        }};
+
+        ResearchAreaNo47 = new SectorPreset("research-area-no-47", kepler, 472) {{
+            alwaysUnlocked = false;
+            addStartingItems = true;
+            captureWave = 81;
+            difficulty = 4;
+            overrideLaunchDefaults = true;
+            startWaveTimeMultiplier = 4f;
+        }};
 
         isComplete(KeplerSectorPresets.class);
     }

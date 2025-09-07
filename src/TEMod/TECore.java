@@ -2,29 +2,15 @@ package TEMod;
 
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
-import TEMod.systems.TechTreeConfig;
-import TEMod.systems.TechTreeExtension;
-import TEMod.systems.TechTreeMonitor;
+//import TEMod.TECustom.systems.TechTreeConfig;
+//import TEMod.TECustom.systems.TechTreeExtension;
+//import TEMod.TECustom.systems.TechTreeMonitor;
 
-import arc.Core;
-import arc.Events;
 import arc.util.Log;
-import mindustry.game.EventType;
-import mindustry.gen.Icon;
 import mindustry.mod.Mod;
-import mindustry.ui.dialogs.BaseDialog;
 
 public class TECore extends Mod {
-    public TECore() {
-        Events.on(EventType.ClientLoadEvent.class, e -> {
-            if (true){
-                BaseDialog awa = new BaseDialog("[red]削减版提示");
-                awa.add("[red]当前版本为削减版，完整版请手动前往该模组github查看！");
-                awa.addCloseButton();
-                awa.button("前往github下载mod完整版", Icon.github, () -> Core.app.setClipboardText("https://github.com/m1cxzfw3q/Thermal-Engineering-Java/"));
-            }
-        });
-    }
+    public TECore() {}
     @Override
     public void loadContent() {
         TEItems.load();
@@ -35,10 +21,10 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEFix.load();
 
-        TechTreeConfig.load();//TechTreeExt
-        TechTreeExtension.updateAllBlocksVisibility();
-        TechTreeExtension.updateAllItemsVisibility();
-        TechTreeExtension.updateAllLiquidsVisibility();
+//        TechTreeConfig.load();//TechTreeExt
+//        TechTreeExtension.updateAllBlocksVisibility();
+//        TechTreeExtension.updateAllItemsVisibility();
+//        TechTreeExtension.updateAllLiquidsVisibility();
 
         isComplete(TECore.class);
         TETechTree.load();
@@ -46,8 +32,8 @@ public class TECore extends Mod {
 
     @Override
     public void init() {
-        TechTreeExtension.init();
-        TechTreeMonitor.init();
+//        TechTreeExtension.init();
+//        TechTreeMonitor.init();
     }
 
     public static void isComplete(Object obj) {
