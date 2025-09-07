@@ -71,6 +71,7 @@ public class MultiCrafter extends GenericCrafter {
                             tab.row();
                             tab.add("     " + input.item.emoji() + " " + input.amount).left();
                         }
+                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.outputItems != null){
@@ -79,6 +80,7 @@ public class MultiCrafter extends GenericCrafter {
                             tab.row();
                             tab.add("     " + output.item.emoji() + " " + output.amount).left();
                         }
+                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.inputLiquids != null){
@@ -87,6 +89,7 @@ public class MultiCrafter extends GenericCrafter {
                             tab.row();
                             tab.add("     " + input.liquid.emoji() + " " + input.amount).left();
                         }
+                        tab.row();
                         tab.add("]");
                     }
                     if (recipe.outputLiquids != null){
@@ -96,6 +99,7 @@ public class MultiCrafter extends GenericCrafter {
                             tab.row();
                             tab.add("     " + output.liquid.emoji() + " " + output.amount).left();
                         }
+                        tab.row();
                         tab.add("]");
                     }
                 }).padTop(8);
