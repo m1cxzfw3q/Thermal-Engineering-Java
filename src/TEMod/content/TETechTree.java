@@ -24,7 +24,7 @@ public class TETechTree {
     public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
-//        KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {//开普勒科技树
+//        KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {
 //            node(TEBlocks.surpluoIcon, () -> {
 //                node(pyratiteHeater);
 //                node(TEBlocks.machineCannon,
@@ -117,8 +117,13 @@ public class TETechTree {
         addToNext(pulverizer, () ->
                 node(oreCrusher));
 
-        addToNext(kiln, () ->
-                node(oreSmeltingFurnace));
+        addToNext(kiln, () -> {
+            node(oreSmeltingFurnace);
+            node(TEBlocks.primaryLaboratory, Seq.with(), () ->
+                    node(TEBlocks.advancedLaboratory,
+                            Seq.with(new Objectives.Research(Liquids.cryofluid)), () ->
+                            node(TEBlocks.specialLaboratory)));
+        });
 
         addToNext(beamNode, () ->
                 node(reinforcedPowerNode));
