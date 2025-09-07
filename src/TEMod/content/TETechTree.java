@@ -144,14 +144,18 @@ public class TETechTree {
                         nodeProduce(TEItems.advancedChip, () ->
                                 nodeProduce(TEItems.specialChip))));
 
-        nodeProduce(TEItems.primaryWarAgreement, () ->
-                nodeProduce(TEItems.advancedWarAgreement, () ->
-                        nodeProduce(TEItems.specialWarAgreement)));
-        nodeProduce(TEItems.primaryProductionAgreement, () -> {
-            nodeProduce(TEItems.advancedProductionAgreement, () ->
-                    nodeProduce(TEItems.specialProductionAgreement));
-            nodeProduce(TEItems.highSpeedTransmissionProtocol, () ->
-                    nodeProduce(TEItems.ultraRemoteTransmissionProtocol));});
+        addToNext(coreShard, () -> {
+            nodeProduce(TEItems.primaryWarAgreement, () ->
+                    nodeProduce(TEItems.advancedWarAgreement, () ->
+                            nodeProduce(TEItems.specialWarAgreement)));
+            nodeProduce(TEItems.primaryProductionAgreement, () -> {
+                nodeProduce(TEItems.advancedProductionAgreement, () ->
+                        nodeProduce(TEItems.specialProductionAgreement));
+                nodeProduce(TEItems.highSpeedTransmissionProtocol, () ->
+                        nodeProduce(TEItems.ultraRemoteTransmissionProtocol));
+            });
+        });
+
 
         isComplete(TETechTree.class);
     }
