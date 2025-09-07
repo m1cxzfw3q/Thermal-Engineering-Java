@@ -154,6 +154,12 @@ public class TETechTree {
                         nodeProduce(TEItems.ultraRemoteTransmissionProtocol));
             });
         });
+        addToNext(hail, () -> node(TEBlocks.machineCannon,
+                with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
+                Seq.with(new Objectives.Research(Blocks.scorch), new Objectives.Research(TEItems.primaryWarAgreement)),
+                () -> node(TEBlocks.missileLauncher,
+                        with(Items.copper, 10000, Items.lead, 12000, Items.graphite, 9000, Items.metaglass, 4000,
+                                Items.silicon, 500, TEItems.primaryChip, 300, TEItems.advancedWarAgreement, 1))));
 
 
         isComplete(TETechTree.class);
