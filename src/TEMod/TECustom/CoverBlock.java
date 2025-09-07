@@ -25,8 +25,6 @@ public class CoverBlock extends Block {
             if (floorTile.floor() == convertFloor[i][0] && floorTile.floor() != null) {
                 return true;
             }
-
-
         }
         return false;
     }
