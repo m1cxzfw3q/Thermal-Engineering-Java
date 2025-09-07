@@ -6,7 +6,6 @@ import TEMod.TECustom.MultiCrafter;
 import TEMod.TECustom.PortableCoreBlock;
 import arc.graphics.Color;
 import arc.math.Interp;
-import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
@@ -1133,25 +1132,6 @@ public class TEBlocks {
 
             consumeLiquid(Liquids.water, 0.09f).boost();
         }};
-
-        stonePulverizer = new GenericCrafter("stone-pulverizer"){{
-            requirements(Category.crafting, with(Items.copper, 40, Items.lead, 30));
-            outputItem = new ItemStack(Items.sand, 1);
-            craftEffect = Fx.pulverize;
-            craftTime = 35f;
-            updateEffect = Fx.pulverizeSmall;
-            hasItems = hasPower = true;
-            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
-                spinSprite = true;
-                rotateSpeed = 2f;
-            }}, new DrawRegion("-top"));
-            ambientSound = Sounds.grinding;
-            ambientSoundVolume = 0.025f;
-
-            consumeItem(TEItems.stone, 1);
-            consumePower(0.30f);
-        }};
-
 
         //基础方块(E)
 
