@@ -2,9 +2,6 @@ package TEMod;
 
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
-//import TEMod.TECustom.systems.TechTreeConfig;
-//import TEMod.TECustom.systems.TechTreeExtension;
-//import TEMod.TECustom.systems.TechTreeMonitor;
 
 import arc.util.Log;
 import mindustry.mod.Mod;
@@ -22,19 +19,12 @@ public class TECore extends Mod {
         TEFix.load();
         TEV8.load();
 
-//        TechTreeConfig.load();//TechTreeExt
-//        TechTreeExtension.updateAllBlocksVisibility();
-//        TechTreeExtension.updateAllItemsVisibility();
-//        TechTreeExtension.updateAllLiquidsVisibility();
-
         isComplete(TECore.class);
         TETechTree.load();
     }
 
     @Override
     public void init() {
-//        TechTreeExtension.init();
-//        TechTreeMonitor.init();
     }
 
     public static void isComplete(Object obj) {
