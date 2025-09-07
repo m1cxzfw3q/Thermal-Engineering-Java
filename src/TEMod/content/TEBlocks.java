@@ -914,8 +914,6 @@ public class TEBlocks {
             size = 3;
         }};
 
-
-
 //        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor") {{
 //            requirements(Category.units, with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000, TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000));
 //
@@ -1182,7 +1180,7 @@ public class TEBlocks {
         liquidCoverCryo = new Floor("liquid-cover-cryo");
 
         liquidCover = new CoverBlock("liquid-cover") {{
-            requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.copper, 25));
+            requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.metaglass, 40));
             requireFloor = new Floor[]{
                     Blocks.cryofluid.asFloor(),
                     Blocks.slag.asFloor(),
@@ -1198,7 +1196,6 @@ public class TEBlocks {
                     TEBlocks.liquidCoverOil.asFloor()
             };
             health = 120;
-
         }};
 
         //石头！！！

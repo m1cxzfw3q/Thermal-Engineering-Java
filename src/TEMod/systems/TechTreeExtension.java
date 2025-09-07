@@ -1,11 +1,13 @@
 package TEMod.systems;
 
+import TEMod.content.TEBlocks;
 import arc.struct.*;
 import mindustry.content.*;
 import mindustry.type.*;
 import mindustry.world.Block;
 
 import static TEMod.content.Kepler.KeplerPlanet.kepler;
+import static TEMod.content.TEBlocks.*;
 import static mindustry.Vars.content;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.Items.*;
@@ -31,7 +33,7 @@ public class TechTreeExtension {
                 ozone, hydrogen, nitrogen, cyanogen
         );
 
-        keplerBlocks.addAll(//来自Anuken
+        keplerBlocks.addAll(//来自Anuken，还有mod的
                 siliconSmelter, siliconCrucible, kiln, graphitePress, plastaniumCompressor, multiPress, phaseWeaver, surgeSmelter, pyratiteMixer, blastMixer, cryofluidMixer,
                 melter, separator, disassembler, sporePress, pulverizer, incinerator, coalCentrifuge,
 
@@ -98,7 +100,17 @@ public class TechTreeExtension {
                 payloadConveyor, payloadRouter, reinforcedPayloadConveyor, reinforcedPayloadRouter, payloadMassDriver, largePayloadMassDriver, smallDeconstructor, deconstructor, constructor, largeConstructor, payloadLoader, payloadUnloader,
 
                 message, switchBlock, microProcessor, logicProcessor, hyperProcessor, largeLogicDisplay, logicDisplay, logicDisplayTile, memoryCell, memoryBank,
-                canvas, reinforcedMessage
+                canvas, reinforcedMessage,
+
+                //mod S
+                stonePulverizer, mechanicalCliffCrusher, pneumaticCliffCrusher, laserBore, stonePulverizer,
+                shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator,
+
+                //mod E
+                reinforcedPowerNode,
+
+                //stone!
+                TEBlocks.stoneWall, stoneWallLarge, stoneConveyor, stoneDrill
         );
     }
 

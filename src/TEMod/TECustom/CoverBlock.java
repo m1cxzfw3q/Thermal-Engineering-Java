@@ -25,6 +25,8 @@ public class CoverBlock extends Block {
             if (floorTile.floor() == requireFloor[i] && floorTile.floor() != null) {
                 return true;
             }
+
+
         }
         return false;
     }
@@ -37,10 +39,10 @@ public class CoverBlock extends Block {
             for (int i = 0; i < requireFloor.length; i++) {//别换增强for 不然秒炸
                 if (floorTile.floor() == requireFloor[i] && floorTile.floor() != null) {
                     floorTile.setFloor(replacementFloor[i]);
-                    kill();
+                    killed();
                 }
             }
-            kill();//开创世神放的哥们，你最好有事
+            killed();//开创世神放的哥们，你最好有事
         }
     }
 }

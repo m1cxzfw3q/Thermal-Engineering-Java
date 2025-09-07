@@ -25,6 +25,8 @@ public class TETechTree {
     public static void load() {
         KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {//开普勒科技树
             node(TEBlocks.surpluoIcon, () -> {
+                node(pyratiteHeater);
+
                 node(TEBlocks.machineCannon,
                         ItemStack.with(
                                 Items.copper, 6000,
@@ -185,17 +187,16 @@ public class TETechTree {
                 }));
             });
 
-            node(TEBlocks.erekirIcon, () -> {});
+            node(TEBlocks.erekirIcon);
 
-            node(KeplerSectorPresets.LandingArea, Seq.with(
-                    new Objectives.SectorComplete(planetaryTerminal),
-                    new Objectives.SectorComplete(origin)
-            ), () -> node(KeplerSectorPresets.ResearchAreaNo47, Seq.with(
-                    new Objectives.SectorComplete(LandingArea),
-                    new Objectives.Research(TEBlocks.machineCannon),
-                    new Objectives.SectorComplete(stronghold),
-                    new Objectives.SectorComplete(stainedMountains)
-            ), () ->{}));
+            node(KeplerSectorPresets.LandingArea, Seq.with(), () ->
+                    node(KeplerSectorPresets.ResearchAreaNo47, Seq.with(
+                            new Objectives.SectorComplete(LandingArea),
+                            new Objectives.Research(TEBlocks.machineCannon),
+                            new Objectives.SectorComplete(stronghold),
+                            new Objectives.SectorComplete(stainedMountains)
+                    ), () ->{})
+            );
         });
 
         addToNext(mechanicalDrill, () -> {
@@ -205,15 +206,28 @@ public class TETechTree {
 
         addToNext(pneumaticDrill, () ->
                 node(pneumaticCliffCrusher));
+
         addToNext(laserDrill, () ->
                 node(laserBore));
+
         addToNext(copperWall, () ->
                 node(TEBlocks.stoneWall, ItemStack.with(TEItems.stone, 30), () ->
                         node(stoneWallLarge, ItemStack.with(TEItems.stone, 120), () ->{})));
+
         addToNext(conveyor, () ->
                 node(stoneConveyor, ItemStack.with(TEItems.stone, 5), () -> {}));
+
         addToNext(pulverizer, () ->
                 node(stonePulverizer));
+
+        addToNext(beamNode, () ->
+                node(reinforcedPowerNode));
+
+        addToNext(forceProjector, () ->
+                node(shieldGenerator, () ->
+                        node(shieldGeneratorLarge, () ->
+                                node(shieldGeneratorHuge, () ->
+                                        node(sectorShieldGenerator)))));
 
         isComplete(TETechTree.class);
     }
