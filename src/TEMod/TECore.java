@@ -20,6 +20,7 @@ public class TECore extends Mod {
         TEStatusEffects.load();
         //TEUnitTypes.load();
         TEFix.load();
+        TEV8.load();
 
 //        TechTreeConfig.load();//TechTreeExt
 //        TechTreeExtension.updateAllBlocksVisibility();
