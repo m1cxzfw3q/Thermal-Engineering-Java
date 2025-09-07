@@ -65,7 +65,7 @@ public class MultiCrafter extends GenericCrafter {
                 t.row();
                 t.table(Styles.grayPanel, tab -> {
                     tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName()).left().row();
-                    if (recipe.inputItems != null) {
+                    if (recipe.inputItems[0] != null) {
                         tab.add(Core.bundle.format("misc.multicraft.inputItem") + "[");
                         for (ItemStack input : recipe.inputItems) {
                             tab.row();
@@ -74,7 +74,7 @@ public class MultiCrafter extends GenericCrafter {
                         tab.row();
                         tab.add("]");
                     }
-                    if (recipe.outputItems != null){
+                    if (recipe.outputItems[0] != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputItem") + "[");
                         for (ItemStack output : recipe.outputItems) {
                             tab.row();
@@ -83,7 +83,7 @@ public class MultiCrafter extends GenericCrafter {
                         tab.row();
                         tab.add("]");
                     }
-                    if (recipe.inputLiquids != null){
+                    if (recipe.inputLiquids[0] != null){
                         tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + "[");
                         for (LiquidStack input : recipe.inputLiquids) {
                             tab.row();
@@ -92,7 +92,7 @@ public class MultiCrafter extends GenericCrafter {
                         tab.row();
                         tab.add("]");
                     }
-                    if (recipe.outputLiquids != null){
+                    if (recipe.outputLiquids[0] != null){
                         tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + "[");
                         tab.row();
                         for (LiquidStack output : recipe.outputLiquids) {
