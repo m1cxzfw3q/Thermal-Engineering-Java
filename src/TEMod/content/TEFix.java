@@ -6,8 +6,12 @@ import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.FlakBulletType;
+import mindustry.type.Category;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.meta.Attribute;
+import mindustry.world.meta.BuildVisibility;
+
+import static mindustry.type.ItemStack.with;
 
 public class TEFix {
     public static void load() {
@@ -83,5 +87,20 @@ public class TEFix {
         Blocks.craters.itemDrop = TEItems.stone;
         Blocks.charr.playerUnmineable = true;
         Blocks.craters.playerUnmineable = true;
+
+        Blocks.boulder.instantDeconstruct = false;
+        Blocks.boulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
+        Blocks.snowBoulder.instantDeconstruct = false;
+        Blocks.snowBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
+        Blocks.sandBoulder.instantDeconstruct = false;
+        Blocks.sandBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 1, Items.sand ,1));
+        Blocks.daciteBoulder.instantDeconstruct = false;
+        Blocks.daciteBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
+        Blocks.basaltBoulder.instantDeconstruct = false;
+        Blocks.basaltBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
+        Blocks.ferricBoulder.instantDeconstruct = false;
+        Blocks.ferricBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
+        Blocks.shaleBoulder.instantDeconstruct = false;
+        Blocks.shaleBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
     }
 }

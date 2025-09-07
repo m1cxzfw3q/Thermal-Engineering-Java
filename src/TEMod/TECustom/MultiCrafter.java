@@ -18,6 +18,7 @@ public class MultiCrafter extends GenericCrafter {
 
     // 修改：存储必需流体及其消耗量
     public Seq<LiquidStack> requiredLiquids = new Seq<>();
+    public static float uniCraftTime;
 
     public MultiCrafter(String name) {
         super(name);
@@ -26,6 +27,8 @@ public class MultiCrafter extends GenericCrafter {
 
         // 关键修复：启用物品输出和传送带连接
         hasItems = true;
+
+        if (uniCraftTime > 0) craftTime = uniCraftTime;
 
         config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
             if(recipes.size > 0) {
@@ -141,6 +144,7 @@ public class MultiCrafter extends GenericCrafter {
 
             // 设置当前配方的合成时间
             craftTime = recipe.craftTime;
+            if (uniCraftTime > 0) craftTime = uniCraftTime;
 
             // 关键修复：使用部分进度跟踪，防止过度生产
             if(shouldConsume() && enabled) {
@@ -448,7 +452,7 @@ public class MultiCrafter extends GenericCrafter {
                     for(LiquidStack required : block.requiredLiquids) {
                         if(required != null && required.liquid != null) {
                             t.image(required.liquid.uiIcon).size(24).padRight(4);
-                            t.add(required.liquid.localizedName + (required.amount * 60 / 1) + "/s").left().padRight(8);
+                            t.add(required.liquid.localizedName + (required.amount * 60) + "/s").left().padRight(8);
                             t.row();
                         }
                     }

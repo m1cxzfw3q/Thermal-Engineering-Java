@@ -6,6 +6,7 @@ import TEMod.TECustom.MultiCrafter;
 import TEMod.TECustom.PortableCoreBlock;
 import arc.graphics.Color;
 import arc.math.Interp;
+import arc.struct.Seq;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
@@ -284,13 +285,13 @@ public class TEBlocks {
 
             recipes.add(new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.primaryProductionAgreement, 1)},
-                    180 * 60
+                    new ItemStack[]{new ItemStack(TEItems.primaryProductionAgreement, 1)}
             ), new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.primaryWarAgreement, 1)},
-                    180 * 60
+                    new ItemStack[]{new ItemStack(TEItems.primaryWarAgreement, 1)}
             ));
+
+            uniCraftTime = 180 * 60;
 
             size = 3;
             health = 1000;
@@ -305,17 +306,16 @@ public class TEBlocks {
 
             recipes.add(new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.advancedProductionAgreement, 1)},
-                    120 * 60
+                    new ItemStack[]{new ItemStack(TEItems.advancedProductionAgreement, 1)}
             ), new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.advancedWarAgreement, 1)},
-                    120 * 60
+                    new ItemStack[]{new ItemStack(TEItems.advancedWarAgreement, 1)}
             ), new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.highSpeedTransmissionProtocol, 1)},
-                    120 * 60
+                    new ItemStack[]{new ItemStack(TEItems.highSpeedTransmissionProtocol, 1)}
             ));
+
+            uniCraftTime = 120 * 60;
 
             size = 5;
             health = 2000;
@@ -330,17 +330,16 @@ public class TEBlocks {
 
             recipes.add(new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.specialProductionAgreement, 1)},
-                    80 * 60
+                    new ItemStack[]{new ItemStack(TEItems.specialProductionAgreement, 1)}
             ), new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.specialWarAgreement, 1)},
-                    80 * 60
+                    new ItemStack[]{new ItemStack(TEItems.specialWarAgreement, 1)}
             ), new Recipe(
                     new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.ultraRemoteTransmissionProtocol, 1)},
-                    80 * 60
+                    new ItemStack[]{new ItemStack(TEItems.ultraRemoteTransmissionProtocol, 1)}
             ));
+
+            uniCraftTime = 80 * 60;
 
             size = 7;
             health = 4000;
@@ -772,28 +771,24 @@ public class TEBlocks {
             consumePower(8f);
             size = 3;
 
-            recipes.add(new Recipe(
+            recipes.add(Seq.with(new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.copper, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(Items.copper, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.lead, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(Items.lead, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.thorium, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(Items.thorium, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.titanium, 1)},
-                    40f
-            ));
-            recipes.add(new Recipe(
+                    new ItemStack[]{new ItemStack(Items.titanium, 1)}
+            ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
-                    40f
-            ));
+                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)}
+            )));
+
+            uniCraftTime = 40f;
 
             drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
 
@@ -810,32 +805,33 @@ public class TEBlocks {
             health = 1000;
             size = 2;
 
-            recipes.add(new Recipe(
+            recipes.add(Seq.with(new Recipe(
                     new ItemStack[]{new ItemStack(Items.copper, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.lead, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.thorium, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(Items.titanium, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)},
-                    40f
-            ));
-            recipes.add(new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)}
+            ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
-                    40f
+                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)}
             ), new Recipe(
                     new ItemStack[]{new ItemStack(TEItems.sphularite, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 2)},
-                    40f
-            ));
+                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 2)}
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(Items.scrap, 1)},
+                    new ItemStack[]{new ItemStack(Items.sand, 1)}
+            ), new Recipe(
+                    new ItemStack[]{new ItemStack(TEItems.stone, 1)},
+                    new ItemStack[]{new ItemStack(Items.sand, 1)}
+            )));
+
+            uniCraftTime = 40f;
 
             requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
 
@@ -1181,19 +1177,12 @@ public class TEBlocks {
 
         liquidCover = new CoverBlock("liquid-cover") {{
             requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.metaglass, 40));
-            requireFloor = new Floor[]{
-                    Blocks.cryofluid.asFloor(),
-                    Blocks.slag.asFloor(),
-                    Blocks.water.asFloor(),
-                    Blocks.arkyciteFloor.asFloor(),
-                    Blocks.tar.asFloor()
-            };
-            replacementFloor = new Floor[]{
-                    TEBlocks.liquidCoverCryo.asFloor(),
-                    TEBlocks.liquidCoverSlag.asFloor(),
-                    TEBlocks.liquidCoverWater.asFloor(),
-                    TEBlocks.liquidCoverArkycite.asFloor(),
-                    TEBlocks.liquidCoverOil.asFloor()
+            convertFloor = new Floor[][]{
+                    new Floor[]{Blocks.cryofluid.asFloor(), TEBlocks.liquidCoverCryo.asFloor()},
+                    new Floor[]{Blocks.slag.asFloor(), TEBlocks.liquidCoverSlag.asFloor()},
+                    new Floor[]{Blocks.water.asFloor(), TEBlocks.liquidCoverWater.asFloor()},
+                    new Floor[]{Blocks.arkyciteFloor.asFloor(), TEBlocks.liquidCoverArkycite.asFloor()},
+                    new Floor[]{Blocks.tar.asFloor(), TEBlocks.liquidCoverOil.asFloor()}
             };
             health = 120;
         }};

@@ -9,7 +9,7 @@ import mindustry.world.blocks.environment.Floor;
 import static mindustry.Vars.world;
 
 public class CoverBlock extends Block {
-    public static Floor[] replacementFloor, requireFloor;
+    public static Floor[][] convertFloor;
 
     public CoverBlock(String name) {
         super(name);
@@ -21,8 +21,8 @@ public class CoverBlock extends Block {
     @Override
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
         Tile floorTile = world.tile(tile.x, tile.y);
-        for (int i = 0; i < requireFloor.length; i++) {//别换增强for 不然秒炸
-            if (floorTile.floor() == requireFloor[i] && floorTile.floor() != null) {
+        for (int i = 0; i < convertFloor.length; i++) {//别换增强for 不然秒炸
+            if (floorTile.floor() == convertFloor[i][0] && floorTile.floor() != null) {
                 return true;
             }
 
@@ -36,9 +36,9 @@ public class CoverBlock extends Block {
         public void updateTile() {
             super.updateTile();
             Tile floorTile = world.tile(tile.x, tile.y);
-            for (int i = 0; i < requireFloor.length; i++) {//别换增强for 不然秒炸
-                if (floorTile.floor() == requireFloor[i] && floorTile.floor() != null) {
-                    floorTile.setFloor(replacementFloor[i]);
+            for (int i = 0; i < convertFloor.length; i++) {//别换增强for 不然秒炸
+                if (floorTile.floor() == convertFloor[i][0] && floorTile.floor() != null) {
+                    floorTile.setFloor(convertFloor[i][1]);
                     killed();
                 }
             }
