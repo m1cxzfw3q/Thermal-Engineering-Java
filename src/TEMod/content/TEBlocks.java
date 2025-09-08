@@ -62,7 +62,7 @@ public class TEBlocks {
     public static Block missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
     public static Block oreSmeltingFurnace; //矿石熔炼炉
-    public static Block oreCrusher, stonePulverizer; //矿石粉碎机
+    public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
     //特殊
@@ -81,7 +81,6 @@ public class TEBlocks {
     //炮台
     public static Block machineCannon; //机炮
     public static Block prism; //棱镜 //重名了
-    public static Block railGun; //轨道炮
     //发射台
     public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
     public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
@@ -109,9 +108,7 @@ public class TEBlocks {
     public static Block liquidCover; //盖板
 
     //石头！
-    public static Block stoneWall, stoneWallLarge,
-    stoneConveyor,
-    stoneDrill;
+    public static Block stoneWall, stoneWallLarge, stoneConveyor, stoneDrill;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找

@@ -115,7 +115,7 @@ public class TEV8 {//由Anuken的傻逼源代码构成
                 canvas, reinforcedMessage,
 
                 //campaign
-                launchPad, advancedLaunchPad, landingPad,
+                advancedLaunchPad, landingPad,
                 interplanetaryAccelerator
         };
 
