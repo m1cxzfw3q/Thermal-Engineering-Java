@@ -149,6 +149,9 @@ public class TETechTree {
                             nodeProduce(TEItems.specialWarAgreement)));
             nodeProduce(TEItems.primaryProductionAgreement, () -> {
                 nodeProduce(TEItems.advancedProductionAgreement, () ->
+
+
+
                         nodeProduce(TEItems.specialProductionAgreement));
                 nodeProduce(TEItems.highSpeedTransmissionProtocol, () ->
                         nodeProduce(TEItems.ultraRemoteTransmissionProtocol));
