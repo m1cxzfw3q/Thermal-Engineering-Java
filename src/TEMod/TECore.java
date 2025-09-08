@@ -27,7 +27,7 @@ public class TECore extends Mod {
         TEStatusEffects.load();
         //TEUnitTypes.load();
         TEFix.load();
-        TEV8.load();
+        TEV8.load(); //我宣布个事！我是个傻逼！
 
         isComplete(TECore.class);
         TETechTree.load();
