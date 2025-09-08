@@ -16,12 +16,11 @@ import static TEMod.content.Kepler.KeplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
+import static mindustry.content.TechTree.roots;
 import static mindustry.type.ItemStack.with;
 
 public class TETechTree {
     private static TechTree.TechNode context = null;
-
-    public static Seq<TechTree.TechNode> roots = new Seq<>();
 
     public static void load() {
 //        KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {

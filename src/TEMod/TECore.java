@@ -1,6 +1,5 @@
 package TEMod;
 
-import TEMod.TECustom.TETips;
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
 
@@ -16,7 +15,7 @@ public class TECore extends Mod {
     public TECore() {
         Events.on(EventType.ClientLoadEvent.class, e -> {
             BaseDialog awa = new BaseDialog(Core.bundle.format("misc.tips"));
-            awa.add(Core.bundle.format(TETips.tips(Mathf.random(8))));
+            awa.add(Core.bundle.format("misc.tips-" + (Mathf.random(10) - 1)));
         });
     }
     @Override
