@@ -18,6 +18,7 @@ public class TECore extends Mod {
             awa.add(Core.bundle.format("misc.tips-" + (Mathf.random(10) - 1)));
         });
     }
+
     @Override
     public void loadContent() {
         TEItems.load();
@@ -28,6 +29,7 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEFix.load();
         TEV8.load(); //我宣布个事！我是个傻逼！
+        //TEModularWeapons.load();
 
         isComplete(TECore.class);
         TETechTree.load();

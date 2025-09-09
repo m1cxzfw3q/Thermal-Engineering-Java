@@ -717,50 +717,6 @@ public class TEBlocks {
             Log.info("Load MultiChargeTurret(prism)");
         }};
 
-//        railGun = new ItemTurret("railGun") {{
-//            health = 5120;
-//            size = 5;
-//            maxAmmo = 50;
-//            ammoPerShot = 5;
-//            shootSound = Sounds.mediumCannon;
-//            range = 48 *8;
-//            reload = 120f;
-//
-//            ammo(
-//                    Items.thorium, new BasicBulletType(4, 673f) {{
-//                        scaledSplashDamage = true;
-//                        pierce = pierceBuilding = true;
-//                        pierceCap = 16;
-//                        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
-//                        hitColor = Color.valueOf("f9a3c7");
-//                        width = 15.0F;
-//                        height = 40.0F;
-//                        lifetime = 90.0F;
-//                        ammoMultiplier = 2.5F;
-//                        splashDamage = 384f;
-//                        splashDamageRadius = 8 * 8;
-//                    }}, TEItems.uranium, new BasicBulletType(5, 1046f) {{
-//                        scaledSplashDamage = true;
-//                        pierceCap = 24;
-//                        pierce = pierceBuilding = true;
-//                        hitEffect = new MultiEffect(Fx.titanExplosion, Fx.titanSmoke);
-//                        hitColor = Color.valueOf("617270");
-//                        width = 15.0F;
-//                        height = 40.0F;
-//                        lifetime = 90.0F;
-//                        ammoMultiplier = 1.25F;
-//                        splashDamage = 512f;
-//                        splashDamageRadius = 12 * 8;
-//                        rangeChange = 11f * 8f;
-//                    }}
-//            );
-//
-//            requirements(Category.turret, with(Items.thorium, 1500, Items.copper, 3000, Items.lead, 4500, Items.silicon, 5000, Items.titanium, 3500, Items.surgeAlloy, 800, Items.plastanium, 1200));
-//
-//            coolantMultiplier = 0.2f;
-//            coolant = consume(consumeLiquid(Liquids.water, 16f / 60f));
-//        }};
-
         oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
             hasPower = hasItems = true;
