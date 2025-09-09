@@ -61,7 +61,7 @@ public class TEBlocks {
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
-    public static Block oreSmeltingFurnace; //矿石熔炼炉
+    public static Block oreSmeltingFurnace, electricArcFurnace; //冶炼炉子
     public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
@@ -111,8 +111,11 @@ public class TEBlocks {
     public static Block stoneWall, stoneWallLarge, stoneConveyor, stoneDrill;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方        Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
-            requirements(Category.turret, with(Items.copper, 200, Items.lead, 160, Items.graphite, 80));
+        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
+            //Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
+            requirements(Category.turret,
+                    with(Items.copper, 200, Items.lead, 160, Items.graphite, 80)
+            );
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
                 knockback = 0.2F;
@@ -222,7 +225,10 @@ public class TEBlocks {
         }};
 
         highEfficiencyDisassembler = new Separator("high-efficiency-disassembler"){{
-            requirements(Category.crafting, with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200, Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.specialProductionAgreement, 1));
+            requirements(Category.crafting,
+                    with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200,
+                            Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.specialProductionAgreement, 1)
+            );
             results = with(
                     Items.copper, 3,
                     Items.lead, 3,
@@ -277,14 +283,17 @@ public class TEBlocks {
         }};
 
         primaryLaboratory = new MultiCrafter("primary-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300));
+            requirements(Category.crafting,
+                    with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650,
+                            Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300)
+            );
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.primaryProductionAgreement, 1)}
+                    with(),
+                    with(TEItems.primaryProductionAgreement, 1)
             ), new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.primaryWarAgreement, 1)}
+                    with(),
+                    with(TEItems.primaryWarAgreement, 1)
             ));
 
             uniCraftTime = 180 * 60;
@@ -298,17 +307,20 @@ public class TEBlocks {
         }};
 
         advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300, Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400));
+            requirements(Category.crafting,
+                    with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300,
+                            Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400)
+            );
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.advancedProductionAgreement, 1)}
+                    with(),
+                    with(TEItems.advancedProductionAgreement, 1)
             ), new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.advancedWarAgreement, 1)}
+                    with(),
+                    with(TEItems.advancedWarAgreement, 1)
             ), new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.highSpeedTransmissionProtocol, 1)}
+                    with(),
+                    with(TEItems.highSpeedTransmissionProtocol, 1)
             ));
 
             uniCraftTime = 120 * 60;
@@ -322,17 +334,20 @@ public class TEBlocks {
         }};
 
         specialLaboratory = new MultiCrafter("special-laboratory") {{
-            requirements(Category.crafting, with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000));
+            requirements(Category.crafting,
+                    with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800,
+                            Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000)
+            );
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.specialProductionAgreement, 1)}
+                    with(),
+                    with(TEItems.specialProductionAgreement, 1)
             ), new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.specialWarAgreement, 1)}
+                    with(),
+                    with(TEItems.specialWarAgreement, 1)
             ), new Recipe(
-                    new ItemStack[]{},
-                    new ItemStack[]{new ItemStack(TEItems.ultraRemoteTransmissionProtocol, 1)}
+                    with(),
+                    with(TEItems.ultraRemoteTransmissionProtocol, 1)
             ));
 
             uniCraftTime = 80 * 60;
@@ -356,18 +371,21 @@ public class TEBlocks {
             hasItems = hasPower = true;
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{new ItemStack(Items.silicon, 3), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
+                    with(Items.silicon, 3, Items.copper, 2, Items.lead, 1),
+                    with(TEItems.primaryChip, 1),
                     30
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.silicon, 4), new ItemStack(Items.copper, 2), new ItemStack(Items.lead, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
+                    with(Items.silicon, 4, Items.copper, 2, Items.lead, 1),
+                    with(TEItems.advancedChip, 1),
                     40
             ));
         }};
 
         chipPrinter = new MultiCrafter("chip-printer") {{
-            requirements(Category.crafting, with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000, Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1));
+            requirements(Category.crafting,
+                    with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000,
+                    Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1)
+            );
 
             size = 5;
             health = 1000;
@@ -377,16 +395,16 @@ public class TEBlocks {
             requiresLiquid(Liquids.cryofluid, 0.2f);
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{new ItemStack(Items.silicon, 3)},
-                    new ItemStack[]{new ItemStack(TEItems.primaryChip, 1)},
+                    with(Items.silicon, 3),
+                    with(TEItems.primaryChip, 1),
                     10
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.silicon, 5)},
-                    new ItemStack[]{new ItemStack(TEItems.advancedChip, 1)},
+                    with(Items.silicon, 5),
+                    with(TEItems.advancedChip, 1),
                     20
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.silicon, 6)},
-                    new ItemStack[]{new ItemStack(TEItems.specialChip, 1)},
+                    with(Items.silicon, 6),
+                    with(TEItems.specialChip, 1),
                     30
             ));
 
@@ -407,7 +425,10 @@ public class TEBlocks {
             health = 3500;
             size = 5;
 
-            requirements(Category.turret, with(Items.copper, 900, Items.lead, 1100, Items.graphite, 700, Items.metaglass, 300, Items.silicon, 250, TEItems.primaryChip, 20));
+            requirements(Category.turret,
+                    with(Items.copper, 900, Items.lead, 1100, Items.graphite, 700, Items.metaglass, 300, Items.silicon, 250,
+                    TEItems.primaryChip, 20)
+            );
 
             rotateSpeed = 0F;
             range = 145f * 8;
@@ -566,7 +587,10 @@ public class TEBlocks {
             consumeItem(TEItems.nuclearFuelRod, 1);
             consumeLiquid(Liquids.cryofluid, heating / coolantPower).update(false);
             buildCostMultiplier = 3;
-            requirements(Category.power, with(Items.lead, 1400, Items.graphite, 890, Items.metaglass, 320, Items.thorium, 750, Items.titanium, 800, Items.surgeAlloy, 260, TEItems.advancedChip, 10, TEItems.zinc, 600));
+            requirements(Category.power,
+                    with(Items.lead, 1400, Items.graphite, 890, Items.metaglass, 320, Items.thorium, 750, Items.titanium, 800,
+                    Items.surgeAlloy, 260, TEItems.advancedChip, 10, TEItems.zinc, 600)
+            );
             explodeEffect = new MultiEffect(
                     new WaveEffect() {{
                         lifetime = 20;
@@ -642,7 +666,9 @@ public class TEBlocks {
         highSpeedUnloader = new Unloader("high-speed-unloader") {{
             speed = 0.75f;
             group = BlockGroup.transportation;
-            requirements(Category.effect, with(Items.thorium, 20, Items.silicon, 45, Items.titanium, 50, Items.plastanium, 30));
+            requirements(Category.effect,
+                    with(Items.thorium, 20, Items.silicon, 45, Items.titanium, 50, Items.plastanium, 30)
+            );
             health = 60;
         }};
 
@@ -658,7 +684,10 @@ public class TEBlocks {
             consumeItem(TEItems.uranium, 5);
             consumeLiquid(Liquids.water, 10f / 60f);
             outputItem = new ItemStack(TEItems.nuclearFuelRod, 1);
-            requirements(Category.crafting, with(Items.thorium, 530, Items.titanium, 680, Items.silicon, 580, Items.lead, 680, Items.surgeAlloy, 200, Items.graphite, 790, TEItems.advancedChip, 20));
+            requirements(Category.crafting,
+                    with(Items.thorium, 530, Items.titanium, 680, Items.silicon, 580, Items.lead, 680, Items.surgeAlloy, 200,
+                    Items.graphite, 790, TEItems.advancedChip, 20)
+            );
         }};
 
         coreExplore = new PortableCoreBlock("core-explore") {{
@@ -671,7 +700,8 @@ public class TEBlocks {
             armor = 15;
             size = 3;
             unitType = UnitTypes.alpha;
-            requirements(Category.effect, with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
+            requirements(Category.effect,
+                    with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
         }};
 
         unitStorageVault = new StorageBlock("unit-storage-vault") {{
@@ -680,7 +710,9 @@ public class TEBlocks {
             size = 5;
             armor = 25;
             itemCapacity = 0;
-            requirements(Category.effect, with(Items.silicon, 8000, Items.thorium, 4000, Items.surgeAlloy, 2000, Items.graphite, 6000, TEItems.advancedChip, 40, Items.titanium, 5000, Items.metaglass, 6000, Items.lead, 8000));
+            requirements(Category.effect, with(Items.silicon, 8000, Items.thorium, 4000, Items.surgeAlloy, 2000, Items.graphite, 6000,
+                    TEItems.advancedChip, 40, Items.titanium, 5000, Items.metaglass, 6000, Items.lead, 8000)
+            );
             buildCostMultiplier = 0.8f;
         }};
 
@@ -690,7 +722,10 @@ public class TEBlocks {
             itemCapacity = 0;
             size = 9;
             armor = 80;
-            requirements(Category.effect, with(Items.silicon, 80000, Items.thorium, 40000, Items.surgeAlloy, 20000, Items.graphite, 60000, TEItems.advancedChip, 300, TEItems.specialChip, 70, Items.titanium, 50000, Items.metaglass, 60000, Items.lead, 80000, Items.phaseFabric, 100000));
+            requirements(Category.effect, with(Items.silicon, 80000, Items.thorium, 40000, Items.surgeAlloy, 20000, Items.graphite, 60000,
+                    TEItems.advancedChip, 300, TEItems.specialChip, 70, Items.titanium, 50000, Items.metaglass, 60000, Items.lead, 80000,
+                    Items.phaseFabric, 100000)
+            );
             buildCostMultiplier = 0.8f;
         }};
 
@@ -723,28 +758,41 @@ public class TEBlocks {
             consumePower(8f);
             size = 3;
 
-            recipes.addAll(new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.copper, 1)}
-            ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.lead, 1)}
-            ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.thorium, 1)}
-            ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)},
-                    new ItemStack[]{new ItemStack(Items.titanium, 1)}
-            ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)}
-            ));
+            recipes.addAll(
+                    new Recipe(
+                            with(TEItems.copperPowder, 1),
+                            with(Items.copper, 1)
+                    ), new Recipe(
+                            with(TEItems.leadPowder, 1),
+                            with(Items.lead, 1)
+                    ), new Recipe(
+                            with(TEItems.thoriumPowder, 1),
+                            with(Items.thorium, 1)
+                    ), new Recipe(
+                            with(TEItems.titaniumPowder, 1),
+                            with(Items.titanium, 1)
+                    ), new Recipe(
+                            with(TEItems.zincPowder, 1),
+                            with(TEItems.zinc, 1)
+                    )
+            );
 
             uniCraftTime = 40f;
 
             drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
 
             requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
+        }};
+
+        electricArcFurnace = new MultiCrafter("electric-arc-furnace") {{
+            size = 4;
+            health = 400;
+            recipes.addAll(
+                    new Recipe(
+                            with(Items.coal, 1, TEItems.iron, 19),
+                            with(TEItems.steel, 20)
+                    )
+            );
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
@@ -758,29 +806,29 @@ public class TEBlocks {
             size = 2;
 
             recipes.addAll(new Recipe(
-                    new ItemStack[]{new ItemStack(Items.copper, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.copperPowder, 1)}
+                    with(Items.copper, 1),
+                    with(TEItems.copperPowder, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.lead, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.leadPowder, 1)}
+                    with(Items.lead, 1),
+                    with(TEItems.leadPowder, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.thorium, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.thoriumPowder, 1)}
+                    with(Items.thorium, 1),
+                    with(TEItems.thoriumPowder, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.titanium, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.titaniumPowder, 1)}
+                    with(Items.titanium, 1),
+                    with(TEItems.titaniumPowder, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.zinc, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 1)}
+                    with(TEItems.zinc, 1),
+                    with(TEItems.zincPowder, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.sphularite, 1)},
-                    new ItemStack[]{new ItemStack(TEItems.zincPowder, 2)}
+                    with(TEItems.sphularite, 1),
+                    with(TEItems.zincPowder, 2)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(Items.scrap, 1)},
-                    new ItemStack[]{new ItemStack(Items.sand, 1)}
+                    with(Items.scrap, 1),
+                    with(Items.sand, 1)
             ), new Recipe(
-                    new ItemStack[]{new ItemStack(TEItems.stone, 1)},
-                    new ItemStack[]{new ItemStack(Items.sand, 1)}
+                    with(TEItems.stone, 1),
+                    with(Items.sand, 1)
             ));
 
             uniCraftTime = 40f;
@@ -806,7 +854,9 @@ public class TEBlocks {
             hasPower = hasLiquids = hasItems = outputsLiquid = solid = true;
             rotate = false;
             envEnabled = Env.any;
-            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.water), new DrawLiquidTile(Liquids.cryofluid){{drawLiquidLight = true;}}, new DrawDefault());
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.water),
+                    new DrawLiquidTile(Liquids.cryofluid){{drawLiquidLight = true;}}, new DrawDefault()
+            );
             liquidCapacity = 50f;
             craftTime = 50;
             lightLiquid = Liquids.cryofluid;
@@ -818,7 +868,10 @@ public class TEBlocks {
         }};
 
         advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome") {{
-            requirements(Category.effect, with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1500, Items.plastanium, 1200, Items.surgeAlloy, 850, TEItems.zinc, 450, TEItems.advancedChip, 450));
+            requirements(Category.effect,
+                    with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1500, Items.plastanium, 1200, Items.surgeAlloy, 850,
+                    TEItems.zinc, 450, TEItems.advancedChip, 450)
+            );
             consumePower(14f);
             size = 4;
             range = 400f;
@@ -831,13 +884,17 @@ public class TEBlocks {
         }};
 
         advancedPowerNode = new PowerNode("advanced-power-node") {{
-            requirements(Category.power, with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 5));
+            requirements(Category.power,
+                    with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 5));
             maxNodes = 20;
             laserRange = 12;
         }};
 
         terminalProcessor = new LogicBlock("terminal-processor") {{
-            requirements(Category.logic, with(Items.lead, 4500, Items.silicon, 3000, Items.thorium, 1000, Items.surgeAlloy, 500, Items.titanium, 2000, TEItems.zinc, 800, Items.phaseFabric, 300, Items.plastanium, 1200, TEItems.specialChip, 400));
+            requirements(Category.logic,
+                    with(Items.lead, 4500, Items.silicon, 3000, Items.thorium, 1000, Items.surgeAlloy, 500, Items.titanium, 2000,
+                    TEItems.zinc, 800, Items.phaseFabric, 300, Items.plastanium, 1200, TEItems.specialChip, 400)
+            );
 
             consumeLiquid(Liquids.cryofluid, 0.2f);
             hasLiquids = true;
@@ -848,7 +905,10 @@ public class TEBlocks {
         }};
 
         hugeLogicDisplay = new LogicDisplay("huge-logic-display") {{
-            requirements(Category.logic, with(Items.lead, 2000, Items.silicon, 1500, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300, TEItems.zinc, 500, TEItems.advancedChip, 100, Items.plastanium, 600));
+            requirements(Category.logic,
+                    with(Items.lead, 2000, Items.silicon, 1500, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300,
+                    TEItems.zinc, 500, TEItems.advancedChip, 100, Items.plastanium, 600)
+            );
 
             displaySize = 300;
 
@@ -856,18 +916,27 @@ public class TEBlocks {
         }};
 
         memoryBankLarge = new MemoryBlock("large-memory-bank") {{
-            requirements(Category.logic, with(Items.graphite, 800, Items.silicon, 100, Items.phaseFabric, 400, Items.copper, 800, TEItems.advancedChip, 400, TEItems.zinc, 500, Items.plastanium, 700, Items.surgeAlloy, 200));
+            requirements(Category.logic,
+                    with(Items.graphite, 800, Items.silicon, 100, Items.phaseFabric, 400, Items.copper, 800, TEItems.advancedChip, 400,
+                    TEItems.zinc, 500, Items.plastanium, 700, Items.surgeAlloy, 200)
+            );
 
             memoryCapacity = 1024;
             size = 3;
         }};
 
 //        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor") {{
-//            requirements(Category.units, with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000, TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000));
+//            requirements(Category.units,
+//                  with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000,
+//                      TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000)
+//            );
 //
 //            size = 11;
 //            consumePower(75f);
-//            consumeItems(with(Items.silicon, 16384, Items.plastanium, 12356, Items.surgeAlloy, 5420, Items.phaseFabric, 3500, TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.specialChip, 100));
+//            consumeItems(
+//                  with(Items.silicon, 16384, Items.plastanium, 12356, Items.surgeAlloy, 5420, Items.phaseFabric, 3500,
+//                      TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.specialChip, 100)
+//            );
 //            consumeLiquid(Liquids.cryofluid, 220f / 60f);
 //            liquidCapacity = 440f;
 //
@@ -897,7 +966,8 @@ public class TEBlocks {
         }};
 
         payloadConveyorGigantic = new PayloadConveyor("gigantic-payload-conveyor") {{
-            requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
+            requirements(Category.units,
+                    with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = 9);
             canOverdrive = false;
         }};
@@ -915,13 +985,15 @@ public class TEBlocks {
         }};
 
         payloadRouterGigantic = new PayloadRouter("gigantic-payload-router") {{
-            requirements(Category.units, with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
+            requirements(Category.units,
+                    with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
             size = (int) (payloadLimit = payloadConveyorGigantic.size);
             canOverdrive = false;
         }};
 
         shieldGenerator = new ForceProjector("shield-generator") {{
-            requirements(Category.effect, with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.primaryChip, 5));
+            requirements(Category.effect,
+                    with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.primaryChip, 5));
             phaseRadiusBoost = 6f * 8f;
             radius = 8f * 8f;
             shieldHealth = 450f;
@@ -935,7 +1007,8 @@ public class TEBlocks {
         }};
 
         shieldGeneratorLarge = new ForceProjector("large-shield-generator") {{
-            requirements(Category.effect, with(Items.lead, 450, Items.titanium, 230, Items.silicon, 150, Items.copper, 550, TEItems.advancedChip, 10));
+            requirements(Category.effect,
+                    with(Items.lead, 450, Items.titanium, 230, Items.silicon, 150, Items.copper, 550, TEItems.advancedChip, 10));
             size = 2;
             phaseRadiusBoost = 16f * 8f;
             radius = 25f * 8f;
@@ -950,7 +1023,10 @@ public class TEBlocks {
         }};
 
         shieldGeneratorHuge = new ForceProjector("huge-shield-generator") {{
-            requirements(Category.effect, with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.specialChip, 50, Items.phaseFabric, 400));
+            requirements(Category.effect,
+                    with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.specialChip, 50,
+                    Items.phaseFabric, 400)
+            );
             size = 4;
             phaseRadiusBoost = 45f * 8f;
             radius = 70f * 8f;
@@ -965,7 +1041,10 @@ public class TEBlocks {
         }};
 
         sectorShieldGenerator = new ForceProjector("sector-shield-generator") {{
-            requirements(Category.effect, with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.specialChip, 500, Items.phaseFabric, 2000));
+            requirements(Category.effect,
+                    with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.specialChip, 500,
+                            Items.phaseFabric, 2000)
+            );
             size = 6;
             radius = 900f * 8f;
             shieldHealth = 50000f;
@@ -980,7 +1059,8 @@ public class TEBlocks {
         }};
 
         itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
-            requirements(Category.distribution, with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
+            requirements(Category.distribution,
+                    with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
             range = 60;
             arrowPeriod = 0.9f;
             arrowTimeScl = 2.75f;
@@ -992,7 +1072,8 @@ public class TEBlocks {
         }};
 
         liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
-            requirements(Category.liquid, with(Items.phaseFabric, 30, Items.silicon, 35, Items.metaglass, 100, Items.titanium, 60));
+            requirements(Category.liquid,
+                    with(Items.phaseFabric, 30, Items.silicon, 35, Items.metaglass, 100, Items.titanium, 60));
             range = 60;
             arrowPeriod = 0.9f;
             arrowTimeScl = 2.75f;
@@ -1003,7 +1084,10 @@ public class TEBlocks {
         }};
 
         advancedWaterExtractor = new SolidPump("advanced-water-extractor") {{
-            requirements(Category.production, with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150, TEItems.primaryChip, 20));
+            requirements(Category.production,
+                    with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150,
+                    TEItems.primaryChip, 20)
+            );
             result = Liquids.water;
             pumpAmount = 15f / 60f;
             size = 3;
@@ -1042,7 +1126,10 @@ public class TEBlocks {
         }};
 
         pyratiteHeater = new HeatProducer("pyratite-heater") {{
-            requirements(Category.crafting, ItemStack.with(Items.copper, 120, Items.silicon, 200, Items.lead, 150, Items.graphite, 225, Items.titanium, 100));
+            requirements(Category.crafting,
+                    with(Items.copper, 120, Items.silicon, 200, Items.lead, 150, Items.graphite, 225,
+                    Items.titanium, 100)
+            );
             drawer = new DrawMulti(new DrawDefault(), new DrawHeatOutput());
             size = 2;
             heatOutput = 6.0F;

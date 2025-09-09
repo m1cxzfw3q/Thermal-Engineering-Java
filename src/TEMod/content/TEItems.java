@@ -11,6 +11,7 @@ public class TEItems {
     public static Item nuclearFuelRod; //核燃料棒
     public static Item zinc, sphularite; //锌, 闪锌矿
     public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder; //铜粉, 铅粉, 钛粉, 钍粉, 锌粉
+    public static Item iron, steel; //铁, 钢
     //协议-战争
     public static Item primaryWarAgreement; //初级战争协议
     public static Item advancedWarAgreement; //高级战争协议
@@ -90,7 +91,10 @@ public class TEItems {
             buildable = false;
         }};
 
-        stone = new Item("stone", Color.valueOf("94949a")) {{
+        steel = new Item("steel", Color.valueOf("94949a"));
+        iron = new Item("iron", Color.valueOf("94949a"));
+
+        stone = new Item("stone", Color.valueOf("94949a")) {{//石头！
             hardness = 2;
         }};
 
