@@ -4,7 +4,7 @@
   "displayName": "Thermal Engineering Java",
   "java": true,
   "main": "TEMod.TECore",
-  "minGameVersion": 150,
+  "minGameVersion": 151.1,
   "name": "TEMod",
   "repo": "m1cxzfw3q/Thermal-Engineering-Java",
   "version": "0.0.2p"
