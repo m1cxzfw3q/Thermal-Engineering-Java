@@ -1,14 +1,13 @@
 package TEMod.TECustom.ModularWeapon;
 
-import arc.struct.Seq;
-import mindustry.type.UnitType;
+import TEMod.TECustom.TEUnitType;
 
-public class ModularWeaponUnitType extends UnitType {
-    public Seq<ModularWeaponBase> weapons = new Seq<>();
-
-    public ModularWeaponUnitType(String name) {
-        super(name);
+public class ModularWeaponUnitType extends TEUnitType {
+    public ModularWeaponUnitType(String name, boolean flying) {
+        super(name, flying);
     }
+
+
 
     public static class ModularWeaponBase {
         public float x;
