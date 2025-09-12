@@ -6,16 +6,20 @@ public class ModularWeaponUnitType extends TEUnitType {
     public ModularWeaponUnitType(String name, boolean flying) {
         super(name, flying);
     }
+    public static ModularWeapon[] weapons = {};
 
+    public static class newWeaponBase {
+        public static float x, y;
+        public WeaponTYPE typee;
 
-
-    public static class ModularWeaponBase {
-        public float x;
-        public float y;
-
-        public void newWeaponBase(float x, float y) {
-            this.x = x;
-            this.y = y;
+        public newWeaponBase(WeaponTYPE type, float x, float y) {
+            newWeaponBase.x = x;
+            newWeaponBase.y = y;
+            this.typee = type;
+            weapons[weapons.length - 1] = new EmptyModularWeapon() {{
+                x = newWeaponBase.x;
+                y = newWeaponBase.y;
+            }};
         }
     }
 }
