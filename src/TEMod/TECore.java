@@ -26,9 +26,9 @@ public class TECore extends Mod {
         KeplerPlanet.load();
         KeplerSectorPresets.load();
         TEStatusEffects.load();
-        TEUnitTypes.load();
+        //TEUnitTypes.load();
         TEFix.load();
-        TEV8.load(); //我宣布个事！我是个傻逼！
+        TEV8.load();
         //TEModularWeapons.load();
 
         isComplete(TECore.class);

@@ -499,11 +499,9 @@ public class MultiCrafter extends GenericCrafter {
     }
 
     public static class Recipe {
-        public ItemStack[] inputItems = {};
-        public ItemStack[] outputItems = {};
+        public ItemStack[] inputItems = {}, outputItems = {};
         public float craftTime = 60f;
-        public LiquidStack[] inputLiquids = {};
-        public LiquidStack[] outputLiquids = {};
+        public LiquidStack[] inputLiquids = {}, outputLiquids = {};
 
         public Recipe() {}
 
