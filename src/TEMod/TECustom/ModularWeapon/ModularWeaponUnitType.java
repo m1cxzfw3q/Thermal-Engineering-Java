@@ -7,15 +7,15 @@ public class ModularWeaponUnitType extends TEUnitType {
     public ModularWeaponUnitType(String name, boolean flying) {
         super(name, flying);
     }
-    public static Seq<weaponBase> weapons = new Seq<>();
+    public static Seq<WeaponBase> weapons = new Seq<>();
 
-    public static class weaponBase {
+    public static class WeaponBase {
         public static float x, y;
         public WeaponTYPE typee;
 
-        public weaponBase(WeaponTYPE type, float x, float y) {
-            weaponBase.x = x;
-            weaponBase.y = y;
+        public WeaponBase(WeaponTYPE type, float x, float y) {
+            WeaponBase.x = x;
+            WeaponBase.y = y;
             this.typee = type;
         }
     }
