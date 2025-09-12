@@ -11,12 +11,14 @@ public class ModularWeaponUnitType extends TEUnitType {
 
     public static class WeaponBase {
         public static float x, y;
-        public WeaponTYPE typee;
 
         public WeaponBase(WeaponTYPE type, float x, float y) {
             WeaponBase.x = x;
             WeaponBase.y = y;
-            this.typee = type;
+            ModularWeapon a = new EmptyModularWeapon(type) {{
+                x = WeaponBase.x;
+                y = WeaponBase.y;
+            }};
         }
     }
 }

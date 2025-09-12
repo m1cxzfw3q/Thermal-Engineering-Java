@@ -3,7 +3,9 @@ package TEMod.TECustom.ModularWeapon;
 import mindustry.entities.bullet.BulletType;
 
 public class EmptyModularWeapon extends ModularWeapon {
-    public EmptyModularWeapon() {
+    public static WeaponTYPE typea;
+
+    public EmptyModularWeapon(WeaponTYPE type) {
         bullet = new BulletType(0, 0) {{
             lifetime = 0;
         }};
@@ -12,5 +14,6 @@ public class EmptyModularWeapon extends ModularWeapon {
         reload = Float.POSITIVE_INFINITY;
         noAttack = isFirst = true;
         name = "";
+        typea = type;
     }
 }
