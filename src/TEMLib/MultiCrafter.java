@@ -5,6 +5,7 @@ import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
 import mindustry.gen.*;
+import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.ui.*;
 import mindustry.world.blocks.production.*;
@@ -50,64 +51,67 @@ public class MultiCrafter extends GenericCrafter {
         stats.remove(Stat.productionTime);
         stats.add(Stat.productionTime, uniCraftTime / 60f, StatUnit.seconds);
 
-        for(int i = 0; i < recipes.size; i++) {
-            Recipe recipe = recipes.get(i);
-            int finalI = i;
-            stats.add(Stat.output, t -> {
-                t.row();
-                t.table(Styles.grayPanel, tab -> {
-                    tab.add("[accent]" + (finalI + 1) + ". " + recipe.localizedName()).left().row();
-                    try {
-                        if (recipe.inputItems[0] != null) {
-                            tab.add(Core.bundle.format("misc.multicraft.inputItem") + "[");
-                            for (ItemStack input : recipe.inputItems) {
-                                tab.row();
-                                tab.add(input.item.emoji() + " " + input.amount).left();
-                            }
-                            tab.row();
-                            tab.add("]");
-                        }
-                    } catch (Exception ignored) {}
-                    try {
-                        if (recipe.outputItems[0] != null) {
-                            tab.row();
-                            tab.add(Core.bundle.format("misc.multicraft.outputItem") + "[");
-                            for (ItemStack output : recipe.outputItems) {
-                                tab.row();
-                                tab.add(output.item.emoji() + " " + output.amount).left();
-                            }
-                            tab.row();
-                            tab.add("]");
-                        }
-                    } catch (Exception ignored) {}
-                    try {
-                        if (recipe.inputLiquids[0] != null) {
-                            tab.row();
-                            tab.add(Core.bundle.format("misc.multicraft.inputLiquid") + "[");
-                            for (LiquidStack input : recipe.inputLiquids) {
-                                tab.row();
-                                tab.add(input.liquid.emoji() + " " + input.amount).left();
-                            }
-                            tab.row();
-                            tab.add("]");
-                        }
-                    } catch (Exception ignored) {}
-                    try {
-                        if (recipe.outputLiquids[0] != null) {
-                            tab.row();
-                            tab.add(Core.bundle.format("misc.multicraft.outputLiquid") + "[");
-                            tab.row();
-                            for (LiquidStack output : recipe.outputLiquids) {
-                                tab.row();
-                                tab.add(output.liquid.emoji() + " " + output.amount).left();
-                            }
-                            tab.row();
-                            tab.add("]");
-                        }
-                    } catch (Exception ignored) {}
-                }).padTop(8);
-            });
-        }
+        stats.add(Stat.output, table -> {
+            table.row();
+            for (Recipe recipe : recipes) {
+                try {
+                    for (ItemStack item : recipe.inputItems) {
+                        table.table(Styles.grayPanel, t -> {
+                            t.left();
+                            t.image(item.item.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
+                            t.table(info -> {
+                                info.add(item.item.localizedName).left();
+                                info.row();
+                            }).pad(10).left();
+                        }).fill().padTop(5).padBottom(5);
+                    }
+                } catch (Exception ignored) {}
+
+                try {
+                    for (LiquidStack liquid : recipe.inputLiquids) {
+                        table.table(Styles.grayPanel, t -> {
+                            t.left();
+                            t.image(liquid.liquid.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
+                            t.table(info -> {
+                                info.add(liquid.liquid.localizedName).left();
+                                info.row();
+                            }).pad(10).left();
+                        }).fill().padTop(5).padBottom(5);
+                    }
+                } catch (Exception ignored) {}
+
+                table.table(Styles.grayPanel, t ->
+                        t.image(Icon.right).color(Pal.darkishGray).size(40).pad(10f)).fill().padTop(5).padBottom(5);
+
+                try {
+                    for (ItemStack item : recipe.outputItems) {
+                        table.table(Styles.grayPanel, t -> {
+                            t.left();
+                            t.image(item.item.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
+                            t.table(info -> {
+                                info.add(item.item.localizedName).left();
+                                info.row();
+                            }).pad(10).left();
+                        }).fill().padTop(5).padBottom(5);
+                    }
+                } catch (Exception ignored) {}
+
+                try {
+                    for (LiquidStack liquid : recipe.outputLiquids) {
+                        table.table(Styles.grayPanel, t -> {
+                            t.left();
+                            t.image(liquid.liquid.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
+                            t.table(info -> {
+                                info.add(liquid.liquid.localizedName).left();
+                                info.row();
+                            }).pad(10).left();
+                        }).fill().padTop(5).padBottom(5);
+                    }
+                } catch (Exception ignored) {}
+
+                table.row();
+            }
+        });
     }
 
     public class MultiCrafterBuild extends GenericCrafterBuild {
