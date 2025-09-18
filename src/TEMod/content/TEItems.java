@@ -42,7 +42,6 @@ public class TEItems {
             hardness = 0;
             radioactivity = 2F;
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         primaryWarAgreement = new Item("primary-war-agreement", Color.valueOf("bff1ff"));
@@ -51,12 +50,10 @@ public class TEItems {
 
         highSpeedTransmissionProtocol = new Item("high-speed-transmission-protocol", Color.valueOf("ffff42")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         ultraRemoteTransmissionProtocol = new Item("ultra-remote-transmission-protocol", Color.valueOf("e2583d")) {{
             alwaysUnlocked = false;
-            buildable = false;
         }};
 
         primaryProductionAgreement = new Item("primary-production-agreement", Color.valueOf("bff1ff"));
@@ -69,35 +66,34 @@ public class TEItems {
 
         specialChip = new Item("special-chip", Color.valueOf("bf4833")) {{cost = 0.6f;}};
 
-        sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{hardness = 3;buildable = false;}};
+        sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{hardness = 3;}};
 
-        zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 2f;}};
+        zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 0.6f;}};
 
-        copperPowder = new Item("copper-powder", Color.valueOf("d99d73")) {{buildable = false;}};
+        copperPowder = new Item("copper-powder", Color.valueOf("d99d73"));
 
-        leadPowder = new Item("lead-powder", Color.valueOf("8c7fa9")) {{buildable = false;}};
+        leadPowder = new Item("lead-powder", Color.valueOf("8c7fa9"));
 
-        titaniumPowder = new Item("titanium-powder", Color.valueOf("8da1e3")) {{
-            buildable = false;
-        }};
+        titaniumPowder = new Item("titanium-powder", Color.valueOf("8da1e3"));
 
         thoriumPowder = new Item("thorium-powder", Color.valueOf("f9a3c7")) {{
-            buildable = false;
             explosiveness = 0.1f;
             radioactivity = 0.5f;
         }};
 
-        zincPowder = new Item("zinc-powder", Color.valueOf("BFCDBC")) {{
-            buildable = false;
-        }};
+        zincPowder = new Item("zinc-powder", Color.valueOf("BFCDBC"));
 
-        steel = new Item("steel", Color.valueOf("94949a"));
+        steel = new Item("steel", Color.valueOf("94949a")) {{
+            cost = 0.9f;
+        }};
         iron = new Item("iron", Color.valueOf("94949a")) {{
             hardness = 2;
+            cost = 0.8f;
         }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！
             hardness = 2;
+            cost = 0.3f;
         }};
 
         isComplete(TEItems.class);
