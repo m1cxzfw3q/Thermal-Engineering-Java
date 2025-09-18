@@ -773,21 +773,21 @@ public class TEBlocks {
                     new Recipe(
                             with(Items.coal, 1, TEItems.iron, 19),
                             with(TEItems.steel, 20),
-                            craftTime = 50f
+                            craftTime = 40f
                     ),
                     new Recipe(
                             with(Items.graphite, 1, Items.sand, 4),
                             with(Items.silicon, 4),
-                            craftTime = 10f
+                            craftTime = 7f
                     ),
                     new Recipe(
                             with(Items.copper, 3, Items.lead, 4, Items.titanium, 2, Items.silicon, 3),
                             with(Items.surgeAlloy, 1),
-                            craftTime = 20f
+                            craftTime = 12f
                     )
             );
 
-            consumePower(300f / 60f);
+            consumePower(450f / 60f);
             itemCapacity = 40;
             requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400));
         }};
