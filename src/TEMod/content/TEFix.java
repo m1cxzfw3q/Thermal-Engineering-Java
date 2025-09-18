@@ -89,18 +89,25 @@ public class TEFix {
         Blocks.craters.playerUnmineable = true;
 
         Blocks.boulder.instantDeconstruct = false;
+        Blocks.boulder.buildTime = 0f;
         Blocks.boulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
         Blocks.snowBoulder.instantDeconstruct = false;
+        Blocks.snowBoulder.buildTime = 0f;
         Blocks.snowBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
         Blocks.sandBoulder.instantDeconstruct = false;
+        Blocks.sandBoulder.buildTime = 0f;
         Blocks.sandBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 1, Items.sand ,1));
         Blocks.daciteBoulder.instantDeconstruct = false;
+        Blocks.daciteBoulder.buildTime = 0f;
         Blocks.daciteBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
         Blocks.basaltBoulder.instantDeconstruct = false;
+        Blocks.basaltBoulder.buildTime = 0f;
         Blocks.basaltBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
         Blocks.ferricBoulder.instantDeconstruct = false;
+        Blocks.ferricBoulder.buildTime = 0f;
         Blocks.ferricBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
         Blocks.shaleBoulder.instantDeconstruct = false;
+        Blocks.shaleBoulder.buildTime = 0f;
         Blocks.shaleBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
     }
 }
