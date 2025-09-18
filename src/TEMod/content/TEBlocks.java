@@ -1,9 +1,9 @@
 package TEMod.content;
 
-import TEMod.TECustom.CoverBlock;
-import TEMod.TECustom.MultiChargeTurret;
-import TEMod.TECustom.MultiCrafter;
-import TEMod.TECustom.PortableCoreBlock;
+import TELib.CoverBlock;
+import TELib.MultiChargeTurret;
+import TELib.MultiCrafter;
+import TELib.PortableCoreBlock;
 import arc.graphics.Color;
 import arc.math.Interp;
 import arc.util.Log;

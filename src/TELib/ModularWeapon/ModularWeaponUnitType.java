@@ -1,6 +1,6 @@
-package TEMod.TECustom.ModularWeapon;
+package TELib.ModularWeapon;
 
-import TEMod.TECustom.TEUnitType;
+import TELib.TEUnitType;
 import arc.struct.Seq;
 
 public class ModularWeaponUnitType extends TEUnitType {

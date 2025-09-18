@@ -1,4 +1,4 @@
-package TEMod.TECustom;
+package TELib;
 
 import arc.*;
 import arc.scene.ui.layout.*;

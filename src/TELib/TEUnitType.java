@@ -1,4 +1,4 @@
-package TEMod.TECustom;
+package TELib;
 
 import mindustry.gen.*;
 import mindustry.type.*;

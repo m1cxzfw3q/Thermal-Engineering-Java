@@ -1,4 +1,4 @@
-package TEMod.TECustom;
+package TELib;
 
 import mindustry.content.Blocks;
 import mindustry.entities.bullet.LaserBulletType;

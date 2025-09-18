@@ -1,9 +1,6 @@
-package TEMod.TECustom;
+package TELib;
 
-import arc.Core;
 import arc.graphics.Color;
-import arc.scene.Element;
-import arc.struct.ObjectMap;
 import arc.util.Log;
 import mindustry.content.Fx;
 import mindustry.content.StatusEffects;
@@ -13,8 +10,6 @@ import mindustry.gen.Call;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
-import mindustry.world.meta.Stat;
-import mindustry.world.meta.StatValues;
 
 public class MultiChargeTurret extends PowerTurret {
     public MultiChargeTurret(String name) {

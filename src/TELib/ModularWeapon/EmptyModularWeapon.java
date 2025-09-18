@@ -1,4 +1,4 @@
-package TEMod.TECustom.ModularWeapon;
+package TELib.ModularWeapon;
 
 import mindustry.entities.bullet.BulletType;
 
