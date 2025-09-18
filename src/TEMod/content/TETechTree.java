@@ -132,7 +132,11 @@ public class TETechTree {
                 node(oreCrusher));
 
         addToNext(kiln, () -> {
-            node(oreSmeltingFurnace);
+            node(oreSmeltingFurnace, () ->
+                    node(arcFurnace, Seq.with(
+                            new Objectives.Research(surgeSmelter),
+                            new Objectives.Research(siliconArcFurnace)
+                    ), () -> {}));
         });
 
         addToNext(beamNode, () ->

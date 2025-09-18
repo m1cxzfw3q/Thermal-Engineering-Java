@@ -43,7 +43,7 @@ public class TEBlocks {
     public static Block highEfficiencyDisassembler; //高效解离机
     public static Block missileLauncher; //导弹发射井
     public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
-    public static Block oreSmeltingFurnace, electricArcFurnace; //冶炼炉子
+    public static Block oreSmeltingFurnace, arcFurnace; //冶炼炉子
     public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
@@ -766,17 +766,30 @@ public class TEBlocks {
             requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
         }};
 
-        electricArcFurnace = new MultiCrafter("electric-arc-furnace") {{
+        arcFurnace = new MultiCrafter("arc-furnace") {{
             size = 4;
             health = 400;
             recipes.addAll(
                     new Recipe(
                             with(Items.coal, 1, TEItems.iron, 19),
-                            with(TEItems.steel, 20)
+                            with(TEItems.steel, 20),
+                            craftTime = 50f
+                    ),
+                    new Recipe(
+                            with(Items.graphite, 1, Items.sand, 4),
+                            with(Items.silicon, 4),
+                            craftTime = 10f
+                    ),
+                    new Recipe(
+                            with(Items.copper, 3, Items.lead, 4, Items.titanium, 2, Items.silicon, 3),
+                            with(Items.surgeAlloy, 1),
+                            craftTime = 20f
                     )
             );
 
+            consumePower(300f / 60f);
             itemCapacity = 40;
+            requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400));
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
