@@ -92,7 +92,9 @@ public class TEItems {
         }};
 
         steel = new Item("steel", Color.valueOf("94949a"));
-        iron = new Item("iron", Color.valueOf("94949a"));
+        iron = new Item("iron", Color.valueOf("94949a")) {{
+            hardness = 2;
+        }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！
             hardness = 2;
