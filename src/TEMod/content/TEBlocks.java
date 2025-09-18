@@ -214,7 +214,7 @@ public class TEBlocks {
             shootY = 5.0F;
             reload = 1.0F;
             range = 240.0F;
-            ammoUseEffect = Fx.casing2;
+            ammoUseEffect = Fx.casing1;
             shootEffect = Fx.shootSmall;
             health = 2560;
             inaccuracy = 3.0F;
@@ -793,6 +793,8 @@ public class TEBlocks {
                             with(TEItems.steel, 20)
                     )
             );
+
+            itemCapacity = 40;
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
