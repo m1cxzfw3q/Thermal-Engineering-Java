@@ -1,6 +1,7 @@
 package TEMLib;
 
 import mindustry.game.Team;
+import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.blocks.storage.CoreBlock;
 
@@ -15,10 +16,15 @@ public class PortableCoreBlock extends CoreBlock {
     }
 
     public boolean canBreak(Tile tile) {
-        return true;
+        return state.teams.cores(tile.team()).size > 1;
     }
 
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
-        return state.teams.cores(tile.team()).size <= coreCap;
+        int core = state.teams.cores(tile.team()).size;
+        return state.teams.cores(tile.team()).size < coreCap;
+    }
+
+    public boolean canReplace(Block other) {
+        return other.alwaysUnlocked;
     }
 }
