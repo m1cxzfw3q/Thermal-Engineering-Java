@@ -737,7 +737,7 @@ public class TEBlocks {
         oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
             hasPower = hasItems = true;
-            consumePower(8f);
+            consumePower(3.5f);
             size = 3;
 
             recipes.addAll(
