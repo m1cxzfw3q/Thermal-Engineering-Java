@@ -61,6 +61,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.image(item.item.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
                                 info.add(item.item.localizedName).left();
+                                if (item.amount > 1) info.add("x" + item.amount);
                                 info.row();
                             }).pad(10).left();
                         }).fill().padTop(5).padBottom(5);
@@ -90,6 +91,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.image(item.item.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
                                 info.add(item.item.localizedName).left();
+                                if (item.amount > 1) info.add("x" + item.amount);
                                 info.row();
                             }).pad(10).left();
                         }).fill().padTop(5).padBottom(5);
