@@ -833,7 +833,7 @@ public class TEBlocks {
             requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
 
             hasPower = hasItems = true;
-            consumePower(5f);
+            consumePower(1f);
 
             drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator") {{
                 spinSprite = true;
