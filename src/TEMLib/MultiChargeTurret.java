@@ -1,4 +1,4 @@
-package TELib;
+package TEMLib;
 
 import arc.graphics.Color;
 import arc.util.Log;

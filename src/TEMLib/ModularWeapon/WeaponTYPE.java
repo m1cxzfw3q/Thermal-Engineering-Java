@@ -1,4 +1,4 @@
-package TELib.ModularWeapon;
+package TEMLib.ModularWeapon;
 
 import arc.struct.ObjectMap;
 

@@ -1,4 +1,4 @@
-package TELib;
+package TEMLib;
 
 import mindustry.gen.*;
 import mindustry.type.*;

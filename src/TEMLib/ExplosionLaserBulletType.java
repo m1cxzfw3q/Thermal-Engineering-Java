@@ -1,4 +1,4 @@
-package TELib;
+package TEMLib;
 
 import mindustry.content.Blocks;
 import mindustry.entities.bullet.LaserBulletType;

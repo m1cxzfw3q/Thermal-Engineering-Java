@@ -1,7 +1,7 @@
 package TEMod.content;
 
-import TELib.ModularWeapon.ModularWeaponUnitType;
-import TELib.ModularWeapon.WeaponTYPE;
+import TEMLib.ModularWeapon.ModularWeaponUnitType;
+import TEMLib.ModularWeapon.WeaponTYPE;
 
 public class TEUnitTypes {
     public static ModularWeaponUnitType testUnit;

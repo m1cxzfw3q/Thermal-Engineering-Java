@@ -1,4 +1,4 @@
-package TELib;
+package TEMLib;
 
 import mindustry.game.Team;
 import mindustry.gen.Building;

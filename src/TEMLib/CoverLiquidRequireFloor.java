@@ -1,4 +1,4 @@
-package TELib;
+package TEMLib;
 
 import mindustry.world.blocks.environment.Floor;
 
