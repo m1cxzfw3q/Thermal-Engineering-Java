@@ -75,7 +75,6 @@ public class MultiCrafter extends GenericCrafter {
                             t.image(liquid.liquid.uiIcon).size(20).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
                             t.table(info -> {
                                 info.add(liquid.liquid.localizedName).left();
-
                                 info.row();
                             }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
