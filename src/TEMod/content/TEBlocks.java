@@ -1004,7 +1004,7 @@ public class TEBlocks {
             arrowTimeScl = 2.75f;
             hasPower = true;
             pulse = true;
-            transportTime = 0.001F;
+            transportTime = 0.001f;
             consumePower(0.9f);
             itemCapacity = 30;
         }};
@@ -1018,7 +1018,7 @@ public class TEBlocks {
             hasPower = true;
             pulse = true;
             consumePower(0.9f);
-            liquidCapacity = 200;
+            liquidCapacity = 300;
         }};
 
         advancedWaterExtractor = new SolidPump("advanced-water-extractor") {{
