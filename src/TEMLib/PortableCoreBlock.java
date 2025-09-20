@@ -20,7 +20,10 @@ public class PortableCoreBlock extends CoreBlock {
     }
 
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
-        return state.teams.cores(tile.team()).size < coreCap;
+        if (coreCap > 0) {
+            return state.teams.cores(tile.team()).size < coreCap;
+        }
+        return true;
     }
 
     public boolean canReplace(Block other) {
