@@ -34,7 +34,9 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
-                output1(other);
+                try{
+                    output1(other);
+                } catch (Exception ignored) {}
             }
         }
         public void output1(Building other) {
@@ -47,7 +49,9 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
-                output(other);
+                try{
+                    output(other);
+                } catch (Exception ignored) {}
             }
         }
     }
