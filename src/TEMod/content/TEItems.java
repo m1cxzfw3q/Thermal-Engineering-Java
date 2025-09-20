@@ -86,6 +86,7 @@ public class TEItems {
         steel = new Item("steel", Color.valueOf("94949a")) {{
             cost = 0.9f;
         }};
+
         iron = new Item("iron", Color.valueOf("94949a")) {{
             cost = 0.8f;
         }};
