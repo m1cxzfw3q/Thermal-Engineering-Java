@@ -31,7 +31,7 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEFix.load();
         TEV8.load();
-        TEModularWeapons.load();
+        //TEModularWeapons.load();  //毁灭吧 赶紧的
 
         isComplete(TECore.class);
         TETechTree.load();

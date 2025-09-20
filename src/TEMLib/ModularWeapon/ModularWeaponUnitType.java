@@ -15,13 +15,7 @@ public class ModularWeaponUnitType extends TEUnitType {
         public WeaponBase(int tier, float x, float y) {
             WeaponBase.x = x;
             WeaponBase.y = y;
-            ModularWeapon a = new EmptyModularWeapon(tier
-
-
-
-
-
-            ) {{
+            ModularWeapon a = new EmptyModularWeapon(tier) {{
                 x = WeaponBase.x;
                 y = WeaponBase.y;
             }};
