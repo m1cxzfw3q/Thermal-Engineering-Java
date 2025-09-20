@@ -33,7 +33,7 @@ public class TEFx {
                 Fill.rect(
                         e.x + trnsx(lr, len) + Mathf.randomSeedRange(e.id + i + 7, 3f * e.fin()),
                         e.y + trnsy(lr, len) + Mathf.randomSeedRange(e.id + i + 8, 3f * e.fin()),
-                        0.3f, 1f, rot + e.fin() * 50f * i
+                        0.8f, 1.5f, rot + e.fin() * 50f * i
                 );
 
             }).layer(Layer.bullet);

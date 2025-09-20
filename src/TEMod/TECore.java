@@ -29,13 +29,13 @@ public class TECore extends Mod {
         //TEUnitTypes.load();
         TEFix.load();
         TEV8.load();
-        //TEModularWeapons.load();
+        TEModularWeapons.load();
 
         isComplete(TECore.class);
         TETechTree.load();
     }
 
-    public static void isComplete(Object obj) {
+    public static void isComplete(Class<?> obj) {
         Log.info("[Thermal-Engineering] isComplete(" + obj + ")");
     }
 }

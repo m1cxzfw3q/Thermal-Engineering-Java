@@ -197,7 +197,7 @@ public class TEBlocks {
             reload = 1.0F;
             range = 240.0F;
             ammoUseEffect = TEFx.casingMini;
-            shootEffect = Fx.shootSmall;
+            shootEffect = TEFx.shootMini;
             health = 2560;
             inaccuracy = 3.0F;
             rotateSpeed = 40.0F;
