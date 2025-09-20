@@ -9,7 +9,7 @@ public class LightItemBridge extends ItemBridge {
     public class LightItemBridgeBuild extends ItemBridgeBuild {
         @Override
         public void updateTile() {
-            while (true) super.updateTile();
+            super.updateTile();
         }
     }
 }
