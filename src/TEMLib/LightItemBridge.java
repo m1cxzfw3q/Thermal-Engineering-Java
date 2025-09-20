@@ -8,7 +8,9 @@ public class LightItemBridge extends ItemBridge {
     }
     public class LightItemBridgeBuild extends ItemBridgeBuild {
         public void doDump() {
-            super.doDump();
+            for (int i = 0; i < 1; i++) {
+                super.doDump();
+            }
         }
     }
 }
