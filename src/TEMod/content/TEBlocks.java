@@ -996,7 +996,7 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
+        itemQuantumTransmissionLightBridge = new LightItemBridge("item-quantum-transmission-light-bridge") {{
             requirements(Category.distribution,
                     with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
             range = 60;

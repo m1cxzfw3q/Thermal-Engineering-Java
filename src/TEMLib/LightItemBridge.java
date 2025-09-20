@@ -1,6 +1,5 @@
 package TEMLib;
 
-import arc.graphics.g2d.TextureRegion;
 import mindustry.gen.Building;
 import mindustry.type.Item;
 import mindustry.world.blocks.distribution.ItemBridge;
