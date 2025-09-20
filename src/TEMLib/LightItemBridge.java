@@ -34,24 +34,6 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
-                try{
-                    output1(other);
-                } catch (Exception ignored) {}
-            }
-        }
-        public void output1(Building other) {
-            while(transportCounter >= transportTime) {
-                Item item = items.take();
-                if(item != null && other.acceptItem(this, item)){
-                    other.handleItem(this, item);
-                    moved = true;
-                }else if(item != null){
-                    items.add(item, 1);
-                    items.undoFlow(item);
-                }
-                try{
-                    output(other);
-                } catch (Exception ignored) {}
             }
         }
     }
