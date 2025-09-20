@@ -1177,6 +1177,7 @@ public class TEBlocks {
             maxNodes = 6;
             laserRange = 10;
             health = 150;
+            laserColor2 = Color.valueOf("cbfd81").a(0.45f);
         }};
 
         //基础方块(TEMod)
