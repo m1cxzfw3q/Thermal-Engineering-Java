@@ -77,7 +77,7 @@ public class TEFix {
                 }}
         );
         spectre.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(7.5f, 40){{
+                TEItems.stone, new BasicBulletType(7.5f, 30){{
                     hitSize = 4.8f;
                     width = 15f;
                     height = 21f;
@@ -87,7 +87,7 @@ public class TEFix {
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
-                    fragBullets = 5;
+                    fragBullets = 3;
                     fragBullet = new BasicBulletType(3f, 20f) {{
                         width = 5f;
                         height = 12f;
