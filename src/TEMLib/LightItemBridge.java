@@ -12,7 +12,6 @@ public class LightItemBridge extends ItemBridge {
         public void updateTransport(Building other){
             transportCounter += edelta();
             while(transportCounter >= transportTime) {
-                output(other);
                 Item item = items.take();
                 if(item != null && other.acceptItem(this, item)){
                     other.handleItem(this, item);
@@ -21,6 +20,7 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
+                output(other);
                 transportCounter -= transportTime;
             }
         }
