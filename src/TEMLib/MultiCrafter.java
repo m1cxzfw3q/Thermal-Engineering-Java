@@ -58,7 +58,7 @@ public class MultiCrafter extends GenericCrafter {
                     for (ItemStack item : recipe.inputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(item.item.uiIcon).size(20).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
+                            t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
                                 info.add(item.item.localizedName).left();
                                 if (item.amount > 1) info.add("x" + item.amount);
@@ -72,7 +72,7 @@ public class MultiCrafter extends GenericCrafter {
                     for (LiquidStack liquid : recipe.inputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(liquid.liquid.uiIcon).size(20).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
+                            t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
                             t.table(info -> {
                                 info.add(liquid.liquid.localizedName).left();
                                 info.row();
@@ -82,18 +82,18 @@ public class MultiCrafter extends GenericCrafter {
                 } catch (Exception ignored) {}
 
                 table.table(Styles.grayPanel, t ->
-                        t.image(Icon.right).color(Pal.darkishGray).size(40).pad(10f)).fill().padTop(5).padBottom(5);
+                        t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill().padTop(5).padBottom(5);
 
                 try {
                     for (ItemStack item : recipe.outputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(item.item.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
+                            t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
                                 info.add(item.item.localizedName).left();
                                 if (item.amount > 1) info.add("x" + item.amount);
                                 info.row();
-                            }).pad(10).left();
+                            }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}
@@ -102,11 +102,11 @@ public class MultiCrafter extends GenericCrafter {
                     for (LiquidStack liquid : recipe.outputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(liquid.liquid.uiIcon).size(20).pad(10f).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
+                            t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
                             t.table(info -> {
                                 info.add(liquid.liquid.localizedName).left();
                                 info.row();
-                            }).pad(10).left();
+                            }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}

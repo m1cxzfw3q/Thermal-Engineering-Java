@@ -5,7 +5,9 @@ import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.content.Items;
 import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.bullet.BulletType;
 import mindustry.entities.bullet.FlakBulletType;
+import mindustry.graphics.Pal;
 import mindustry.type.Category;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.meta.Attribute;
@@ -26,8 +28,9 @@ public class TEFix {
         ItemTurret duo = (ItemTurret) Blocks.duo;
         ItemTurret scatter = (ItemTurret) Blocks.scatter;
         ItemTurret salvo = (ItemTurret) Blocks.salvo;
+        ItemTurret spectre = (ItemTurret) Blocks.spectre;
         duo.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(2.6f, 15){{
+                TEItems.stone, new BasicBulletType(2.6f, 15) {{
                     width = 7f;
                     height = 9f;
                     lifetime = 60f;
@@ -39,7 +42,7 @@ public class TEFix {
                 }}
         );
         scatter.ammoTypes.put(
-                TEItems.stone, new FlakBulletType(4f, 5){{
+                TEItems.stone, new FlakBulletType(4f, 5) {{
                     width = 6f;
                     height = 8f;
                     lifetime = 60f;
@@ -50,9 +53,8 @@ public class TEFix {
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
 
-                    splashDamage = 30f * 1.5f;
-                    splashDamageRadius = 15f;
-                    fragBullet = new BasicBulletType(3f, 5){{
+                    fragBullets = 6;
+                    fragBullet = new BasicBulletType(3f, 5) {{
                         width = 5f;
                         height = 12f;
                         shrinkY = 1f;
@@ -65,7 +67,7 @@ public class TEFix {
                 }}
         );
         salvo.ammoTypes.put(
-                TEItems.stone, new BasicBulletType(3f, 15){{
+                TEItems.stone, new BasicBulletType(3f, 15) {{
                     width = 7f;
                     height = 9f;
                     lifetime = 60f;
@@ -74,6 +76,28 @@ public class TEFix {
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
+                }}
+        );
+        spectre.ammoTypes.put(
+                TEItems.stone, new BasicBulletType(7.5f, 40){{
+                    hitSize = 4.8f;
+                    width = 15f;
+                    height = 21f;
+                    shootEffect = Fx.shootBig;
+                    reloadMultiplier = 1.2f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = Color.valueOf("94949a");
+                    frontColor = Color.valueOf("94949a");
+                    fragBullets = 5;
+                    fragBullet = new BasicBulletType(3f, 20f) {{
+                        width = 5f;
+                        height = 12f;
+                        lifetime = 20f;
+                        backColor = trailColor = Color.valueOf("94949a");
+                        hitColor = frontColor = Color.valueOf("94949a");
+                        despawnEffect = Fx.none;
+                    }};
                 }}
         );
 
