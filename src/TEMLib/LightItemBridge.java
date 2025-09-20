@@ -7,9 +7,8 @@ public class LightItemBridge extends ItemBridge {
         super(name);
     }
     public class LightItemBridgeBuild extends ItemBridgeBuild {
-        @Override
-        public void updateTile() {
-            super.updateTile();
+        public void doDump() {
+            super.doDump();
         }
     }
 }
