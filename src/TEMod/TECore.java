@@ -16,6 +16,8 @@ public class TECore extends Mod {
         Events.on(EventType.ClientLoadEvent.class, e -> {
             BaseDialog awa = new BaseDialog(Core.bundle.format("misc.tips"));
             awa.add(Core.bundle.format("misc.tips-" + (Mathf.random(10) - 1)));
+            awa.addCloseButton();
+            awa.show();
         });
     }
 
