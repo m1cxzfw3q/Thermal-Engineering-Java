@@ -835,10 +835,10 @@ public class TEBlocks {
             hasPower = hasItems = true;
             consumePower(1f);
 
-            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator") {{
-                spinSprite = true;
-                rotateSpeed = 2f;
-            }}, new DrawRegion("-top"));
+            drawer = new DrawMulti(
+                    new DrawDefault(), new DrawRegion("-rotator", 2f, true),
+                    new DrawRegion("-top")
+            );
 
             craftEffect = Fx.pulverize;
             updateEffect = Fx.pulverizeSmall;
@@ -851,8 +851,11 @@ public class TEBlocks {
             hasPower = hasLiquids = hasItems = outputsLiquid = solid = true;
             rotate = false;
             envEnabled = Env.any;
-            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.water),
-                    new DrawLiquidTile(Liquids.cryofluid){{drawLiquidLight = true;}}, new DrawDefault()
+            drawer = new DrawMulti(
+                    new DrawRegion("-bottom"), new DrawLiquidTile(Liquids.water),
+                    new DrawLiquidTile(Liquids.cryofluid) {{
+                        drawLiquidLight = true;
+                    }}, new DrawDefault()
             );
             liquidCapacity = 50f;
             craftTime = 50;
@@ -861,7 +864,7 @@ public class TEBlocks {
 
             consumePower(7f);
             consumeItem(TEItems.titaniumPowder);
-            consumeLiquid(Liquids.water, 30f / 60f);
+            consumeLiquid(Liquids.water, 35f / 60f);
         }};
 
         advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome") {{
