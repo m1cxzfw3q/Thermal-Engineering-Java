@@ -996,18 +996,18 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
-            requirements(Category.distribution,
-                    with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
-            range = 60;
-            arrowPeriod = 0.9f;
-            arrowTimeScl = 2.75f;
-            hasPower = true;
-            pulse = true;
-            transportTime = 0.001f;
-            consumePower(0.9f);
-            itemCapacity = 30;
-        }};
+//        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
+//            requirements(Category.distribution,
+//                    with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
+//            range = 60;
+//            arrowPeriod = 0.9f;
+//            arrowTimeScl = 2.75f;
+//            hasPower = true;
+//            pulse = true;
+//            transportTime = 0.001f;
+//            consumePower(0.9f);
+//            itemCapacity = 30;
+//        }};      TODO Light Bridge
 
         liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
             requirements(Category.liquid,
