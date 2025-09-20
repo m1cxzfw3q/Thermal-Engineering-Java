@@ -673,7 +673,7 @@ public class TEBlocks {
         }};
 
         coreExplore = new PortableCoreBlock("core-explore") {{
-            coreCap = 18;
+            coreCap = 20;
             health = 3000;
             itemCapacity = 1000;
             unitCapModifier = 3;
