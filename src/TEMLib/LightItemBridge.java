@@ -26,7 +26,6 @@ public class LightItemBridge extends ItemBridge {
         }
         public void output(Building other) {
             while(transportCounter >= transportTime) {
-                output1(other);
                 Item item = items.take();
                 if(item != null && other.acceptItem(this, item)){
                     other.handleItem(this, item);
@@ -35,11 +34,11 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
+                output1(other);
             }
         }
         public void output1(Building other) {
             while(transportCounter >= transportTime) {
-                output(other);
                 Item item = items.take();
                 if(item != null && other.acceptItem(this, item)){
                     other.handleItem(this, item);
@@ -48,6 +47,7 @@ public class LightItemBridge extends ItemBridge {
                     items.add(item, 1);
                     items.undoFlow(item);
                 }
+                output(other);
             }
         }
     }
