@@ -568,72 +568,10 @@ public class TEBlocks {
             ambientSoundVolume = 0.24f;
             consumeItem(TEItems.nuclearFuelRod, 1);
             consumeLiquid(Liquids.cryofluid, heating / coolantPower).update(false);
-            buildCostMultiplier = 3;
+            buildCostMultiplier = 0.7f;
             requirements(Category.power,
                     with(Items.lead, 1400, Items.graphite, 890, Items.metaglass, 320, Items.thorium, 750, Items.titanium, 800,
                     Items.surgeAlloy, 260, TEItems.advancedChip, 10, TEItems.zinc, 600)
-            );
-            explodeEffect = new MultiEffect(
-                    new WaveEffect() {{
-                        lifetime = 20;
-                        sizeFrom = 0;
-                        sizeTo = 320;
-                        strokeFrom = 18;
-                        strokeTo = 0;
-                        colorFrom = Color.valueOf("eec591");
-                        colorTo = Color.valueOf("ffffff");
-                    }},
-                    new ParticleEffect() {{
-                        particles = 25;
-                        interp = Interp.pow10Out;
-                        sizeInterp = Interp.pow5In;
-                        sizeFrom = 35;
-                        sizeTo = 0;
-                        length = 280;
-                        baseLength = 0;
-                        lifetime = 250;
-                        colorFrom = Color.valueOf("dedede70");
-                        colorTo = Color.valueOf("dedede70");
-                    }},
-                    new ParticleEffect() {{
-                        particles = 35;
-                        interp = Interp.pow10Out;
-                        sizeInterp = Interp.pow5In;
-                        sizeFrom = 30;
-                        sizeTo = 0;
-                        length = 290;
-                        baseLength = 0;
-                        lifetime = 300;
-                        colorFrom = Color.valueOf("dedede70");
-                        colorTo = Color.valueOf("dedede70");
-                    }},
-                    new ParticleEffect() {{
-                        particles = 40;
-                        interp = Interp.pow10Out;
-                        sizeInterp = Interp.pow5In;
-                        sizeFrom = 20;
-                        sizeTo = 0;
-                        length = 300;
-                        baseLength = 0;
-                        lifetime = 350;
-                        colorFrom = Color.valueOf("dedede70");
-                        colorTo = Color.valueOf("dedede70");
-                    }},
-                    new ParticleEffect() {{
-                        particles = 25;
-                        line = true;
-                        interp = Interp.pow10Out;
-                        sizeInterp = Interp.pow3In;
-                        strokeFrom = 3;
-                        strokeTo = 0;
-                        lenFrom = 150;
-                        lenTo = 0;
-                        length = 220;
-                        baseLength = 60;
-                        lifetime = 60;
-                        colorFrom = Color.valueOf("dedede");
-                        colorTo = Color.valueOf("dedede");
-                    }}
             );
         }};
 
