@@ -2,7 +2,6 @@ package TEMod.content;
 
 import TEMLib.*;
 import arc.graphics.*;
-import arc.math.Interp;
 import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
