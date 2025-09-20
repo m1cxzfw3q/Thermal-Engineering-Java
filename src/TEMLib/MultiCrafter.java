@@ -60,8 +60,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.left();
                             t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
-                                info.add(item.item.localizedName).left();
-                                if (item.amount > 1) info.add("x" + item.amount);
+                                if (item.amount > 1) info.add("" + item.amount);
                                 info.row();
                             }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
@@ -74,7 +73,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.left();
                             t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
                             t.table(info -> {
-                                info.add(liquid.liquid.localizedName).left();
+                                if (liquid.amount > 1) info.add("" + liquid.amount);
                                 info.row();
                             }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
@@ -90,8 +89,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.left();
                             t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
                             t.table(info -> {
-                                info.add(item.item.localizedName).left();
-                                if (item.amount > 1) info.add("x" + item.amount);
+                                if (item.amount > 1) info.add("" + item.amount);
                                 info.row();
                             }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
@@ -104,7 +102,7 @@ public class MultiCrafter extends GenericCrafter {
                             t.left();
                             t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
                             t.table(info -> {
-                                info.add(liquid.liquid.localizedName).left();
+                                if (liquid.amount > 1) info.add("" + liquid.amount);
                                 info.row();
                             }).pad(2).left();
                         }).fill().padTop(5).padBottom(5);
@@ -149,26 +147,22 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public void updateTile() {
-            // 先尝试输出物品和液体
             dumpOutputs();
 
             Recipe recipe = getCurrentRecipe();
 
-            // 配方无效时停止生产
             if(recipe == null) {
                 progress = 0;
-                partialProgress = 0f; // 重置部分进度
+                partialProgress = 0f;
                 return;
             }
 
-            // 配方发生变化时重置进度
             if(lastRecipe != recipe) {
                 progress = 0;
-                partialProgress = 0f; // 重置部分进度
+                partialProgress = 0f;
                 lastRecipe = recipe;
             }
 
-            // 设置当前配方的合成时间
             if (uniCraftTime > 0) craftTime = uniCraftTime;
             else craftTime = recipe.craftTime;
 
@@ -189,14 +183,10 @@ public class MultiCrafter extends GenericCrafter {
                     for(int i = 0; i < productionCycles; i++) {
                         if(shouldConsume()) { // 每次生产前都检查条件
                             craft();
-                        } else {
-                            break; // 条件不满足时停止生产
-                        }
+                        } else break;
                     }
                 }
-            } else {
-                partialProgress = 0f; // 条件不满足时重置进度
-            }
+            } else partialProgress = 0f;
         }
 
         // 关键修复：自动输出方法 - 只输出产品，不输出原料
@@ -425,11 +415,10 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public void buildConfiguration(Table table) {
-            // 自定义配方选择器
             table.button("\uE835", Styles.defaultt, () -> {
                 currentRecipe = (currentRecipe + 1) % recipes.size;
                 rebuildConfig(table);
-            }).size(50).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
+            }).size(30).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
 
             table.table(Styles.black5, t -> {
                 Recipe current = getCurrentRecipe();
