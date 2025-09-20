@@ -173,6 +173,7 @@ public class MultiCrafter extends GenericCrafter {
 
                 // 累计部分进度
                 partialProgress += progressDelta;
+                progress = partialProgress / craftTime;
 
                 // 当部分进度达到完整生产周期时执行生产
                 if(partialProgress >= craftTime) {
@@ -186,7 +187,10 @@ public class MultiCrafter extends GenericCrafter {
                         } else break;
                     }
                 }
-            } else partialProgress = 0f;
+            } else {
+                partialProgress = 0f;
+                progress = 0;
+            }
         }
 
         // 关键修复：自动输出方法 - 只输出产品，不输出原料
