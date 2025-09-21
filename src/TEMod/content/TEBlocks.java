@@ -34,7 +34,7 @@ import static mindustry.content.StatusEffects.unmoving;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    public static Block oreUranium, oreSphularite; //矿石
+    public static Block oreUranium, oreSphularite, oreRawIron; //矿石
     public static Block wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
     public static Block oreGraphitic; //地石墨
     public static Block liquidCoverCryo, liquidCoverOil, liquidCoverWater, liquidCoverSlag, liquidCoverArkycite; //一些盖板地板
@@ -1096,6 +1096,8 @@ public class TEBlocks {
         }};
 
         oreGraphitic = new OreBlock("ore-graphitic", Items.graphite);
+
+        oreRawIron = new OreBlock("ore-raw-iron", TEItems.rawIron);
 
         laserBore = new BeamDrill("laser-bore"){{
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));

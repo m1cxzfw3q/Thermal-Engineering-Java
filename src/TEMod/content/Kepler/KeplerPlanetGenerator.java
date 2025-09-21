@@ -2,6 +2,7 @@
 
 package TEMod.content.Kepler;
 
+import TEMod.content.TEBlocks;
 import arc.Core;
 import arc.graphics.*;
 import arc.math.*;
@@ -498,6 +499,18 @@ public class KeplerPlanetGenerator extends PlanetGenerator{
 
         if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.7f*addscl){
             ores.add(Blocks.oreThorium);
+        }
+
+        if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.3f*addscl){
+            ores.add(Blocks.oreBeryllium);
+        }
+
+        if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.256f*addscl){
+            ores.add(Blocks.oreTungsten);
+        }
+
+        if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.5f*addscl){
+            ores.add(TEBlocks.oreRawIron);
         }
 
         if(rand.chance(0.25)){
