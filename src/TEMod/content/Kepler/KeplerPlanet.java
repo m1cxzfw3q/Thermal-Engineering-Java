@@ -1,5 +1,6 @@
 package TEMod.content.Kepler;
 
+import arc.func.Cons;
 import arc.graphics.Color;
 import mindustry.game.Rules;
 import mindustry.game.Team;
@@ -15,15 +16,14 @@ import static mindustry.content.Planets.*;
 public class KeplerPlanet {
     public static Planet kepler;
 
-    public void setTeamRule(Planet planet, Team team, Rules.TeamRule... rules) {
-        for (int i = 0; i < rules.length; i++) {
-            planet.ruleSetter = rules1 -> rules1.teams.get(team);
-        }
+    public static void setRule(@org.jetbrains.annotations.NotNull Planet planet, Cons<Rules> rules, Team team, Cons<Rules.TeamRule> teamRules) {
+        planet.ruleSetter = r -> {
+            r = (Rules) rules;
+            r.teams.get(team) = teamRules;
+        };
     }
 
     public static void load() {
-
-
         kepler = new Planet("kepler", sun, 2, 3) {{
             generator = new KeplerPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
@@ -41,17 +41,21 @@ public class KeplerPlanet {
             enemyCoreSpawnReplace = true;
             allowLaunchLoadout = true;
             prebuildBase = false;
-            ruleSetter = r -> {
-                r.waveTeam = Team.blue;
-                var blueRule = r.teams.get(Team.blue);
-                r.placeRangeCheck = false;
-                r.showSpawns = true;
-                r.enemyCoreBuildRadius = 45f * 8f;
+            ruleSetter = r -> setRule(this, rules -> {
+                rules.waveTeam = Team.blue;
+                rules.placeRangeCheck = false;
+                rules.showSpawns = true;
+                rules.enemyCoreBuildRadius = 45f * 8f;
 
-                r.hideBannedBlocks = true;
-                r.coreDestroyClear = true;
-                r.wavesSpawnAtCores = false;
-            };
+                rules.hideBannedBlocks = true;
+                rules.coreDestroyClear = true;
+                rules.wavesSpawnAtCores = false;
+            }, Team.blue, teamRule -> {
+                teamRule.rtsAi = true;
+                teamRule.rtsMaxSquad = 500;
+                teamRule.rtsMinSquad = 3;
+                teamRule.rtsMinWeight = 1f;
+            });
             iconColor = Color.valueOf("87c7ff");
             atmosphereColor = Color.valueOf("87c7ff");
             atmosphereRadIn = 0.01f;

@@ -34,6 +34,7 @@ allprojects{
 }
 
 dependencies{
+    implementation 'org.jetbrains:annotations:15.0'
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
     compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
 
