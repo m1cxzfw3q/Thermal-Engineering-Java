@@ -9,6 +9,7 @@ import mindustry.graphics.g3d.HexSkyMesh;
 import mindustry.graphics.g3d.MultiMesh;
 
 import mindustry.type.Planet;
+import org.jetbrains.annotations.NotNull;
 
 import static TEMod.TECore.isComplete;
 import static mindustry.content.Planets.*;
@@ -16,7 +17,7 @@ import static mindustry.content.Planets.*;
 public class KeplerPlanet {
     public static Planet kepler;
 
-    public static void setRule(@org.jetbrains.annotations.NotNull Planet planet, Cons<Rules> rules, Team team, Cons<Rules.TeamRule> teamRules) {
+    public static void setRule(@NotNull Planet planet, Cons<Rules> rules, Team team, Cons<Rules.TeamRule> teamRules) {
         planet.ruleSetter = r -> {
             r = (Rules) rules;
             r.teams.get(team) = teamRules;
