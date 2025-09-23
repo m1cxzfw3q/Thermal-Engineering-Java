@@ -1,6 +1,7 @@
 package TEMod.content.Kepler;
 
 import arc.graphics.Color;
+import mindustry.game.Rules;
 import mindustry.game.Team;
 import mindustry.graphics.g3d.HexMesh;
 import mindustry.graphics.g3d.HexSkyMesh;
@@ -14,7 +15,15 @@ import static mindustry.content.Planets.*;
 public class KeplerPlanet {
     public static Planet kepler;
 
+    public void setTeamRule(Planet planet, Team team, Rules.TeamRule... rules) {
+        for (int i = 0; i < rules.length; i++) {
+            planet.ruleSetter = rules1 -> rules1.teams.get(team);
+        }
+    }
+
     public static void load() {
+
+
         kepler = new Planet("kepler", sun, 2, 3) {{
             generator = new KeplerPlanetGenerator();
             meshLoader = () -> new HexMesh(this, 6);
@@ -34,7 +43,7 @@ public class KeplerPlanet {
             prebuildBase = false;
             ruleSetter = r -> {
                 r.waveTeam = Team.blue;
-                r.teams.get(Team.blue).rtsAi = true;
+                var blueRule = r.teams.get(Team.blue);
                 r.placeRangeCheck = false;
                 r.showSpawns = true;
                 r.enemyCoreBuildRadius = 45f * 8f;
