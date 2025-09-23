@@ -34,12 +34,14 @@ public class KeplerPlanet {
             prebuildBase = false;
             ruleSetter = r -> {
                 r.waveTeam = Team.blue;
+                r.teams.get(Team.blue).rtsAi = true;
                 r.placeRangeCheck = false;
                 r.showSpawns = true;
                 r.enemyCoreBuildRadius = 45f * 8f;
 
                 r.hideBannedBlocks = true;
                 r.coreDestroyClear = true;
+                r.wavesSpawnAtCores = false;
             };
             iconColor = Color.valueOf("87c7ff");
             atmosphereColor = Color.valueOf("87c7ff");
