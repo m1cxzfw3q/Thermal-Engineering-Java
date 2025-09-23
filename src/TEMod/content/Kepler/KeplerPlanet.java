@@ -25,6 +25,7 @@ public class KeplerPlanet {
             launchCapacityMultiplier = 0.5f;
             sectorSeed = 12;
             allowWaves = true;
+            allowLegacyLaunchPads = true;
             allowWaveSimulation = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
@@ -38,6 +39,7 @@ public class KeplerPlanet {
                 r.enemyCoreBuildRadius = 45f * 8f;
 
                 r.hideBannedBlocks = true;
+                r.coreDestroyClear = true;
             };
             iconColor = Color.valueOf("87c7ff");
             atmosphereColor = Color.valueOf("87c7ff");
@@ -46,6 +48,8 @@ public class KeplerPlanet {
             startSector = 53;
             alwaysUnlocked = true;
             landCloudColor = Color.valueOf("89d2ff");
+            showRtsAIRule = true;
+            allowSelfSectorLaunch = true;
         }};
         isComplete(KeplerPlanet.class);
     }
