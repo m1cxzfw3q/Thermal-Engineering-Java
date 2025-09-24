@@ -17,10 +17,11 @@ import static mindustry.content.Planets.*;
 public class KeplerPlanet {
     public static Planet kepler;
 
-    public static void setRule(@NotNull Planet planet, Cons<Rules> rules, Team team, Cons<Rules.TeamRule> teamRules) {
+    public static void setRule(@NotNull Planet planet, Cons<Rules> rules, Team enemyTeam, Cons<Rules.TeamRule> teamRules) {
         planet.ruleSetter = r -> {
             r = (Rules) rules;
-            r.teams.get(team) = teamRules;
+            r.waveTeam = enemyTeam;
+            r.teams.get(enemyTeam) = teamRules;
         };
     }
 
@@ -43,7 +44,6 @@ public class KeplerPlanet {
             allowLaunchLoadout = true;
             prebuildBase = false;
             ruleSetter = r -> setRule(this, rules -> {
-                rules.waveTeam = Team.blue;
                 rules.placeRangeCheck = false;
                 rules.showSpawns = true;
                 rules.enemyCoreBuildRadius = 45f * 8f;
