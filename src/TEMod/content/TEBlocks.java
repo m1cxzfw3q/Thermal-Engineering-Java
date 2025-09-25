@@ -652,15 +652,19 @@ public class TEBlocks {
             health = 1500;
             size = 1;
 
-            shootType = new LightningBulletType() {{
-                damage = 0f;
-                ammoMultiplier = 1f;
-                hitEffect = Fx.none;
-                hitSound = Sounds.none;
-                lifetime = 0;
-                shootEffect = Fx.none;
-                shootSound = Sounds.none;
-            }};
+            MultiCharge(
+                    new LightningBulletType() {{
+                        lightningLength = 16;
+                        damage = 20;
+                    }}, new BulletType() {{
+
+                    }}, new BulletType() {{
+
+                    }},
+                    new BulletType[]{
+
+                    }
+            );
 
             requirements(Category.turret, with(Items.copper, 500, Items.lead, 650, Items.titanium, 350, Items.silicon, 200));
 
