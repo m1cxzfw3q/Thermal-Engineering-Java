@@ -9,6 +9,8 @@ import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 
+import static TEMod.TECore.noop;
+
 public class MultiChargeTurret extends PowerTurret {
     public int maxChargeTier = 3;
     public float chargeUseTime;
@@ -34,6 +36,9 @@ public class MultiChargeTurret extends PowerTurret {
         public void ArcExplosion(float radius, float damage, int lightnings) {
             Call.soundAt(Sounds.spark, x, y, 1, 1);
             Call.logicExplosion(Team.derelict, x, y, radius, damage, true, true, false, false);//byd这么长还让不让人活了
+            for (int i = 0; i < 30; i++) {
+                noop();
+            }
             for (int i = 0; i < lightnings; i++) {
                 Lightning.create(Team.derelict, Pal.lancerLaser, damage / 10, x, y, Mathf.random(360f), (int) (radius * 0.8));
             }

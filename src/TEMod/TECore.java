@@ -40,4 +40,6 @@ public class TECore extends Mod {
     public static void isComplete(Class<?> obj) {
         Log.info("[Thermal-Engineering] isComplete(" + obj + ")");
     }
+
+    public static void noop() {}
 }
