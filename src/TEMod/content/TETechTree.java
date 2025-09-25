@@ -103,7 +103,7 @@ public class TETechTree {
 
             node(TEBlocks.erekirIcon);
 
-            node(KeplerSectorPresets.LandingArea, Seq.with(
+            node(LandingArea, Seq.with(
                     new Objectives.Research(impact0078),
                     new Objectives.Research(aegis)
             ), () -> {});
