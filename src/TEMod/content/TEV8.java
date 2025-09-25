@@ -1,10 +1,8 @@
 package TEMod.content;
 
-import arc.util.Log;
 import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Item;
-import mindustry.type.Liquid;
 import mindustry.type.UnitType;
 import mindustry.world.Block;
 
@@ -12,35 +10,48 @@ import static TEMod.content.Kepler.KeplerPlanet.kepler;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.Items.*;
 import static mindustry.content.Liquids.*;
+import static mindustry.content.Planets.erekir;
+import static mindustry.content.Planets.serpulo;
 import static mindustry.content.UnitTypes.*;
 
-public class TEV8 {//由Anuken的傻逼源代码构成
+public class TEV8 {
     public static void load() {
-        Item[] items = {
-                scrap, copper, lead, graphite, coal, titanium, thorium, silicon, plastanium, phaseFabric, surgeAlloy, sporePod,
-                Items.sand, blastCompound, pyratite, metaglass, beryllium, tungsten, oxide, carbide
+        Item[] serpuloItems = {
+                scrap, copper, lead, graphite, coal, titanium, thorium, silicon, plastanium,
+                phaseFabric, surgeAlloy, sporePod, Items.sand, blastCompound, pyratite, metaglass
         };
 
-        UnitType[] unitTypes = {
-                mace, dagger, crawler, fortress, scepter, reign, vela, nova, pulsar, quasar, corvus, atrax, merui, cleroi,
-                anthicus, tecta, collaris, spiroct, arkyid, toxopid, elude, flare, eclipse, horizon, zenith, antumbra,
-                avert, obviate, mono, poly, mega, evoke, incite, emanate, quell, disrupt, quad, oct, alpha, beta, gamma,
-                risso, minke, bryde, sei, omura, retusa, oxynoe, cyerce, aegires, navanax, stell, locus, precept, vanquish,
-                conquer
+        UnitType[] serpuloUnits = {
+                //ground units
+                dagger, mace, fortress, scepter, reign,
+                nova, pulsar, quasar, vela, corvus,
+                crawler, atrax, spiroct, arkyid, toxopid,
+                //air units
+                flare, horizon, zenith, antumbra, eclipse,
+                mono, poly, mega, quad, oct,
+                //core unit
+                alpha, beta, gamma
         };
 
-        Liquid[] liquids = {
-                Liquids.water, Liquids.slag, oil, Liquids.cryofluid, arkycite, gallium, neoplasm, ozone, hydrogen, nitrogen, cyanogen
+        UnitType[] erekirUnits = {
+                //tank units
+                stell, locus, precept, vanquish, conquer,
+                //crawl units
+                merui, cleroi, anthicus, tecta, collaris,
+                //flying units
+                elude, avert, obviate, quell, disrupt,
+                //core unit
+                evoke, incite, emanate
         };
 
-        Block[] blocks = {
+        Block[] blocks = { //直接搬源代码的得了
                 //crafting
                 siliconSmelter, siliconCrucible, kiln, graphitePress, plastaniumCompressor, multiPress, phaseWeaver, surgeSmelter, pyratiteMixer, blastMixer, cryofluidMixer,
                 melter, separator, disassembler, sporePress, pulverizer, incinerator, coalCentrifuge,
 
                 //crafting - erekir
                 siliconArcFurnace, electrolyzer, oxidationChamber, atmosphericConcentrator, electricHeater, slagHeater, phaseHeater, heatRedirector, smallHeatRedirector,
-                heatRouter, slagIncinerator, carbideCrucible, slagCentrifuge, surgeCrucible, cyanogenSynthesizer, phaseSynthesizer, heatReactor,
+                heatRouter, slagIncinerator, carbideCrucible, surgeCrucible, cyanogenSynthesizer, phaseSynthesizer,
 
                 //defense
                 copperWall, copperWallLarge, titaniumWall, titaniumWallLarge, plastaniumWall, plastaniumWallLarge, thoriumWall, thoriumWallLarge, door, doorLarge,
@@ -50,7 +61,8 @@ public class TEV8 {//由Anuken的傻逼源代码构成
                 berylliumWall, berylliumWallLarge, tungstenWall, tungstenWallLarge, blastDoor, reinforcedSurgeWall, reinforcedSurgeWallLarge, carbideWall, carbideWallLarge,
                 shieldedWall,
 
-                mender, mendProjector, overdriveProjector, overdriveDome, forceProjector, shockMine, scrapWall, scrapWallLarge, scrapWallHuge, scrapWallGigantic,
+                mender, mendProjector, overdriveProjector, overdriveDome, forceProjector, shockMine,
+                scrapWall, scrapWallLarge, scrapWallHuge, scrapWallGigantic, thruster,
 
                 //defense - erekir
                 radar, buildTower, regenProjector, shockwaveTower,
@@ -70,8 +82,8 @@ public class TEV8 {//由Anuken的傻逼源代码构成
                 reinforcedPump, reinforcedConduit, reinforcedLiquidJunction, reinforcedBridgeConduit, reinforcedLiquidRouter, reinforcedLiquidContainer, reinforcedLiquidTank,
 
                 //power
-                combustionGenerator, thermalGenerator, steamGenerator, differentialGenerator, rtgGenerator, solarPanel, largeSolarPanel, thoriumReactor, impactReactor,
-                battery, batteryLarge, powerNode, powerNodeLarge, surgeTower, diode,
+                combustionGenerator, thermalGenerator, steamGenerator, differentialGenerator, rtgGenerator, solarPanel, largeSolarPanel, thoriumReactor,
+                impactReactor, battery, batteryLarge, powerNode, powerNodeLarge, surgeTower, diode,
 
                 //power - erekir
                 turbineCondenser, ventCondenser, chemicalCombustionChamber, pyrolysisGenerator, fluxReactor, neoplasiaReactor, beamNode, beamTower, beamLink,
@@ -99,7 +111,6 @@ public class TEV8 {//由Anuken的傻逼源代码构成
                 tankFabricator, shipFabricator, mechFabricator,
 
                 tankRefabricator, shipRefabricator, mechRefabricator,
-
                 primeRefabricator,
 
                 tankAssembler, shipAssembler, mechAssembler,
@@ -119,26 +130,42 @@ public class TEV8 {//由Anuken的傻逼源代码构成
                 interplanetaryAccelerator
         };
 
-        for (Item item : items) {
-            item.shownPlanets.add(kepler);
-            item.postInit();
+        for (Item it : serpuloItems) {
+            it.shownPlanets.addAll(kepler, erekir);
         }
 
-        for (UnitType unitType : unitTypes) {
-            unitType.shownPlanets.add(kepler);
-            unitType.postInit();
+        beryllium.shownPlanets.addAll(kepler, serpulo);
+        tungsten.shownPlanets.addAll(kepler, serpulo);
+        oxide.shownPlanets.addAll(kepler, serpulo);
+        carbide.shownPlanets.addAll(kepler, serpulo);
+
+        for (UnitType it : serpuloUnits) {
+            it.shownPlanets.addAll(kepler, erekir);
         }
 
-        for (Liquid liquid : liquids) {
-            liquid.shownPlanets.add(kepler);
-            liquid.postInit();
+        for (UnitType it : erekirUnits) {
+            it.shownPlanets.addAll(kepler, serpulo);
         }
 
-        for (Block block : blocks) {
-            if (block != null) {
-                block.shownPlanets.add(kepler);
-                block.postInit();
-            } else Log.warn("[Thermal-Engineering] V8TechTree isNull()");
+        oil.shownPlanets.addAll(kepler, erekir);
+        Liquids.cryofluid.shownPlanets.addAll(kepler, erekir);
+
+        neoplasm.shownPlanets.addAll(kepler, serpulo);
+        arkycite.shownPlanets.addAll(kepler, serpulo);
+        ozone.shownPlanets.addAll(kepler, serpulo);
+        hydrogen.shownPlanets.addAll(kepler, serpulo);
+        nitrogen.shownPlanets.addAll(kepler, serpulo);
+        cyanogen.shownPlanets.addAll(kepler, serpulo);
+
+        for (Block it : blocks) {
+            try {
+                if (it.shownPlanets.contains(serpulo)) {
+                    it.shownPlanets.add(erekir);
+                } else if (it.shownPlanets.contains(erekir)) {
+                    it.shownPlanets.add(serpulo);
+                }
+                it.shownPlanets.add(kepler);
+            } catch (Exception ignored) {}
         }
     }
 }
