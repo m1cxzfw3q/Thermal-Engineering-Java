@@ -104,8 +104,8 @@ public class TETechTree {
             node(TEBlocks.erekirIcon);
 
             node(LandingArea, Seq.with(
-                    new Objectives.Research(impact0078),
-                    new Objectives.Research(aegis)
+                    new Objectives.SectorComplete(impact0078),
+                    new Objectives.SectorComplete(aegis)
             ), () -> {});
         });
 
