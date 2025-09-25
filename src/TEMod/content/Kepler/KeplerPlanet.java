@@ -18,10 +18,17 @@ public class KeplerPlanet {
     public static Planet kepler;
 
     public static void setRule(@NotNull Planet planet, Cons<Rules> rules, Team enemyTeam, Cons<Rules.TeamRule> teamRules) {
-        planet.ruleSetter = r -> {
-            r = (Rules) rules;
-            r.waveTeam = enemyTeam;
-            r.teams.get(enemyTeam) = teamRules;
+        planet.ruleSetter = (Rules n) -> {
+            rules.get(n);           // 应用基础规则
+            n.waveTeam = enemyTeam; // 设置敌方队伍
+
+            // 为敌方队伍应用团队规则
+            if (n.teams != null) {
+                Rules.TeamRule enemyTeamRule = n.teams.get(enemyTeam);
+                if (enemyTeamRule != null) {
+                    teamRules.get(enemyTeamRule);
+                }
+            }
         };
     }
 
