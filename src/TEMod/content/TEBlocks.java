@@ -1116,9 +1116,9 @@ public class TEBlocks {
 
         reinforcedPowerNode = new PowerNode("reinforced-power-node") {{
             requirements(Category.power, with(Items.beryllium, 10, Items.tungsten, 6, Items.graphite, 8));
-            maxNodes = 6;
-            laserRange = 10;
-            health = 150;
+            maxNodes = 8;
+            laserRange = 12;
+            health = 160;
             laserColor2 = Color.valueOf("cbfd81");
             laserScale = 0.4f;
         }};
@@ -1149,7 +1149,7 @@ public class TEBlocks {
         }};
 
         //石头！！！
-        float stoneWallHealth = 150;
+        float stoneWallHealth = 200;
 
         stoneWall = new Wall("stone-wall") {{
             health = (int) ((size * size) * stoneWallHealth);
