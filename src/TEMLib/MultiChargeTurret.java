@@ -9,7 +9,7 @@ import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 
-import static TEMod.TECore.noop;
+import static TEMLib.lib.noop;
 
 public class MultiChargeTurret extends PowerTurret {
     public int maxChargeTier = 3;
