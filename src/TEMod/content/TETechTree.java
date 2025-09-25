@@ -103,11 +103,10 @@ public class TETechTree {
 
             node(TEBlocks.erekirIcon);
 
-            node(KeplerSectorPresets.LandingArea, Seq.with(), () ->
-                    node(KeplerSectorPresets.ResearchAreaNo47, Seq.with(new Objectives.SectorComplete(LandingArea), new Objectives.Research(TEBlocks.machineCannon),
-                            new Objectives.SectorComplete(stronghold), new Objectives.SectorComplete(stainedMountains)
-                    ), () ->{})
-            );
+            node(KeplerSectorPresets.LandingArea, Seq.with(
+                    new Objectives.Research(impact0078),
+                    new Objectives.Research(aegis)
+            ), () -> {});
         });
 
         addToNext(mechanicalDrill, () -> {
