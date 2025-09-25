@@ -36,7 +36,7 @@ public class MultiChargeTurret extends PowerTurret {
         public void ArcExplosion(float radius, float damage, int lightnings) {
             Call.soundAt(Sounds.spark, x, y, 1, 1);
             Call.logicExplosion(Team.derelict, x, y, radius, damage, true, true, false, false);//byd这么长还让不让人活了
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < 30; i++) {//史
                 noop();
             }
             for (int i = 0; i < lightnings; i++) {
