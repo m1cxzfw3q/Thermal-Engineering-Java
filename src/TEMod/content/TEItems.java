@@ -96,7 +96,7 @@ public class TEItems {
             hardness = 2;
         }};
 
-        plasticAlloy = new Item("plastic-alloy", Color.valueOf("")) {{
+        plasticAlloy = new Item("plastic-alloy", Color.valueOf("81b54d")) {{
             explosiveness = 0.1f;
             cost = 1.5f;
             flammability = 0.2f;
