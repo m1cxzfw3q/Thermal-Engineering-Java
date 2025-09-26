@@ -1138,7 +1138,7 @@ public class TEBlocks {
 
         plasticAlloyConveyor = new Conveyor("plastic-alloy-conveyor") {{
             requirements(Category.distribution, with(TEItems.plasticAlloy, 1, TEItems.steel, 1, Items.titanium, 1));
-            speed = 1f / 60f;
+            speed = 30  / 149f;
             displayedSpeed = 30f;
             health = 140;
             absorbLasers = true;
@@ -1146,7 +1146,7 @@ public class TEBlocks {
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
             requirements(Category.distribution, ItemStack.mult(plasticAlloyConveyor.requirements, 5));
-            speed = 5f / 60f;
+            speed = 30f / 149f;
             health = 300;
             itemCapacity = 20;
             absorbLasers = true;
