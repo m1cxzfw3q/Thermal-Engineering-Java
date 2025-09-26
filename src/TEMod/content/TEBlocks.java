@@ -1138,7 +1138,7 @@ public class TEBlocks {
 
         plasticAlloyConveyor = new Conveyor("plastic-alloy-conveyor") {{
             requirements(Category.distribution, with(TEItems.plasticAlloy, 1, TEItems.steel, 1, Items.titanium, 1));
-            speed = 30  / 149f;
+            speed = 30f / 149f;
             displayedSpeed = 30f;
             health = 140;
             absorbLasers = true;
