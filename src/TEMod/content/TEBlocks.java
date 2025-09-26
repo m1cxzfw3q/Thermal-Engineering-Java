@@ -83,6 +83,7 @@ public class TEBlocks {
     public static Block pyratiteHeater; //硫热
     //墙
     public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
+    public static Block plasticAlloyConveyor, plasticAlloyPacketConveyor;
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -1123,7 +1124,6 @@ public class TEBlocks {
         plasticAlloyWall = new Wall("plastic-alloy-wall") {{
             requirements(Category.defense, with(TEItems.plasticAlloy, 6));
             health = 200 * 4;
-            insulated = true;
             absorbLasers = true;
             schematicPriority = 10;
         }};
@@ -1131,9 +1131,26 @@ public class TEBlocks {
         plasticAlloyWallLarge = new Wall("large-plastic-alloy-wall") {{
             requirements(Category.defense, with(TEItems.plasticAlloy, 24));
             health = 200 * 16;
-            insulated = true;
             absorbLasers = true;
             schematicPriority = 10;
+            size = 2;
+        }};
+
+        plasticAlloyConveyor = new Conveyor("plastic-alloy-conveyor") {{
+            requirements(Category.distribution, with(TEItems.plasticAlloy, 1, TEItems.steel, 1, Items.titanium, 1));
+            itemCapacity = 5;
+            speed = 3f / 60f;
+            displayedSpeed = 30f;
+            health = 140;
+            absorbLasers = true;
+        }};
+
+        plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
+            requirements(Category.distribution, ItemStack.mult(plasticAlloyConveyor.requirements, 5));
+            speed = 4f / 60f;
+            health = 300;
+            itemCapacity = 20;
+            absorbLasers = true;
         }};
 
         //基础方块(E)
