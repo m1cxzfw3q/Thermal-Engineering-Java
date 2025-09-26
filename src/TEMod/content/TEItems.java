@@ -12,6 +12,7 @@ public class TEItems {
     public static Item zinc, sphularite; //锌, 闪锌矿
     public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder; //铜粉, 铅粉, 钛粉, 钍粉, 锌粉
     public static Item iron, steel, rawIron; //铁, 钢, 粗铁
+    public static Item plasticAlloy; //塑质合金  //英文机翻是塑料合金
     //协议-战争
     public static Item primaryWarAgreement; //初级战争协议
     public static Item advancedWarAgreement; //高级战争协议
@@ -93,6 +94,12 @@ public class TEItems {
 
         rawIron = new Item("raw-iron", Color.valueOf("94949a")) {{
             hardness = 2;
+        }};
+
+        plasticAlloy = new Item("plastic-alloy", Color.valueOf("")) {{
+            explosiveness = 0.1f;
+            cost = 1.5f;
+            flammability = 0.2f;
         }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！

@@ -81,6 +81,8 @@ public class TEBlocks {
     public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
     public static Block laserBore; //激光墙钻
     public static Block pyratiteHeater; //硫热
+    //墙
+    public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -354,11 +356,11 @@ public class TEBlocks {
             recipes.addAll(new Recipe(
                     with(Items.silicon, 3, Items.copper, 2, Items.lead, 1),
                     with(TEItems.primaryChip, 1),
-                    30
+                    30f
             ), new Recipe(
                     with(Items.silicon, 4, Items.copper, 2, Items.lead, 1),
                     with(TEItems.advancedChip, 1),
-                    40
+                    40f
             ));
         }};
 
@@ -378,15 +380,15 @@ public class TEBlocks {
             recipes.addAll(new Recipe(
                     with(Items.silicon, 3),
                     with(TEItems.primaryChip, 1),
-                    10
+                    10f
             ), new Recipe(
                     with(Items.silicon, 5),
                     with(TEItems.advancedChip, 1),
-                    20
+                    20f
             ), new Recipe(
                     with(Items.silicon, 6),
                     with(TEItems.specialChip, 1),
-                    30
+                    30f
             ));
 
             drawer = new DrawMulti(
@@ -714,17 +716,19 @@ public class TEBlocks {
                     new Recipe(
                             with(Items.coal, 1, TEItems.iron, 19),
                             with(TEItems.steel, 20),
-                            craftTime = 40f
-                    ),
-                    new Recipe(
+                            40f
+                    ), new Recipe(
                             with(Items.graphite, 1, Items.sand, 4),
                             with(Items.silicon, 4),
-                            craftTime = 7f
-                    ),
-                    new Recipe(
+                            7f
+                    ), new Recipe(
                             with(Items.copper, 3, Items.lead, 4, Items.titanium, 2, Items.silicon, 3),
                             with(Items.surgeAlloy, 1),
-                            craftTime = 12f
+                            12f
+                    ), new Recipe(
+                            with(Items.silicon, 2, Items.plastanium, 2),
+                            with(TEItems.plasticAlloy, 1),
+                            20f
                     )
             );
 
@@ -1114,6 +1118,22 @@ public class TEBlocks {
             fogRadius = 3;
 
             consumeLiquid(Liquids.water, 0.09f).boost();
+        }};
+
+        plasticAlloyWall = new Wall("plastic-alloy-wall") {{
+            requirements(Category.defense, with(TEItems.plasticAlloy, 6));
+            health = 200 * 4;
+            insulated = true;
+            absorbLasers = true;
+            schematicPriority = 10;
+        }};
+
+        plasticAlloyWallLarge = new Wall("large-plastic-alloy-wall") {{
+            requirements(Category.defense, with(TEItems.plasticAlloy, 24));
+            health = 200 * 16;
+            insulated = true;
+            absorbLasers = true;
+            schematicPriority = 10;
         }};
 
         //基础方块(E)

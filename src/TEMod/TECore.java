@@ -19,8 +19,7 @@ public class TECore extends Mod {
                 T.checkPref("temod.settingTable.tips?", true);
             });
             if (Core.settings.getBool("temod.settingTable.tips?")) {
-                String aTipStr = Core.bundle.format("misc.tips") + "\n"
-                        + Core.bundle.format("misc.tips-" + Mathf.random(10));
+                String aTipStr = Core.bundle.format("misc.tips") + "\n" + Core.bundle.format("misc.tips-" + Mathf.random(10));
                 Vars.ui.content.add(aTipStr).left();
                 Vars.ui.settings.add(aTipStr).left();
                 Vars.ui.database.add(aTipStr).left();
