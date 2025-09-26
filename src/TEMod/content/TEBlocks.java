@@ -1146,7 +1146,7 @@ public class TEBlocks {
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
             requirements(Category.distribution, ItemStack.mult(plasticAlloyConveyor.requirements, 5));
-            speed = 30f / 149f;
+            speed = 30f / 600f;
             health = 300;
             itemCapacity = 20;
             absorbLasers = true;
