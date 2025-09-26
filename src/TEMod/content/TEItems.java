@@ -82,7 +82,7 @@ public class TEItems {
             radioactivity = 0.5f;
         }};
 
-        zincPowder = new Item("zinc-powder", Color.valueOf("BFCDBC"));
+        zincPowder = new Item("zinc-powder", Color.valueOf("bfcdbc"));
 
         steel = new Item("steel", Color.valueOf("94949a")) {{
             cost = 0.9f;
