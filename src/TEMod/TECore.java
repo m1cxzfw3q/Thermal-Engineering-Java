@@ -16,9 +16,9 @@ public class TECore extends Mod {
     public TECore() {
         Events.on(EventType.ClientLoadEvent.class, e -> {
             Vars.ui.settings.addCategory("@temod.settingTable", Icon.box, T -> {
-                T.checkPref("temod.tips?", true);
+                T.checkPref("temod.settingTable.tips?", true);
             });
-            if (Core.settings.getBool("temod.tips?")) {
+            if (Core.settings.getBool("temod.settingTable.tips?")) {
                 String aTipStr = Core.bundle.format("misc.tips") + "\n"
                         + Core.bundle.format("misc.tips-" + Mathf.random(10));
                 Vars.ui.content.add(aTipStr).left();
