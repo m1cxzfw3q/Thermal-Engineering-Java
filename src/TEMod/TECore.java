@@ -7,17 +7,34 @@ import arc.Core;
 import arc.Events;
 import arc.math.Mathf;
 import arc.util.Log;
+import mindustry.Vars;
 import mindustry.game.EventType;
+import mindustry.gen.Icon;
 import mindustry.mod.Mod;
-import mindustry.ui.dialogs.BaseDialog;
 
 public class TECore extends Mod {
     public TECore() {
         Events.on(EventType.ClientLoadEvent.class, e -> {
-            BaseDialog awa = new BaseDialog(Core.bundle.format("misc.tips"));
-            awa.add(Core.bundle.format("misc.tips-" + Mathf.random(10)));
-            awa.addCloseButton();
-            awa.show();
+            Vars.ui.settings.addCategory("@temod.settingTable", Icon.box, T -> {
+                T.checkPref("temod.tips?", true);
+            });
+            if (Core.settings.getBool("temod.tips?")) {
+                String aTipStr = Core.bundle.format("misc.tips") + "\n"
+                        + Core.bundle.format("misc.tips-" + Mathf.random(10));
+                Vars.ui.content.add(aTipStr).left();
+                Vars.ui.settings.add(aTipStr).left();
+                Vars.ui.database.add(aTipStr).left();
+                Vars.ui.join.add(aTipStr).left();
+                Vars.ui.host.add(aTipStr).left();
+                Vars.ui.maps.add(aTipStr).left();
+                Vars.ui.schematics.add(aTipStr).left();
+                Vars.ui.bans.add(aTipStr).left();
+                Vars.ui.admins.add(aTipStr).left();
+                Vars.ui.load.add(aTipStr).left();
+                Vars.ui.logic.add(aTipStr).left();
+                Vars.ui.campaignComplete.add(aTipStr).left();
+                Vars.ui.language.add(aTipStr).left();
+            }
         });
     }
 

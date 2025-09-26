@@ -18,8 +18,8 @@ public class TEFx {
             shootMini = new Effect(7, e -> {
                 color(Pal.lighterOrange, Pal.lightOrange, e.fin());
                 float w = 1f + 5 * e.fout();
-                Drawf.tri(e.x, e.y, w, 5f * e.fout(), e.rotation);
-                Drawf.tri(e.x, e.y, w, 2f * e.fout(), e.rotation + 180f);
+                Drawf.tri(e.x, e.y, w, 7f * e.fout(), e.rotation);
+                Drawf.tri(e.x, e.y, w, 2.4f * e.fout(), e.rotation + 180f);
             }),
 
             casingMini = new Effect(24f, e -> {
@@ -33,8 +33,7 @@ public class TEFx {
                 Fill.rect(
                         e.x + trnsx(lr, len) + Mathf.randomSeedRange(e.id + i + 7, 3f * e.fin()),
                         e.y + trnsy(lr, len) + Mathf.randomSeedRange(e.id + i + 8, 3f * e.fin()),
-                        0.8f, 1.5f, rot + e.fin() * 50f * i
+                        1.5f, 0.6f, rot + e.fin() * 50f * i
                 );
-
             }).layer(Layer.bullet);
 }
