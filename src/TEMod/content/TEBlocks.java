@@ -651,6 +651,7 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
+        /* 注释化一下
         prism = new MultiChargeTurret("prism") {{
             health = 1500;
             size = 1;
@@ -677,6 +678,7 @@ public class TEBlocks {
             consumePower(10f);
             Log.info("Load MultiChargeTurret(prism)");
         }};
+        */
 
         oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
