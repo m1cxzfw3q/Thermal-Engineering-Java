@@ -736,7 +736,7 @@ public class TEBlocks {
 
             consumePower(450f / 60f);
             itemCapacity = 40;
-            requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400));
+            requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400, Items.surgeAlloy, 40));
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
