@@ -717,7 +717,7 @@ public class TEBlocks {
                     new Recipe(
                             with(Items.coal, 1, TEItems.iron, 19),
                             with(TEItems.steel, 20),
-                            40f
+                            30f
                     ), new Recipe(
                             with(Items.graphite, 1, Items.sand, 4),
                             with(Items.silicon, 4),
@@ -1139,7 +1139,7 @@ public class TEBlocks {
         plasticAlloyConveyor = new Conveyor("plastic-alloy-conveyor") {{
             requirements(Category.distribution, with(TEItems.plasticAlloy, 1, TEItems.steel, 1, Items.titanium, 1));
             speed = 30f / 149f;
-            displayedSpeed = 30f;
+            displayedSpeed = 25.2f;
             health = 140;
             absorbLasers = true;
         }};

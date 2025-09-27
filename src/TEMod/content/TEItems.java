@@ -1,35 +1,36 @@
 package TEMod.content;
 
+import arc.Core;
+import mindustry.content.Items;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
 import static TEMod.TECore.isComplete;
 
 public class TEItems {
-    //普通物品
-    public static Item uranium; //铀
     public static Item nuclearFuelRod; //核燃料棒
-    public static Item zinc, sphularite; //锌, 闪锌矿
-    public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder; //铜粉, 铅粉, 钛粉, 钍粉, 锌粉
+    public static Item zinc, sphularite, uranium; //锌, 闪锌矿, 铀
+    public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder, ironPowder; //铜粉, 铅粉, 钛粉, 钍粉, 锌粉, 铁粉
     public static Item iron, steel, rawIron; //铁, 钢, 粗铁
     public static Item plasticAlloy; //塑质合金  //英文机翻是塑料合金
-    //协议-战争
-    public static Item primaryWarAgreement; //初级战争协议
-    public static Item advancedWarAgreement; //高级战争协议
-    public static Item specialWarAgreement; //特级战争协议
-    //协议-传输
-    public static Item highSpeedTransmissionProtocol; //高速传输协议
-    public static Item ultraRemoteTransmissionProtocol; //超远程传输协议
-    //协议-生产
-    public static Item primaryProductionAgreement; //初级生产协议
-    public static Item advancedProductionAgreement; //高级生产协议
-    public static Item specialProductionAgreement; //特级生产协议
-    //芯片
-    public static Item primaryChip; //初级芯片
-    public static Item advancedChip; //高级芯片
-    public static Item specialChip; //特级芯片
+
+    public static Item primaryWarAgreement, advancedWarAgreement, specialWarAgreement; //战争协议
+    public static Item highSpeedTransmissionProtocol, ultraRemoteTransmissionProtocol; //传输协议
+    public static Item primaryProductionAgreement, advancedProductionAgreement, specialProductionAgreement; //生产协议
+    public static Item primaryChip, advancedChip, specialChip; //芯片
 
     public static Item stone; //石！
+
+    public static Item PowderGen(Item sourceItem) { //粉末生成器
+        return new Item(sourceItem.name + Core.bundle.format("items.powder-gen.name"), sourceItem.color) {{
+            description = Core.bundle.format("items.powder-gen.description").replace("T", sourceItem.name);
+            details = sourceItem.details + Core.bundle.format("items.powder-gen.details");
+            radioactivity = sourceItem.radioactivity;
+            explosiveness = sourceItem.explosiveness;
+            flammability = sourceItem.radioactivity;
+            charge = sourceItem.charge;
+        }};
+    }
 
     public static void load() {
         uranium = new Item("uranium", Color.valueOf("617270")) {{//这个mod从Json开始的第一个物品
@@ -71,18 +72,11 @@ public class TEItems {
 
         zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 0.6f;}};
 
-        copperPowder = new Item("copper-powder", Color.valueOf("d99d73"));
-
-        leadPowder = new Item("lead-powder", Color.valueOf("8c7fa9"));
-
-        titaniumPowder = new Item("titanium-powder", Color.valueOf("8da1e3"));
-
-        thoriumPowder = new Item("thorium-powder", Color.valueOf("f9a3c7")) {{
-            explosiveness = 0.1f;
-            radioactivity = 0.5f;
-        }};
-
-        zincPowder = new Item("zinc-powder", Color.valueOf("bfcdbc"));
+        copperPowder = PowderGen(Items.copper);
+        leadPowder = PowderGen(Items.lead);
+        titaniumPowder = PowderGen(Items.titanium);
+        thoriumPowder = PowderGen(Items.thorium);
+        zincPowder = PowderGen(zinc);
 
         steel = new Item("steel", Color.valueOf("94949a")) {{
             cost = 0.9f;
@@ -91,6 +85,7 @@ public class TEItems {
         iron = new Item("iron", Color.valueOf("94949a")) {{
             cost = 0.8f;
         }};
+        ironPowder = PowderGen(iron);
 
         rawIron = new Item("raw-iron", Color.valueOf("94949a")) {{
             hardness = 2;
@@ -103,7 +98,7 @@ public class TEItems {
         }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！
-            hardness = 1;
+            hardness = 1;// 石头！！！！\o/
             cost = 0.2f;
         }};
 
