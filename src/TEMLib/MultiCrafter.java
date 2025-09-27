@@ -1,6 +1,7 @@
 package TEMLib;
 
 import arc.*;
+import arc.scene.Element;
 import arc.scene.ui.layout.*;
 import arc.struct.*;
 import arc.util.*;
@@ -55,56 +56,40 @@ public class MultiCrafter extends GenericCrafter {
             table.row();
             for (Recipe recipe : recipes) {
                 try {
-                    for (ItemStack item : recipe.inputItems) {
+                    for (ItemStack it : recipe.inputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
-                            t.table(info -> {
-                                if (item.amount > 1) info.add("" + item.amount);
-                                info.row();
-                            }).pad(2).left();
+                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}
 
                 try {
-                    for (LiquidStack liquid : recipe.inputLiquids) {
+                    for (LiquidStack it : recipe.inputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
-                            t.table(info -> {
-                                if (liquid.amount > 1) info.add("" + liquid.amount);
-                                info.row();
-                            }).pad(2).left();
+                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}
 
-                table.table(Styles.grayPanel, t ->
-                        t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill().padTop(5).padBottom(5);
+                table.add();
+                table.table(Styles.grayPanel, t -> t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill().padTop(5).padBottom(5);
 
                 try {
-                    for (ItemStack item : recipe.outputItems) {
+                    for (ItemStack it : recipe.outputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(item.item.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, item.item));
-                            t.table(info -> {
-                                if (item.amount > 1) info.add("" + item.amount);
-                                info.row();
-                            }).pad(2).left();
+                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}
 
                 try {
-                    for (LiquidStack liquid : recipe.outputLiquids) {
+                    for (LiquidStack it : recipe.outputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.image(liquid.liquid.uiIcon).size(40).left().scaling(Scaling.fit).with(i -> StatValues.withTooltip(i, liquid.liquid));
-                            t.table(info -> {
-                                if (liquid.amount > 1) info.add("" + liquid.amount);
-                                info.row();
-                            }).pad(2).left();
+                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
                         }).fill().padTop(5).padBottom(5);
                     }
                 } catch (Exception ignored) {}
@@ -139,7 +124,6 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 重置生产状态
             currentRecipe = newRecipe;
             progress = 0;
             lastRecipe = null;
@@ -166,23 +150,18 @@ public class MultiCrafter extends GenericCrafter {
             if (uniCraftTime > 0) craftTime = uniCraftTime;
             else craftTime = recipe.craftTime;
 
-            // 关键修复：使用部分进度跟踪，防止过度生产
             if(shouldConsume() && enabled) {
-                // 修复：使用 efficiency 字段而不是 efficiency() 方法
                 float progressDelta = efficiency * edelta();
 
-                // 累计部分进度
                 partialProgress += progressDelta;
                 progress = partialProgress / craftTime;
 
-                // 当部分进度达到完整生产周期时执行生产
                 if(partialProgress >= craftTime) {
                     int productionCycles = (int)(partialProgress / craftTime);
-                    partialProgress %= craftTime; // 保留剩余进度
+                    partialProgress %= craftTime;
 
-                    // 执行生产循环
                     for(int i = 0; i < productionCycles; i++) {
-                        if(shouldConsume()) { // 每次生产前都检查条件
+                        if(shouldConsume()) {
                             craft();
                         } else break;
                     }
@@ -193,19 +172,16 @@ public class MultiCrafter extends GenericCrafter {
             }
         }
 
-        // 关键修复：自动输出方法 - 只输出产品，不输出原料
         public void dumpOutputs() {
             Recipe recipe = getCurrentRecipe();
             if(recipe == null) return;
 
-            // 只输出配方中的产品物品
             for(ItemStack out : recipe.outputItems) {
                 if(items.get(out.item) > 0) {
                     dump(out.item);
                 }
             }
 
-            // 输出所有液体（包括产品液体）- 修复：使用正确的液体量检查方法
             for(LiquidStack out : recipe.outputLiquids) {
                 if(out.liquid != null && out.amount > 0.001f) {
                     dumpLiquid(out.liquid);
@@ -218,7 +194,6 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe == null) return false;
 
-            // 关键修复：检查必需流体是否足够 - 增加空安全检查
             if(requiredLiquids != null) {
                 for(LiquidStack required : ((MultiCrafter)block).requiredLiquids) {
                     if(required != null && liquids != null) {
@@ -229,12 +204,10 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 验证物品输入
             for(ItemStack in : recipe.inputItems) {
                 if(items.get(in.item) < in.amount) return false;
             }
 
-            // 验证液体输入 - 增加空安全检查
             if(recipe.inputLiquids != null && liquids != null) {
                 for(LiquidStack in : recipe.inputLiquids) {
                     if(in != null && liquids.get(in.liquid) < in.amount) {
@@ -243,17 +216,13 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 关键修复：检查输出空间是否足够
-            // 检查物品输出空间 - 更严格的检查
             for(ItemStack out : recipe.outputItems) {
-                // 考虑当前库存和本次产出
                 int currentAmount = items.get(out.item);
                 if(currentAmount + out.amount > itemCapacity) {
                     return false;
                 }
             }
 
-            // 检查液体输出空间 - 更严格的检查（修复：使用正确的液体量检查方法）
             if(liquids != null) {
                 float currentLiquidAmount = liquids.currentAmount();
                 float totalOutput = 0f;
@@ -279,7 +248,6 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe == null) return;
 
-            // 修复：消耗必需流体
             MultiCrafter block = (MultiCrafter) this.block;
             if(block.requiredLiquids != null && liquids != null) {
                 for(LiquidStack required : block.requiredLiquids) {
@@ -289,12 +257,10 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 消耗物品
             for(ItemStack in : recipe.inputItems) {
                 items.remove(in.item, in.amount);
             }
 
-            // 消耗液体
             if(recipe.inputLiquids != null && liquids != null) {
                 for(LiquidStack in : recipe.inputLiquids) {
                     if(in != null) {
@@ -309,10 +275,8 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if (recipe == null) return false;
 
-            // 检查物品是否是当前配方需要的
             for (ItemStack input : recipe.inputItems) {
                 if (input.item == item) {
-                    // 检查物品数量是否达到容量上限
                     return items.get(item) < itemCapacity;
                 }
             }
@@ -322,7 +286,6 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean acceptLiquid(Building source, Liquid liquid) {
-            // 修改：首先检查必需流体 - 增加空安全检查
             if(requiredLiquids != null && liquids != null) {
                 for(LiquidStack required : ((MultiCrafter)block).requiredLiquids) {
                     if(required != null && required.liquid == liquid) {
@@ -331,7 +294,6 @@ public class MultiCrafter extends GenericCrafter {
                 }
             }
 
-            // 然后检查当前配方需要的流体
             Recipe recipe = getCurrentRecipe();
             if (recipe == null || recipe.inputLiquids == null || liquids == null) return false;
 
@@ -349,19 +311,15 @@ public class MultiCrafter extends GenericCrafter {
             Recipe recipe = getCurrentRecipe();
             if(recipe == null) return;
 
-            // 增强：严格检查输出空间
             boolean canProduce = true;
 
-            // 检查物品输出空间
             for(ItemStack out : recipe.outputItems) {
-                // 修复：考虑堆叠限制
                 if(items.get(out.item) + out.amount > itemCapacity) {
                     canProduce = false;
                     break;
                 }
             }
 
-            // 检查液体输出空间
             if(canProduce && liquids != null) {
                 float currentTotal = liquids.currentAmount();
                 float outputTotal = 0f;
@@ -384,7 +342,6 @@ public class MultiCrafter extends GenericCrafter {
                 return;
             }
 
-            // 关键修复：再次检查输入物品是否足够（防御性检查）
             for(ItemStack in : recipe.inputItems) {
                 if(items.get(in.item) < in.amount) {
                     return;
@@ -393,12 +350,10 @@ public class MultiCrafter extends GenericCrafter {
 
             consume();
 
-            // 添加产出物品 - 确保只添加配方设定的数量
             for(ItemStack out : recipe.outputItems) {
                 items.add(out.item, out.amount);
             }
 
-            // 添加产出液体
             if(liquids != null && recipe.outputLiquids != null) {
                 for(LiquidStack out : recipe.outputLiquids) {
                     if(out != null) {
@@ -431,7 +386,7 @@ public class MultiCrafter extends GenericCrafter {
                 t.add(current.localizedName()).left();
                 t.row();
 
-                // 显示输入
+
                 t.add(Core.bundle.format("misc.multicraft.input")).left();
                 for(ItemStack in : current.inputItems) {
                     t.image(in.item.uiIcon).size(24).padRight(4);
@@ -447,7 +402,6 @@ public class MultiCrafter extends GenericCrafter {
                 }
                 t.row();
 
-                // 显示输出
                 t.add(Core.bundle.format("misc.multicraft.output")).left();
                 for(ItemStack out : current.outputItems) {
                     t.image(out.item.uiIcon).size(24).padRight(4);
@@ -463,7 +417,6 @@ public class MultiCrafter extends GenericCrafter {
                 }
                 t.row();
 
-                // 新增：显示必需流体及消耗量 - 增加空安全检查
                 MultiCrafter block = (MultiCrafter) this.block;
                 if(block.requiredLiquids != null && !block.requiredLiquids.isEmpty()) {
                     t.row();
@@ -479,7 +432,6 @@ public class MultiCrafter extends GenericCrafter {
             }).padLeft(8);
         }
 
-        // 重建配置界面
         private void rebuildConfig(Table table) {
             table.clear();
             buildConfiguration(table);
@@ -490,7 +442,6 @@ public class MultiCrafter extends GenericCrafter {
             return recipes.get(currentRecipe % recipes.size);
         }
 
-        // 关键修复：允许液体输出
         @Override
         public boolean canDumpLiquid(Building to, Liquid liquid) {
             return true;
