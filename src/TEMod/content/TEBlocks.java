@@ -676,7 +676,6 @@ public class TEBlocks {
             range = 51.625f * 8f;
             reload = 1.5f * 60f;
             consumePower(10f);
-            Log.info("Load MultiChargeTurret(prism)");
         }};
         */
 
