@@ -8,16 +8,19 @@ import arc.graphics.Color;
 import static TEMod.TECore.isComplete;
 
 public class TEItems {
-    public static Item nuclearFuelRod; //核燃料棒
-    public static Item zinc, sphularite, uranium; //锌, 闪锌矿, 铀
-    public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder, ironPowder; //铜粉, 铅粉, 钛粉, 钍粉, 锌粉, 铁粉
-    public static Item iron, steel, rawIron; //铁, 钢, 粗铁
-    public static Item plasticAlloy; //塑质合金  //英文机翻是塑料合金
-
-    public static Item primaryWarAgreement, advancedWarAgreement, specialWarAgreement; //战争协议
-    public static Item highSpeedTransmissionProtocol, ultraRemoteTransmissionProtocol; //传输协议
-    public static Item primaryProductionAgreement, advancedProductionAgreement, specialProductionAgreement; //生产协议
-    public static Item primaryChip, advancedChip, specialChip; //芯片
+    /** 基础物品 **/
+    public static Item
+            nuclearFuelRod,
+            zinc, sphularite, uranium, iron, rawIron,
+            plasticAlloy, steel;
+    /** 一堆自动生成的粉末 **/
+    public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder, ironPowder;
+    /** 协议与芯片 **/
+    public static Item
+            primaryWarAgreement, advancedWarAgreement, specialWarAgreement,
+            highSpeedTransmissionProtocol, ultraRemoteTransmissionProtocol,
+            primaryProductionAgreement, advancedProductionAgreement, specialProductionAgreement,
+            primaryChip, advancedChip, specialChip;
 
     public static Item stone; //石！
 

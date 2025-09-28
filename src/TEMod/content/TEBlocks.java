@@ -2,7 +2,6 @@ package TEMod.content;
 
 import TEMLib.*;
 import arc.graphics.*;
-import arc.util.Log;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
@@ -83,7 +82,7 @@ public class TEBlocks {
     public static Block pyratiteHeater; //硫热
     //墙
     public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
-    public static Block plasticAlloyConveyor, plasticAlloyPacketConveyor;
+    public static Block plasticAlloyConveyor, plasticAlloyPacketConveyor;//塑制合金带
 
     //基础方块(E)
     public static Block reinforcedPowerNode; //E电力节点
@@ -91,8 +90,7 @@ public class TEBlocks {
     //基础方块(TEMod)
     public static Block liquidCover; //盖板
 
-    //石头！
-    public static Block stoneWall, stoneWallLarge, stoneConveyor, stoneDrill;
+    public static Block stoneWall, stoneWallLarge, stoneConveyor, stoneDrill; //石头
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
@@ -1147,7 +1145,7 @@ public class TEBlocks {
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
             requirements(Category.distribution, with(TEItems.plasticAlloy, 5, TEItems.steel, 5, Items.titanium, 5, Items.surgeAlloy, 5));
-            speed = 70f / 600f;
+            speed = 75f / 600f;
             health = 300;
             itemCapacity = 20;
             absorbLasers = true;
