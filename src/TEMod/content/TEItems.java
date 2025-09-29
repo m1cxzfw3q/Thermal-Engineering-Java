@@ -25,7 +25,7 @@ public class TEItems {
     public static Item stone; //石！
 
     public static Item PowderGen(Item sourceItem) { //粉末生成器
-        return new Item(sourceItem.name + "-powder", sourceItem.color) {{
+        return new Item((sourceItem.name).replace("temod-", "") + "-powder", sourceItem.color) {{
             localizedName = sourceItem.localizedName + Core.bundle.format("items.powder-gen.name");
             description = Core.bundle.format("items.powder-gen.description").replace("T", sourceItem.localizedName);
             details = sourceItem.details + Core.bundle.format("items.powder-gen.details");

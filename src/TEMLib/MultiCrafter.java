@@ -60,7 +60,7 @@ public class MultiCrafter extends GenericCrafter {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
                             t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
-                        }).fill().padTop(5).padBottom(5);
+                        });
                     }
                 } catch (Exception ignored) {}
 
@@ -69,7 +69,7 @@ public class MultiCrafter extends GenericCrafter {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
                             t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
-                        }).fill().padTop(5).padBottom(5);
+                        });
                     }
                 } catch (Exception ignored) {}
 
@@ -81,7 +81,7 @@ public class MultiCrafter extends GenericCrafter {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
                             t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
-                        }).fill().padTop(5).padBottom(5);
+                        });
                     }
                 } catch (Exception ignored) {}
 
@@ -90,7 +90,7 @@ public class MultiCrafter extends GenericCrafter {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
                             t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
-                        }).fill().padTop(5).padBottom(5);
+                        });
                     }
                 } catch (Exception ignored) {}
 
