@@ -44,12 +44,12 @@ public class TECore extends Mod {
         KeplerSectorPresets.load();
         TEStatusEffects.load();
         //TEUnitTypes.load();
-        TEFix.load();
-        TEV8.load();
         //TEModularWeapons.load();  //毁灭吧 赶紧的
 
         isComplete(TECore.class);
         TETechTree.load();
+        TEV8.load();
+        TEFix.load();
     }
 
     public static void isComplete(Class<?> obj) {
