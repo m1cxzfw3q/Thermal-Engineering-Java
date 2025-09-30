@@ -18,8 +18,7 @@ public class TEItems {
             leadPowder = PowderGen(Items.lead),
             titaniumPowder = PowderGen(Items.titanium),
             thoriumPowder = PowderGen(Items.thorium),
-            zincPowder = PowderGen(zinc),
-            ironPowder = PowderGen(iron);
+            zincPowder, ironPowder;
     /** 协议与芯片 **/
     public static Item
             primaryWarAgreement, advancedWarAgreement, specialWarAgreement,
@@ -89,6 +88,7 @@ public class TEItems {
             cost = 0.8f;
         }};
         ironPowder = PowderGen(iron);
+        zincPowder = PowderGen(zinc);
 
         rawIron = new Item("raw-iron", Color.valueOf("94949a")) {{
             hardness = 2;
