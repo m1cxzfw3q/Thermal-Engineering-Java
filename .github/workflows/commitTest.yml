@@ -23,8 +23,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}
-          path: build/libs/${{ github.event.repository.name }}.jar
-      - name: test
-        with:
-          name: @{ { github.event.repository.name } }-aTest
-          path: ${ANDROID_HOME}/build-tools/34.0.0/
+          path: |
+            build/libs/${{ github.event.repository.name }}.jar
+            ${ANDROID_HOME}/build-tools/34.0.0/
