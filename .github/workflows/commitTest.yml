@@ -24,5 +24,6 @@ jobs:
         with:
           name: ${{ github.event.repository.name }}
           path: |
-            build/libs/${{ github.event.repository.name }}.jar
-            ${ANDROID_HOME}/build-tools/34.0.0/
+            assets\*
+            build\classes\java\main\*
+            mod.json
