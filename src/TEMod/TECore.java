@@ -2,7 +2,6 @@ package TEMod;
 
 import TEMod.content.*;
 import TEMod.content.Kepler.*;
-
 import arc.Core;
 import arc.Events;
 import arc.math.Mathf;
@@ -51,7 +50,6 @@ public class TECore extends Mod {
 
         isComplete(TECore.class);
         TETechTree.load();
-        testNew.load();
     }
 
     public static void isComplete(Class<?> obj) {
