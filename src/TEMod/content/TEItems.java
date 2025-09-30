@@ -14,7 +14,12 @@ public class TEItems {
             zinc, sphularite, uranium, iron, rawIron,
             plasticAlloy, steel;
     /** 一堆自动生成的粉末 **/
-    public static Item copperPowder, leadPowder, titaniumPowder, thoriumPowder, zincPowder, ironPowder;
+    public static Item copperPowder = PowderGen(Items.copper),
+            leadPowder = PowderGen(Items.lead),
+            titaniumPowder = PowderGen(Items.titanium),
+            thoriumPowder = PowderGen(Items.thorium),
+            zincPowder = PowderGen(zinc),
+            ironPowder = PowderGen(iron);
     /** 协议与芯片 **/
     public static Item
             primaryWarAgreement, advancedWarAgreement, specialWarAgreement,
@@ -75,12 +80,6 @@ public class TEItems {
         sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{hardness = 3;}};
 
         zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 0.6f;}};
-
-        copperPowder = PowderGen(Items.copper);
-        leadPowder = PowderGen(Items.lead);
-        titaniumPowder = PowderGen(Items.titanium);
-        thoriumPowder = PowderGen(Items.thorium);
-        zincPowder = PowderGen(zinc);
 
         steel = new Item("steel", Color.valueOf("94949a")) {{
             cost = 0.9f;

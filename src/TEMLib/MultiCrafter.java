@@ -72,9 +72,8 @@ public class MultiCrafter extends GenericCrafter {
                         });
                     }
                 } catch (Exception ignored) {}
-
-                table.add();
-                table.table(Styles.grayPanel, t -> t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill().padTop(5).padBottom(5);
+                
+                table.table(Styles.grayPanel, t -> t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill();
 
                 try {
                     for (ItemStack it : recipe.outputItems) {
