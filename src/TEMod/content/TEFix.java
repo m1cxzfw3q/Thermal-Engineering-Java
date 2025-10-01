@@ -27,7 +27,7 @@ public class TEFix {
 
         UnitTypes.gamma.buildSpeed = 2;
         UnitTypes.gamma.speed = 4.66f;
-        UnitTypes.gamma.weapons.get(0).reload = 10;
+        UnitTypes.gamma.weapons.get(0).reload = 10;//
 
         //666石头科技
         ItemTurret duo = (ItemTurret) Blocks.duo;
