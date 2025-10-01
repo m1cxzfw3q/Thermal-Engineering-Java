@@ -4,11 +4,11 @@ import arc.graphics.Color;
 import mindustry.content.Blocks;
 import mindustry.content.Fx;
 import mindustry.content.Items;
+import mindustry.content.UnitTypes;
 import mindustry.entities.bullet.BasicBulletType;
 import mindustry.entities.bullet.FlakBulletType;
 import mindustry.type.Category;
 import mindustry.world.blocks.defense.turrets.ItemTurret;
-import mindustry.world.meta.Attribute;
 import mindustry.world.meta.BuildVisibility;
 
 import static mindustry.type.ItemStack.with;
@@ -17,10 +17,17 @@ public class TEFix {
     public static void load() {
         Items.graphite.hardness = 2;
 
-        //这里是给孢子墙壁粉碎机留的
-        Blocks.sporeWall.attributes.set(Attribute.spores, 1f);
-        Blocks.whiteTree.attributes.set(Attribute.spores, 1f);
-        Blocks.sporePine.attributes.set(Attribute.spores, 1f);
+        UnitTypes.alpha.buildSpeed = 1;
+        UnitTypes.alpha.speed = 4;
+        UnitTypes.alpha.weapons.get(0).reload = 10;
+
+        UnitTypes.beta.buildSpeed = 1.5f;
+        UnitTypes.beta.speed = 4.5f;
+        UnitTypes.beta.weapons.get(0).reload = 15;
+
+        UnitTypes.gamma.buildSpeed = 2;
+        UnitTypes.gamma.speed = 4.66f;
+        UnitTypes.gamma.weapons.get(0).reload = 10;
 
         //666石头科技
         ItemTurret duo = (ItemTurret) Blocks.duo;
