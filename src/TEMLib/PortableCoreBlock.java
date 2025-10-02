@@ -8,7 +8,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 import static mindustry.Vars.state;
 
 public class PortableCoreBlock extends CoreBlock {
-    public int coreCap;
+    public int coreCap = -1;
 
     public PortableCoreBlock(String name) {
         super(name);

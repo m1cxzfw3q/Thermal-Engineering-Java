@@ -1,7 +1,9 @@
 package TEMLib;
 
+import arc.util.Nullable;
+import mindustry.content.Blocks;
 import mindustry.game.Team;
-import mindustry.gen.Building;
+import mindustry.gen.Unit;
 import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.blocks.environment.Floor;
@@ -21,26 +23,21 @@ public class CoverBlock extends Block {
     @Override
     public boolean canPlaceOn(Tile tile, Team team, int rotation) {
         Tile floorTile = world.tile(tile.x, tile.y);
-        for (int i = 0; i < convertFloor.length; i++) {//别换增强for 不然秒炸
-            if (floorTile.floor() == convertFloor[i][0] && floorTile.floor() != null) {
+        for (Floor[] floors : convertFloor) {
+            if (floorTile.floor() == floors[0] && floorTile.floor() != null) {
                 return true;
             }
         }
         return false;
     }
 
-    public class CoverBlockBuild extends Building {
-        @Override
-        public void updateTile() {
-            super.updateTile();
-            Tile floorTile = world.tile(tile.x, tile.y);
-            for (int i = 0; i < convertFloor.length; i++) {//别换增强for 不然秒炸
-                if (floorTile.floor() == convertFloor[i][0] && floorTile.floor() != null) {
-                    floorTile.setFloor(convertFloor[i][1]);
-                    killed();
-                }
+    @Override
+    public void placeEnded(Tile tile, @Nullable Unit builder, int rotation, Object config) {
+        for (Floor[] floors : convertFloor) {
+            if (tile.floor() == floors[0] && tile.floor() != null) {
+                tile.setFloor(floors[1]);
             }
-            killed();//开创世神放的哥们，你最好有事
         }
+        tile.setBlock(Blocks.air);
     }
 }
