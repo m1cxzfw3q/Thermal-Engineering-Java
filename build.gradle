@@ -8,7 +8,7 @@ repositories{
     mavenCentral()
     maven{ url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
     maven{ url 'https://www.jitpack.io' }
-    maven{ url "https://raw.githubusercontent.com/m1cxzfw3q/MindustryAnnotations/main/repository" }
+    //maven{ url "https://raw.githubusercontent.com/m1cxzfw3q/MindustryAnnotations/main/repository" }
 }
 
 java{
@@ -38,7 +38,7 @@ dependencies{
     implementation 'org.jetbrains:annotations:15.0'
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
     compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-    compileOnly "com.github.MCxzfwq.MindustryAnnotations:annotations"
+    //compileOnly "com.github.MCxzfwq.MindustryAnnotations:annotations"
 
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }

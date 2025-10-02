@@ -38,6 +38,7 @@ public class TECore extends Mod {
 
     @Override
     public void loadContent() {
+        TEAttribute.load();
         TEItems.load();
         TEBlocks.load();
         KeplerPlanet.load();
