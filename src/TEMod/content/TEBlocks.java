@@ -1195,7 +1195,7 @@ public class TEBlocks {
             requirements(Category.defense, ItemStack.with(TEItems.stone, 3 * (size * size)));
         }};
 
-        stoneWallLarge = new Wall("stone-wall-large") {{
+        stoneWallLarge = new Wall("large-stone-wall") {{
             size = 2;
             health = (int) ((size * size) * stoneWallHealth);
             requirements(Category.defense, ItemStack.with(TEItems.stone, 3 * (size * size)));
