@@ -346,7 +346,7 @@ public class TEBlocks {
 
         chipManufacturingMachine = new MultiCrafter("chip-manufacturing-machine") {{
             requirements(Category.crafting, with(Items.copper, 700, Items.titanium, 700, Items.lead, 800, Items.graphite, 800, Items.silicon, 8000));
-            size = 3;
+            size = 2;
             health = 800;
             itemCapacity = 30;
             consumePower(5f);
@@ -369,7 +369,7 @@ public class TEBlocks {
                     Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1)
             );
 
-            size = 5;
+            size = 4;
             health = 1000;
             itemCapacity = 40;
             consumePower(6f);
