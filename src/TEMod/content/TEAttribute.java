@@ -3,9 +3,9 @@ package TEMod.content;
 import mindustry.world.meta.Attribute;
 
 public class TEAttribute {
-    public static Attribute sporeWall;
+    public static Attribute sporeWalls;
 
     public static void load() {
-        sporeWall = Attribute.add("spore-wall");
+        sporeWalls = Attribute.add("spore-walls");
     }
 }

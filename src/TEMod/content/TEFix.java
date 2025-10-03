@@ -29,6 +29,10 @@ public class TEFix {
         UnitTypes.gamma.speed = 4.66f;
         UnitTypes.gamma.weapons.get(0).reload = 10;
 
+        Blocks.sporeWall.attributes.set(TEAttribute.sporeWalls, 1);
+        Blocks.sporePine.attributes.set(TEAttribute.sporeWalls, 1);
+        Blocks.whiteTree.attributes.set(TEAttribute.sporeWalls, 1);
+
         //666石头科技
         ItemTurret duo = (ItemTurret) Blocks.duo;
         ItemTurret scatter = (ItemTurret) Blocks.scatter;

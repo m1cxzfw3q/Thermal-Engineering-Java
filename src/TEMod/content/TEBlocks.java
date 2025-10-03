@@ -79,6 +79,7 @@ public class TEBlocks {
     public static Block advancedWaterExtractor; //抽水机
     public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
     public static Block laserBore; //激光墙钻
+    public static Block sporeWallCliffCrusher; //孢子墙粉碎机
     public static Block pyratiteHeater; //硫热
     //墙
     public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
@@ -1068,6 +1069,18 @@ public class TEBlocks {
             fogRadius = 2;
             liquidBoostIntensity = 2.56f;
             requirements(Category.production, with(Items.copper, 50, Items.lead, 30, Items.graphite, 15));
+        }};
+
+        sporeWallCliffCrusher = new WallCrafter("spore-wall-cliff-crusher") {{
+            health = 120;
+            drillTime = 175f;
+            consumeLiquid(Liquids.water, 4f / 60f).boost();
+            attribute = TEAttribute.sporeWalls;
+            output = Items.sporePod;
+            ambientSound = Sounds.drill;
+            ambientSoundVolume = 0.04f;
+            fogRadius = 2;
+            requirements(Category.production, with(Items.copper, 75, Items.lead, 40, Items.graphite, 25));
         }};
 
         pyratiteHeater = new HeatProducer("pyratite-heater") {{
