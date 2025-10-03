@@ -1,6 +1,7 @@
 package TEMLib;
 
 import arc.Core;
+import arc.audio.Sound;
 import arc.math.Mathf;
 import arc.struct.ObjectMap;
 import mindustry.entities.Lightning;
@@ -26,6 +27,8 @@ public class MultiChargeTurret extends PowerTurret {
     public float overdriveChargeExplodeRadius, superOverdriveChargeExplodeRadius,
             overdriveChargeExplodeDamage, superOverdriveChargeExplodeDamage;
     public int superOverdriveChargeExplodeLightnings;//一坨
+
+    public @NotNull Sound shootSound = Sounds.shoot, overdriveShootSound = Sounds.shoot, notChargeSound = Sounds.none;
 
     public MultiChargeTurret(String name) {
         super(name);
@@ -97,6 +100,8 @@ public class MultiChargeTurret extends PowerTurret {
                     chargeProgress += (overdriveCharge.chargeUseTime / 60);
                 } else if (chargeTier == 2 + maxChargeTier) {
                     resetCharge();
+                    shoot(superOverdriveCharge.bullet);
+                    Call.soundAt(overdriveShootSound, x, y, 1, 1);
                     ArcExplosion(superOverdriveChargeExplodeRadius, superOverdriveChargeExplodeDamage, superOverdriveChargeExplodeLightnings);
                 } else chargeProgress += (tiers[nextChargeTier].chargeUseTime / 60);
             }
@@ -104,6 +109,13 @@ public class MultiChargeTurret extends PowerTurret {
             if (!isShooting() && chargeProgress != 0) {
                 if (chargeProgress >= 0.7f && chargeTier != 1) {
                     shoot(notCharge.bullet);
+                    Call.soundAt(notChargeSound, x, y, 1, 1);
+                } else if (chargeTier == 1 + maxChargeTier) {
+                    shoot(overdriveCharge.bullet);
+                    Call.soundAt(overdriveShootSound, x, y, 1, 1);
+                } else if (chargeTier > 0 && chargeTier <= maxChargeTier) {
+                    shoot(tiers[chargeTier].bullet);
+                    Call.soundAt(shootSound, x, y, 1, 1);
                 }
             }
         }
