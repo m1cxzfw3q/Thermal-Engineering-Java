@@ -733,6 +733,8 @@ public class TEBlocks {
                     )
             );
 
+            drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt(), new DrawDefault());
+
             consumePower(450f / 60f);
             itemCapacity = 40;
             requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400, Items.surgeAlloy, 40));
@@ -781,10 +783,10 @@ public class TEBlocks {
             hasPower = hasItems = true;
             consumePower(1f);
 
-            drawer = new DrawMulti(
-                    new DrawDefault(), new DrawRegion("-rotator", 2f, true),
-                    new DrawRegion("-top")
-            );
+            drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
+                spinSprite = true;
+                rotateSpeed = 2f;
+            }}, new DrawRegion("-top"));
 
             craftEffect = Fx.pulverize;
             updateEffect = Fx.pulverizeSmall;
