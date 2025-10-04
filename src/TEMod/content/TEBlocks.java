@@ -73,6 +73,7 @@ public class TEBlocks {
     //载荷
     public static Block payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic; //载荷传送带
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
+    public static Block payloadLauncher, payloadLauncherLarge, payloadLauncherHuge; //载荷发射器
     //护盾
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
     //钻机

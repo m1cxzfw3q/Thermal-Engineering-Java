@@ -36,11 +36,7 @@ public class TEFix {
         Blocks.oxidationChamber.canOverdrive = true;
 
         //666石头科技
-        ItemTurret duo = (ItemTurret) Blocks.duo;
-        ItemTurret scatter = (ItemTurret) Blocks.scatter;
-        ItemTurret salvo = (ItemTurret) Blocks.salvo;
-        ItemTurret spectre = (ItemTurret) Blocks.spectre;
-        duo.ammoTypes.put(
+        ((ItemTurret) Blocks.duo).ammoTypes.put(
                 TEItems.stone, new BasicBulletType(2.6f, 15) {{
                     width = 7f;
                     height = 9f;
@@ -52,7 +48,7 @@ public class TEFix {
                     frontColor = Color.valueOf("94949a");
                 }}
         );
-        scatter.ammoTypes.put(
+        ((ItemTurret) Blocks.scatter).ammoTypes.put(
                 TEItems.stone, new FlakBulletType(4f, 5) {{
                     width = 6f;
                     height = 8f;
@@ -77,7 +73,7 @@ public class TEFix {
                     }};
                 }}
         );
-        salvo.ammoTypes.put(
+        ((ItemTurret) Blocks.salvo).ammoTypes.put(
                 TEItems.stone, new BasicBulletType(3f, 15) {{
                     width = 7f;
                     height = 9f;
@@ -89,7 +85,7 @@ public class TEFix {
                     frontColor = Color.valueOf("94949a");
                 }}
         );
-        spectre.ammoTypes.put(
+        ((ItemTurret) Blocks.spectre).ammoTypes.put(
                 TEItems.stone, new BasicBulletType(7.5f, 30){{
                     hitSize = 4.8f;
                     width = 15f;
