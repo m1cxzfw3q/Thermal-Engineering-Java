@@ -33,6 +33,8 @@ public class TEFix {
         Blocks.sporePine.attributes.set(TEAttribute.sporeWalls, 1);
         Blocks.whiteTree.attributes.set(TEAttribute.sporeWalls, 1);
 
+        Blocks.oxidationChamber.canOverdrive = true;
+
         //666石头科技
         ItemTurret duo = (ItemTurret) Blocks.duo;
         ItemTurret scatter = (ItemTurret) Blocks.scatter;
