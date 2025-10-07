@@ -16,11 +16,6 @@ import static mindustry.content.UnitTypes.*;
 
 public class TEV8 {
     public static void load() {
-        Item[] serpuloItems = {
-                scrap, copper, lead, graphite, coal, titanium, thorium, silicon, plastanium,
-                phaseFabric, surgeAlloy, sporePod, Items.sand, blastCompound, pyratite, metaglass
-        };
-
         UnitType[] serpuloUnits = {
                 //ground units
                 dagger, mace, fortress, scepter, reign,
@@ -48,10 +43,9 @@ public class TEV8 {
             it.shownPlanets.addAll(kepler, erekir);
         }
 
-        beryllium.shownPlanets.addAll(kepler, serpulo);
-        tungsten.shownPlanets.addAll(kepler, serpulo);
-        oxide.shownPlanets.addAll(kepler, serpulo);
-        carbide.shownPlanets.addAll(kepler, serpulo);
+        for (Item it : erekirItems) {
+            it.shownPlanets.addAll(kepler, serpulo);
+        }
 
         for (UnitType it : serpuloUnits) {
             it.shownPlanets.addAll(kepler, erekir);

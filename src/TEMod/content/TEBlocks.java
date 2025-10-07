@@ -1015,9 +1015,9 @@ public class TEBlocks {
 //            arrowTimeScl = 2.75f;
 //            hasPower = true;
 //            pulse = true;
-//            transportTime = 0.001f;
+//            transportTime = 0.2f;
 //            consumePower(0.9f);
-//            itemCapacity = 30;
+//            itemCapacity = 40;
 //        }};      TODO Light Bridge
 
         liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
