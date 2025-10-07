@@ -10,6 +10,7 @@ import mindustry.game.Team;
 import mindustry.gen.Call;
 import mindustry.gen.Sounds;
 import mindustry.graphics.Pal;
+import mindustry.ui.Bar;
 import mindustry.world.blocks.defense.turrets.PowerTurret;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatValues;
@@ -59,17 +60,16 @@ public class MultiChargeTurret extends PowerTurret {
 
     @Override
     public void setBars() {
-        /*
-        addBar("", (MultiChargeTurretBuild entity) ->
+        super.setBars();
+
+        addBar("", (MultiChargeTurretBuild entity) -> //屎
                 new Bar(
-                        entity.chargeTier < 1 ? Core.bundle.format("misc.multicharge.notCharge-0") :
+                        () -> entity.chargeTier < 1 ? Core.bundle.format("misc.multicharge.notCharge-0") :
                                 entity.chargeTier >= 1 + maxChargeTier ? Core.bundle.format("misc.multicharge.overdrive-charge") :
-                                        entity.chargeTier >= 1 ? (Core.bundle.format("misc.multicharge.tier") + entity.chargeTier),
-                        entity.chargeTier >= 1 + maxChargeTier ? Pal.health : Pal.ammo,
-                        () -> entity.chargeProgress - entity.chargeTier
-                )
+                                        entity.chargeTier >= 1 ? (Core.bundle.format("misc.multicharge.tier") + entity.chargeTier) : "ERR:NOT_FOUND",
+                        () -> entity.chargeTier >= 1 + maxChargeTier ? Pal.health : Pal.ammo,
+                        () -> entity.chargeProgress - entity.chargeTier)
         );
-         *///TODO Bar
     }
 
     public class MultiChargeTurretBuild extends PowerTurretBuild {
