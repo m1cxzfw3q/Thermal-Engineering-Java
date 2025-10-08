@@ -15,9 +15,9 @@ public class TECore extends Mod {
     public TECore() {
         Events.on(EventType.ClientLoadEvent.class, e -> {
             Vars.ui.settings.addCategory("@temod.settingTable", Icon.box, T -> {
-                T.checkPref("temod.settingTable.tips?", true);
+                T.checkPref("temod.settingTable.tips", true);
             });
-            if (Core.settings.getBool("temod.settingTable.tips?")) {
+            if (Core.settings.getBool("temod.settingTable.tips")) {
                 String aTipStr = Core.bundle.format("misc.tips") + "\n" + Core.bundle.format("misc.tips-" + (Mathf.random(9) + 1));
                 Vars.ui.content.add(aTipStr).left();
                 Vars.ui.settings.add(aTipStr).left();
@@ -44,8 +44,8 @@ public class TECore extends Mod {
         KeplerPlanet.load();
         KeplerSectorPresets.load();
         TEStatusEffects.load();
-        //TEUnitTypes.load();
         //TEModularWeapons.load();  //毁灭吧 赶紧的
+        //TEUnitTypes.load();
 
         isComplete(TECore.class);
         TETechTree.load();
