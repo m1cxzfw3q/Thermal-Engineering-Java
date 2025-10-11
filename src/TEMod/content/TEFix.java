@@ -59,6 +59,7 @@ public class TEFix {
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
+                    collidesGround = true;
 
                     fragBullets = 6;
                     fragBullet = new BasicBulletType(3f, 5) {{
@@ -69,7 +70,6 @@ public class TEFix {
                         backColor = trailColor = Color.valueOf("94949a");
                         hitColor = frontColor = Color.valueOf("94949a");
                         despawnEffect = Fx.none;
-                        collidesGround = false;
                     }};
                 }}
         );

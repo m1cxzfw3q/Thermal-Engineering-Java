@@ -534,7 +534,7 @@ public class TEBlocks {
                         shootOnDeath = true;
                         shake = 10f;
                         range = 16f;
-                        bullet = new ExplosionBulletType(45628f, 300f) {{
+                        bullet = new ExplosionBulletType(7029f, 300f) {{
                             hitColor = Pal.redLight;
                             pierceArmor = true;
                             shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
@@ -657,17 +657,9 @@ public class TEBlocks {
             size = 1;
 
             MultiCharge(
-                    new LightningBulletType() {{
-                        lightningLength = 16;
-                        damage = 20;
-                    }}, new BulletType() {{
-
-                    }}, new BulletType() {{
-
-                    }},
-                    new BulletType[]{
-
-                    }
+                    new ChargeTier(, new LightningBulletType() {{
+                                lightningLength = 16;
+                    }})
             );
 
             requirements(Category.turret, with(Items.copper, 500, Items.lead, 650, Items.titanium, 350, Items.silicon, 200));
@@ -1127,7 +1119,7 @@ public class TEBlocks {
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));
             consumePower(1.1f);
 
-            drillTime = 70;
+            drillTime = 100;
             tier = 4;
             size = 2;
             range = 2;
@@ -1230,7 +1222,7 @@ public class TEBlocks {
             health = 100;
             requirements(Category.production, with(TEItems.stone, 15, Items.copper, 2));
             tier = 2;
-            drillTime = 250;
+            drillTime = 500;
             consumeLiquid(Liquids.water, 3f / 60f).boost();
         }};
 
