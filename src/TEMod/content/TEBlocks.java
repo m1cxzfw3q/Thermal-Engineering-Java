@@ -914,20 +914,19 @@ public class TEBlocks {
         }};
 
         payloadRouterLarge = new PayloadRouter("large-payload-router") {{
-            requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
+            requirements(Category.units, payloadConveyorLarge.requirements);
             canOverdrive = false;
             size = (int) (payloadLimit = payloadConveyorLarge.size);
         }};
 
         payloadRouterHuge = new PayloadRouter("huge-payload-router") {{
-            requirements(Category.units, with(Items.graphite, 200, Items.copper, 200, Items.silicon, 70));
+            requirements(Category.units, payloadConveyorHuge.requirements);
             size = (int) (payloadLimit = payloadConveyorHuge.size);
             canOverdrive = false;
         }};
 
         payloadRouterGigantic = new PayloadRouter("gigantic-payload-router") {{
-            requirements(Category.units,
-                    with(Items.graphite, 500, Items.copper, 500, Items.silicon, 250, Items.titanium, 150));
+            requirements(Category.units, payloadConveyorGigantic.requirements);
             size = (int) (payloadLimit = payloadConveyorGigantic.size);
             canOverdrive = false;
         }};
@@ -999,18 +998,19 @@ public class TEBlocks {
             consumePower(8f);
         }};
 
-//        itemQuantumTransmissionLightBridge = new ItemBridge("item-quantum-transmission-light-bridge") {{
-//            requirements(Category.distribution,
-//                    with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
-//            range = 60;
-//            arrowPeriod = 0.9f;
-//            arrowTimeScl = 2.75f;
-//            hasPower = true;
-//            pulse = true;
-//            transportTime = 0.2f;
-//            consumePower(0.9f);
-//            itemCapacity = 40;
-//        }};      TODO Light Bridge
+        itemQuantumTransmissionLightBridge = new LightItemBridge("item-quantum-transmission-light-bridge") {{
+            requirements(Category.distribution,
+                    with(Items.phaseFabric, 30, Items.silicon, 50, Items.lead, 200, Items.graphite, 100));
+            range = 60;
+            arrowPeriod = 0.9f;
+            arrowTimeScl = 2.75f;
+            hasPower = true;
+            pulse = true;
+            transportTime = 0.2f;
+            consumePower(0.9f);
+            itemCapacity = 40;
+            TimeScale = 0.2f;
+        }};
 
         liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
             requirements(Category.liquid,
@@ -1152,7 +1152,7 @@ public class TEBlocks {
         }};
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
-            requirements(Category.distribution, with(TEItems.plasticAlloy, 5, TEItems.steel, 5, Items.titanium, 5, Items.surgeAlloy, 5));
+            requirements(Category.distribution, ItemStack.mult(plasticAlloyConveyor.requirements, 5));
             speed = 75f / 600f;
             health = 300;
             itemCapacity = 20;
@@ -1171,17 +1171,11 @@ public class TEBlocks {
         }};
 
         //基础方块(TEMod)
-        liquidCoverOil = new Floor("liquid-cover-oil"){{
-            attributes.set(Attribute.oil, 8f);
-        }};
-
-        liquidCoverWater = new Floor("liquid-cover-water"){{
-            attributes.set(Attribute.water, 8f);
-        }};
-
-        liquidCoverSlag = new Floor("liquid-cover-slag");
-        liquidCoverArkycite = new Floor("liquid-cover-arkycite");
-        liquidCoverCryo = new Floor("liquid-cover-cryo");
+        liquidCoverOil = new CoverLiquidRequireFloor("liquid-cover-oil", Liquids.oil);
+        liquidCoverWater = new CoverLiquidRequireFloor("liquid-cover-water", Liquids.water);
+        liquidCoverSlag = new CoverLiquidRequireFloor("liquid-cover-slag", Liquids.slag);
+        liquidCoverArkycite = new CoverLiquidRequireFloor("liquid-cover-arkycite", Liquids.arkycite);
+        liquidCoverCryo = new CoverLiquidRequireFloor("liquid-cover-cryo", Liquids.cryofluid);
 
         liquidCover = new CoverBlock("liquid-cover") {{
             requirements(Category.effect, with(Items.titanium, 50, Items.silicon, 30, Items.metaglass, 40));
@@ -1199,14 +1193,14 @@ public class TEBlocks {
         float stoneWallHealth = 200;
 
         stoneWall = new Wall("stone-wall") {{
-            health = (int) ((size * size) * stoneWallHealth);
-            requirements(Category.defense, ItemStack.with(TEItems.stone, 3 * (size * size)));
+            health = (int) (Math.pow(size, 2) * stoneWallHealth);
+            requirements(Category.defense, sizeWith(with(TEItems.stone, 3), this));
         }};
 
         stoneWallLarge = new Wall("large-stone-wall") {{
             size = 2;
-            health = (int) ((size * size) * stoneWallHealth);
-            requirements(Category.defense, ItemStack.with(TEItems.stone, 3 * (size * size)));
+            health = (int) (Math.pow(size, 2) * stoneWallHealth);
+            requirements(Category.defense, sizeWith(with(TEItems.stone, 3), this));
         }};
 
         stoneConveyor = new Conveyor("stone-conveyor"){{
@@ -1228,5 +1222,9 @@ public class TEBlocks {
 
 
         isComplete(TEBlocks.class);
+    }
+
+    public static ItemStack[] sizeWith(ItemStack[] stacks, Block source) {
+        return ItemStack.mult(stacks, (float) Math.pow(source.size, 2));
     }
 }

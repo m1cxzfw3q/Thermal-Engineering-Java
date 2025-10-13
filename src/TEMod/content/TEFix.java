@@ -36,7 +36,7 @@ public class TEFix {
         Blocks.oxidationChamber.canOverdrive = true;
 
         //666石头科技
-        ((ItemTurret) Blocks.duo).ammoTypes.put(
+        ((ItemTurret) Blocks.duo).ammoTypes.putAll(
                 TEItems.stone, new BasicBulletType(2.6f, 15) {{
                     width = 7f;
                     height = 9f;
@@ -44,8 +44,18 @@ public class TEFix {
                     reloadMultiplier = 0.7f;
 
                     hitEffect = despawnEffect = Fx.hitBulletColor;
-                    hitColor = backColor = trailColor = Color.valueOf("94949a");
-                    frontColor = Color.valueOf("94949a");
+                    hitColor = backColor = trailColor = frontColor = TEItems.stone.color;
+                }},
+                TEItems.iron, new BasicBulletType(3.1f, 22) {{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 60f;
+                    reloadMultiplier = 1.1f;
+                    pierceCap = 1;
+                    rangeChange = 16f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = frontColor = TEItems.iron.color;
                 }}
         );
         ((ItemTurret) Blocks.scatter).ammoTypes.put(
@@ -73,7 +83,7 @@ public class TEFix {
                     }};
                 }}
         );
-        ((ItemTurret) Blocks.salvo).ammoTypes.put(
+        ((ItemTurret) Blocks.salvo).ammoTypes.putAll(
                 TEItems.stone, new BasicBulletType(3f, 15) {{
                     width = 7f;
                     height = 9f;
@@ -83,6 +93,17 @@ public class TEFix {
                     hitEffect = despawnEffect = Fx.hitBulletColor;
                     hitColor = backColor = trailColor = Color.valueOf("94949a");
                     frontColor = Color.valueOf("94949a");
+                }},
+                TEItems.iron, new BasicBulletType(3.2f, 22) {{
+                    width = 7f;
+                    height = 9f;
+                    lifetime = 60f;
+                    reloadMultiplier = 1.1f;
+                    pierceCap = 1;
+                    rangeChange = 10f;
+
+                    hitEffect = despawnEffect = Fx.hitBulletColor;
+                    hitColor = backColor = trailColor = frontColor = TEItems.iron.color;
                 }}
         );
         ((ItemTurret) Blocks.spectre).ammoTypes.put(
@@ -108,44 +129,25 @@ public class TEFix {
                 }}
         );
 
-        Blocks.stone.itemDrop = TEItems.stone;
-        Blocks.dacite.itemDrop = TEItems.stone;
-        Blocks.basalt.itemDrop = TEItems.stone;
-        Blocks.charr.itemDrop = TEItems.stone;
-        Blocks.craters.itemDrop = TEItems.stone;
+        Blocks.stone.itemDrop = Blocks.craters.itemDrop = Blocks.charr.itemDrop =
+                Blocks.dacite.itemDrop = Blocks.basalt.itemDrop = TEItems.stone;
 
-        Blocks.stone.playerUnmineable = true;
-        Blocks.dacite.playerUnmineable = true;
-        Blocks.basalt.playerUnmineable = true;
-        Blocks.charr.playerUnmineable = true;
-        Blocks.craters.playerUnmineable = true;
+        Blocks.stone.playerUnmineable = Blocks.dacite.playerUnmineable = Blocks.craters.playerUnmineable =
+                Blocks.basalt.playerUnmineable = Blocks.charr.playerUnmineable = true;
 
-        Blocks.boulder.instantDeconstruct = false;
-        Blocks.boulder.buildTime = 0f;
+        Blocks.boulder.instantDeconstruct = Blocks.snowBoulder.instantDeconstruct = Blocks.sandBoulder.instantDeconstruct =
+                Blocks.daciteBoulder.instantDeconstruct = Blocks.basaltBoulder.instantDeconstruct =
+                        Blocks.ferricBoulder.instantDeconstruct = Blocks.shaleBoulder.instantDeconstruct = false;
+
+        Blocks.boulder.buildTime = Blocks.snowBoulder.buildTime = Blocks.sandBoulder.buildTime = Blocks.daciteBoulder.buildTime =
+                Blocks.basaltBoulder.buildTime = Blocks.ferricBoulder.buildTime = Blocks.shaleBoulder.buildTime = 0f;
+
         Blocks.boulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
-
-        Blocks.snowBoulder.instantDeconstruct = false;
-        Blocks.snowBoulder.buildTime = 0f;
         Blocks.snowBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
-
-        Blocks.sandBoulder.instantDeconstruct = false;
-        Blocks.sandBoulder.buildTime = 0f;
         Blocks.sandBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 1, Items.sand ,1));
-
-        Blocks.daciteBoulder.instantDeconstruct = false;
-        Blocks.daciteBoulder.buildTime = 0f;
         Blocks.daciteBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
-
-        Blocks.basaltBoulder.instantDeconstruct = false;
-        Blocks.basaltBoulder.buildTime = 0f;
         Blocks.basaltBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
-
-        Blocks.ferricBoulder.instantDeconstruct = false;
-        Blocks.ferricBoulder.buildTime = 0f;
         Blocks.ferricBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
-
-        Blocks.shaleBoulder.instantDeconstruct = false;
-        Blocks.shaleBoulder.buildTime = 0f;
         Blocks.shaleBoulder.requirements(Category.distribution, BuildVisibility.hidden, with(TEItems.stone, 2));
     }
 }
