@@ -52,14 +52,14 @@ public class MultiCrafter extends GenericCrafter {
         stats.remove(Stat.productionTime);
         stats.add(Stat.productionTime, uniCraftTime / 60f, StatUnit.seconds);
 
-        stats.add(Stat.output, table -> {
+        stats.add(Stat.output, table -> {//GUIDE
             table.row();
             for (Recipe recipe : recipes) {
                 try {
                     for (ItemStack it : recipe.inputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
+                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true)).pad(5f);
                         });
                     }
                 } catch (Exception ignored) {}
@@ -68,7 +68,7 @@ public class MultiCrafter extends GenericCrafter {
                     for (LiquidStack it : recipe.inputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
+                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true)).pad(5f);
                         });
                     }
                 } catch (Exception ignored) {}
@@ -79,7 +79,7 @@ public class MultiCrafter extends GenericCrafter {
                     for (ItemStack it : recipe.outputItems) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true));
+                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true)).pad(5f);
                         });
                     }
                 } catch (Exception ignored) {}
@@ -88,7 +88,7 @@ public class MultiCrafter extends GenericCrafter {
                     for (LiquidStack it : recipe.outputLiquids) {
                         table.table(Styles.grayPanel, t -> {
                             t.left();
-                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true));
+                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true)).pad(5f);
                         });
                     }
                 } catch (Exception ignored) {}

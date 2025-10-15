@@ -45,44 +45,43 @@ public class TEBlocks {
     public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
-    //特殊
-    public static Block surpluoIcon, erekirIcon, keplerIcon; //星球图标
+
+    public static AirBlock surpluoIcon, erekirIcon, keplerIcon; //星球图标
     public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
     public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
-    //电力
+
     public static Block nuclearReactor; //核反应堆
     public static Block advancedPowerNode; //高级电力节点
-    //物流
+
     public static Block simpleStorage; //简易储存器
     public static Block highSpeedUnloader; //高速装卸器
     public static Block itemQuantumTransmissionLightBridge, liquidQuantumTransmissionLightBridge; //量子传输光桥
-    //核心
-    public static Block coreExplore; //探索核心
-    //炮台
+
+    public static Block coreExplore; //核心
+
     public static Block machineCannon; //机炮
     public static Block prism; //棱镜 //重名了
-    //发射台
+
     public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
     public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
-    //逻辑
+
     public static Block terminalProcessor; //终端处理器
     public static Block hugeLogicDisplay; //巨型逻辑显示屏
     public static Block memoryBankLarge; //大型内存库
-    //单位
+
     public static Block IllustratedReconstructor; //虚数级单位重构厂 //鸽
-    //载荷
+
     public static Block payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic; //载荷传送带
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
     public static Block payloadLauncher, payloadLauncherLarge, payloadLauncherHuge; //载荷发射器
-    //护盾
+
     public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
-    //钻机
-    public static Block advancedWaterExtractor; //抽水机
-    public static Block mechanicalCliffCrusher, pneumaticCliffCrusher; //小墙钻
-    public static Block laserBore; //激光墙钻
+
+    public static Block advancedWaterExtractor; //fw抽水机
+    public static Block mechanicalCliffCrusher, pneumaticCliffCrusher, laserBore; //墙钻
     public static Block sporeWallCliffCrusher; //孢子墙粉碎机
-    public static Block pyratiteHeater; //硫热
-    //墙
+    public static Block pyratiteHeater; //S热机
+
     public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
     public static Block plasticAlloyConveyor, plasticAlloyPacketConveyor;//塑制合金带
 
@@ -146,7 +145,7 @@ public class TEBlocks {
                     height = 1.0F;
                     pierceCap = 2;
                 }};
-            }}, Items.surgeAlloy, new BasicBulletType(8.0F, 200.0F) {{
+            }}, Items.surgeAlloy, new BasicBulletType(8.0F, 150.0F) {{
                 pierceCap = 1;
                 pierceArmor = true;
                 reloadMultiplier = 0.25F;
@@ -167,7 +166,7 @@ public class TEBlocks {
                 fragSpread = 45F;
                 fragVelocityMin = 0.5F;
                 fragVelocityMax = 1F;
-                fragBullet = new BasicBulletType(2F, 65.0F) {{
+                fragBullet = new BasicBulletType(2F, 40.0F) {{
                     pierce = true;
                     width = 2.0F;
                     height = 2.0F;
@@ -884,15 +883,15 @@ public class TEBlocks {
 //            constructTime = 60f * 60f * 12.5f;
 //
 //            upgrades.addAll(
-//                    new UnitType[]{UnitTypes.eclipse, UnitTypes.pulsar},
-//                    new UnitType[]{UnitTypes.toxopid, UnitTypes.toxopid},
-//                    new UnitType[]{UnitTypes.reign, UnitTypes.reign},
-//                    new UnitType[]{UnitTypes.omura, UnitTypes.omura},
-//                    new UnitType[]{UnitTypes.oct, UnitTypes.oct},
-//                    new UnitType[]{UnitTypes.corvus, UnitTypes.risso},
-//                    new UnitType[]{UnitTypes.navanax, UnitTypes.retusa}
+//                    new UnitType[]{UnitTypes.eclipse, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.toxopid, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.reign, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.omura, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.oct, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.corvus, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.navanax, TEUnitTypes}
 //            );
-//        }};      TODO T6Unit
+//        }};      TODO T6Unit 赶进度中，别急
 
         payloadConveyorLarge = new PayloadConveyor("large-payload-conveyor") {{
             requirements(Category.units, with(Items.graphite, 50, Items.copper, 100, Items.silicon, 25));
@@ -1159,19 +1158,21 @@ public class TEBlocks {
             absorbLasers = true;
         }};
 
+
+
         //基础方块(E)
 
         reinforcedPowerNode = new PowerNode("reinforced-power-node") {{
-            requirements(Category.power, with(Items.beryllium, 10, Items.tungsten, 6, Items.graphite, 8));
-            maxNodes = 8;
-            laserRange = 12;
-            health = 160;
+            requirements(Category.power, with(Items.beryllium, 8, Items.tungsten, 4, Items.graphite, 6));
+            maxNodes = 5;
+            laserRange = 8;
+            health = 200;
             laserColor2 = Color.valueOf("cbfd81");
             laserScale = 0.4f;
         }};
 
         //基础方块(TEMod)
-        liquidCoverOil = new CoverLiquidRequireFloor("liquid-cover-oil", Liquids.oil);
+        liquidCoverOil = new CoverLiquidRequireFloor("liquid-cover-oil", Liquids.oil);//GUIDE
         liquidCoverWater = new CoverLiquidRequireFloor("liquid-cover-water", Liquids.water);
         liquidCoverSlag = new CoverLiquidRequireFloor("liquid-cover-slag", Liquids.slag);
         liquidCoverArkycite = new CoverLiquidRequireFloor("liquid-cover-arkycite", Liquids.arkycite);
