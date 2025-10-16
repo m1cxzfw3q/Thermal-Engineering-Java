@@ -26,6 +26,7 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
+import static TEMLib.lib.*;
 import static TEMod.TECore.isComplete;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
@@ -1186,9 +1187,5 @@ public class TEBlocks {
 
 
         isComplete(TEBlocks.class);
-    }
-
-    public static ItemStack[] sizeWith(ItemStack[] stacks, Block source) {
-        return ItemStack.mult(stacks, (float) Math.pow(source.size, 2));
     }
 }
