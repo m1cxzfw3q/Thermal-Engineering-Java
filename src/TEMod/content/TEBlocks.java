@@ -69,7 +69,7 @@ public class TEBlocks {
     public static Block hugeLogicDisplay; //巨型逻辑显示屏
     public static Block memoryBankLarge; //大型内存库
 
-    public static Block IllustratedReconstructor; //虚数级单位重构厂 //鸽
+    public static Block IllustratedReconstructor; //虚数级单位重构厂 //T6鸽
 
     public static Block payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic; //载荷传送带
     public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
@@ -95,7 +95,7 @@ public class TEBlocks {
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
-            //Json版本早没了，如果你真的想玩，那你可以去这个项目的Github仓库上找找
+            //Json版本早没了
             requirements(Category.turret,
                     with(Items.copper, 200, Items.lead, 160, Items.graphite, 80)
             );
@@ -415,12 +415,12 @@ public class TEBlocks {
 
             rotateSpeed = 0F;
             range = 145f * 8;
-            reload = 65f;
-            liquidCapacity = 50f;
+            reload = 90f;
+            liquidCapacity = 60f;
             coolantMultiplier = 2f;
-            coolant = consume(consumeLiquid(Liquids.water, 13f / 60f));
-            maxAmmo = 320;
-            ammoPerShot = 40;
+            coolant = consume(consumeLiquid(Liquids.water, 20f / 60f));
+            maxAmmo = 80;
+            ammoPerShot = 20;
             consumePower(6f);
             shootCone = 360;
             minWarmup = 0.8f;
@@ -446,7 +446,6 @@ public class TEBlocks {
             shootY = 0;
 
             ammo(Items.pyratite, new BasicBulletType(0f, 1f) {{
-                ammoMultiplier = 4f;
                 spawnUnit = new MissileUnitType("missile-launcher-missile-pyratite") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
@@ -465,7 +464,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        bullet = new ExplosionBulletType(874f, 96f) {{
+                        bullet = new ExplosionBulletType(659f, 86f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
                                 lifetime = 6f;
@@ -479,7 +478,6 @@ public class TEBlocks {
                     }});
                 }};
             }}, Items.blastCompound, new BasicBulletType(0f, 1f) {{
-                ammoMultiplier = 4f;
                 spawnUnit = new MissileUnitType("missile-launcher-missile-blast-compound") {{
                     speed = 8f;
                     lifetime = 4f * 60f;
@@ -498,7 +496,7 @@ public class TEBlocks {
                         deathExplosionEffect = Fx.massiveExplosion;
                         shootOnDeath = true;
                         shake = 10f;
-                        bullet = new ExplosionBulletType(1279f, 126f) {{
+                        bullet = new ExplosionBulletType(1020f, 102f) {{
                             hitColor = Pal.redLight;
                             shootEffect = new MultiEffect(Fx.massiveExplosion, new WaveEffect(){{
                                 lifetime = 6f;
@@ -506,41 +504,6 @@ public class TEBlocks {
                                 sizeTo = 168f;
                             }});
                             buildingDamageMultiplier = 0.8f;
-                            ammoMultiplier = 1f;
-                        }};
-                    }});
-                }};
-            }}, TEItems.nuclearFuelRod, new BasicBulletType(0f, 1f) {{
-                ammoMultiplier = 1f;
-                reloadMultiplier = 0.01f;
-                spawnUnit = new MissileUnitType("missile-launcher-missile-nuclear-fuel-rod") {{
-                    speed = 8f;
-                    lifetime = 4f * 60f;
-                    trailLength = 11;
-                    homingPower = 0.1f;
-                    homingDelay = 80f;
-                    missileAccelTime = 120f;
-                    health = 400f;
-                    rotateSpeed = 15f;
-                    deathSound = Sounds.explosionbig;
-                    range = 16f;
-                    weapons.add(new Weapon() {{
-                        shootCone = 360f;
-                        mirror = false;
-                        reload = 1f;
-                        x = y = 0;
-                        deathExplosionEffect = Fx.reactorExplosion;
-                        shootOnDeath = true;
-                        shake = 10f;
-                        range = 16f;
-                        bullet = new ExplosionBulletType(7029f, 300f) {{
-                            hitColor = Pal.redLight;
-                            pierceArmor = true;
-                            shootEffect = new MultiEffect(Fx.reactorExplosion, new WaveEffect() {{
-                                lifetime = 6f;
-                                strokeFrom = 4f;
-                                sizeTo = 267f;
-                            }});
                             ammoMultiplier = 1f;
                         }};
                     }});
@@ -554,9 +517,9 @@ public class TEBlocks {
             liquidCapacity = 30;
             itemCapacity = 20;
             hasItems = hasLiquids = outputsPower = true;
-            powerProduction = 230f;
+            powerProduction = 13800f / 60f;
             itemDuration = 30f;
-            lightColor = Color.valueOf("ffffff");
+            lightColor = TEItems.nuclearFuelRod.color;
             explosionShake = 9;
             explosionShakeDuration = 120;
             explosionRadius = 80;
@@ -577,18 +540,18 @@ public class TEBlocks {
         }};
 
         simpleStorage = new StorageBlock("simple-storage") {{
-            requirements(Category.effect, with(Items.copper, 200, Items.lead, 260, Items.graphite, 80));
+            requirements(Category.effect, with(Items.copper, 180, Items.lead, 220, Items.graphite, 40));
             size = 2;
-            itemCapacity = 100;
+            itemCapacity = 120;
             coreMerge = false;
-            health = 100;
+            health = 120;
         }};
 
         highSpeedUnloader = new Unloader("high-speed-unloader") {{
             speed = 0.75f;
             group = BlockGroup.transportation;
             requirements(Category.effect,
-                    with(Items.thorium, 20, Items.silicon, 45, Items.titanium, 50, Items.plastanium, 30)
+                    with(Items.thorium, 15, Items.silicon, 20, Items.titanium, 26, Items.plastanium, 20)
             );
             health = 60;
         }};
@@ -622,7 +585,7 @@ public class TEBlocks {
             size = 3;
             unitType = UnitTypes.alpha;
             requirements(Category.effect,
-                    with(Items.copper, 1000, Items.lead, 1200, Items.graphite, 500, Items.silicon, 400));
+                    with(Items.copper, 1000, Items.lead, 1000, Items.graphite, 400, Items.silicon, 200));
         }};
 
         unitStorageVault = new StorageBlock("unit-storage-vault") {{
@@ -631,7 +594,7 @@ public class TEBlocks {
             size = 5;
             armor = 25;
             itemCapacity = 0;
-            requirements(Category.effect, with(Items.silicon, 8000, Items.thorium, 4000, Items.surgeAlloy, 2000, Items.graphite, 6000,
+            requirements(Category.effect, with(Items.silicon, 4000, Items.thorium, 4000, Items.surgeAlloy, 2000, Items.graphite, 6000,
                     TEItems.advancedChip, 40, Items.titanium, 5000, Items.metaglass, 6000, Items.lead, 8000)
             );
             buildCostMultiplier = 0.8f;
@@ -643,7 +606,7 @@ public class TEBlocks {
             itemCapacity = 0;
             size = 9;
             armor = 80;
-            requirements(Category.effect, with(Items.silicon, 80000, Items.thorium, 40000, Items.surgeAlloy, 20000, Items.graphite, 60000,
+            requirements(Category.effect, with(Items.silicon, 30000, Items.thorium, 40000, Items.surgeAlloy, 20000, Items.graphite, 60000,
                     TEItems.advancedChip, 300, TEItems.specialChip, 70, Items.titanium, 50000, Items.metaglass, 60000, Items.lead, 80000,
                     Items.phaseFabric, 100000)
             );
@@ -699,7 +662,7 @@ public class TEBlocks {
 
             drawer = new DrawMulti(new DrawDefault(), new DrawFlame(Color.valueOf("ffc099")));
 
-            requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 900, Items.titanium, 500));
+            requirements(Category.crafting, with(Items.copper, 500, Items.lead, 700, Items.silicon, 700, Items.titanium, 500));
         }};
 
         arcFurnace = new MultiCrafter("arc-furnace") {{
@@ -729,7 +692,7 @@ public class TEBlocks {
 
             consumePower(450f / 60f);
             itemCapacity = 40;
-            requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 800, Items.titanium, 300, Items.lead, 400, Items.surgeAlloy, 40));
+            requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 500, Items.titanium, 300, Items.lead, 400, Items.surgeAlloy, 40));
         }};
 
         oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
@@ -770,7 +733,7 @@ public class TEBlocks {
 
             uniCraftTime = 40f;
 
-            requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 400, Items.titanium, 250));
+            requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 300, Items.titanium, 250));
 
             hasPower = hasItems = true;
             consumePower(1f);
@@ -785,7 +748,7 @@ public class TEBlocks {
         }};
 
         cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer") {{
-            requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 400, Items.titanium, 600, Items.thorium, 350));
+            requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 300, Items.titanium, 600, Items.thorium, 350));
             outputLiquid = new LiquidStack(Liquids.cryofluid, 35f / 60f);
             size = 3;
             hasPower = hasLiquids = hasItems = outputsLiquid = solid = true;
@@ -809,7 +772,7 @@ public class TEBlocks {
 
         advancedOverdriveDome = new OverdriveProjector("advanced-overdrive-dome") {{
             requirements(Category.effect,
-                    with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1500, Items.plastanium, 1200, Items.surgeAlloy, 850,
+                    with(Items.lead, 1250, Items.titanium, 1450, Items.silicon, 1200, Items.plastanium, 1200, Items.surgeAlloy, 850,
                     TEItems.zinc, 450, TEItems.advancedChip, 450)
             );
             consumePower(14f);
@@ -825,7 +788,7 @@ public class TEBlocks {
 
         advancedPowerNode = new PowerNode("advanced-power-node") {{
             requirements(Category.power,
-                    with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 5));
+                    with(Items.copper, 5, Items.lead, 12, Items.titanium, 15, Items.silicon, 6));
             maxNodes = 20;
             laserRange = 12;
         }};
@@ -846,7 +809,7 @@ public class TEBlocks {
 
         hugeLogicDisplay = new LogicDisplay("huge-logic-display") {{
             requirements(Category.logic,
-                    with(Items.lead, 2000, Items.silicon, 1500, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300,
+                    with(Items.lead, 2000, Items.silicon, 1600, Items.metaglass, 1000, Items.phaseFabric, 400, Items.surgeAlloy, 300,
                     TEItems.zinc, 500, TEItems.advancedChip, 100, Items.plastanium, 600)
             );
 
@@ -885,7 +848,7 @@ public class TEBlocks {
 //            upgrades.addAll(
 //                    new UnitType[]{UnitTypes.eclipse, TEUnitTypes},
 //                    new UnitType[]{UnitTypes.toxopid, TEUnitTypes},
-//                    new UnitType[]{UnitTypes.reign, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.reign, TEUnitTypes.coupling},//传奇肘击王耦合
 //                    new UnitType[]{UnitTypes.omura, TEUnitTypes},
 //                    new UnitType[]{UnitTypes.oct, TEUnitTypes},
 //                    new UnitType[]{UnitTypes.corvus, TEUnitTypes},
