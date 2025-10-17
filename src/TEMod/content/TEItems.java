@@ -27,7 +27,9 @@ public class TEItems {
             primaryProductionAgreement, advancedProductionAgreement, specialProductionAgreement,
             primaryChip, advancedChip, specialChip;
     /** 一堆小东西 **/
-    public static Item energyComponent, energyStorageComponent;//组件
+    public static Item primaryEnergyComponent, intermediateEnergyComponent, advancedEnergyComponent, specialEnergyComponent, //能量组件
+        primaryEnergyStorageComponent, intermediateEnergyStorageComponent,
+            advancedEnergyStorageComponent, specialEnergyStorageComponent;//储能组件
 
     public static Item stone; //石！
 
@@ -103,14 +105,38 @@ public class TEItems {
             flammability = 0.2f;
         }};
 
-        energyComponent = new Item("energy-component", Pal.lancerLaser) {{
-            explosiveness = 10f;
-            charge = 20f;
+        primaryEnergyComponent = new Item("primary-energy-component", Pal.lancerLaser) {{
+            explosiveness = 2f;
+            charge = 5f;
             cost = 4f;
         }};
-
-        energyStorageComponent = new Item("energy-storage-component", Pal.ammo) {{
+        intermediateEnergyComponent = new Item("intermediate-energy-component", Pal.lancerLaser) {{
+            explosiveness = 5f;
+            charge = 12f;
             cost = 5f;
+        }};
+        advancedEnergyComponent = new Item("advanced-energy-component", Pal.lancerLaser) {{
+            explosiveness = 12f;
+            charge = 20f;
+            cost = 6f;
+        }};
+        specialEnergyComponent = new Item("special-energy-component", Pal.lancerLaser) {{
+            explosiveness = 22f;
+            charge = 35f;
+            cost = 7f;
+        }};
+
+        primaryEnergyStorageComponent = new Item("primary-energy-storage-component", Pal.ammo) {{
+            cost = 5f;
+        }};
+        intermediateEnergyStorageComponent = new Item("intermediate-energy-storage-component", Pal.ammo) {{
+            cost = 6f;
+        }};
+        advancedEnergyStorageComponent = new Item("advanced-energy-storage-component", Pal.ammo) {{
+            cost = 7f;
+        }};
+        specialEnergyStorageComponent = new Item("special-energy-storage-component", Pal.ammo) {{
+            cost = 8f;
         }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！

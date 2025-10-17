@@ -46,7 +46,7 @@ public class TEBlocks {
     public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
-    //public static Block
+    public static Block componentAssemblyPlant; //组装厂
 
     public static AirBlock surpluoIcon, erekirIcon, keplerIcon; //星球图标 后续会大改
     public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
@@ -1123,7 +1123,21 @@ public class TEBlocks {
             absorbLasers = true;
         }};
 
+        componentAssemblyPlant = new MultiCrafter("component-assembly-plant") {{//万能组装厂
+            health = 1200;
+            itemCapacity = 20;
+            hasPower = hasItems = true;
+            consumePower(400 / 60f);
 
+            recipes.addAll(
+                    new Recipe(
+                            with(),
+                            with(),
+                            120f
+                    )
+            );
+            requirements(Category.crafting, with());
+        }};
 
 
         //基础方块(E)

@@ -9,6 +9,8 @@ import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.ui.*;
+import mindustry.world.blocks.ItemSelection;
+import mindustry.world.blocks.distribution.Sorter;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
@@ -25,14 +27,7 @@ public class MultiCrafter extends GenericCrafter {
         configurable = true;
         saveConfig = true;
         hasItems = true;
-        config(Integer.class, (MultiCrafterBuild build, Integer value) -> {
-            if(recipes.size > 0) {
-                int newRecipe = value % recipes.size;
-                if(build.currentRecipe != newRecipe) {
-                    build.switchRecipe(newRecipe);
-                }
-            }
-        });
+        config(Item.class, (Sorter.SorterBuild tile, Item item) -> tile.sortItem = item);
     }
 
     public void requiresLiquid(Liquid liquid, float amount) {
@@ -99,34 +94,10 @@ public class MultiCrafter extends GenericCrafter {
     }
 
     public class MultiCrafterBuild extends GenericCrafterBuild {
-        public int currentRecipe = 0;
         private @Nullable Recipe lastRecipe;
         private float partialProgress = 0f;
-
-
-        public void switchRecipe(int newRecipe) {
-            Recipe nextRecipe = recipes.get(newRecipe);
-            Seq<Item> neededItems = new Seq<>();
-
-            for(ItemStack stack : nextRecipe.inputItems) {
-                neededItems.add(stack.item);
-            }
-
-            for(int i = 0; i < items.length(); i++) {
-                Item item = content.item(i);
-                int currentAmount = items.get(i);
-                if(currentAmount > 0 && !neededItems.contains(item)) {
-                    items.set(item, 0);
-                    for (int j = 0; j < currentAmount; j++) {
-                        offload(item);
-                    }
-                }
-            }
-
-            currentRecipe = newRecipe;
-            progress = 0;
-            lastRecipe = null;
-        }
+        public Seq<Item> recipeItems;
+        public Item item;
 
         @Override
         public void updateTile() {
@@ -373,62 +344,7 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public void buildConfiguration(Table table) {
-            table.button("\uE835", Styles.defaultt, () -> {
-                currentRecipe = (currentRecipe + 1) % recipes.size;
-                rebuildConfig(table);
-            }).size(30).tooltip(Core.bundle.format("misc.multicraft.select-recipe"));
-
-            table.table(Styles.black5, t -> {
-                Recipe current = getCurrentRecipe();
-                if(current == null) return;
-
-                t.add(current.localizedName()).left();
-                t.row();
-
-
-                t.add(Core.bundle.format("misc.multicraft.input")).left();
-                for(ItemStack in : current.inputItems) {
-                    t.image(in.item.uiIcon).size(24).padRight(4);
-                    t.add(in.amount + "").left().padRight(8);
-                }
-                if(current.inputLiquids != null) {
-                    for(LiquidStack in : current.inputLiquids) {
-                        if(in != null) {
-                            t.image(in.liquid.uiIcon).size(24).padRight(4);
-                            t.add(in.amount + "").left().padRight(8);
-                        }
-                    }
-                }
-                t.row();
-
-                t.add(Core.bundle.format("misc.multicraft.output")).left();
-                for(ItemStack out : current.outputItems) {
-                    t.image(out.item.uiIcon).size(24).padRight(4);
-                    t.add(out.amount + "").left().padRight(8);
-                }
-                if(current.outputLiquids != null) {
-                    for(LiquidStack out : current.outputLiquids) {
-                        if(out != null) {
-                            t.image(out.liquid.uiIcon).size(24).padRight(4);
-                            t.add(out.amount + "").left().padRight(8);
-                        }
-                    }
-                }
-                t.row();
-
-                MultiCrafter block = (MultiCrafter) this.block;
-                if(block.requiredLiquids != null && !block.requiredLiquids.isEmpty()) {
-                    t.row();
-                    t.add(Core.bundle.format("misc.multicraft.requiredLiquids")).left().row();
-                    for(LiquidStack required : block.requiredLiquids) {
-                        if(required != null && required.liquid != null) {
-                            t.image(required.liquid.uiIcon).size(24).padRight(4);
-                            t.add(required.liquid.localizedName + (required.amount * 60) + "/s").left().padRight(8);
-                            t.row();
-                        }
-                    }
-                }
-            }).padLeft(8);
+            ItemSelection.buildTable(MultiCrafter.this, table, content.items(), () -> item, this::configure);
         }
 
         private void rebuildConfig(Table table) {
