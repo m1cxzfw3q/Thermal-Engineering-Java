@@ -2,6 +2,7 @@ package TEMod.content;
 
 import arc.Core;
 import mindustry.content.Items;
+import mindustry.graphics.Pal;
 import mindustry.type.Item;
 import arc.graphics.Color;
 
@@ -25,6 +26,8 @@ public class TEItems {
             highSpeedTransmissionProtocol, ultraRemoteTransmissionProtocol,
             primaryProductionAgreement, advancedProductionAgreement, specialProductionAgreement,
             primaryChip, advancedChip, specialChip;
+    /** 一堆小东西 **/
+    public static Item energyComponent, energyStorageComponent;//组件
 
     public static Item stone; //石！
 
@@ -98,6 +101,16 @@ public class TEItems {
             explosiveness = 0.1f;
             cost = 1.5f;
             flammability = 0.2f;
+        }};
+
+        energyComponent = new Item("energy-component", Pal.lancerLaser) {{
+            explosiveness = 10f;
+            charge = 20f;
+            cost = 4f;
+        }};
+
+        energyStorageComponent = new Item("energy-storage-component", Pal.ammo) {{
+            cost = 5f;
         }};
 
         stone = new Item("stone", Color.valueOf("94949a")) {{//石头！

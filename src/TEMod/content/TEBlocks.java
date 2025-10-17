@@ -46,8 +46,9 @@ public class TEBlocks {
     public static Block oreCrusher; //矿石粉碎机
     public static Block cryofluidMixerLarge; //大型冷冻液混合机
     public static Block advancedOverdriveDome; //高级超速穹顶
+    //public static Block
 
-    public static AirBlock surpluoIcon, erekirIcon, keplerIcon; //星球图标
+    public static AirBlock surpluoIcon, erekirIcon, keplerIcon; //星球图标 后续会大改
     public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
     public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
 
@@ -63,7 +64,7 @@ public class TEBlocks {
     public static Block machineCannon; //机炮
     public static Block prism; //棱镜 //重名了
 
-    public static Block UnitLauncher, advancedUnitLauncher; //废稿之单位发射台
+    public static Block unitLauncher, advancedUnitLauncher; //废稿之单位发射台
     public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
 
     public static Block terminalProcessor; //终端处理器
@@ -1121,6 +1122,7 @@ public class TEBlocks {
             itemCapacity = 20;
             absorbLasers = true;
         }};
+
 
 
 
