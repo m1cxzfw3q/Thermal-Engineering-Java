@@ -415,7 +415,7 @@ public class TEBlocks {
 
             requirements(Category.turret,
                     with(Items.copper, 900, Items.lead, 1100, Items.graphite, 700, Items.metaglass, 300, Items.silicon, 250,
-                    TEItems.primaryChip, 20)
+                            TEItems.primaryChip, 20)
             );
 
             rotateSpeed = 0F;
