@@ -16,8 +16,4 @@ public class lib {//没什么用的lib
         System.arraycopy(addItems, 0, out, origin.length + 1, addItems.length);
         return out;
     }
-
-    public static ItemStack[] newMult(Block block, float amount) {
-        return ItemStack.mult(block.requirements, amount);
-    }
 }

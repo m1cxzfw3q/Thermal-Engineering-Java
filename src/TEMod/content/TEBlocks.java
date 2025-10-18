@@ -31,6 +31,7 @@ import static TEMod.TECore.isComplete;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;
 import static mindustry.content.StatusEffects.unmoving;
+import static mindustry.type.ItemStack.mult;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
@@ -1116,7 +1117,7 @@ public class TEBlocks {
         }};
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
-            requirements(Category.distribution, lib.newWith(newMult(plasticAlloyConveyor, 5),
+            requirements(Category.distribution, lib.newWith(mult(plasticAlloyConveyor.requirements, 5f),
                     with(Items.surgeAlloy, 5))
             );
             speed = 75f / 600f;
