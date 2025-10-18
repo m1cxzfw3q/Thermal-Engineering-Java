@@ -411,6 +411,8 @@ public class TEBlocks {
             health = 3500;
             size = 5;
 
+            rotate = false;
+
             requirements(Category.turret,
                     with(Items.copper, 900, Items.lead, 1100, Items.graphite, 700, Items.metaglass, 300, Items.silicon, 250,
                     TEItems.primaryChip, 20)
@@ -434,14 +436,14 @@ public class TEBlocks {
                 shots = 4;
                 shotDelay = 10f;
                 barrels = new float[]{
-                        -14, 0, 270,
-                        -11, 11, 270,
-                        0, 14, 270,
-                        11 ,11, 270,
-                        14, 0, 270,
-                        11, -11, 270,
-                        0, -14, 270,
-                        -11, -11, 270
+                        -14, 0, 0,
+                        -11, 11, 0,
+                        0, 14, 0,
+                        11 ,11, 0,
+                        14, 0, 0,
+                        11, -11, 0,
+                        0, -14, 0,
+                        -11, -11, 0
                 };
             }};
             shootSound = Sounds.missileLaunch;
