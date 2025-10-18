@@ -1116,7 +1116,9 @@ public class TEBlocks {
         }};
 
         plasticAlloyPacketConveyor = new StackConveyor("plastic-alloy-packet-conveyor") {{
-            requirements(Category.distribution, newWith(newMult(plasticAlloyConveyor, 5), with(Items.surgeAlloy, 5)));
+            requirements(Category.distribution, lib.newWith(newMult(plasticAlloyConveyor, 5),
+                    with(Items.surgeAlloy, 5))
+            );
             speed = 75f / 600f;
             health = 300;
             itemCapacity = 20;
@@ -1138,6 +1140,7 @@ public class TEBlocks {
             );
             requirements(Category.crafting, with());
         }};
+
 
 
         //基础方块(E)
@@ -1175,13 +1178,13 @@ public class TEBlocks {
 
         stoneWall = new Wall("stone-wall") {{
             health = (int) (Math.pow(size, 2) * stoneWallHealth);
-            requirements(Category.defense, sizeWith(with(TEItems.stone, 3), this));
+            requirements(Category.defense, lib.sizeWith(with(TEItems.stone, 3), this));
         }};
 
         stoneWallLarge = new Wall("large-stone-wall") {{
             size = 2;
             health = (int) (Math.pow(size, 2) * stoneWallHealth);
-            requirements(Category.defense, sizeWith(with(TEItems.stone, 3), this));
+            requirements(Category.defense, lib.sizeWith(with(TEItems.stone, 3), this));
         }};
 
         stoneConveyor = new Conveyor("stone-conveyor"){{

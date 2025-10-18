@@ -11,7 +11,7 @@ public class lib {//没什么用的lib
     }
 
     public static ItemStack[] newWith(ItemStack[] origin, ItemStack[] addItems) {
-        ItemStack[] out = new ItemStack[origin.length + addItems.length + 2];
+        ItemStack[] out = new ItemStack[origin.length + addItems.length + 1];
         System.arraycopy(origin, 0, out, 0, origin.length);
         System.arraycopy(addItems, 0, out, origin.length + 1, addItems.length);
         return out;
