@@ -93,6 +93,8 @@ public class MultiCrafter extends GenericCrafter {
         });
     }
 
+    public class MultiCraftBuild extends GenericCrafterBuild {}//占位用空类
+/*等待重写
     public class MultiCrafterBuild extends GenericCrafterBuild {
         private @Nullable Recipe lastRecipe;
         private float partialProgress = 0f;
@@ -361,7 +363,7 @@ public class MultiCrafter extends GenericCrafter {
         public boolean canDumpLiquid(Building to, Liquid liquid) {
             return true;
         }
-    }
+    }*/
 
     public static class Recipe {
         public ItemStack[] inputItems = {}, outputItems = {};
