@@ -39,37 +39,20 @@ public class TECore extends Mod {
     }
 
     @Override
-    public void loadContent() {//究极防崩以及神秘日志输出
-        tryCatch(TEAttribute::load);
-        tryCatch(TEItems::load);
-        tryCatch(TEBlocks::load);
-        tryCatch(KeplerPlanet::load);
-        tryCatch(KeplerSectorPresets::load);
-        tryCatch(TEStatusEffects::load);
-        //tryCatch(TEModularWeapons::load);
-        //tryCatch(TEUnitTypes::load);
+    public void loadContent() {
+        TEAttribute.load();
+        TEItems.load();
+        TEBlocks.load();
+        KeplerPlanet.load();
+        KeplerSectorPresets.load();
+        TEStatusEffects.load();
+        //TEModularWeapons.load();
+        //TEUnitTypes.load();
 
         isComplete(TECore.class);
-        tryCatch(TETechTree::load);
-        tryCatch(TEV8::load);
-        tryCatch(TEFix::load);
-        if (i == 9) {
-            Log.err("[Thermal-Enginerring] Due to certain issues, the mod has completely crashed. Please contact the author for repairs.");
-        } else if (i > 0) {
-            Log.info("[Thermal-Enginerring] This mod has errors in a total of @ classes, please contact the author for fixes.", i);
-        } else Log.info("[Thermal-Enginerring] Mod loaded successfully.");
-    }
-
-    public void tryCatch(Runnable run) {
-        try {
-            run.run();
-        } catch (Exception e) {
-            Log.err(
-                    "[Thermal-Enginerring] The client encountered a crash involving some classes during loading, please contact the author."
-                    + "\n" + e
-            );
-            i++;
-        }
+        TETechTree.load();
+        TEV8.load();
+        TEFix.load();
     }
 
     public static void isComplete(Class<?> obj) {
