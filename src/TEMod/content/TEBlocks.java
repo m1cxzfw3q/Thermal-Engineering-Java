@@ -26,7 +26,6 @@ import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
 import mindustry.world.meta.*;
 
-import static TEMLib.lib.*;
 import static TEMod.TECore.isComplete;
 import static mindustry.content.Fx.none;
 import static mindustry.content.StatusEffects.shocked;

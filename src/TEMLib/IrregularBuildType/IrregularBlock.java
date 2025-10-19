@@ -4,7 +4,8 @@ import arc.math.geom.Vec2;
 import mindustry.world.Block;
 import org.jetbrains.annotations.NotNull;
 
-public class IrregularBlock extends Block {///如果写成了 NH的不规则方块就不再是独一家了()
+///如果写成了 NH的不规则建筑就不再是独一家了()
+public class IrregularBlock extends Block {
     /** 建筑的额外碰撞箱(神秘)  也可以变为主要碰撞箱(removeOriginHittable()) **/
     public Vec2 @NotNull [] blockHittable = {};
 
