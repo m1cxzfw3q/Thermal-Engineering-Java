@@ -52,7 +52,7 @@ public class TEBlocks {
     public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
     public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
 
-    public static Block nuclearReactor; //核反应堆
+    public static Block nuclearReactor, thoriumNuclearExplosiveReactor; //核反应堆
     public static Block advancedPowerNode; //高级电力节点
 
     public static Block simpleStorage; //简易储存器
@@ -515,7 +515,7 @@ public class TEBlocks {
             }});
         }};
 
-        nuclearReactor = new NuclearReactor("nuclear-reactor") {{
+        nuclearReactor = new NuclearReactor("nuclear-reactor") {{ //等待重置
             health = 5000;
             size = 5;
             liquidCapacity = 30;
@@ -1141,6 +1141,13 @@ public class TEBlocks {
             requirements(Category.crafting, with());
         }};
 
+        /*
+        thoriumNuclearExplosiveReactor = new NuclearReactor("thorium-nuclear-explosive-reactor") {{
+            health = 2400;
+            size = 9;
+
+        }};
+         */
 
 
         //基础方块(E)
