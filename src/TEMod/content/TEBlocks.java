@@ -975,7 +975,6 @@ public class TEBlocks {
             transportTime = 0.2f;
             consumePower(0.9f);
             itemCapacity = 40;
-            TimeScale = 0.2f;
         }};
 
         liquidQuantumTransmissionLightBridge = new LiquidBridge("liquid-quantum-transmission-light-bridge") {{
