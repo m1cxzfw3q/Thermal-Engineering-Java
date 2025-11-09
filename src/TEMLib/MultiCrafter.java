@@ -97,7 +97,7 @@ public class MultiCrafter extends GenericCrafter {
 
     /// 等待重写
     public class MultiCrafterBuild extends GenericCrafterBuild {
-        public static int recipeId = 0;
+        //public static int recipeId = 0;
 
         @Override
         public void buildConfiguration(Table table) {

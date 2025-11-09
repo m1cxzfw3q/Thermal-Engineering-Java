@@ -61,7 +61,7 @@ public class LightItemBridge extends ItemBridge {
             return false;
         }
 
-        public static boolean dump(Building build, Building other, Item item) {
+        public boolean dump(Building build, Building other, Item item) {
             if (!other.acceptItem(build, item)) return false;
 
 
