@@ -1,5 +1,5 @@
 # Thermal Engineering
 
-再也不用重构仓库力(喜)
+虽说是JavaMod，但是掺了一点Kotlin()
 
 [Wiki](https://github.com/m1cxzfw3q/Thermal-Engineering-Java/wiki)

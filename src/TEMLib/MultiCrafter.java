@@ -1,18 +1,22 @@
 package TEMLib;
 
+import arc.Core;
 import arc.scene.ui.layout.Table;
 import arc.struct.*;
+import arc.graphics.Color;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.ui.*;
+import mindustry.world.Block;
 import mindustry.world.blocks.distribution.Sorter;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
-public class MultiCrafter extends GenericCrafter {
+import java.util.Arrays;
+
+public class MultiCrafter extends Block {
     public Seq<Recipe> recipes = new Seq<>();
-    public Seq<LiquidStack> requiredLiquids = new Seq<>();
 
     public static float uniCraftTime;
 
@@ -24,11 +28,6 @@ public class MultiCrafter extends GenericCrafter {
         config(Item.class, (Sorter.SorterBuild tile, Item item) -> tile.sortItem = item);
     }
 
-    public void requiresLiquid(Liquid liquid, float amount) {
-        requiredLiquids.add(new LiquidStack(liquid, amount));
-        consumeLiquid(liquid, amount);
-    }
-
     @Override
     public boolean outputsItems() {
         return true;
@@ -36,67 +35,42 @@ public class MultiCrafter extends GenericCrafter {
 
     @Override
     public void setStats() {
-        int i = 0;
         super.setStats();
         stats.remove(Stat.output);
         stats.remove(Stat.productionTime);
         stats.add(Stat.productionTime, uniCraftTime / 60f, StatUnit.seconds);
-
-        int finalI = i;
-        stats.add(Stat.output, table -> {//GUIDE
+        stats.add(Stat.output, table -> {
             table.row();
 
-            table.table(Styles.grayPanel, t -> {
-                t.left();
-                t.add("[#ffd37f][" + finalI + "][]");
-            });
+            final int[] i = {0};
             for (Recipe recipe : recipes) {
-                try {
-                    for (ItemStack it : recipe.inputItems) {
-                        table.table(Styles.grayPanel, t -> {
-                            t.left();
-                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true)).pad(5f);
-                        });
-                    }
-                } catch (Exception ignored) {}
-
-                try {
-                    for (LiquidStack it : recipe.inputLiquids) {
-                        table.table(Styles.grayPanel, t -> {
-                            t.left();
-                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true)).pad(5f);
-                        });
-                    }
-                } catch (Exception ignored) {}
-                
+                table.table(Styles.grayPanel, t -> {
+                    t.left();
+                    t.add("[#ffd37f][" + i[0] + "][]");
+                    i[0]++;
+                });
+                lib.itemsDisplay(recipe.inputItems, table, recipe.craftTime);
+                lib.liquidsDisplay(recipe.inputLiquids, table);
                 table.table(Styles.grayPanel, t -> t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill();
-
-                try {
-                    for (ItemStack it : recipe.outputItems) {
-                        table.table(Styles.grayPanel, t -> {
-                            t.left();
-                            t.add(StatValues.displayItem(it.item, it.amount, recipe.craftTime, true)).pad(5f);
-                        });
-                    }
-                } catch (Exception ignored) {}
-
-                try {
-                    for (LiquidStack it : recipe.outputLiquids) {
-                        table.table(Styles.grayPanel, t -> {
-                            t.left();
-                            t.add(StatValues.displayLiquid(it.liquid, it.amount, true)).pad(5f);
-                        });
-                    }
-                } catch (Exception ignored) {}
-
+                lib.itemsDisplay(recipe.outputItems, table, recipe.craftTime);
+                lib.liquidsDisplay(recipe.outputLiquids, table);
                 table.row();
             }
         });
-        i++;
+    }
+
+    @Override
+    public void setBars() {
+        super.setBars();
+        addBar("recipe", e -> new Bar(
+                () -> Core.bundle.get("bar.recipe"),
+                () -> Color.valueOf("4169e1"),
+                () -> 1
+        ));
     }
 
     /// 等待重写
-    public class MultiCrafterBuild extends GenericCrafterBuild {
+    public static class MultiCrafterBuild extends Building {
         //public static int recipeId = 0;
 
         @Override

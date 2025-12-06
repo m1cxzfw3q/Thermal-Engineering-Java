@@ -1,22 +1,23 @@
 package TEMLib.IrregularBuildType;
 
-import arc.math.geom.Vec2;
+import arc.math.geom.Rect;
+import mindustry.gen.Building;
 import mindustry.world.Block;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-///如果写成了 NH的不规则建筑就不再是独一家了()
 public class IrregularBlock extends Block {
-    /** 建筑的额外碰撞箱(神秘)  也可以变为主要碰撞箱(removeOriginHittable()) **/
-    public Vec2 @NotNull [] blockHittable = {};
+    /** 碰撞箱 **/
+    public @Nullable Rect rect;
 
     public IrregularBlock(String name) {
         super(name);
-        update = true;
         rotate = true;
     }
 
-    /** 用于删除原碰撞箱 **/
-    public static void removeOriginHittable() {
+    public static class IrregularBuild extends Building {
+        @Override
+        public void hitbox(Rect out) {
 
+        }
     }
 }
