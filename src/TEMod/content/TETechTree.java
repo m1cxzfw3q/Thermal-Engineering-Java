@@ -30,11 +30,11 @@ public class TETechTree {
                 node(TEBlocks.machineCannon,
                         with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
                         Seq.with(new Objectives.SectorComplete(KeplerSectorPresets.LandingArea), new Objectives.Research(Blocks.scorch),
-                                new Objectives.Research(Blocks.hail), new Objectives.Research(TEItems.primaryWarAgreement)
+                                new Objectives.Research(Blocks.hail), new Objectives.Research(TEItems.preliminaryAgreement)
                         ), () -> {
                             node(TEBlocks.missileLauncher,
                                     with(Items.copper, 10000, Items.lead, 12000, Items.graphite, 9000, Items.metaglass, 4000,
-                                    Items.silicon, 500, TEItems.primaryChip, 300, TEItems.advancedWarAgreement, 1)
+                                    Items.silicon, 500, TEItems.preliminaryChip, 300, TEItems.advancedAgreement, 1)
                             );
                 });
 
@@ -43,15 +43,10 @@ public class TETechTree {
                                 Seq.with(new Objectives.Research(Liquids.cryofluid)), () ->
                                         node(TEBlocks.specialLaboratory)));
 
-                nodeProduce(TEItems.primaryWarAgreement, () ->
-                        nodeProduce(TEItems.advancedWarAgreement, () ->
-                                nodeProduce(TEItems.specialWarAgreement)));
-                nodeProduce(TEItems.primaryProductionAgreement, () -> {
-                    nodeProduce(TEItems.advancedProductionAgreement, () ->
-                            nodeProduce(TEItems.specialProductionAgreement));
-                    nodeProduce(TEItems.highSpeedTransmissionProtocol, () ->
-                            nodeProduce(TEItems.ultraRemoteTransmissionProtocol));
-                });
+                nodeProduce(TEItems.preliminaryAgreement, () ->
+                        nodeProduce(TEItems.intermediateAgreement, () ->
+                                nodeProduce(TEItems.advancedAgreement, () ->
+                                        nodeProduce(TEItems.ultimateAgreement))));
 
                 node(shieldGenerator, () ->
                         node(shieldGeneratorLarge, () ->
@@ -60,10 +55,10 @@ public class TETechTree {
 
                 node(TEBlocks.highEfficiencyDisassembler,
                         with(Items.copper, 100000, Items.titanium, 60000, Items.lead, 80000, Items.graphite, 50000, Items.thorium, 30000,
-                                Items.silicon, 20000, Items.plastanium, 8000, Items.phaseFabric, 5000, TEItems.specialProductionAgreement, 2,
+                                Items.silicon, 20000, Items.plastanium, 8000, Items.phaseFabric, 5000, TEItems.ultimateAgreement, 2,
                                 TEItems.advancedChip, 2000),
                         Seq.with(new Objectives.Research(disassembler), new Objectives.Research(surgeSmelter), new Objectives.Research(phaseWeaver),
-                                new Objectives.Research(oilExtractor), new Objectives.Research(TEItems.specialProductionAgreement)
+                                new Objectives.Research(oilExtractor), new Objectives.Research(TEItems.ultimateAgreement)
                         )
                 );
 
@@ -73,9 +68,9 @@ public class TETechTree {
                         () -> {
                     node(TEBlocks.highSpeedUnloader,
                             with(Items.thorium, 600, Items.silicon, 1000, Items.titanium, 1000, Items.plastanium, 600,
-                            TEItems.highSpeedTransmissionProtocol, 1),
+                            TEItems.ultimateAgreement, 1),
                             Seq.with(new Objectives.Research(unloader), new Objectives.Research(vault),
-                            new Objectives.Research(TEItems.highSpeedTransmissionProtocol)
+                            new Objectives.Research(TEItems.ultimateAgreement)
                     ));
                 });
             });
@@ -83,15 +78,15 @@ public class TETechTree {
             node(TEBlocks.keplerIcon, () -> {
                 node(TEBlocks.nuclearFuelRodManufacturingMachine,
                         with(Items.thorium, 6000, Items.titanium, 7000, Items.silicon, 6000, Items.lead, 7000, Items.surgeAlloy, 2000,
-                        Items.graphite, 82000, TEItems.advancedChip, 1000, TEItems.advancedProductionAgreement, 1
+                        Items.graphite, 82000, TEItems.advancedChip, 1000, TEItems.intermediateAgreement, 1
                 ), Seq.with(
-                        new Objectives.Research(TEItems.advancedProductionAgreement),
+                        new Objectives.Research(TEItems.intermediateAgreement),
                         new Objectives.Research(TEItems.uranium)
                 ), () -> {});
 
                 node(TEBlocks.nuclearReactor,
                         with(Items.lead, 20000, Items.graphite, 10000, Items.metaglass, 5000, Items.thorium, 8000, Items.titanium, 10000,
-                        Items.surgeAlloy, 3500, TEItems.advancedChip, 500, TEItems.advancedProductionAgreement, 1
+                        Items.surgeAlloy, 3500, TEItems.advancedChip, 500, TEItems.intermediateAgreement, 1
                 ), Seq.with(
                         new Objectives.Research(TEItems.nuclearFuelRod),
                         new Objectives.Research(thoriumReactor)
@@ -145,25 +140,25 @@ public class TETechTree {
         addToNext(siliconSmelter, () ->
                 node(TEBlocks.chipManufacturingMachine,
                         with(Items.copper, 15000, Items.titanium, 10000, Items.lead, 18000, Items.graphite, 13000, Items.silicon, 70000,
-                                TEItems.primaryProductionAgreement, 1),
-                        Seq.with(new Objectives.Research(TEItems.primaryProductionAgreement)),
+                                TEItems.intermediateAgreement, 1),
+                        Seq.with(new Objectives.Research(TEItems.intermediateAgreement)),
                         () -> node(TEBlocks.chipPrinter,
                                 with(Items.copper, 26000, Items.titanium, 15000, Items.lead, 30000, Items.graphite, 45000, Items.silicon, 130000,
-                                        Items.plastanium, 20000, Items.phaseFabric, 18000, TEItems.advancedProductionAgreement, 2, TEItems.advancedChip, 300),
-                                Seq.with(new Objectives.Research(TEItems.advancedProductionAgreement)), () -> {})));
+                                        Items.plastanium, 20000, Items.phaseFabric, 18000, TEItems.ultimateAgreement, 2, TEItems.advancedChip, 300),
+                                Seq.with(new Objectives.Research(TEItems.ultimateAgreement)), () -> {})));
 
         addToNext(Items.silicon, () ->
-                nodeProduce(TEItems.primaryChip, () ->
+                nodeProduce(TEItems.preliminaryChip, () ->
                         nodeProduce(TEItems.advancedChip, () ->
-                                nodeProduce(TEItems.specialChip))));
+                                nodeProduce(TEItems.advancedChip))));
 
         addToNext(coreShard, () -> {});
         addToNext(hail, () -> node(TEBlocks.machineCannon,
                 with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
-                Seq.with(new Objectives.Research(Blocks.scorch), new Objectives.Research(TEItems.primaryWarAgreement)),
+                Seq.with(new Objectives.Research(Blocks.scorch), new Objectives.Research(TEItems.preliminaryAgreement)),
                 () -> node(TEBlocks.missileLauncher,
                         with(Items.copper, 10000, Items.lead, 12000, Items.graphite, 9000, Items.metaglass, 4000,
-                                Items.silicon, 500, TEItems.primaryChip, 300, TEItems.advancedWarAgreement, 1))));
+                                Items.silicon, 500, TEItems.preliminaryChip, 300, TEItems.intermediateAgreement, 1))));
 
 
         isComplete(TETechTree.class);

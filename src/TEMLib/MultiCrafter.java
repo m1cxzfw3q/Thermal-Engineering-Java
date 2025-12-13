@@ -4,19 +4,17 @@ import arc.Core;
 import arc.scene.ui.layout.Table;
 import arc.struct.*;
 import arc.graphics.Color;
+import arc.util.Nullable;
 import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.ui.*;
-import mindustry.world.Block;
 import mindustry.world.blocks.distribution.Sorter;
 import mindustry.world.blocks.production.*;
 import mindustry.world.meta.*;
 
-import java.util.Arrays;
-
-public class MultiCrafter extends Block {
-    public Seq<Recipe> recipes = new Seq<>();
+public class MultiCrafter extends GenericCrafter {
+    public @Nullable Seq<Recipe> recipes = new Seq<>();
 
     public static float uniCraftTime;
 
@@ -26,6 +24,11 @@ public class MultiCrafter extends Block {
         saveConfig = true;
         hasItems = true;
         config(Item.class, (Sorter.SorterBuild tile, Item item) -> tile.sortItem = item);
+    }
+
+    @Override
+    public void load(){
+        super.load();
     }
 
     @Override
@@ -71,11 +74,27 @@ public class MultiCrafter extends Block {
 
     /// 等待重写
     public static class MultiCrafterBuild extends Building {
-        //public static int recipeId = 0;
+        public int currentRecipeId = -1;
+        public @Nullable Recipe currentRecipe = getCurrentRecipe(currentRecipeId);
 
         @Override
         public void buildConfiguration(Table table) {
 
+        }
+
+        @Override
+        public boolean shouldConsume() {
+            return
+        }
+
+        @Override
+        public void updateTile() {
+            currentRecipe = getCurrentRecipe(currentRecipeId);
+        }
+
+        public Recipe getCurrentRecipe(int id) {
+            if (id == -1) return null;
+            return ((MultiCrafter) block).recipes.get(id);
         }
     }
 

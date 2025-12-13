@@ -185,7 +185,7 @@ public class TEBlocks {
                 knockback = 0.2F;
                 homingPower = 0.1f;
                 homingRange = 26f;
-            }},TEItems.primaryChip, new BasicBulletType(8.0F, 30.0F) {{
+            }},TEItems.preliminaryChip, new BasicBulletType(8.0F, 30.0F) {{
                 width = 2.0F;
                 height = 5.0F;
                 lifetime = 30.0F;
@@ -212,7 +212,7 @@ public class TEBlocks {
         highEfficiencyDisassembler = new Separator("high-efficiency-disassembler"){{
             requirements(Category.crafting,
                     with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200,
-                            Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.specialProductionAgreement, 1)
+                            Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.ultimateChip, 1)
             );
             results = with(
                     Items.copper, 3,
@@ -267,97 +267,16 @@ public class TEBlocks {
             oreScale = 23.47619f;
         }};
 
-        primaryLaboratory = new MultiCrafter("primary-laboratory") {{
-            requirements(Category.crafting,
-                    with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800, Items.thorium, 650,
-                            Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300)
-            );
-
-            recipes.addAll(new Recipe(
-                    with(),
-                    with(TEItems.primaryProductionAgreement, 1)
-            ), new Recipe(
-                    with(),
-                    with(TEItems.primaryWarAgreement, 1)
-            ));
-
-            uniCraftTime = 180 * 60;
-
-            size = 3;
-            health = 1000;
-            itemCapacity = 10;
-            consumePower(40f);
-            hasItems = hasPower = true;
-            canOverdrive = false;
-        }};
-
-        advancedLaboratory = new MultiCrafter("advanced-laboratory") {{
-            requirements(Category.crafting,
-                    with(Items.copper, 2000, Items.titanium, 800, Items.lead, 2400, Items.graphite, 1600, Items.thorium, 1300,
-                            Items.silicon, 6000, Items.plastanium, 3000, Items.phaseFabric, 1000, TEItems.uranium, 400)
-            );
-
-            recipes.addAll(new Recipe(
-                    with(),
-                    with(TEItems.advancedProductionAgreement, 1)
-            ), new Recipe(
-                    with(),
-                    with(TEItems.advancedWarAgreement, 1)
-            ), new Recipe(
-                    with(),
-                    with(TEItems.highSpeedTransmissionProtocol, 1)
-            ));
-
-            uniCraftTime = 120 * 60;
-
-            size = 5;
-            health = 2000;
-            itemCapacity = 10;
-            consumePower(50f);
-            hasItems = hasPower = true;
-            canOverdrive = false;
-        }};
-
-        specialLaboratory = new MultiCrafter("special-laboratory") {{
-            requirements(Category.crafting,
-                    with(Items.copper, 1000, Items.titanium, 400, Items.lead, 1200, Items.graphite, 800,
-                            Items.thorium, 650, Items.silicon, 1000, Items.plastanium, 800, Items.phaseFabric, 300, TEItems.uranium, 2000)
-            );
-
-            recipes.addAll(new Recipe(
-                    with(),
-                    with(TEItems.specialProductionAgreement, 1)
-            ), new Recipe(
-                    with(),
-                    with(TEItems.specialWarAgreement, 1)
-            ), new Recipe(
-                    with(),
-                    with(TEItems.ultraRemoteTransmissionProtocol, 1)
-            ));
-
-            uniCraftTime = 80 * 60;
-
-            size = 7;
-            health = 4000;
-            itemCapacity = 20;
-            consumePower(60f);
-            liquidCapacity = 50f;
-            //requiresLiquid(Liquids.cryofluid, 2f);
-            hasLiquids = hasPower = hasItems = true;
-            canOverdrive = false;
-        }};
-
         chipManufacturingMachine = new MultiCrafter("chip-manufacturing-machine") {{
             requirements(Category.crafting, with(Items.copper, 700, Items.titanium, 700, Items.lead, 800, Items.graphite, 800, Items.silicon, 8000));
             size = 2;
             health = 800;
             itemCapacity = 30;
             consumePower(5f);
-            hasItems = hasPower = true;
 
             recipes.addAll(new Recipe(
                     with(Items.silicon, 3, Items.copper, 2, Items.lead, 1),
-                    with(TEItems.primaryChip, 1),
+                    with(TEItems.preliminaryChip, 1),
                     30f
             ), new Recipe(
                     with(Items.silicon, 4, Items.copper, 2, Items.lead, 1),
@@ -369,7 +288,7 @@ public class TEBlocks {
         chipPrinter = new MultiCrafter("chip-printer") {{
             requirements(Category.crafting,
                     with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000,
-                    Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedProductionAgreement, 1)
+                    Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedAgreement, 1)
             );
 
             size = 4;
@@ -381,16 +300,20 @@ public class TEBlocks {
 
             recipes.addAll(new Recipe(
                     with(Items.silicon, 3),
-                    with(TEItems.primaryChip, 1),
+                    with(TEItems.preliminaryChip, 1),
                     10f
             ), new Recipe(
                     with(Items.silicon, 5),
-                    with(TEItems.advancedChip, 1),
+                    with(TEItems.intermediateChip, 1),
                     20f
             ), new Recipe(
                     with(Items.silicon, 6),
-                    with(TEItems.specialChip, 1),
+                    with(TEItems.advancedChip, 1),
                     30f
+            ), new Recipe(
+                    with(Items.silicon, 8),
+                    with(TEItems.ultimateChip, 1),
+                    40f
             ));
 
             drawer = new DrawMulti(
@@ -402,7 +325,6 @@ public class TEBlocks {
                     new DrawDefault(),
                     new DrawRegion("-chipBuild")
             );
-            hasItems = hasPower = hasLiquids = true;
             liquidCapacity = 20f;
         }};
 
@@ -414,7 +336,7 @@ public class TEBlocks {
 
             requirements(Category.turret,
                     with(Items.copper, 900, Items.lead, 1100, Items.graphite, 700, Items.metaglass, 300, Items.silicon, 250,
-                            TEItems.primaryChip, 20)
+                            TEItems.preliminaryChip, 20)
             );
 
             rotateSpeed = 0F;
@@ -611,7 +533,7 @@ public class TEBlocks {
             size = 9;
             armor = 80;
             requirements(Category.effect, with(Items.silicon, 30000, Items.thorium, 40000, Items.surgeAlloy, 20000, Items.graphite, 60000,
-                    TEItems.advancedChip, 300, TEItems.specialChip, 70, Items.titanium, 50000, Items.metaglass, 60000, Items.lead, 80000,
+                    TEItems.advancedChip, 300, TEItems.ultimateChip, 40, Items.titanium, 50000, Items.metaglass, 60000, Items.lead, 80000,
                     Items.phaseFabric, 100000)
             );
             buildCostMultiplier = 0.8f;
@@ -622,11 +544,31 @@ public class TEBlocks {
             health = 1500;
             size = 1;
 
-            MultiCharge(
+            MultiCharge( //我就说自己写才是最好的吧
                     new ChargeTier(, new LightningBulletType() {{
+                        lightningLength = 16;
+                    }}),
+                    new ChargeTier(, new LightningBulletType() {{
+                        lightningLength = 16;
+                    }}),
+                    new ChargeTier(, new LightningBulletType() {{
+                        lightningLength = 16;
+                    }}),
+                    new ChargeTier[]{
+                            new ChargeTier(, new LightningBulletType() {{
                                 lightningLength = 16;
-                    }})
-            );
+                            }}),
+                            new ChargeTier(, new LightningBulletType() {{
+                                lightningLength = 16;
+                            }}),
+                            new ChargeTier(, new LightningBulletType() {{
+                                lightningLength = 16;
+                            }}),
+                            new ChargeTier(, new LightningBulletType() {{
+                                lightningLength = 16;
+                            }})
+                    }
+            );//好个毛线
 
             requirements(Category.turret, with(Items.copper, 500, Items.lead, 650, Items.titanium, 350, Items.silicon, 200));
 
@@ -639,7 +581,6 @@ public class TEBlocks {
 
         oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
-            hasPower = hasItems = true;
             consumePower(3.5f);
             size = 3;
 
@@ -739,7 +680,6 @@ public class TEBlocks {
 
             requirements(Category.crafting, with(Items.copper, 400, Items.lead, 650, Items.silicon, 300, Items.titanium, 250));
 
-            hasPower = hasItems = true;
             consumePower(1f);
 
             drawer = new DrawMulti(new DrawDefault(), new DrawRegion("-rotator"){{
@@ -797,6 +737,7 @@ public class TEBlocks {
             laserRange = 12;
         }};
 
+        /* TODO cnm
         terminalProcessor = new LogicBlock("terminal-processor") {{
             requirements(Category.logic,
                     with(Items.lead, 4500, Items.silicon, 3000, Items.thorium, 1000, Items.surgeAlloy, 500, Items.titanium, 2000,
@@ -821,6 +762,7 @@ public class TEBlocks {
 
             size = 10;
         }};
+        */
 
         memoryBankLarge = new MemoryBlock("large-memory-bank") {{
             requirements(Category.logic,
@@ -835,16 +777,16 @@ public class TEBlocks {
 //        IllustratedReconstructor = new Reconstructor("illustrated-reconstructor") {{
 //            requirements(Category.units,
 //                  with(Items.silicon, 55000, Items.plastanium, 35000, Items.surgeAlloy, 12450, Items.phaseFabric, 5000,
-//                      TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.specialChip, 2000)
+//                      TEItems.zinc, 35000, TEItems.advancedChip, 5000, TEItems.uranium, 12000, TEItems.ultimateChip, 2000)
 //            );
 //
 //            size = 11;
 //            consumePower(75f);
 //            consumeItems(
 //                  with(Items.silicon, 16384, Items.plastanium, 12356, Items.surgeAlloy, 5420, Items.phaseFabric, 3500,
-//                      TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.specialChip, 100)
+//                      TEItems.zinc, 14000, TEItems.advancedChip, 600, TEItems.uranium, 4000, TEItems.ultimateChip, 100)
 //            );
-//            consumeLiquid(Liquids.cryofluid, 220f / 60f);
+//            consumeLiquid(Liquids.cryofluid, 280f / 60f);
 //            liquidCapacity = 440f;
 //
 //            constructTime = 60f * 60f * 12.5f;
@@ -899,7 +841,7 @@ public class TEBlocks {
 
         shieldGenerator = new ForceProjector("shield-generator") {{
             requirements(Category.effect,
-                    with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.primaryChip, 5));
+                    with(Items.lead, 50, Items.titanium, 45, Items.silicon, 75, Items.copper, 80, TEItems.preliminaryChip, 5));
             phaseRadiusBoost = 6f * 8f;
             radius = 8f * 8f;
             shieldHealth = 450f;
@@ -908,7 +850,7 @@ public class TEBlocks {
             cooldownBrokenBase = 5f / 60f;
             phaseShieldBoost = 250f;
 
-            itemConsumer = consumeItem(TEItems.primaryChip, 1).boost();
+            itemConsumer = consumeItem(TEItems.preliminaryChip, 1).boost();
             consumePower(1f);
         }};
 
@@ -930,7 +872,7 @@ public class TEBlocks {
 
         shieldGeneratorHuge = new ForceProjector("huge-shield-generator") {{
             requirements(Category.effect,
-                    with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.specialChip, 50,
+                    with(Items.lead, 2400, Items.titanium, 2000, Items.silicon, 2500, Items.copper, 5400, TEItems.ultimateChip, 50,
                     Items.phaseFabric, 400)
             );
             size = 4;
@@ -942,13 +884,13 @@ public class TEBlocks {
             cooldownBrokenBase = 120f / 60f;
             phaseShieldBoost = 3500f;
 
-            itemConsumer = consumeItems(with(Items.phaseFabric, 5, TEItems.zinc, 3, TEItems.advancedChip, 2)).boost();
+            itemConsumer = consumeItems(with(Items.phaseFabric, 5, TEItems.zinc, 3, TEItems.intermediateChip, 2)).boost();
             consumePower(8f);
         }};
 
         sectorShieldGenerator = new ForceProjector("sector-shield-generator") {{
             requirements(Category.effect,
-                    with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.specialChip, 500,
+                    with(Items.lead, 24000, Items.titanium, 16000, Items.silicon, 30000, Items.copper, 25000, TEItems.advancedChip, 500,
                             Items.phaseFabric, 2000)
             );
             size = 6;
@@ -960,7 +902,7 @@ public class TEBlocks {
             phaseShieldBoost = 30000f;
             itemCapacity = 20;
 
-            itemConsumer = consumeItems(with(Items.phaseFabric, 10, TEItems.zinc, 6, TEItems.advancedChip, 8, TEItems.specialChip, 5)).boost();
+            itemConsumer = consumeItems(with(Items.phaseFabric, 10, TEItems.zinc, 6, TEItems.intermediateChip, 8, TEItems.advancedChip, 5)).boost();
             consumePower(8f);
         }};
 
@@ -992,7 +934,7 @@ public class TEBlocks {
         advancedWaterExtractor = new SolidPump("advanced-water-extractor") {{
             requirements(Category.production,
                     with(Items.metaglass, 200, Items.graphite, 300, Items.lead, 450, Items.copper, 400, TEItems.zinc, 150,
-                    TEItems.primaryChip, 20)
+                    TEItems.preliminaryChip, 20)
             );
             result = Liquids.water;
             pumpAmount = 15f / 60f;

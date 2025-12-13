@@ -33,6 +33,8 @@ public class MultiChargeTurret extends PowerTurret {
 
     public MultiChargeTurret(String name) {
         super(name);
+
+        shootType = null;
     }
 
     public ChargeTier empty() {
