@@ -84,7 +84,7 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean shouldConsume() {
-            return
+            return false;
         }
 
         @Override
