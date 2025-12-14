@@ -34,66 +34,76 @@ import static mindustry.type.ItemStack.mult;
 import static mindustry.type.ItemStack.with;
 
 public class TEBlocks {
-    public static Block oreUranium, oreSphularite, oreRawIron; //矿石
-    public static Block wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap; //S墙矿
-    public static Block oreGraphitic; //地石墨
-    public static Block liquidCoverCryo, liquidCoverOil, liquidCoverWater, liquidCoverSlag, liquidCoverArkycite; //一些盖板地板
+    public static Block
+
+    surpluoIcon, erekirIcon, keplerIcon, //星球图标 后续会大改
+    oreUranium, oreSphularite, oreRawIron, //矿石
+    wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap, //S墙矿
+    oreGraphitic, //地石墨
+    liquidCoverCryo, liquidCoverOil, liquidCoverWater, liquidCoverSlag, liquidCoverArkycite, //一些盖板地板
+
     //基础方块(S)
-    public static Block highEfficiencyDisassembler; //高效解离机
-    public static Block missileLauncher; //导弹发射井
-    public static Block nuclearFuelRodManufacturingMachine; //核燃料棒制造机
-    public static Block oreSmeltingFurnace, arcFurnace; //冶炼炉子
-    public static Block oreCrusher; //矿石粉碎机
-    public static Block cryofluidMixerLarge; //大型冷冻液混合机
-    public static Block advancedOverdriveDome; //高级超速穹顶
-    public static Block componentAssemblyPlant; //组装厂
+    highEfficiencyDisassembler, //高效解离机
+    missileLauncher, //导弹发射井
+    nuclearFuelRodManufacturingMachine, //核燃料棒制造机
+    oreSmeltingFurnace, arcFurnace, //冶炼炉子
+    oreCrusher, //矿石粉碎机
+    cryofluidMixerLarge, //大型冷冻液混合机
+    advancedOverdriveDome, //高级超速穹顶
+    componentAssemblyPlant, //组装厂
 
-    public static AirBlock surpluoIcon, erekirIcon, keplerIcon; //星球图标 后续会大改
-    public static Block primaryLaboratory, advancedLaboratory, specialLaboratory; //实验室
-    public static Block chipManufacturingMachine, chipPrinter; //芯片制造机
+    primaryLaboratory, advancedLaboratory, specialLaboratory, //实验室
+    chipManufacturingMachine, chipPrinter, //芯片制造机 (造芯片的)
 
-    public static Block nuclearReactor, thoriumNuclearExplosiveReactor; //核反应堆
-    public static Block advancedPowerNode; //高级电力节点
+    nuclearReactor, thoriumNuclearExplosiveReactor, //核反应堆
+    advancedPowerNode, //高级电力节点
 
-    public static Block simpleStorage; //简易储存器
-    public static Block highSpeedUnloader; //高速装卸器
-    public static Block itemQuantumTransmissionLightBridge, liquidQuantumTransmissionLightBridge; //量子传输光桥
+    simpleStorage, //简易储存器
+    highSpeedUnloader, //高速装卸器
+    itemQuantumTransmissionLightBridge, liquidQuantumTransmissionLightBridge, //量子传输光桥
 
-    public static Block coreExplore; //核心
+    coreExplore, //核心
 
-    public static Block machineCannon; //机炮
-    public static Block prism; //棱镜 //重名了
+    machineCannon, //机炮
+    prism, //棱镜 重名了
 
-    public static Block unitLauncher, advancedUnitLauncher; //废稿之单位发射台
-    public static Block unitStorageVault, unitStorageVaultLarge; //单位储存仓
+    unitLauncher, advancedUnitLauncher, //废稿之单位发射台
+    unitStorageVault, unitStorageVaultLarge, //单位储存仓
 
-    public static Block terminalProcessor; //终端处理器
-    public static Block hugeLogicDisplay; //巨型逻辑显示屏
-    public static Block memoryBankLarge; //大型内存库
+    terminalProcessor, //终端处理器
+    hugeLogicDisplay, //巨型逻辑显示屏
+    memoryBankLarge, //大型内存库
 
-    public static Block IllustratedReconstructor; //虚数级单位重构厂 //T6鸽
+    IllustratedReconstructor, //虚数级单位重构厂 //T6鸽
 
-    public static Block payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic; //载荷传送带
-    public static Block payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic; //载荷路由器
-    public static Block payloadLauncher, payloadLauncherLarge, payloadLauncherHuge; //载荷发射器
+    payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic, //载荷传送带
+    payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic, //载荷路由器
+    /** 3x3 载荷发射器 */
+    payloadLauncher,
+    /** 5x5 载荷发射器 */
+    payloadLauncherLarge,
+    /** 7x7 载荷发射器 */
+    payloadLauncherHuge,
 
-    public static Block shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator; //护盾发生器
+    shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator, //护盾发生器
 
-    public static Block advancedWaterExtractor; //fw抽水机
-    public static Block mechanicalCliffCrusher, pneumaticCliffCrusher, laserBore; //墙钻
-    public static Block sporeWallCliffCrusher; //孢子墙粉碎机
-    public static Block pyratiteHeater; //S热机
+    advancedWaterExtractor, //fw抽水机
+    mechanicalCliffCrusher, pneumaticCliffCrusher, laserBore, //墙钻
+    sporeWallCliffCrusher, //孢子墙粉碎机
+    pyratiteHeater, //S热机
 
-    public static Block plasticAlloyWall, plasticAlloyWallLarge;//塑质合金墙
-    public static Block plasticAlloyConveyor, plasticAlloyPacketConveyor;//塑制合金带
+    plasticAlloyWall, plasticAlloyWallLarge,//塑质合金墙
+    plasticAlloyConveyor, plasticAlloyPacketConveyor,//塑制合金带
 
     //基础方块(E)
-    public static Block reinforcedPowerNode; //E电力节点
+    reinforcedPowerNode, //E电力节点
 
     //基础方块(TEMod)
-    public static Block liquidCover; //盖板
+    liquidCover, //盖板
 
-    public static Block stoneWall, stoneWallLarge, stoneConveyor, stoneDrill; //石头
+    stoneWall, stoneWallLarge, stoneConveyor, stoneDrill //石头
+
+    ;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
@@ -275,12 +285,12 @@ public class TEBlocks {
             consumePower(5f);
 
             recipes.addAll(new Recipe(
-                    with(Items.silicon, 3, Items.copper, 2, Items.lead, 1),
-                    with(TEItems.preliminaryChip, 1),
+                    new StackItemLiquid(with(Items.silicon, 3, Items.copper, 2, Items.lead, 1)),
+                    new StackItemLiquid(with(TEItems.preliminaryChip, 1)),
                     30f
             ), new Recipe(
-                    with(Items.silicon, 4, Items.copper, 2, Items.lead, 1),
-                    with(TEItems.advancedChip, 1),
+                            new StackItemLiquid(with(Items.silicon, 4, Items.copper, 2, Items.lead, 1)),
+                    new StackItemLiquid(with(TEItems.intermediateChip, 1)),
                     40f
             ));
         }};
@@ -288,7 +298,7 @@ public class TEBlocks {
         chipPrinter = new MultiCrafter("chip-printer") {{
             requirements(Category.crafting,
                     with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000,
-                    Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.advancedChip, 70, TEItems.advancedAgreement, 1)
+                    Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.intermediateChip, 70, TEItems.intermediateChip, 1)
             );
 
             size = 4;
@@ -299,20 +309,20 @@ public class TEBlocks {
             //requiresLiquid(Liquids.cryofluid, 0.2f);
 
             recipes.addAll(new Recipe(
-                    with(Items.silicon, 3),
-                    with(TEItems.preliminaryChip, 1),
+                    new StackItemLiquid(with(Items.silicon, 3)),
+                    new StackItemLiquid(with(TEItems.preliminaryChip, 1)),
                     10f
             ), new Recipe(
-                    with(Items.silicon, 5),
-                    with(TEItems.intermediateChip, 1),
+                    new StackItemLiquid(with(Items.silicon, 5)),
+                    new StackItemLiquid(with(TEItems.intermediateChip, 1)),
                     20f
             ), new Recipe(
-                    with(Items.silicon, 6),
-                    with(TEItems.advancedChip, 1),
+                    new StackItemLiquid(with(Items.silicon, 6)),
+                    new StackItemLiquid(with(TEItems.advancedChip, 1)),
                     30f
             ), new Recipe(
-                    with(Items.silicon, 8),
-                    with(TEItems.ultimateChip, 1),
+                    new StackItemLiquid(with(Items.silicon, 8)),
+                    new StackItemLiquid(with(TEItems.ultimateChip, 1)),
                     40f
             ));
 
@@ -586,20 +596,20 @@ public class TEBlocks {
 
             recipes.addAll(
                     new Recipe(
-                            with(TEItems.copperPowder, 1),
-                            with(Items.copper, 1)
+                            new StackItemLiquid(with(TEItems.copperPowder, 1)),
+                            new StackItemLiquid(with(Items.copper, 1))
                     ), new Recipe(
-                            with(TEItems.leadPowder, 1),
-                            with(Items.lead, 1)
+                            new StackItemLiquid(with(TEItems.leadPowder, 1)),
+                            new StackItemLiquid(with(Items.lead, 1))
                     ), new Recipe(
-                            with(TEItems.thoriumPowder, 1),
-                            with(Items.thorium, 1)
+                            new StackItemLiquid(with(TEItems.thoriumPowder, 1)),
+                            new StackItemLiquid(with(Items.thorium, 1))
                     ), new Recipe(
-                            with(TEItems.titaniumPowder, 1),
-                            with(Items.titanium, 1)
+                            new StackItemLiquid(with(TEItems.titaniumPowder, 1)),
+                            new StackItemLiquid(with(Items.titanium, 1))
                     ), new Recipe(
-                            with(TEItems.zincPowder, 1),
-                            with(TEItems.zinc, 1)
+                            new StackItemLiquid(with(TEItems.zincPowder, 1)),
+                            new StackItemLiquid(with(TEItems.zinc, 1))
                     )
             );
 
@@ -615,20 +625,20 @@ public class TEBlocks {
             health = 400;
             recipes.addAll(
                     new Recipe(
-                            with(Items.coal, 1, TEItems.iron, 19),
-                            with(TEItems.steel, 20),
+                            new StackItemLiquid(with(Items.coal, 1, TEItems.iron, 19)),
+                            new StackItemLiquid(with(TEItems.steel, 20)),
                             30f
                     ), new Recipe(
-                            with(Items.graphite, 1, Items.sand, 4),
-                            with(Items.silicon, 4),
+                            new StackItemLiquid(with(Items.graphite, 1, Items.sand, 4)),
+                            new StackItemLiquid(with(Items.silicon, 4)),
                             7f
                     ), new Recipe(
-                            with(Items.copper, 3, Items.lead, 4, Items.titanium, 2, Items.silicon, 3),
-                            with(Items.surgeAlloy, 1),
+                            new StackItemLiquid(with(Items.copper, 3, Items.lead, 4, Items.titanium, 2, Items.silicon, 3)),
+                            new StackItemLiquid(with(Items.surgeAlloy, 1)),
                             12f
                     ), new Recipe(
-                            with(Items.silicon, 2, Items.plastanium, 2),
-                            with(TEItems.plasticAlloy, 1),
+                            new StackItemLiquid(with(Items.silicon, 2, Items.plastanium, 2)),
+                            new StackItemLiquid(with(TEItems.plasticAlloy, 1)),
                             20f
                     )
             );
@@ -651,29 +661,29 @@ public class TEBlocks {
             size = 2;
 
             recipes.addAll(new Recipe(
-                    with(Items.copper, 1),
-                    with(TEItems.copperPowder, 1)
+                    new StackItemLiquid(with(Items.copper, 1)),
+                    new StackItemLiquid(with(TEItems.copperPowder, 1))
             ), new Recipe(
-                    with(Items.lead, 1),
-                    with(TEItems.leadPowder, 1)
+                    new StackItemLiquid(with(Items.lead, 1)),
+                    new StackItemLiquid(with(TEItems.leadPowder, 1))
             ), new Recipe(
-                    with(Items.thorium, 1),
-                    with(TEItems.thoriumPowder, 1)
+                    new StackItemLiquid(with(Items.thorium, 1)),
+                    new StackItemLiquid(with(TEItems.thoriumPowder, 1))
             ), new Recipe(
-                    with(Items.titanium, 1),
-                    with(TEItems.titaniumPowder, 1)
+                    new StackItemLiquid(with(Items.titanium, 1)),
+                    new StackItemLiquid(with(TEItems.titaniumPowder, 1))
             ), new Recipe(
-                    with(TEItems.zinc, 1),
-                    with(TEItems.zincPowder, 1)
+                    new StackItemLiquid(with(TEItems.zinc, 1)),
+                    new StackItemLiquid(with(TEItems.zincPowder, 1))
             ), new Recipe(
-                    with(TEItems.sphularite, 1),
-                    with(TEItems.zincPowder, 2)
+                    new StackItemLiquid(with(TEItems.sphularite, 1)),
+                    new StackItemLiquid(with(TEItems.zincPowder, 2))
             ), new Recipe(
-                    with(Items.scrap, 1),
-                    with(Items.sand, 1)
+                    new StackItemLiquid(with(Items.scrap, 1)),
+                    new StackItemLiquid(with(Items.sand, 1))
             ), new Recipe(
-                    with(TEItems.stone, 1),
-                    with(Items.sand, 1)
+                    new StackItemLiquid(with(TEItems.stone, 1)),
+                    new StackItemLiquid(with(Items.sand, 1))
             ));
 
             uniCraftTime = 40f;
@@ -1074,8 +1084,8 @@ public class TEBlocks {
 
             recipes.addAll(
                     new Recipe(
-                            with(),
-                            with(),
+                            new StackItemLiquid(with()),
+                            new StackItemLiquid(with()),
                             120f
                     )
             );

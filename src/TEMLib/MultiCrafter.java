@@ -9,8 +9,9 @@ import mindustry.gen.*;
 import mindustry.graphics.Pal;
 import mindustry.type.*;
 import mindustry.ui.*;
-import mindustry.world.blocks.distribution.Sorter;
 import mindustry.world.blocks.production.*;
+import mindustry.world.consumers.ConsumeItemDynamic;
+import mindustry.world.consumers.ConsumeLiquidsDynamic;
 import mindustry.world.meta.*;
 
 public class MultiCrafter extends GenericCrafter {
@@ -22,8 +23,22 @@ public class MultiCrafter extends GenericCrafter {
         super(name);
         configurable = true;
         saveConfig = true;
-        hasItems = true;
-        config(Item.class, (Sorter.SorterBuild tile, Item item) -> tile.sortItem = item);
+        config(Integer.class, (MultiCrafterBuild e, Integer i) -> {});
+
+        consume(new ConsumeItemDynamic(
+                (MultiCrafterBuild e) -> {
+                    hasItems = e.currentRecipe.inputItems != ItemStack.empty;
+                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputItems
+                            : ItemStack.empty;
+                }
+        ));
+        consume(new ConsumeLiquidsDynamic(
+                (MultiCrafterBuild e) -> {
+                    hasLiquids = e.currentRecipe.inputLiquids != LiquidStack.empty;
+                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputLiquids
+                            : LiquidStack.empty;
+                }
+        ));
     }
 
     @Override
@@ -72,7 +87,7 @@ public class MultiCrafter extends GenericCrafter {
         ));
     }
 
-    /// 等待重写
+    /// 正在重写
     public static class MultiCrafterBuild extends Building {
         public int currentRecipeId = -1;
         public @Nullable Recipe currentRecipe = getCurrentRecipe(currentRecipeId);
@@ -84,7 +99,7 @@ public class MultiCrafter extends GenericCrafter {
 
         @Override
         public boolean shouldConsume() {
-            return false;
+            return this.enabled;
         }
 
         @Override
@@ -105,47 +120,17 @@ public class MultiCrafter extends GenericCrafter {
 
         public Recipe() {}
 
-        public Recipe(ItemStack[] input, ItemStack[] output) {
-            inputItems = input;
-            outputItems = output;
+        public Recipe(StackItemLiquid input, StackItemLiquid output) {
+            inputItems = input.items;
+            outputItems = output.items;
+            inputLiquids = input.liquids;
+            outputLiquids = output.liquids;
         }
-
-        public Recipe(LiquidStack[] input, ItemStack[] output) {
-            inputLiquids = input;
-            outputItems = output;
-        }
-
-        public Recipe(LiquidStack[] input, LiquidStack[] output) {
-            inputLiquids = input;
-            outputLiquids = output;
-        }
-
-        public Recipe(ItemStack[] input, LiquidStack[] output) {
-            inputItems = input;
-            outputLiquids = output;
-        }
-
-        public Recipe(LiquidStack[] input, LiquidStack[] output, float craftTime) {
-            inputLiquids = input;
-            outputLiquids = output;
-            this.craftTime = craftTime;
-        }
-
-        public Recipe(ItemStack[] input, LiquidStack[] output, float craftTime) {
-            inputItems = input;
-            outputLiquids = output;
-            this.craftTime = craftTime;
-        }
-
-        public Recipe(LiquidStack[] input, ItemStack[] output, float craftTime) {
-            inputLiquids = input;
-            outputItems = output;
-            this.craftTime = craftTime;
-        }
-
-        public Recipe(ItemStack[] input, ItemStack[] output, float craftTime) {
-            inputItems = input;
-            outputItems = output;
+        public Recipe(StackItemLiquid input, StackItemLiquid output, float craftTime) {
+            inputItems = input.items;
+            outputItems = output.items;
+            inputLiquids = input.liquids;
+            outputLiquids = output.liquids;
             this.craftTime = craftTime;
         }
 
