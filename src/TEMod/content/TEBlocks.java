@@ -106,8 +106,8 @@ public class TEBlocks {
     ;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个方块，也是梦开始的地方
-            //Json版本早没了
+        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
+            //Json版本早没了，你想玩也玩不到
             requirements(Category.turret,
                     with(Items.copper, 200, Items.lead, 160, Items.graphite, 80)
             );
