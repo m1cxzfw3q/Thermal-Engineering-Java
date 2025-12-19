@@ -2,6 +2,7 @@ package TEMod.content;
 
 import TEMLib.*;
 import arc.graphics.*;
+import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
@@ -109,7 +110,7 @@ public class TEBlocks {
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
             requirements(Category.turret,
-                    with(Items.copper, 200, Items.lead, 160, Items.graphite, 80)
+                    with(Items.copper, 120, Items.lead, 100, Items.graphite, 30)
             );
             ammo(Items.copper, new BasicBulletType(8.0F, 27.0F) {{
                 pierceCap = 1;
@@ -206,15 +207,15 @@ public class TEBlocks {
             maxAmmo = 300;
             recoil = 0.7F;
             recoilTime = 2F;
-            shootY = 5.0F;
-            reload = 1.0F;
+            shootY = 5F;
+            reload = 1.5F;
             range = 240.0F;
             ammoUseEffect = TEFx.casingMini;
             shootEffect = TEFx.shootMini;
-            health = 2560;
-            inaccuracy = 3.0F;
-            rotateSpeed = 40.0F;
-            coolantMultiplier = 2F;
+            health = 600;
+            inaccuracy = 4F;
+            rotateSpeed = 40F;
+            coolantMultiplier = 1.7f;
             heatColor = Color.valueOf("ff0000");
             coolant = consume(new ConsumeLiquid(Liquids.water, 6f / 60f));
         }};
