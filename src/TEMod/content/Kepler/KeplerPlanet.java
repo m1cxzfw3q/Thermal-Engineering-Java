@@ -44,7 +44,6 @@ public class KeplerPlanet {
             sectorSeed = 12;
             allowWaves = true;
             allowLegacyLaunchPads = true;
-            allowWaveSimulation = true;
             allowSectorInvasion = true;
             allowLaunchSchematics = true;
             enemyCoreSpawnReplace = true;
@@ -54,6 +53,7 @@ public class KeplerPlanet {
                 rules.placeRangeCheck = false;
                 rules.showSpawns = true;
                 rules.enemyCoreBuildRadius = 45f * 8f;
+                rules.solarMultiplier = 1.5f;
 
                 rules.hideBannedBlocks = true;
                 rules.coreDestroyClear = true;

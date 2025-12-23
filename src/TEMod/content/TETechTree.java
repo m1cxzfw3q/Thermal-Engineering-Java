@@ -29,7 +29,7 @@ public class TETechTree {
 
                 node(TEBlocks.machineCannon,
                         with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
-                        Seq.with(new Objectives.SectorComplete(KeplerSectorPresets.LandingArea), new Objectives.Research(Blocks.scorch),
+                        Seq.with(new Objectives.SectorComplete(KeplerSectorPresets.landingSite), new Objectives.Research(Blocks.scorch),
                                 new Objectives.Research(Blocks.hail), new Objectives.Research(TEItems.preliminaryAgreement)
                         ), () -> {
                             node(TEBlocks.missileLauncher,
@@ -98,7 +98,7 @@ public class TETechTree {
 
             node(TEBlocks.erekirIcon);
 
-            node(LandingArea, Seq.with(
+            node(landingSite, Seq.with(
                     new Objectives.SectorComplete(impact0078),
                     new Objectives.SectorComplete(aegis)
             ), () -> {});

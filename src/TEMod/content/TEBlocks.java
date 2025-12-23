@@ -378,7 +378,7 @@ public class TEBlocks {
                         -11, -11, 0
                 };
             }};
-            shootSound = Sounds.missileLaunch;
+            shootSound = Sounds.shootScathe;
             recoil = 0f;
             shootY = 0;
 
@@ -392,7 +392,10 @@ public class TEBlocks {
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
-                    deathSound = Sounds.largeExplosion;
+                    deathSound = Sounds.explosionMissile;
+                    lowAltitude = true;
+                    loopSound = Sounds.loopMissileTrail;
+                    loopSoundVolume = 0.6f;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -424,7 +427,10 @@ public class TEBlocks {
                     missileAccelTime = 120f;
                     health = 400f;
                     rotateSpeed = 15f;
-                    deathSound = Sounds.largeExplosion;
+                    deathSound = Sounds.explosionMissile;
+                    lowAltitude = true;
+                    loopSound = Sounds.loopMissileTrail;
+                    loopSoundVolume = 0.6f;
                     weapons.add(new Weapon() {{
                         shootCone = 360f;
                         mirror = false;
@@ -461,11 +467,11 @@ public class TEBlocks {
             explosionShakeDuration = 120;
             explosionRadius = 80;
             explosionDamage = 10000;
-            explodeSound = Sounds.explosionbig;
+            explodeSound = Sounds.explosionReactor;
             fuelItem = TEItems.nuclearFuelRod;
             heating = 0.06f;
             coolantPower = 2;
-            ambientSound = Sounds.hum;
+            ambientSound = Sounds.loopThoriumReactor;
             ambientSoundVolume = 0.24f;
             consumeItem(TEItems.nuclearFuelRod, 1);
             consumeLiquid(Liquids.cryofluid, heating / coolantPower).update(false);
@@ -803,13 +809,13 @@ public class TEBlocks {
 //            constructTime = 60f * 60f * 12.5f;
 //
 //            upgrades.addAll(
-//                    new UnitType[]{UnitTypes.eclipse, TEUnitTypes},
-//                    new UnitType[]{UnitTypes.toxopid, TEUnitTypes},
+//                    new UnitType[]{UnitTypes.eclipse, TEUnitTypes.},
+//                    new UnitType[]{UnitTypes.toxopid, TEUnitTypes.},
 //                    new UnitType[]{UnitTypes.reign, TEUnitTypes.coupling},//传奇肘击王耦合
-//                    new UnitType[]{UnitTypes.omura, TEUnitTypes},
-//                    new UnitType[]{UnitTypes.oct, TEUnitTypes},
-//                    new UnitType[]{UnitTypes.corvus, TEUnitTypes},
-//                    new UnitType[]{UnitTypes.navanax, TEUnitTypes}
+//                    new UnitType[]{UnitTypes.omura, TEUnitTypes.},
+//                    new UnitType[]{UnitTypes.oct, TEUnitTypes.},
+//                    new UnitType[]{UnitTypes.corvus, TEUnitTypes.},
+//                    new UnitType[]{UnitTypes.navanax, TEUnitTypes.}
 //            );
 //        }};      TODO T6Unit 赶进度中，别急
 
@@ -964,7 +970,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.water, 4f / 60f).boost();
             attribute = Attribute.sand;
             output = Items.sand;
-            ambientSound = Sounds.drill;
+            ambientSound = Sounds.loopDrill;
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
             liquidBoostIntensity = 2.56f;
@@ -977,7 +983,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.water, 4f / 60f).boost();
             attribute = Attribute.sand;
             output = Items.sand;
-            ambientSound = Sounds.drill;
+            ambientSound = Sounds.loopDrill;
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
             liquidBoostIntensity = 2.56f;
@@ -990,7 +996,7 @@ public class TEBlocks {
             consumeLiquid(Liquids.water, 4f / 60f).boost();
             attribute = TEAttribute.sporeWalls;
             output = Items.sporePod;
-            ambientSound = Sounds.drill;
+            ambientSound = Sounds.loopDrill;
             ambientSoundVolume = 0.04f;
             fogRadius = 2;
             requirements(Category.production, with(Items.copper, 75, Items.lead, 40, Items.graphite, 25));
@@ -1005,7 +1011,7 @@ public class TEBlocks {
             size = 2;
             heatOutput = 6.0F;
             craftTime = 200.0F;
-            ambientSound = Sounds.hum;
+            ambientSound = Sounds.loopHum;
             consumeItem(Items.pyratite);
         }};
 

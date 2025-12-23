@@ -10,15 +10,14 @@ import mindustry.Vars;
 import mindustry.game.EventType;
 import mindustry.gen.Icon;
 import mindustry.mod.Mod;
+import mindustry.mod.Mods;
 
 public class TECore extends Mod {
-    public int i = 0;
-
     public TECore() {
         Events.on(EventType.ClientLoadEvent.class, e -> {
             Vars.ui.settings.addCategory("@temod.settingTable", Icon.box, T -> {
                 T.checkPref("temod.settingTable.tips", true);
-            });
+            });/*
             if (Core.settings.getBool("temod.settingTable.tips")) {
                 String aTipStr = Core.bundle.format("misc.tips") + "\n" + Core.bundle.format("misc.tips-" + (Mathf.random(9) + 1));
                 Vars.ui.content.add(aTipStr).left();
@@ -34,7 +33,8 @@ public class TECore extends Mod {
                 Vars.ui.logic.add(aTipStr).left();
                 Vars.ui.campaignComplete.add(aTipStr).left();
                 Vars.ui.language.add(aTipStr).left();
-            }
+            }  TODO 更好的Tips
+            */
         });
     }
 
@@ -57,5 +57,15 @@ public class TECore extends Mod {
 
     public static void isComplete(Class<?> obj) {
         Log.info("[Thermal-Engineering] isComplete(" + obj + ")");
+    }
+
+    private static String lastTitle;
+    private void updateTitle() {
+        if(Core.graphics == null) return;
+        var title = "Mindustry | ThermalEngineering " + TEVars.version;
+        if(!title.equals(lastTitle)) {
+            lastTitle = title;
+            Core.graphics.setTitle(title);
+        }
     }
 }

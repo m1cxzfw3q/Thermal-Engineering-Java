@@ -1,7 +1,6 @@
 package TEMLib;
 
 import arc.scene.ui.layout.Table;
-import javafx.scene.control.Tab;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.ui.Styles;
