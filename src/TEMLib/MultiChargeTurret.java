@@ -85,7 +85,7 @@ public class MultiChargeTurret extends PowerTurret {
             }
             for (int i = 0; i < lightnings; i++) {
                 Lightning.create(Team.derelict, Pal.lancerLaser, damage / 10, x, y, Mathf.random(360f), (int) (radius * 0.8));
-                Call.soundAt(Sounds.spark, x, y, 1, 1);
+                Call.soundAt(Sounds.shootArc, x, y, 1, 1);
             }
         }
 
