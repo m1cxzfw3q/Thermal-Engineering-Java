@@ -1,6 +1,7 @@
 package TEMod.content;
 
 import TEMLib.*;
+import TEMod.TECore;
 import arc.graphics.*;
 import mindustry.Vars;
 import mindustry.content.*;
@@ -79,12 +80,7 @@ public class TEBlocks {
 
     payloadConveyorLarge, payloadConveyorHuge, payloadConveyorGigantic, //载荷传送带
     payloadRouterLarge, payloadRouterHuge, payloadRouterGigantic, //载荷路由器
-    /** 3x3 载荷发射器 */
-    payloadLauncher,
-    /** 5x5 载荷发射器 */
-    payloadLauncherLarge,
-    /** 7x7 载荷发射器 */
-    payloadLauncherHuge,
+    payloadLauncher, payloadLauncherLarge, payloadLauncherHuge,//载荷发射器
 
     shieldGenerator, shieldGeneratorLarge, shieldGeneratorHuge, sectorShieldGenerator, //护盾发生器
 
@@ -1104,7 +1100,7 @@ public class TEBlocks {
             health = 2400;
             size = 9;
 
-        }};
+        }}; TODO 贴图没画
          */
 
 

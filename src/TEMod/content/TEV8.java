@@ -1,6 +1,5 @@
 package TEMod.content;
 
-import mindustry.content.Items;
 import mindustry.content.Liquids;
 import mindustry.type.Item;
 import mindustry.type.UnitType;
@@ -66,14 +65,14 @@ public class TEV8 {
         cyanogen.shownPlanets.addAll(kepler, serpulo);
 
         for (Block it : content.blocks()) {
-            try {
+            if (!it.shownPlanets.isEmpty()){
                 if (it.shownPlanets.contains(serpulo)) {
                     it.shownPlanets.add(erekir);
                 } else if (it.shownPlanets.contains(erekir)) {
                     it.shownPlanets.add(serpulo);
                 }
                 it.shownPlanets.add(kepler);
-            } catch (Exception ignored) {}
+            }
         }
     }
 }

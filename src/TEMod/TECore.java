@@ -6,11 +6,16 @@ import arc.Core;
 import arc.Events;
 import arc.math.Mathf;
 import arc.util.Log;
+import arc.util.Reflect;
+import arc.util.serialization.Base64Coder;
 import mindustry.Vars;
 import mindustry.game.EventType;
 import mindustry.gen.Icon;
 import mindustry.mod.Mod;
 import mindustry.mod.Mods;
+import mindustry.ui.dialogs.BaseDialog;
+
+import java.util.Base64;
 
 public class TECore extends Mod {
     public TECore() {
@@ -40,7 +45,6 @@ public class TECore extends Mod {
 
     @Override
     public void loadContent() {
-        TEAttribute.load();
         TEItems.load();
         TEBlocks.load();
         KeplerPlanet.load();
@@ -49,10 +53,11 @@ public class TECore extends Mod {
         //TEModularWeapons.load();
         //TEUnitTypes.load();
 
-        isComplete(TECore.class);
+
         TETechTree.load();
         TEV8.load();
         TEFix.load();
+        isComplete(this.getClass());
     }
 
     public static void isComplete(Class<?> obj) {
