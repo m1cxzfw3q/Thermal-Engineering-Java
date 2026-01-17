@@ -273,6 +273,24 @@ public class TEBlocks {
             );
         }};
 
+        serpluoIcon = new AirBlock("surpluo-icon") {{
+            size = 2;
+            alwaysUnlocked = true;
+            requirements(Category.effect, BuildVisibility.hidden, with());
+        }};
+
+        erekirIcon = new AirBlock("erekir-icon") {{
+            size = 2;
+            alwaysUnlocked = true;
+            requirements(Category.effect, BuildVisibility.hidden, with());
+        }};
+
+        keplerIcon = new AirBlock("kepler-icon") {{
+            size = 2;
+            alwaysUnlocked = true;
+            requirements(Category.effect, BuildVisibility.hidden, with());
+        }};
+
         oreUranium = new OreBlock("ore-uranium", TEItems.uranium) {{
             oreDefault = true;
             oreThreshold = 0.81f;

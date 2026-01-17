@@ -14,6 +14,7 @@ import mindustry.type.ItemStack;
 import static TEMod.TECore.isComplete;
 import static TEMod.content.Kepler.KeplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
+import static TEMod.content.TEItems.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.TechTree.roots;
@@ -24,53 +25,53 @@ public class TETechTree {
 
     public static void load() {
         KeplerPlanet.kepler.techTree = nodeRoot("kepler", coreExplore, () -> {
-            node(TEBlocks.serpluoIcon, () -> {
+            node(serpluoIcon, () -> {
                 node(pyratiteHeater);
 
-                node(TEBlocks.machineCannon,
+                node(machineCannon,
                         with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
                         Seq.with(new Objectives.SectorComplete(KeplerSectorPresets.landingSite), new Objectives.Research(Blocks.scorch),
-                                new Objectives.Research(Blocks.hail), new Objectives.Research(TEItems.preliminaryAgreement)
+                                new Objectives.Research(Blocks.hail), new Objectives.Research(preliminaryAgreement)
                         ), () -> {
-                            node(TEBlocks.missileLauncher,
+                            node(missileLauncher,
                                     with(Items.copper, 10000, Items.lead, 12000, Items.graphite, 9000, Items.metaglass, 4000,
-                                    Items.silicon, 500, TEItems.preliminaryChip, 300, TEItems.advancedAgreement, 1)
+                                    Items.silicon, 500, TEItems.preliminaryChip, 300, advancedAgreement, 1)
                             );
                 });
 
-                node(TEBlocks.primaryLaboratory, Seq.with(), () ->
-                        node(TEBlocks.advancedLaboratory,
+                node(primaryLaboratory, Seq.with(), () ->
+                        node(advancedLaboratory,
                                 Seq.with(new Objectives.Research(Liquids.cryofluid)), () ->
-                                        node(TEBlocks.specialLaboratory)));
+                                        node(specialLaboratory)));
 
-                nodeProduce(TEItems.preliminaryAgreement, () ->
-                        nodeProduce(TEItems.intermediateAgreement, () ->
-                                nodeProduce(TEItems.advancedAgreement, () ->
-                                        nodeProduce(TEItems.ultimateAgreement))));
+                nodeProduce(preliminaryAgreement, () ->
+                        nodeProduce(intermediateAgreement, () ->
+                                nodeProduce(advancedAgreement, () ->
+                                        nodeProduce(ultimateAgreement))));
 
                 node(shieldGenerator, () ->
                         node(shieldGeneratorLarge, () ->
                                 node(shieldGeneratorHuge, () ->
                                         node(sectorShieldGenerator))));
 
-                node(TEBlocks.highEfficiencyDisassembler,
+                node(highEfficiencyDisassembler,
                         with(Items.copper, 100000, Items.titanium, 60000, Items.lead, 80000, Items.graphite, 50000, Items.thorium, 30000,
-                                Items.silicon, 20000, Items.plastanium, 8000, Items.phaseFabric, 5000, TEItems.ultimateAgreement, 2,
-                                TEItems.advancedChip, 2000),
+                                Items.silicon, 20000, Items.plastanium, 8000, Items.phaseFabric, 5000, ultimateAgreement, 2,
+                                advancedChip, 2000),
                         Seq.with(new Objectives.Research(disassembler), new Objectives.Research(surgeSmelter), new Objectives.Research(phaseWeaver),
-                                new Objectives.Research(oilExtractor), new Objectives.Research(TEItems.ultimateAgreement)
+                                new Objectives.Research(oilExtractor), new Objectives.Research(ultimateAgreement)
                         )
                 );
 
-                node(TEBlocks.simpleStorage,
+                node(simpleStorage,
                         with(Items.copper, 2000, Items.lead, 2600, Items.graphite, 1500),
                         Seq.with(new Objectives.Research(bridgeConduit)),
                         () -> {
-                    node(TEBlocks.highSpeedUnloader,
+                    node(highSpeedUnloader,
                             with(Items.thorium, 600, Items.silicon, 1000, Items.titanium, 1000, Items.plastanium, 600,
-                            TEItems.ultimateAgreement, 1),
+                            ultimateAgreement, 1),
                             Seq.with(new Objectives.Research(unloader), new Objectives.Research(vault),
-                            new Objectives.Research(TEItems.ultimateAgreement)
+                            new Objectives.Research(ultimateAgreement)
                     ));
                 });
             });
@@ -78,22 +79,22 @@ public class TETechTree {
             node(TEBlocks.keplerIcon, () -> {
                 node(TEBlocks.nuclearFuelRodManufacturingMachine,
                         with(Items.thorium, 6000, Items.titanium, 7000, Items.silicon, 6000, Items.lead, 7000, Items.surgeAlloy, 2000,
-                        Items.graphite, 82000, TEItems.advancedChip, 1000, TEItems.intermediateAgreement, 1
+                        Items.graphite, 82000, advancedChip, 1000, intermediateAgreement, 1
                 ), Seq.with(
-                        new Objectives.Research(TEItems.intermediateAgreement),
-                        new Objectives.Research(TEItems.uranium)
+                        new Objectives.Research(intermediateAgreement),
+                        new Objectives.Research(uranium)
                 ), () -> {});
 
                 node(TEBlocks.nuclearReactor,
                         with(Items.lead, 20000, Items.graphite, 10000, Items.metaglass, 5000, Items.thorium, 8000, Items.titanium, 10000,
-                        Items.surgeAlloy, 3500, TEItems.advancedChip, 500, TEItems.intermediateAgreement, 1
+                        Items.surgeAlloy, 3500, advancedChip, 500, intermediateAgreement, 1
                 ), Seq.with(
-                        new Objectives.Research(TEItems.nuclearFuelRod),
+                        new Objectives.Research(nuclearFuelRod),
                         new Objectives.Research(thoriumReactor)
                 ), () -> {});
 
-                nodeProduce(TEItems.uranium, () ->
-                        nodeProduce(TEItems.nuclearFuelRod));
+                nodeProduce(uranium, () ->
+                        nodeProduce(nuclearFuelRod));
             });
 
             node(TEBlocks.erekirIcon);
@@ -140,8 +141,8 @@ public class TETechTree {
         addToNext(siliconSmelter, () ->
                 node(TEBlocks.chipManufacturingMachine,
                         with(Items.copper, 15000, Items.titanium, 10000, Items.lead, 18000, Items.graphite, 13000, Items.silicon, 70000,
-                                TEItems.intermediateAgreement, 1),
-                        Seq.with(new Objectives.Research(TEItems.intermediateAgreement)),
+                                intermediateAgreement, 1),
+                        Seq.with(new Objectives.Research(intermediateAgreement)),
                         () -> node(TEBlocks.chipPrinter,
                                 with(Items.copper, 26000, Items.titanium, 15000, Items.lead, 30000, Items.graphite, 45000, Items.silicon, 130000,
                                         Items.plastanium, 20000, Items.phaseFabric, 18000, TEItems.ultimateAgreement, 2, TEItems.advancedChip, 300),
@@ -155,10 +156,10 @@ public class TETechTree {
         addToNext(coreShard, () -> {});
         addToNext(hail, () -> node(TEBlocks.machineCannon,
                 with(Items.copper, 6000, Items.lead, 4000, Items.graphite, 3500),
-                Seq.with(new Objectives.Research(Blocks.scorch), new Objectives.Research(TEItems.preliminaryAgreement)),
+                Seq.with(new Objectives.Research(Blocks.scorch), new Objectives.Research(preliminaryAgreement)),
                 () -> node(TEBlocks.missileLauncher,
                         with(Items.copper, 10000, Items.lead, 12000, Items.graphite, 9000, Items.metaglass, 4000,
-                                Items.silicon, 500, TEItems.preliminaryChip, 300, TEItems.intermediateAgreement, 1))));
+                                Items.silicon, 500, TEItems.preliminaryChip, 300, intermediateAgreement, 1))));
 
 
         isComplete(TETechTree.class);
