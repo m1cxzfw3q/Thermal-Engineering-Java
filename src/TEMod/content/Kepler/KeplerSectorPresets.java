@@ -7,7 +7,6 @@ import static TEMod.content.Kepler.KeplerPlanet.*;
 
 public class KeplerSectorPresets {
     public static SectorPreset landingSite;//着陆点
-    //public static SectorPreset ResearchAreaNo47;//47号研究区
 
     public static void load(){
         landingSite = new SectorPreset("landing-site", kepler, 53) {{
@@ -16,22 +15,10 @@ public class KeplerSectorPresets {
             difficulty = 3;
             overrideLaunchDefaults = true;
             startWaveTimeMultiplier = 4f;
-            rules = rules1 -> {
-                rules1.attackMode = true;
+            rules = r -> {
+                r.attackMode = true;
             };
         }};
-
-        /*
-        ResearchAreaNo47 = new SectorPreset("research-area-no-47", kepler, 472) {{
-            alwaysUnlocked = false;
-            addStartingItems = true;
-            captureWave = 81;
-            difficulty = 4;
-            overrideLaunchDefaults = true;
-            startWaveTimeMultiplier = 4f;
-        }};
-         */
-
         isComplete(KeplerSectorPresets.class);
     }
 }

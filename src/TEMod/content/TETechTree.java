@@ -23,8 +23,8 @@ public class TETechTree {
     private static TechTree.TechNode context = null;
 
     public static void load() {
-        KeplerPlanet.kepler.techTree = nodeRoot("keplerTechTree", coreExplore, () -> {
-            node(TEBlocks.surpluoIcon, () -> {
+        KeplerPlanet.kepler.techTree = nodeRoot("kepler", coreExplore, () -> {
+            node(TEBlocks.serpluoIcon, () -> {
                 node(pyratiteHeater);
 
                 node(TEBlocks.machineCannon,

@@ -5,6 +5,8 @@ import TEMod.TECore;
 import arc.graphics.*;
 import mindustry.Vars;
 import mindustry.content.*;
+import mindustry.ctype.ContentType;
+import mindustry.ctype.UnlockableContent;
 import mindustry.entities.bullet.*;
 import mindustry.entities.effect.*;
 import mindustry.entities.pattern.*;
@@ -38,7 +40,6 @@ import static mindustry.type.ItemStack.with;
 public class TEBlocks {
     public static Block
 
-    surpluoIcon, erekirIcon, keplerIcon, //星球图标 后续会大改
     oreUranium, oreSphularite, oreRawIron, //矿石
     wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap, //S墙矿
     oreGraphitic, //地石墨
@@ -102,9 +103,30 @@ public class TEBlocks {
 
     ;
 
+    public static UnlockableContent serpluoIcon, erekirIcon, keplerIcon; //星球图标
+
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
+        serpluoIcon = new UnlockableContent("serpulo-icon") {
+            @Override
+            public ContentType getContentType() {
+                return null;
+            }
+        };
+        erekirIcon = new UnlockableContent("erekir-icon") {
+            @Override
+            public ContentType getContentType() {
+                return null;
+            }
+        };
+        keplerIcon = new UnlockableContent("kepler-icon") {
+            @Override
+            public ContentType getContentType() {
+                return null;
+            }
+        };
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
+            //更别说Json版本更是一坨屎，比现在的这个mod还要屎
             requirements(Category.turret,
                     with(Items.copper, 120, Items.lead, 100, Items.graphite, 30)
             );
@@ -250,24 +272,6 @@ public class TEBlocks {
             );
         }};
 
-        surpluoIcon = new AirBlock("surpluo-icon") {{
-            size = 2;
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-        }};
-
-        erekirIcon = new AirBlock("erekir-icon") {{
-            size = 2;
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-        }};
-
-        keplerIcon = new AirBlock("kepler-icon") {{
-            size = 2;
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-        }};
-
         oreUranium = new OreBlock("ore-uranium", TEItems.uranium) {{
             oreDefault = true;
             oreThreshold = 0.81f;
@@ -284,11 +288,11 @@ public class TEBlocks {
             recipes.addAll(new Recipe(
                     new StackItemLiquid(with(Items.silicon, 3, Items.copper, 2, Items.lead, 1)),
                     new StackItemLiquid(with(TEItems.preliminaryChip, 1)),
-                    30f
+                    40f
             ), new Recipe(
                             new StackItemLiquid(with(Items.silicon, 4, Items.copper, 2, Items.lead, 1)),
                     new StackItemLiquid(with(TEItems.intermediateChip, 1)),
-                    40f
+                    50f
             ));
         }};
 
@@ -298,7 +302,7 @@ public class TEBlocks {
                     Items.plastanium, 2000, Items.phaseFabric, 800, TEItems.intermediateChip, 70, TEItems.intermediateChip, 1)
             );
 
-            size = 4;
+            size = 3;
             health = 1000;
             itemCapacity = 40;
             consumePower(6f);
