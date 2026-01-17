@@ -109,9 +109,8 @@ public class TEBlocks {
     public static class HiddenBlock extends Block {
         public HiddenBlock(String name) {
             super(name);
-            hideDatabase = true;
-            inEditor = false;
             alwaysUnlocked = true;
+            buildVisibility = BuildVisibility.hidden;
         }
     }
 
