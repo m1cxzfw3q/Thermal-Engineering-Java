@@ -41,8 +41,6 @@ import static mindustry.type.ItemStack.with;
 public class TEBlocks {
     public static Block
 
-    serpluoIcon, erekirIcon, keplerIcon,//星球图标
-
     oreUranium, oreSphularite, oreRawIron, //矿石
     wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap, //S墙矿
     oreGraphitic, //地石墨
@@ -106,7 +104,29 @@ public class TEBlocks {
 
     ;
 
+    public static TEContent serpluoIcon, erekirIcon, keplerIcon; //星球图标
+
+    public static class TEContent extends UnlockableContent {
+        public TEContent(String name) {
+            super(name);
+            this.localizedName = Core.bundle.get("teContent." + this.name + ".name", this.name);
+            this.description = Core.bundle.getOrNull("teContent." + this.name + ".description");
+            this.details = Core.bundle.getOrNull("teContent." + this.name + ".details");
+            this.unlocked = Core.settings != null && Core.settings.getBool(this.name + "-unlocked", false);
+            alwaysUnlocked = true;
+            hideDatabase = true;
+        }
+
+        @Override
+        public ContentType getContentType() {
+            return ContentType.block;
+        }
+    }
+
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
+        serpluoIcon = new TEContent("serpulo-icon");
+        erekirIcon = new TEContent("erekir-icon");
+        keplerIcon = new TEContent("kepler-icon");
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
             //更别说Json版本更是一坨屎，比现在的这个mod还要屎
@@ -253,24 +273,6 @@ public class TEBlocks {
                     new DrawRegion("-spinner", 7, true),
                     new DrawDefault()
             );
-        }};
-
-        serpluoIcon = new AirBlock("serpluo-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-            hideDatabase = true;
-        }};
-
-        erekirIcon = new AirBlock("erekir-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-            hideDatabase = true;
-        }};
-
-        keplerIcon = new AirBlock("kepler-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.effect, BuildVisibility.hidden, with());
-            hideDatabase = true;
         }};
 
         oreUranium = new OreBlock("ore-uranium", TEItems.uranium) {{
