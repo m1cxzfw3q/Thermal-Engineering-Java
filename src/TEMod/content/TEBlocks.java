@@ -110,7 +110,9 @@ public class TEBlocks {
         public HiddenBlock(String name) {
             super(name);
             alwaysUnlocked = true;
-            buildVisibility = BuildVisibility.hidden;
+            requirements(Category.distribution, BuildVisibility.hidden, with());
+            hideDatabase = true;
+            inEditor = false;
         }
     }
 
