@@ -4,18 +4,11 @@ import TEMod.content.*;
 import TEMod.content.Kepler.*;
 import arc.Core;
 import arc.Events;
-import arc.math.Mathf;
 import arc.util.Log;
-import arc.util.Reflect;
-import arc.util.serialization.Base64Coder;
 import mindustry.Vars;
 import mindustry.game.EventType;
 import mindustry.gen.Icon;
 import mindustry.mod.Mod;
-import mindustry.mod.Mods;
-import mindustry.ui.dialogs.BaseDialog;
-
-import java.util.Base64;
 
 public class TECore extends Mod {
     public TECore() {
