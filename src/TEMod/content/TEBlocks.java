@@ -2,6 +2,7 @@ package TEMod.content;
 
 import TEMLib.*;
 import TEMod.TECore;
+import arc.Core;
 import arc.graphics.*;
 import mindustry.Vars;
 import mindustry.content.*;
@@ -103,6 +104,21 @@ public class TEBlocks {
 
     ;
 
+    public static class TEContent extends UnlockableContent {
+        public TEContent(String name) {
+            super(name);
+            this.localizedName = Core.bundle.get("teContent." + this.name + ".name", this.name);
+            this.description = Core.bundle.getOrNull("teContent." + this.name + ".description");
+            this.details = Core.bundle.getOrNull("teContent." + this.name + ".details");
+            this.unlocked = Core.settings != null && Core.settings.getBool(this.name + "-unlocked", false);
+        }
+
+        @Override
+        public ContentType getContentType() {
+            return ContentType.error;
+        }
+    }
+
     public static UnlockableContent serpluoIcon, erekirIcon, keplerIcon; //星球图标
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
@@ -111,17 +127,26 @@ public class TEBlocks {
             public ContentType getContentType() {
                 return null;
             }
+            {
+                alwaysUnlocked = true;
+            }
         };
         erekirIcon = new UnlockableContent("erekir-icon") {
             @Override
             public ContentType getContentType() {
                 return null;
             }
+            {
+                alwaysUnlocked = true;
+            }
         };
         keplerIcon = new UnlockableContent("kepler-icon") {
             @Override
             public ContentType getContentType() {
                 return null;
+            }
+            {
+                alwaysUnlocked = true;
             }
         };
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
