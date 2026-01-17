@@ -107,24 +107,6 @@ public class TEBlocks {
     ;
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        serpluoIcon = new Block("serpulo-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.distribution, BuildVisibility.hidden, with());
-            hideDatabase = true;
-            inEditor = false;
-        }};
-        erekirIcon = new Block("erekir-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.distribution, BuildVisibility.hidden, with());
-            hideDatabase = true;
-            inEditor = false;
-        }};
-        keplerIcon = new Block("kepler-icon") {{
-            alwaysUnlocked = true;
-            requirements(Category.distribution, BuildVisibility.hidden, with());
-            hideDatabase = true;
-            inEditor = false;
-        }};
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
             //更别说Json版本更是一坨屎，比现在的这个mod还要屎
@@ -273,22 +255,22 @@ public class TEBlocks {
             );
         }};
 
-        serpluoIcon = new AirBlock("surpluo-icon") {{
-            size = 2;
+        serpluoIcon = new AirBlock("serpluo-icon") {{
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
+            hideDatabase = true;
         }};
 
         erekirIcon = new AirBlock("erekir-icon") {{
-            size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
+            hideDatabase = true;
         }};
 
         keplerIcon = new AirBlock("kepler-icon") {{
-            size = 2;
             alwaysUnlocked = true;
             requirements(Category.effect, BuildVisibility.hidden, with());
+            hideDatabase = true;
         }};
 
         oreUranium = new OreBlock("ore-uranium", TEItems.uranium) {{
