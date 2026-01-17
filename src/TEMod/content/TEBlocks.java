@@ -115,40 +115,22 @@ public class TEBlocks {
 
         @Override
         public ContentType getContentType() {
-            return null;
+            return ContentType.error;
         }
     }
 
     public static UnlockableContent serpluoIcon, erekirIcon, keplerIcon; //星球图标
 
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        serpluoIcon = new UnlockableContent("serpulo-icon") {
-            @Override
-            public ContentType getContentType() {
-                return null;
-            }
-            {
-                alwaysUnlocked = true;
-            }
-        };
-        erekirIcon = new UnlockableContent("erekir-icon") {
-            @Override
-            public ContentType getContentType() {
-                return null;
-            }
-            {
-                alwaysUnlocked = true;
-            }
-        };
-        keplerIcon = new UnlockableContent("kepler-icon") {
-            @Override
-            public ContentType getContentType() {
-                return null;
-            }
-            {
-                alwaysUnlocked = true;
-            }
-        };
+        serpluoIcon = new TEContent("serpulo-icon") {{
+            alwaysUnlocked = true;
+        }};
+        erekirIcon = new TEContent("erekir-icon") {{
+            alwaysUnlocked = true;
+        }};
+        keplerIcon = new TEContent("kepler-icon") {{
+            alwaysUnlocked = true;
+        }};
         machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
             //更别说Json版本更是一坨屎，比现在的这个mod还要屎
