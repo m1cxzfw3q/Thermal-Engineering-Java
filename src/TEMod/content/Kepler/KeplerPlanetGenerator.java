@@ -510,7 +510,7 @@ public class KeplerPlanetGenerator extends PlanetGenerator{
         }
 
         if(Simplex.noise3d(seed, 2, 0.5, scl, sector.tile.v.x + 2, sector.tile.v.y, sector.tile.v.z)*nmag + poles > 0.5f*addscl){
-            ores.add(TEBlocks.oreRawIron);
+            ores.add(TEBlocks.oreIron);
         }
 
         if(rand.chance(0.25)){
