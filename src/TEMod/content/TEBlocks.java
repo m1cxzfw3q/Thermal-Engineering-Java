@@ -1,10 +1,8 @@
 package TEMod.content;
 
 import TEMLib.*;
-import TEMod.TECore;
 import arc.Core;
 import arc.graphics.*;
-import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.ctype.ContentType;
 import mindustry.ctype.UnlockableContent;
@@ -41,7 +39,7 @@ import static mindustry.type.ItemStack.with;
 public class TEBlocks {
     public static Block
 
-    oreUranium, oreSphularite, oreRawIron, //矿石
+    oreUranium, oreZinc, oreIron, //矿石
     wallOreCopper, wallOreLead, wallOreTitanium, wallOreCoal, wallOreScrap, //S墙矿
     oreGraphitic, //地石墨
     liquidCoverCryo, liquidCoverOil, liquidCoverWater, liquidCoverSlag, liquidCoverArkycite, //一些盖板地板
@@ -56,7 +54,7 @@ public class TEBlocks {
     advancedOverdriveDome, //高级超速穹顶
     componentAssemblyPlant, //组装厂
 
-    primaryLaboratory, advancedLaboratory, specialLaboratory, //实验室
+    preliminaryLaboratory, intermediateLaboratory, advancedLaboratory, ultimateLaboratory, //实验室
     chipManufacturingMachine, chipPrinter, //芯片制造机 (造芯片的)
 
     nuclearReactor, thoriumNuclearExplosiveReactor, //核反应堆
@@ -559,33 +557,71 @@ public class TEBlocks {
             buildCostMultiplier = 0.8f;
         }};
 
-        /* 注释化一下
         prism = new MultiChargeTurret("prism") {{
             health = 1500;
             size = 1;
+            shoot.firstShotDelay = 40f;
 
             MultiCharge( //我就说自己写才是最好的吧
-                    new ChargeTier(, new LightningBulletType() {{
+                    new ChargeTier(60, new LightningBulletType() {{
                         lightningLength = 16;
                     }}),
-                    new ChargeTier(, new LightningBulletType() {{
-                        lightningLength = 16;
+                    new ChargeTier(180, new LaserBulletType(546){{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.white};
+                        chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+
+                        buildingDamageMultiplier = 0.5f;
+                        hitEffect = Fx.hitLancer;
+                        hitSize = 6;
+                        lifetime = 16f;
+                        drawSize = 660f;
+                        length = 475f;
+                        ammoMultiplier = 1f;
+                        pierceCap = 25;
+                        width = 26f;
                     }}),
-                    new ChargeTier(, new LightningBulletType() {{
-                        lightningLength = 16;
+                    new ChargeTier(10, new LaserBulletType(724){{
+                        colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.white};
+                        chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+
+                        buildingDamageMultiplier = 0.5f;
+                        hitEffect = Fx.hitLancer;
+                        hitSize = 7;
+                        lifetime = 16f;
+                        drawSize = 660f;
+                        length = 600f;
+                        ammoMultiplier = 1f;
+                        width = 30f;
                     }}),
                     new ChargeTier[]{
-                            new ChargeTier(, new LightningBulletType() {{
-                                lightningLength = 16;
+                            new ChargeTier(40, ((PowerTurret) Blocks.lancer).shootType),
+                            new ChargeTier(40, new LaserBulletType(250){{
+                                colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.white};
+                                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+
+                                buildingDamageMultiplier = 0.25f;
+                                hitEffect = Fx.hitLancer;
+                                hitSize = 5;
+                                lifetime = 16f;
+                                drawSize = 460f;
+                                length = 246f;
+                                ammoMultiplier = 1f;
+                                pierceCap = 7;
+                                width = 20f;
                             }}),
-                            new ChargeTier(, new LightningBulletType() {{
-                                lightningLength = 16;
-                            }}),
-                            new ChargeTier(, new LightningBulletType() {{
-                                lightningLength = 16;
-                            }}),
-                            new ChargeTier(, new LightningBulletType() {{
-                                lightningLength = 16;
+                            new ChargeTier(40, new LaserBulletType(427){{
+                                colors = new Color[]{Pal.lancerLaser.cpy().a(0.4f), Pal.lancerLaser, Color.white};
+                                chargeEffect = new MultiEffect(Fx.lancerLaserCharge, Fx.lancerLaserChargeBegin);
+
+                                buildingDamageMultiplier = 0.25f;
+                                hitEffect = Fx.hitLancer;
+                                hitSize = 6;
+                                lifetime = 16f;
+                                drawSize = 540f;
+                                length = 400f;
+                                ammoMultiplier = 1f;
+                                pierceCap = 10;
+                                width = 23f;
                             }})
                     }
             );//好个毛线
@@ -596,8 +632,9 @@ public class TEBlocks {
             range = 51.625f * 8f;
             reload = 1.5f * 60f;
             consumePower(10f);
+
+            tiers[0].bullet.collidesAir = true;
         }};
-        */
 
         oreSmeltingFurnace = new MultiCrafter("ore-smelting-furnace") {{
             health = 1280;
@@ -647,7 +684,7 @@ public class TEBlocks {
                             new StackItemLiquid(with(Items.surgeAlloy, 1)),
                             12f
                     ), new Recipe(
-                            new StackItemLiquid(with(Items.silicon, 2, Items.plastanium, 2)),
+                            new StackItemLiquid(with(Items.silicon, 2, Items.plastanium, 2, Items.surgeAlloy, 1)),
                             new StackItemLiquid(with(TEItems.plasticAlloy, 1)),
                             20f
                     )
@@ -660,7 +697,7 @@ public class TEBlocks {
             requirements(Category.crafting, with(Items.copper, 600, TEItems.iron, 200, Items.silicon, 500, Items.titanium, 300, Items.lead, 400, Items.surgeAlloy, 40));
         }};
 
-        oreSphularite = new OreBlock("ore-sphularite", TEItems.sphularite) {{
+        oreZinc = new OreBlock("ore-zinc", TEItems.zinc) {{
             oreDefault = true;
             oreThreshold = 0.81f;
             oreScale = 23.47619f;
@@ -686,9 +723,6 @@ public class TEBlocks {
                     new StackItemLiquid(with(TEItems.zinc, 1)),
                     new StackItemLiquid(with(TEItems.zincPowder, 1))
             ), new Recipe(
-                    new StackItemLiquid(with(TEItems.sphularite, 1)),
-                    new StackItemLiquid(with(TEItems.zincPowder, 2))
-            ), new Recipe(
                     new StackItemLiquid(with(Items.scrap, 1)),
                     new StackItemLiquid(with(Items.sand, 1))
             ), new Recipe(
@@ -710,6 +744,37 @@ public class TEBlocks {
             craftEffect = Fx.pulverize;
             updateEffect = Fx.pulverizeSmall;
         }};
+
+        preliminaryLaboratory = new GenericCrafter("preliminary-laboratory") {{
+            health = 300;
+            size = 2;
+            outputItem = with(TEItems.preliminaryAgreement, 2)[0];
+            consumePower(10);
+        }};
+
+        intermediateLaboratory = new GenericCrafter("intermediate-laboratory") {{
+            health = 300;
+            size = 3;
+            outputItem = with(TEItems.intermediateAgreement, 2)[0];
+            consumePower(15);
+        }};
+
+        advancedLaboratory = new GenericCrafter("advanced-laboratory") {{
+            health = 300;
+            size = 4;
+            outputItem = with(TEItems.advancedAgreement, 2)[0];
+            consumePower(20);
+            consumeLiquid(Liquids.cryofluid, 0.5f);
+        }};
+
+        ultimateLaboratory = new GenericCrafter("ultimate-laboratory") {{
+            health = 300;
+            size = 6;
+            outputItem = with(TEItems.ultimateAgreement, 2)[0];
+            consumePower(35);
+            consumeLiquid(Liquids.cryofluid, 1f);
+        }};
+
 
         cryofluidMixerLarge = new GenericCrafter("large-cryofluid-mixer") {{
             requirements(Category.crafting, with(Items.lead, 650, Items.silicon, 300, Items.titanium, 600, Items.thorium, 350));
@@ -1040,7 +1105,7 @@ public class TEBlocks {
 
         oreGraphitic = new OreBlock("ore-graphitic", Items.graphite);
 
-        oreRawIron = new OreBlock("ore-raw-iron", TEItems.rawIron);
+        oreIron = new OreBlock("ore-iron", TEItems.iron);
 
         laserBore = new BeamDrill("laser-bore"){{
             requirements(Category.production, with(Items.copper, 70, Items.lead, 45, Items.titanium, 35, Items.silicon, 50));

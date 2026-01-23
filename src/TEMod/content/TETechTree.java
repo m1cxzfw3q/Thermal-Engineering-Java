@@ -39,10 +39,10 @@ public class TETechTree {
                             );
                 });
 
-                node(primaryLaboratory, Seq.with(), () ->
-                        node(advancedLaboratory,
-                                Seq.with(new Objectives.Research(Liquids.cryofluid)), () ->
-                                        node(specialLaboratory)));
+                node(preliminaryLaboratory, () ->
+                        node(intermediateLaboratory, () ->
+                                node(advancedLaboratory, () ->
+                                        node(ultimateLaboratory))));
 
                 nodeProduce(preliminaryAgreement, () ->
                         nodeProduce(intermediateAgreement, () ->

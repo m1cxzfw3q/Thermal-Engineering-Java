@@ -10,23 +10,16 @@ import static TEMod.TECore.isComplete;
 public class TEItems {
     /** 基础物品 **/
     public static Item
-            nuclearFuelRod,
-            zinc, sphularite, uranium, iron, rawIron,
-            plasticAlloy, steel;
+            nuclearFuelRod, zinc, uranium, iron, plasticAlloy, steel;
     /** 一堆自动生成的粉末 **/
-    public static Item copperPowder = PowderGen(Items.copper),
-            leadPowder = PowderGen(Items.lead),
-            titaniumPowder = PowderGen(Items.titanium),
-            thoriumPowder = PowderGen(Items.thorium),
-            zincPowder, ironPowder;
+    public static Item copperPowder = PowderGen(Items.copper), leadPowder = PowderGen(Items.lead), titaniumPowder = PowderGen(Items.titanium),
+            thoriumPowder = PowderGen(Items.thorium), zincPowder, ironPowder;
     /** 协议与芯片 **/
     public static Item
-            preliminaryAgreement, intermediateAgreement, advancedAgreement, ultimateAgreement,
-            preliminaryChip, intermediateChip, advancedChip, ultimateChip;
+            preliminaryAgreement, intermediateAgreement, advancedAgreement, ultimateAgreement, preliminaryChip, intermediateChip, advancedChip, ultimateChip;
     /** 一堆小东西 **/
     public static Item preliminaryEnergyComponent, intermediateEnergyComponent, advancedEnergyComponent, ultimateEnergyComponent, //能量组件
-            preliminaryEnergyStorageComponent, intermediateEnergyStorageComponent,
-            advancedEnergyStorageComponent, ultimateEnergyStorageComponent;//储能组件
+            preliminaryEnergyStorageComponent, intermediateEnergyStorageComponent, advancedEnergyStorageComponent, ultimateEnergyStorageComponent;//储能组件
 
     public static Item stone; //石！
 
@@ -38,7 +31,7 @@ public class TEItems {
                     : Core.bundle.format("items.powder-gen.details");
             radioactivity = sourceItem.radioactivity;
             explosiveness = sourceItem.explosiveness;
-            flammability = sourceItem.radioactivity;
+            flammability = sourceItem.flammability;
             charge = sourceItem.charge;
         }};
     }
@@ -67,8 +60,6 @@ public class TEItems {
         advancedChip = new Item("advanced-chip", Color.valueOf("D3B37E")) {{cost = 0.6f;}};
         ultimateChip = new Item("ultimate-chip", Color.valueOf("D14C3A")) {{cost = 0.7f;}};
 
-        sphularite = new Item("sphularite", Color.valueOf("BFCDBC")) {{hardness = 3;}};
-
         zinc = new Item("zinc", Color.valueOf("BFCDBC")) {{cost = 0.6f;}};
 
         steel = new Item("steel", Color.valueOf("94949a")) {{
@@ -80,10 +71,6 @@ public class TEItems {
         }};
         ironPowder = PowderGen(iron);
         zincPowder = PowderGen(zinc);
-
-        rawIron = new Item("raw-iron", Color.valueOf("94949a")) {{
-            hardness = 2;
-        }};
 
         plasticAlloy = new Item("plastic-alloy", Color.valueOf("81b54d")) {{
             explosiveness = 0.1f;

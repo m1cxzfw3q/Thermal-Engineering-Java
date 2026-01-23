@@ -16,7 +16,10 @@ import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatValues;
 import org.jetbrains.annotations.NotNull;
 
+import java.time.Duration;
+
 import static TEMLib.lib.noop;
+import static arc.scene.actions.Actions.delay;
 
 public class MultiChargeTurret extends PowerTurret {
     public int maxChargeTier = 3;
@@ -80,9 +83,7 @@ public class MultiChargeTurret extends PowerTurret {
 
         public void ArcExplosion(float radius, float damage, int lightnings) {
             Call.logicExplosion(Team.derelict, x, y, radius, damage, true, true, false, false);//byd这么长还让不让人活了
-            for (int i = 0; i < 30; i++) {//史
-                noop();
-            }
+            delay(30);
             for (int i = 0; i < lightnings; i++) {
                 Lightning.create(Team.derelict, Pal.lancerLaser, damage / 10, x, y, Mathf.random(360f), (int) (radius * 0.8));
                 Call.soundAt(Sounds.shootArc, x, y, 1, 1);
