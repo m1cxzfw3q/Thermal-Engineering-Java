@@ -125,7 +125,8 @@ public class TEBlocks {
         serpluoIcon = new TEContent("serpulo-icon");
         erekirIcon = new TEContent("erekir-icon");
         keplerIcon = new TEContent("kepler-icon");
-        machineCannon = new ItemTurret("machine-cannon") {{//这个mod从Json版本开始的第一个建筑，也是梦开始的地方
+        machineCannon = new ItemTurret("machine-cannon") {{
+            //这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
             //更别说Json版本更是一坨屎，比现在的这个mod还要屎
             requirements(Category.turret,
