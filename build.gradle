@@ -101,3 +101,20 @@ tasks.register('deploy', Jar) {
         }
     }
 }
+
+buildscript{
+    repositories{
+        mavenCentral()
+    }
+
+    dependencies{
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.3.0"
+    }
+}
+
+apply plugin: "kotlin"
+
+compileKotlin{
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}

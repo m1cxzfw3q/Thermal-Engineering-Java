@@ -117,7 +117,7 @@ public class TEBlocks {
 
         @Override
         public ContentType getContentType() {
-            return ContentType.block;
+            return ContentType.error;
         }
     }
 
