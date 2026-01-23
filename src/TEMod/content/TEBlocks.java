@@ -298,7 +298,7 @@ public class TEBlocks {
             ));
         }};
 
-        /*
+
         chipPrinter = new MultiCrafter("chip-printer") {{
             requirements(Category.crafting,
                     with(Items.copper, 2000, Items.titanium, 1000, Items.lead, 2400, Items.graphite, 1500, Items.silicon, 10000,
@@ -340,8 +340,9 @@ public class TEBlocks {
                     new DrawRegion("-chipBuild")
             );
             liquidCapacity = 20f;
+            hasLiquids = true;
         }};
-         */
+
 
         missileLauncher = new ItemTurret("missile-launcher") {{
             health = 3500;
