@@ -49,6 +49,7 @@ public class TECore extends Mod {
 
 
         TETechTree.load();
+        new TEJsonInterface();
         TEV8.load();
         TEFix.load();
         isComplete(this.getClass());
