@@ -40,6 +40,13 @@ public class MultiChargeTurret extends PowerTurret {
         shootType = null;
     }
 
+    @Override
+    public void limitRange(float margin){
+        limitRange(new BulletType() {{
+            rangeChange = extraRangeMargin = 0;
+        }}, margin);
+    }
+
     public ChargeTier empty() {
         return new ChargeTier(-1, new BulletType());
     }
@@ -51,6 +58,7 @@ public class MultiChargeTurret extends PowerTurret {
         this.tiers = tiers;
     }
 
+    /*
     @Override
     public void setStats() {
         stats.add(Stat.ammo, StatValues.ammo(ObjectMap.of(Core.bundle.format("misc.multicharge.notCharge-1"), notCharge.bullet)));
@@ -62,6 +70,7 @@ public class MultiChargeTurret extends PowerTurret {
                 Core.bundle.format("misc.multicharge.super-ov-charge"), superOverdriveCharge.bullet
         )));
     }
+     */
 
     @Override
     public void setBars() {
@@ -126,6 +135,17 @@ public class MultiChargeTurret extends PowerTurret {
         protected void resetCharge() {
             chargeProgress = 0f;
             chargeTier = 0;
+        }
+
+        @Override
+        public BulletType useAmmo(){
+            //nothing used directly
+            return new BulletType();
+        }
+
+        @Override
+        public BulletType peekAmmo(){
+            return new BulletType();
         }
     }
 

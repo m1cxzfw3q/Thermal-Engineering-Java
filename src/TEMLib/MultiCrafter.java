@@ -14,6 +14,8 @@ import mindustry.world.consumers.ConsumeItemDynamic;
 import mindustry.world.consumers.ConsumeLiquidsDynamic;
 import mindustry.world.meta.*;
 
+import java.util.Arrays;
+
 public class MultiCrafter extends GenericCrafter {
     public @Nullable Seq<Recipe> recipes = new Seq<>();
 
@@ -24,21 +26,24 @@ public class MultiCrafter extends GenericCrafter {
         configurable = true;
         saveConfig = true;
         config(Integer.class, (MultiCrafterBuild e, Integer i) -> {});
+    }
 
+    @Override
+    public void init() {
         consume(new ConsumeItemDynamic(
                 (MultiCrafterBuild e) -> {
-                    hasItems = e.currentRecipe.inputItems != ItemStack.empty;
-                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputItems
-                            : ItemStack.empty;
+                    hasItems = !Arrays.equals(e.currentRecipe.inputItems, new ItemStack[]{});
+                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputItems : new ItemStack[]{};
                 }
         ));
         consume(new ConsumeLiquidsDynamic(
                 (MultiCrafterBuild e) -> {
-                    hasLiquids = e.currentRecipe.inputLiquids != LiquidStack.empty;
-                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputLiquids
-                            : LiquidStack.empty;
+                    hasLiquids = !Arrays.equals(e.currentRecipe.inputLiquids, new LiquidStack[]{});
+                    return e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputLiquids : new LiquidStack[]{};
                 }
         ));
+
+        super.init();
     }
 
     @Override
@@ -48,7 +53,11 @@ public class MultiCrafter extends GenericCrafter {
 
     @Override
     public boolean outputsItems() {
-        return true;
+        boolean b = false;
+        for (Recipe recipe : recipes) {
+            b = b || !Arrays.equals(recipe.outputItems, new ItemStack[]{});
+        }
+        return b;
     }
 
     @Override
@@ -56,7 +65,6 @@ public class MultiCrafter extends GenericCrafter {
         super.setStats();
         stats.remove(Stat.output);
         stats.remove(Stat.productionTime);
-        stats.add(Stat.productionTime, uniCraftTime / 60f, StatUnit.seconds);
         stats.add(Stat.output, table -> {
             table.row();
 
@@ -66,12 +74,12 @@ public class MultiCrafter extends GenericCrafter {
                     t.left();
                     t.add("[#ffd37f][" + i[0] + "][]");
                     i[0]++;
+                    lib.itemsDisplay(recipe.inputItems, table, recipe.craftTime);
+                    lib.liquidsDisplay(recipe.inputLiquids, table);
+                    t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f).fill();
+                    lib.itemsDisplay(recipe.outputItems, table, recipe.craftTime);
+                    lib.liquidsDisplay(recipe.outputLiquids, table);
                 });
-                lib.itemsDisplay(recipe.inputItems, table, recipe.craftTime);
-                lib.liquidsDisplay(recipe.inputLiquids, table);
-                table.table(Styles.grayPanel, t -> t.image(Icon.right).color(Pal.darkishGray).size(40).pad(5f)).fill();
-                lib.itemsDisplay(recipe.outputItems, table, recipe.craftTime);
-                lib.liquidsDisplay(recipe.outputLiquids, table);
                 table.row();
             }
         });
@@ -88,9 +96,10 @@ public class MultiCrafter extends GenericCrafter {
     }
 
     /// 正在重写
-    public static class MultiCrafterBuild extends Building {
+    public class MultiCrafterBuild extends Building {
         public int currentRecipeId = -1;
         public @Nullable Recipe currentRecipe = getCurrentRecipe(currentRecipeId);
+        public float progress;
 
         @Override
         public void buildConfiguration(Table table) {
@@ -110,6 +119,17 @@ public class MultiCrafter extends GenericCrafter {
         public Recipe getCurrentRecipe(int id) {
             if (id == -1) return null;
             return ((MultiCrafter) block).recipes.get(id);
+        }
+
+        @Override
+        public void draw(){
+            drawer.draw(this);
+        }
+
+        @Override
+        public void drawLight(){
+            super.drawLight();
+            drawer.drawLight(this);
         }
     }
 
@@ -135,12 +155,22 @@ public class MultiCrafter extends GenericCrafter {
         }
 
         public String localizedName() {
-            if(outputItems != null && outputItems.length > 0 && outputItems[0] != null) {
-                return outputItems[0].item.localizedName + " [white]" + outputItems[0].item.emoji() + "[]";
-            } else if(outputLiquids != null && outputLiquids.length > 0 && outputLiquids[0] != null) {
-                return outputLiquids[0].liquid.localizedName + " [white]" + outputLiquids[0].liquid.emoji() + "[]";
+            StringBuilder str = new StringBuilder("{");
+            for (ItemStack it : inputItems) {
+                str.append(it.item.uiIcon);
             }
-            return "未知配方";
+            for (LiquidStack it : inputLiquids) {
+                str.append(it.liquid.uiIcon);
+            }
+            str.append("}->{");
+            for (ItemStack it : outputItems) {
+                str.append(it.item.uiIcon);
+            }
+            for (LiquidStack it : outputLiquids) {
+                str.append(it.liquid.uiIcon);
+            }
+            str.append("}#").append(craftTime);
+            return str.toString();
         }
     }
 }

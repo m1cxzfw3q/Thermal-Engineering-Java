@@ -40,6 +40,7 @@ public class TECore extends Mod {
     public void loadContent() {
         TEItems.load();
         TEBlocks.load();
+        TESpecialContent.load();
         KeplerPlanet.load();
         KeplerSectorPresets.load();
         TEStatusEffects.load();

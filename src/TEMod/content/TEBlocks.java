@@ -3,6 +3,11 @@ package TEMod.content;
 import TEMLib.*;
 import arc.Core;
 import arc.graphics.*;
+import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.TextureRegion;
+import arc.math.Mathf;
+import arc.struct.Seq;
+import mindustry.Vars;
 import mindustry.content.*;
 import mindustry.ctype.ContentType;
 import mindustry.ctype.UnlockableContent;
@@ -102,29 +107,7 @@ public class TEBlocks {
 
     ;
 
-    public static TEContent serpluoIcon, erekirIcon, keplerIcon; //星球图标
-
-    public static class TEContent extends UnlockableContent {
-        public TEContent(String name) {
-            super(name);
-            this.localizedName = Core.bundle.get("teContent." + this.name + ".name", this.name);
-            this.description = Core.bundle.getOrNull("teContent." + this.name + ".description");
-            this.details = Core.bundle.getOrNull("teContent." + this.name + ".details");
-            this.unlocked = Core.settings != null && Core.settings.getBool(this.name + "-unlocked", false);
-            alwaysUnlocked = true;
-            hideDatabase = true;
-        }
-
-        @Override
-        public ContentType getContentType() {
-            return ContentType.error;
-        }
-    }
-
     public static void load() {//别问为什么前段写那么屎(让以后的我能看懂的)
-        serpluoIcon = new TEContent("serpulo-icon");
-        erekirIcon = new TEContent("erekir-icon");
-        keplerIcon = new TEContent("kepler-icon");
         machineCannon = new ItemTurret("machine-cannon") {{
             //这个mod从Json版本开始的第一个建筑，也是梦开始的地方
             //Json版本早没了，你想玩也玩不到
@@ -243,15 +226,15 @@ public class TEBlocks {
         highEfficiencyDisassembler = new Separator("high-efficiency-disassembler"){{
             requirements(Category.crafting,
                     with(Items.copper, 450, Items.titanium, 200, Items.lead, 300, Items.graphite, 200, Items.thorium, 150, Items.silicon, 200,
-                            Items.plastanium, 200, Items.phaseFabric, 80, TEItems.advancedChip, 20, TEItems.ultimateChip, 1)
+                            Items.plastanium, 200, Items.phaseFabric, 80, TEItems.ultimateChip, 4, TEItems.ultimateAgreement)
             );
             results = with(
-                    Items.copper, 3,
-                    Items.lead, 3,
-                    Items.graphite, 1,
+                    Items.copper, 4,
+                    Items.lead, 4,
+                    Items.graphite, 2,
                     Items.titanium, 2,
                     Items.thorium, 1,
-                    Items.silicon, 3,
+                    Items.silicon, 2,
                     Items.metaglass, 2,
                     Items.surgeAlloy, 1,
                     Items.phaseFabric, 1,
@@ -263,7 +246,7 @@ public class TEBlocks {
             itemCapacity = 40;
             liquidCapacity = 40;
             consumePower(8f);
-            consumeLiquid(Liquids.slag, 20f / 60f);
+            consumeLiquid(Liquids.slag, 30f / 60f);
             consumeItem(Items.scrap, 1);
 
             drawer = new DrawMulti(
@@ -337,7 +320,33 @@ public class TEBlocks {
                         suffix = "-cryo";
                     }},
                     new DrawDefault(),
-                    new DrawRegion("-chipBuild")
+                    new DrawBlock() {
+                        @Override
+                        public void getRegionsToOutline(Block block, Seq<TextureRegion> out) {
+                            super.getRegionsToOutline(block, out);
+                        }
+                        @Override
+                        public void draw(Building build) {
+                            MultiCrafterBuild build1 = (MultiCrafterBuild) build;
+                            float speedScl = 0, time = 0;
+                            if (build1.currentRecipeId != -1) {
+                                if (build1.progress > 0) {
+                                    time += build.edelta() * speedScl * build.timeScale();
+                                    speedScl = Mathf.lerpDelta(speedScl, 1f, 0.05f);
+                                } else {
+                                    speedScl = Mathf.lerpDelta(speedScl, 0f, 0.05f);
+                                }
+                                float finalTime = time, finalSpeedScl = speedScl;
+                                Draw.draw(
+                                        Layer.blockOver,
+                                        () -> Drawf.construct(
+                                                build, build1.currentRecipe.outputItems[0].item, build.rotdeg() - 90f,
+                                                build1.progress / build1.currentRecipe.craftTime, finalSpeedScl, finalTime
+                                        )
+                                );
+                            }
+                        }
+                    }
             );
             liquidCapacity = 20f;
             hasLiquids = true;

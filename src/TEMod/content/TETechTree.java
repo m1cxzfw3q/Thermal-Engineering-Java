@@ -15,6 +15,7 @@ import static TEMod.TECore.isComplete;
 import static TEMod.content.Kepler.KeplerSectorPresets.*;
 import static TEMod.content.TEBlocks.*;
 import static TEMod.content.TEItems.*;
+import static TEMod.content.TESpecialContent.*;
 import static mindustry.content.Blocks.*;
 import static mindustry.content.SectorPresets.*;
 import static mindustry.content.TechTree.roots;
@@ -76,7 +77,7 @@ public class TETechTree {
                 });
             });
 
-            node(TEBlocks.keplerIcon, () -> {
+            node(keplerIcon, () -> {
                 node(TEBlocks.nuclearFuelRodManufacturingMachine,
                         with(Items.thorium, 6000, Items.titanium, 7000, Items.silicon, 6000, Items.lead, 7000, Items.surgeAlloy, 2000,
                         Items.graphite, 82000, advancedChip, 1000, intermediateAgreement, 1
@@ -97,7 +98,7 @@ public class TETechTree {
                         nodeProduce(nuclearFuelRod));
             });
 
-            node(TEBlocks.erekirIcon);
+            node(erekirIcon);
 
             node(landingSite, Seq.with(
                     new Objectives.SectorComplete(impact0078),
