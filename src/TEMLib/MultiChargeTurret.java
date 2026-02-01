@@ -22,7 +22,7 @@ import static TEMLib.lib.noop;
 import static arc.scene.actions.Actions.delay;
 
 public class MultiChargeTurret extends PowerTurret {
-    public int maxChargeTier = 3;
+    public int maxChargeTier = 2;
     public @NotNull ChargeTier[] tiers = {};
     public @NotNull ChargeTier notCharge = empty(),
             overdriveCharge = empty(),
