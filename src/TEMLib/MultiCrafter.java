@@ -31,10 +31,10 @@ public class MultiCrafter extends GenericCrafter {
     @Override
     public void init() {
         consume(new ConsumeItemDynamic(
-                (MultiCrafterBuild e) -> e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputItems : new ItemStack[]{};
+                (MultiCrafterBuild e) -> e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputItems : new ItemStack[]{}
         ));
         consume(new ConsumeLiquidsDynamic(
-                (MultiCrafterBuild e) -> e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputLiquids : new LiquidStack[]{};
+                (MultiCrafterBuild e) -> e.currentRecipeId != -1 ? recipes.get(Math.min(e.currentRecipeId, recipes.size - 1)).inputLiquids : new LiquidStack[]{}
         ));
         
         super.init();
