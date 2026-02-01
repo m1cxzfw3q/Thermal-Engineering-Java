@@ -110,7 +110,7 @@ public class MultiChargeTurret extends PowerTurret {
                     chargeProgress += (notCharge.chargeUseTime / 60);
                 } else if (chargeTier == 1 + maxChargeTier) {
                     chargeProgress += (overdriveCharge.chargeUseTime / 60);
-                } else if (chargeTier == 2 + maxChargeTier) {
+                } else if (chargeTier >= 2 + maxChargeTier) {
                     resetCharge();
                     shoot(superOverdriveCharge.bullet);
                     Call.soundAt(overdriveShootSound, x, y, 1, 1);
