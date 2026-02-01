@@ -26,6 +26,17 @@ public class MultiCrafter extends GenericCrafter {
         configurable = true;
         saveConfig = true;
         config(Integer.class, (MultiCrafterBuild e, Integer i) -> {});
+
+        boolean b = false;
+        for (Recipe recipe : recipes) {
+            b = b || !Arrays.equals(recipe.inputItems, new ItemStack[]{});
+        }
+        hasItems = b;
+        b = false;
+        for (Recipe recipe : recipes) {
+            b = b || !Arrays.equals(recipe.inputLiquids, new LiquidStack[]{});
+        }
+        hasLiquids = b;
     }
 
     @Override
@@ -43,16 +54,6 @@ public class MultiCrafter extends GenericCrafter {
     @Override
     public void load(){
         super.load();
-
-        boolean b = false;
-        for (Recipe recipe : recipes) {
-            b = b || !Arrays.equals(recipe.inputItems, new ItemStack[]{});
-        }
-        hasItems = b; b = false;
-        for (Recipe recipe : recipes) {
-            b = b || !Arrays.equals(recipe.inputLiquids, new LiquidStack[]{});
-        }
-        hasLiquids = b;
     }
 
     @Override
